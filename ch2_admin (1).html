@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제2강 행정소송법 진입 : 행정소송의 한계 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;
+  --blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;
+  --green:#1a6644;--green-l:#e6f2ec;
+  --red:#a02020;--red-l:#faeaea;
+  --gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;
+  --purple:#5a2d8c;--purple-l:#ede6f5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}
+.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}
+.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}
+.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+/* 소장 박스 */
+.sojanq{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:14px 18px;font-family:'Noto Serif KR',serif;font-size:12.5px;line-height:2;margin:10px 0}
+.sojanq-title{font-weight:700;text-align:center;margin-bottom:6px;font-size:13px}
+.sojanq-item{margin-left:16px}
+.sojanq-청구취지{border:1.5px solid var(--blue);background:var(--blue-l);border-radius:5px;padding:8px 14px;margin:6px 0}
+/* 플래시카드 */
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:200px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}
+.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}
+.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}
+.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}
+.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+/* OX */
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+/* 필수암기 */
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.mem-note{margin-top:8px;padding:7px 10px;border-radius:5px;font-size:11.5px;line-height:1.6}
+.mn-blue{background:var(--blue-l);color:var(--blue)}.mn-green{background:var(--green-l);color:var(--green)}.mn-gold{background:var(--gold-l);color:var(--gold)}.mn-red{background:var(--red-l);color:var(--red)}
+/* 문제의 소재 */
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0;display:flex;align-items:center;gap:7px}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}.ms-section-title.pp{background:var(--purple)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}.ms-step-num.rd{background:var(--red)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}.ms-step-label.rd{color:var(--red)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+/* 마인드맵 */
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:16px}.tab{padding:10px 12px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제2강 행정소송법 진입 : 행정소송의 한계</div>
+  <div class="hdr-sub">사법본질적 한계 · 권력분립적 한계 · 소장 청구취지1.에 쓸 수 없는 것</div>
+</div>
+
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+  </div>
+</nav>
+
+<div class="main">
+
+<!-- ══ TAB 1 · 요약노트 ══ -->
+<div id="panel-summary" class="panel on">
+
+  <div class="card">
+    <div class="card-head ch-blue">⚖️ 행정소송의 한계 — 전체 구조</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>한계 유형</th><th>내용</th><th>핵심 개념</th></tr></thead>
+        <tbody>
+          <tr>
+            <td rowspan="2"><span class="kw">사법본질적 한계</span></td>
+            <td><span class="hl">구체적 사건성</span><br>구체적 법률관계에서 발생한 권리주체 간의 법률상 이익에 관한 법적 분쟁</td>
+            <td>일반적·추상적·간접적 분쟁은 제외</td>
+          </tr>
+          <tr>
+            <td><span class="hl">법 적용</span><br>쟁송에 법을 적용하여 해결할 수 있어야 함</td>
+            <td>훈시규정·통치행위 = 한계영역</td>
+          </tr>
+          <tr>
+            <td><span class="kw">권력분립적 한계</span></td>
+            <td>행정청의 <span class="hl">제1차적 판단권</span> 존중<br>의무이행소송·예방적 부작위소송 불허</td>
+            <td>행정소송법 §3·§4에 없는 소송유형</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="alert al-gold" style="margin-top:12px">
+        <div class="alert-label">📌 핵심 — 소장 청구취지 1.에 쓸 수 없는 것</div>
+        <span class="r">✗ 「○○처분을 하라」</span> → 의무이행소송 (현행법 불허)<br>
+        <span class="r">✗ 「○○처분을 하지 말라」</span> → 예방적 부작위소송 (현행법 불허)<br>
+        <span class="g">✓ 「○○처분을 취소한다」</span> → 취소소송 (허용)
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head ch-green">📋 사법본질적 한계 — 구체적 사건성 결여 유형</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>결여 유형</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td>구체성 결여</td><td>일반적·추상적·간접적 분쟁 — 행정소송 대상 ✗</td></tr>
+          <tr><td>법률관계 부존재</td><td>법률관계가 아닌 사실관계 분쟁</td></tr>
+          <tr><td>권리주체 간 분쟁 아님</td><td>동일 주체 내부 문제</td></tr>
+          <tr><td>법률상 이익 없음</td><td>단순 반사적 이익 분쟁</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head ch-gold">🏛️ 법 적용 한계 — 4가지 논의 대상</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>대상</th><th>현재 결론</th></tr></thead>
+        <tbody>
+          <tr><td><span class="kw">훈시규정</span></td><td><span class="r">여전히 한계 영역</span> — 법 적용 불가</td></tr>
+          <tr><td><span class="kw">통치행위</span></td><td><span class="r">여전히 한계 영역</span> — 법원 스스로 심사 억제</td></tr>
+          <tr><td><span class="kw">재량행위</span></td><td><span class="g">법 적용 허용 방향으로 전환</span></td></tr>
+          <tr><td><span class="kw">특별행정법관계</span></td><td><span class="g">법 적용 허용 방향으로 전환</span></td></tr>
+        </tbody>
+      </table>
+      <div class="alert al-blue" style="margin-top:12px">
+        <div class="alert-label">📌 통치행위 판례 (대판 2010.12.16. 2010도5986 전원합의체)</div>
+        고도의 정치성을 띤 국가 행위 → 법원 스스로 사법심사권 행사 억제 → 심사 대상에서 제외 가능
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head ch-red">🚫 권력분립적 한계 — 불허 소송 유형</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>소송 유형</th><th>내용</th><th>불허 이유</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="kw">의무이행소송</span></td>
+            <td>행정청에게 특정 처분을 하도록 명하는 소송</td>
+            <td>행정청의 <span class="hl">제1차적 판단권</span> 침해<br>행정소송법 §3·§4에 규정 없음</td>
+          </tr>
+          <tr>
+            <td><span class="kw">예방적 부작위소송</span></td>
+            <td>특정 처분을 하지 말 것을 구하는 소송</td>
+            <td>동일 — 제1차적 판단권 침해<br>행정소송법 §3·§4에 규정 없음</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="alert al-red" style="margin-top:12px">
+        <div class="alert-label">📌 소장 청구취지 1. 작성의 실전 의미</div>
+        청구취지 1. = 원고가 법원에 구하는 내용<br>
+        <span class="r">의무이행·예방적 부작위</span>는 쓸 수 없음 → <span class="g">취소·무효확인·부작위위법확인</span>만 가능
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head ch-purple">📄 소장 기본 구조</div>
+    <div class="card-body">
+      <div class="sojanq">
+        <div class="sojanq-title">소　　장</div>
+        <div>원고 &nbsp;&nbsp;&nbsp; ___</div>
+        <div>피고 &nbsp;&nbsp;&nbsp; ___</div>
+        <br>
+        <div class="sojanq-청구취지">
+          <strong>청구취지</strong><br>
+          &nbsp;&nbsp;1. ○○처분을 <span style="color:var(--blue);font-weight:700">취소한다</span>.<br>
+          &nbsp;&nbsp;2. 소송비용은 피고의 부담으로 한다.<br>
+          라는 판결을 구합니다.
+        </div>
+        <div>청구원인</div>
+        <div>입증방법</div>
+        <div>첨부서류</div>
+        <br>
+        <div style="text-align:right">소장 접수일 &nbsp;&nbsp; 년 &nbsp;&nbsp; 월 &nbsp;&nbsp; 일</div>
+        <br>
+        <div style="text-align:right">○○법원 귀중</div>
+      </div>
+      <div class="alert al-blue">
+        <div class="alert-label">📌 청구취지 1. 술어가 핵심</div>
+        「취소한다」→ 취소소송 ✅ &nbsp;|&nbsp; 「무효확인한다」→ 무효확인소송 ✅<br>
+        「처분을 하라」→ 의무이행소송 ✗ &nbsp;|&nbsp; 「처분하지 말라」→ 예방적 부작위소송 ✗
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ TAB 2 · 플래시카드 ══ -->
+<div id="panel-flash" class="panel">
+  <div class="fc-grid">
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">행정소송의 한계<br>2가지</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">사법본질적·권력분립적</div><ul>
+          <li>사법본질적 한계 → 구체적 사건성 + 법 적용</li>
+          <li>권력분립적 한계 → 의무이행·예방적 부작위소송 불허</li>
+          <li>소장 청구취지1.에 쓸 수 없는 것과 연결</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔍</div><div class="fc-term">구체적 사건성<br>결여 4유형</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">구체성·법률관계·권리주체·법률상이익</div><ul>
+          <li>구체성 결여 — 일반적·추상적·간접적 분쟁</li>
+          <li>법률관계 부존재</li>
+          <li>권리주체 간 분쟁 아님</li>
+          <li>법률상 이익 없음</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📜</div><div class="fc-term">법 적용 한계<br>여전히 남은 것</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gd"><div class="fc-bt">훈시규정·통치행위</div><ul>
+          <li>훈시규정 → 여전히 한계 영역</li>
+          <li>통치행위 → 법원 스스로 심사 억제</li>
+          <li>재량행위 → 법 적용 허용 방향 전환</li>
+          <li>특별행정법관계 → 법 적용 허용 방향 전환</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🚫</div><div class="fc-term">의무이행소송<br>불허 이유</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">2가지 이유</div><ul>
+          <li>행정청의 제1차적 판단권 침해</li>
+          <li>행정소송법 §3·§4에 규정 없음</li>
+          <li>→ 절차법정주의 위반</li>
+          <li>청구취지1. 「○○처분을 하라」쓸 수 없음</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🏛️</div><div class="fc-term">행정청의<br>제1차적 판단권</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b pp"><div class="fc-bt">권력분립의 핵심</div><ul>
+          <li>공익 실현에 가장 적합한 작용 판단</li>
+          <li>수단 선택을 다른 권력보다 먼저 판단</li>
+          <li>의무이행·예방적 부작위소송에서 침해됨</li>
+          <li>→ 법원이 행정청 판단을 대신하기 때문</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📄</div><div class="fc-term">소장 청구취지1.<br>가능·불가능</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">✅ 가능 vs ✗ 불가능</div><ul>
+          <li>✅ 「○○처분을 취소한다」</li>
+          <li>✅ 「○○처분이 무효임을 확인한다」</li>
+          <li>✗ 「○○처분을 하라」(의무이행)</li>
+          <li>✗ 「○○처분을 하지 말라」(예방적 부작위)</li>
+        </ul></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ TAB 3 · OX퀴즈 ══ -->
+<div id="panel-quiz" class="panel">
+  <div class="score-bar">
+    <span class="score-label">현재 점수</span>
+    <span class="score-num" id="snum">0 / 0</span>
+    <button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button>
+  </div>
+  <div id="qc"></div>
+</div>
+
+<!-- ══ TAB 4 · 필수암기문장 ══ -->
+<div id="panel-memory" class="panel">
+  <div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+  <div class="mem-progress">
+    <div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div>
+    <div class="mem-prog-label" id="prog-label">0 / 0 공개</div>
+    <button class="mem-reveal-all" onclick="revealAll()">전체 공개</button>
+  </div>
+
+  <div class="mem-section-title">사법본질적 한계</div>
+
+  <div class="mem-item">
+    <div class="mem-item-head">
+      <span class="mem-badge mb-def">정의</span>
+      <span class="mem-item-label">구체적 사건성</span>
+      <button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button>
+    </div>
+    <div class="mem-body"><div class="mem-sentence-wrap">
+      <div class="mem-sentence">「구체적 사건성」이란 구체적인 <span class="mem-blank" onclick="toggleBlank(this)">법률관계</span>에서 발생한 <span class="mem-blank" onclick="toggleBlank(this)">권리주체</span> 사이의 <span class="mem-blank" onclick="toggleBlank(this)">법률상 이익</span>에 관한 법적 분쟁을 말한다.</div>
+      <div class="mem-note mn-blue">결여 시 → 행정소송 대상 불가</div>
+    </div></div>
+  </div>
+
+  <div class="mem-item">
+    <div class="mem-item-head">
+      <span class="mem-badge mb-case">판례</span>
+      <span class="mem-item-label">통치행위 — 판례 (대판 2010도5986 전원합의체)</span>
+      <button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button>
+    </div>
+    <div class="mem-body"><div class="mem-sentence-wrap">
+      <div class="mem-sentence">고도의 <span class="mem-blank" onclick="toggleBlank(this)">정치성</span>을 띤 국가 행위에 대하여는 이른바 <span class="mem-blank" onclick="toggleBlank(this)">통치행위</span>라 하여 법원 스스로 <span class="mem-blank" onclick="toggleBlank(this)">사법심사권의 행사를 억제</span>하여 그 심사 대상에서 제외하는 영역이 있을 수 있다.</div>
+      <div class="mem-note mn-gold">입헌적 법치주의국가 = 어떠한 국가 행위도 합헌적·합법적으로 행하여질 것 요구</div>
+    </div></div>
+  </div>
+
+  <div class="mem-section-title gn">권력분립적 한계</div>
+
+  <div class="mem-item">
+    <div class="mem-item-head">
+      <span class="mem-badge mb-sent">논증</span>
+      <span class="mem-item-label">의무이행소송 불허</span>
+      <button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button>
+    </div>
+    <div class="mem-body"><div class="mem-sentence-wrap">
+      <div class="mem-sentence">의무이행소송은 행정청의 <span class="mem-blank" onclick="toggleBlank(this)">제1차적 판단권</span>을 침해하고, 현행 행정소송법 <span class="mem-blank" onclick="toggleBlank(this)">§3·§4</span>에 규정이 없으므로 <span class="mem-blank" onclick="toggleBlank(this)">허용되지 아니한다</span>.</div>
+      <div class="mem-note mn-red">판례: "압수물 환부를 이행하라는 청구는 의무이행소송으로 현행 행정소송법상 허용되지 아니한다"</div>
+    </div></div>
+  </div>
+
+  <div class="mem-item">
+    <div class="mem-item-head">
+      <span class="mem-badge mb-sent">논증</span>
+      <span class="mem-item-label">예방적 부작위소송 불허</span>
+      <button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button>
+    </div>
+    <div class="mem-body"><div class="mem-sentence-wrap">
+      <div class="mem-sentence">예방적 부작위소송은 행정소송에서 <span class="mem-blank" onclick="toggleBlank(this)">허용되지 아니하는 것</span>이므로 <span class="mem-blank" onclick="toggleBlank(this)">부적법</span>하다.</div>
+      <div class="mem-note mn-red">판례: "준공처분을 하여서는 아니 된다는 내용의 부작위를 구하는 청구는 부적법하다"</div>
+    </div></div>
+  </div>
+
+</div>
+
+<!-- ══ TAB 5 · 문제의 소재 ══ -->
+<div id="panel-source" class="panel">
+  <div class="ms-intro">
+    <div class="ms-intro-title">✍️ 문제의 소재란?</div>
+    <div class="ms-intro-text">이 챕터에서 시험 문제로 출제될 수 있는 쟁점을 파악하고, 어떤 요건이 문제되는지, 어떻게 현출할 것인지를 훈련합니다.</div>
+  </div>
+
+  <div class="ms-section">
+    <div class="ms-section-title">① 소장 청구취지 1.의 적법성이 문제되는 경우</div>
+    <div class="ms-body">
+      <div class="ms-step">
+        <div class="ms-step-num">1</div>
+        <div class="ms-step-content">
+          <div class="ms-step-label">문제되는 상황</div>
+          <div class="ms-step-text">원고가 특정 처분을 해줄 것을 법원에 구하거나, 처분을 하지 말 것을 구하는 소를 제기한 경우</div>
+          <div class="ms-example">예: "甲은 피고에게 영업허가처분을 하라는 청구를 하였다. 이 소는 적법한가?"</div>
+        </div>
+      </div>
+      <div class="ms-step">
+        <div class="ms-step-num gn">2</div>
+        <div class="ms-step-content">
+          <div class="ms-step-label gn">사고의 전제 (대전제)</div>
+          <div class="ms-step-text">행정소송법 §3·§4 — 의무이행소송·예방적 부작위소송은 규정 없음 → 절차법정주의상 불허</div>
+        </div>
+      </div>
+      <div class="ms-step">
+        <div class="ms-step-num gd">3</div>
+        <div class="ms-step-content">
+          <div class="ms-step-label gd">현출 포인트</div>
+          <div class="ms-step-text">청구취지의 술어를 확인 → 「처분을 하라」「처분하지 말라」→ 각하 / 「취소한다」「무효확인한다」→ 적법</div>
+        </div>
+      </div>
+      <div class="ms-keyword-box">
+        <div class="ms-keyword-title">관련 키워드</div>
+        <div class="ms-keywords">
+          <span class="ms-kw">의무이행소송</span><span class="ms-kw">예방적 부작위소송</span>
+          <span class="ms-kw">절차법정주의</span><span class="ms-kw">제1차적 판단권</span><span class="ms-kw">각하</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-section">
+    <div class="ms-section-title gn">② 행정소송 대상이 되는지 여부가 문제되는 경우</div>
+    <div class="ms-body">
+      <div class="ms-step">
+        <div class="ms-step-num">1</div>
+        <div class="ms-step-content">
+          <div class="ms-step-label">문제되는 상황</div>
+          <div class="ms-step-text">특정 행정작용이 행정소송의 대상이 될 수 있는지 다투어지는 경우</div>
+          <div class="ms-example">예: "통치행위에 해당하는 대통령의 계엄령 선포에 대하여 취소소송을 제기할 수 있는가?"</div>
+        </div>
+      </div>
+      <div class="ms-step">
+        <div class="ms-step-num gn">2</div>
+        <div class="ms-step-content">
+          <div class="ms-step-label gn">사고의 전제 (대전제)</div>
+          <div class="ms-step-text">사법본질적 한계 — 구체적 사건성 + 법 적용 가능 여부 검토</div>
+        </div>
+      </div>
+      <div class="ms-step">
+        <div class="ms-step-num gd">3</div>
+        <div class="ms-step-content">
+          <div class="ms-step-label gd">현출 포인트</div>
+          <div class="ms-step-text">통치행위 해당 여부 → 고도의 정치성 판단 → 법원의 심사 억제 가능 (대판 2010도5986)</div>
+        </div>
+      </div>
+      <div class="ms-keyword-box">
+        <div class="ms-keyword-title">관련 키워드</div>
+        <div class="ms-keywords">
+          <span class="ms-kw">통치행위</span><span class="ms-kw">구체적 사건성</span>
+          <span class="ms-kw">법 적용</span><span class="ms-kw">사법심사 억제</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-section">
+    <div class="ms-section-title gd">③ 특별행정법관계 내 행위의 처분성이 문제되는 경우</div>
+    <div class="ms-body">
+      <div class="ms-step">
+        <div class="ms-step-num">1</div>
+        <div class="ms-step-content">
+          <div class="ms-step-label">문제되는 상황</div>
+          <div class="ms-step-text">공무원·학생·군인 등에 대한 행정작용이 항고소송의 대상이 되는지 다투어지는 경우</div>
+          <div class="ms-example">예: "국립대학 학생에 대한 퇴학처분이 항고소송의 대상이 되는가?"</div>
+        </div>
+      </div>
+      <div class="ms-step">
+        <div class="ms-step-num gn">2</div>
+        <div class="ms-step-content">
+          <div class="ms-step-label gn">사고의 전제 (대전제)</div>
+          <div class="ms-step-text">특별행정법관계 → 과거 법 적용 한계 → 현재 법 적용 허용 방향 전환</div>
+        </div>
+      </div>
+      <div class="ms-step">
+        <div class="ms-step-num gd">3</div>
+        <div class="ms-step-content">
+          <div class="ms-step-label gd">현출 포인트</div>
+          <div class="ms-step-text">구체적 법집행으로서 공권력 행사 여부 → 처분성 인정 → 항고소송 가능 (대판 91누2144)</div>
+        </div>
+      </div>
+      <div class="ms-keyword-box">
+        <div class="ms-keyword-title">관련 키워드</div>
+        <div class="ms-keywords">
+          <span class="ms-kw">특별행정법관계</span><span class="ms-kw">처분성</span>
+          <span class="ms-kw">공권력 행사</span><span class="ms-kw">항고소송</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ TAB 6 · 마인드맵 ══ -->
+<div id="panel-map" class="panel">
+  <div class="mm-wrap">
+    <iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe>
+  </div>
+</div>
+
+</div>
+
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qData=[
+  {q:"행정소송의 사법본질적 한계는 구체적 사건성과 법 적용 가능성으로 구성된다.",a:true,e:"사법본질적 한계는 ①구체적 사건성(구체적 법률관계에서 권리주체 간 법률상 이익 분쟁)과 ②법 적용(쟁송에 법을 적용하여 해결 가능해야 함)으로 구성된다."},
+  {q:"현행 행정소송법상 의무이행소송과 예방적 부작위소송은 허용된다.",a:false,e:"두 소송 모두 현행 행정소송법 §3·§4에 규정이 없고, 행정청의 제1차적 판단권을 침해하므로 허용되지 않는다. 판례도 명시적으로 불허한다."},
+  {q:"소장 청구취지 1.에 「○○처분을 취소한다」는 적법하게 기재할 수 있다.",a:true,e:"취소소송은 행정소송법 §4에 명시된 항고소송 유형이므로 청구취지에 「○○처분을 취소한다」고 기재하는 것은 적법하다."},
+  {q:"통치행위는 입헌적 법치주의 원칙에 의해 반드시 사법심사의 대상이 된다.",a:false,e:"판례(대판 2010도5986 전원합의체)는 고도의 정치성을 띤 국가 행위(통치행위)에 대해 법원 스스로 사법심사권 행사를 억제하여 심사 대상에서 제외할 수 있다고 본다."},
+  {q:"재량행위는 현재에도 사법본질적 한계로 법 적용이 불가능하다.",a:false,e:"재량행위는 과거에는 법 적용의 한계로 여겨졌으나, 현재는 법 적용을 허용하는 방향으로 인식이 전환되었다. 훈시규정과 통치행위만이 여전히 한계 영역으로 남아 있다."},
+  {q:"「처분을 하지 말라」는 내용의 청구는 예방적 부작위소송으로 부적법하다.",a:true,e:"예방적 부작위소송은 행정소송법 §3·§4에 규정이 없고 행정청의 제1차적 판단권을 침해하므로 허용되지 않는다. 판례도 부적법하다고 명시한다."},
+  {q:"국립대학 학생에 대한 퇴학처분은 특별권력관계 내 행위이므로 항고소송의 대상이 되지 않는다.",a:false,e:"판례(대판 91누2144)는 국립대학 학생에 대한 퇴학처분은 구체적 법집행으로서 국가공권력의 하나인 징계권 발동이므로 행정처분임이 명백하다고 하여 항고소송의 대상을 인정했다."},
+  {q:"행정청의 제1차적 판단권이란 공익 실현에 가장 적합한 작용과 수단을 다른 권력보다 먼저 판단하는 권한이다.",a:true,e:"행정청의 제1차적 판단권이란 어떤 작용이 공익 실현에 가장 적합한지, 어떤 수단을 채택할지를 다른 권력보다 먼저 판단하는 권한이다. 의무이행소송·예방적 부작위소송에서 법원이 이를 대신하게 되어 침해된다."},
+];
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  var exp=document.getElementById('e'+i);
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info={
+  "구체적사건성":["구체적 법률관계에서 발생한 분쟁","권리주체 사이의 법률상 이익","일반적·추상적·간접적 분쟁 → 대상 불가","법률관계 부존재·권리주체 아님 → 대상 불가"],
+  "법적용":["훈시규정 → 여전히 한계 영역","통치행위 → 법원 스스로 심사 억제","재량행위 → 법 적용 허용 방향 전환","특별행정법관계 → 허용 방향 전환"],
+  "의무이행소송":["「처분을 하라」는 청구","행정청 제1차적 판단권 침해","행정소송법 §3·§4에 규정 없음","현행 행정소송법상 불허"],
+  "예방적부작위소송":["「처분을 하지 말라」는 청구","동일 — 제1차적 판단권 침해","행정소송법 §3·§4에 규정 없음","부적법 — 각하"],
+  "소장청구취지":["1. ○○처분을 취소한다","취소·무효확인·부작위위법확인 가능","의무이행·예방적 부작위 불가","술어 부분이 소송 유형 결정"],
+  "통치행위":["고도의 정치성을 띤 국가 행위","법원 스스로 사법심사 억제 가능","대판 2010도5986 전원합의체","입헌적 법치주의 = 합헌·합법 요구"],
+};
+var tree={name:"행정소송의 한계",depth:0,children:[
+  {name:"사법본질적 한계",depth:1,children:[
+    {name:"구체적사건성",depth:3},{name:"법적용",depth:3}
+  ]},
+  {name:"권력분립적 한계",depth:1,children:[
+    {name:"의무이행소송",depth:3},{name:"예방적부작위소송",depth:3}
+  ]},
+  {name:"실전 연결",depth:1,children:[
+    {name:"소장청구취지",depth:3},{name:"통치행위",depth:3}
+  ]}
+]};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,145]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){
+  var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);
+  var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();
+  var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;
+  el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5').style('stroke-dasharray',opt.dash||'none');
+  el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);
+}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#a02020','#7a5c00'];var c=cs[i]||'#1a4b8c';mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){
+  var el=d3.select(this);
+  mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});
+  el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){
+    var i=info[d.data.name];if(!i)return;
+    document.getElementById('dp-t').textContent=d.data.name;
+    var ul=document.getElementById('dp-l');ul.innerHTML='';
+    i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});
+    document.getElementById('hint').style.display='none';
+  });
+});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+</script>
+</body>
+</html>
