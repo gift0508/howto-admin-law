@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1행2필 | 판례 범용 학습엔진</title>
+<style>
+:root{
+  --navy:#0f1b3d;
+  --navy-soft:#16204a;
+  --gold:#c9a14a;
+  --paper:#f7f5f0;
+  --ink:#1c2333;
+  --line:#e3e0d8;
+  --blue:#2f5fb3;
+  --green:#2f7d4f;
+  --orange:#d97b29;
+  --purple:#7048a8;
+  --red:#c4453f;
+  --muted:#8a8578;
+  font-family:"Pretendard","Noto Sans KR",-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--paper);color:var(--ink);}
+
+/* ===== HEADER ===== */
+header{
+  background:var(--navy);color:#fff;
+  padding:14px 24px;display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:10px;
+}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand .mark{
+  width:34px;height:34px;border-radius:8px;
+  background:linear-gradient(135deg,var(--gold),#a87f2e);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;color:var(--navy);font-size:15px;
+}
+.brand .title{font-weight:700;font-size:16px;letter-spacing:.3px;display:flex;align-items:center;gap:8px;}
+.brand .sub{font-size:11px;color:#9aa3c4;font-weight:400;letter-spacing:.5px;}
+.domain-badge{
+  background:var(--gold);color:var(--navy);font-size:11px;font-weight:800;
+  padding:3px 10px;border-radius:20px;letter-spacing:.3px;
+}
+
+/* ===== LAYOUT ===== */
+.layout{max-width:1100px;margin:0 auto;padding:18px;}
+.case-header{
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:18px 20px;margin-bottom:16px;
+}
+.case-header .case-num{
+  display:inline-block;background:var(--navy);color:#fff;font-size:11px;font-weight:800;
+  padding:3px 10px;border-radius:6px;margin-bottom:8px;
+}
+.case-header h1{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:4px;}
+.case-header .meta{font-size:12px;color:var(--muted);}
+
+/* ===== TOOL TABS ===== */
+.tool-tabs{
+  display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;
+}
+.tool-tab{
+  flex:1;min-width:120px;background:#fff;border:1px solid var(--line);border-radius:9px;
+  padding:10px 8px;text-align:center;cursor:pointer;font-size:12.5px;font-weight:700;color:var(--muted);
+  transition:.15s;
+}
+.tool-tab .emoji{font-size:18px;display:block;margin-bottom:4px;}
+.tool-tab:hover{border-color:var(--gold);}
+.tool-tab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.tool-tab.active .emoji{filter:none;}
+
+/* ===== PANELS ===== */
+.tool-panel{display:none;}
+.tool-panel.active{display:block;}
+.panel-card{
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:14px;
+}
+.panel-card h3{font-size:14.5px;font-weight:800;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.panel-card h3 .num{
+  width:24px;height:24px;border-radius:6px;background:var(--gold);color:var(--navy);
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;
+}
+
+/* ===== 1. 소개 ===== */
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.intro-block{background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:14px;}
+.intro-block .label{font-size:11px;font-weight:800;color:var(--gold);margin-bottom:6px;letter-spacing:.5px;}
+.intro-block .content{font-size:13px;line-height:1.7;color:var(--ink);}
+.intro-block.full{grid-column:1/-1;}
+@media(max-width:700px){.intro-grid{grid-template-columns:1fr;}}
+
+/* ===== 2. 필수암기문장 ===== */
+.memo-sentence{
+  background:var(--navy);color:#fff;border-radius:10px;padding:16px 18px;margin-bottom:10px;
+  font-size:14px;line-height:1.8;position:relative;
+}
+.memo-sentence .tag{
+  display:inline-block;background:var(--gold);color:var(--navy);font-size:10.5px;font-weight:800;
+  padding:2px 8px;border-radius:5px;margin-bottom:8px;
+}
+.memo-sentence .text{font-weight:600;}
+.memo-sentence .source{font-size:11px;color:#9aa3c4;margin-top:8px;}
+
+/* ===== 3. 플래시카드 ===== */
+.flashcard-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;}
+.flashcard{
+  width:100%;max-width:520px;height:240px;perspective:1200px;cursor:pointer;
+}
+.flashcard-inner{
+  position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d;
+}
+.flashcard.flipped .flashcard-inner{transform:rotateY(180deg);}
+.flashcard-face{
+  position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:24px;text-align:center;border:1px solid var(--line);
+}
+.flashcard-face.front{background:#fff;}
+.flashcard-face.back{background:var(--navy);color:#fff;transform:rotateY(180deg);}
+.flashcard-face .face-label{font-size:11px;font-weight:800;letter-spacing:1px;color:var(--gold);margin-bottom:10px;}
+.flashcard-face .face-text{font-size:15px;line-height:1.7;font-weight:600;}
+.flashcard-face .face-hint{font-size:11px;color:var(--muted);margin-top:14px;}
+.flashcard-face.back .face-hint{color:#9aa3c4;}
+.flashcard-nav{display:flex;gap:10px;align-items:center;}
+.fc-btn{
+  background:var(--navy);color:#fff;border:none;border-radius:8px;padding:9px 18px;
+  font-size:13px;font-weight:700;cursor:pointer;
+}
+.fc-btn.secondary{background:#fff;color:var(--navy);border:1px solid var(--line);}
+.fc-btn:hover{opacity:.85;}
+.fc-counter{font-size:12.5px;color:var(--muted);font-weight:700;}
+
+/* ===== 4. OX 문제 ===== */
+.ox-item{
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:10px;
+}
+.ox-item .q-num{font-size:11px;font-weight:800;color:var(--gold);margin-bottom:6px;}
+.ox-item .q-text{font-size:13.5px;line-height:1.7;margin-bottom:12px;}
+.ox-buttons{display:flex;gap:8px;}
+.ox-btn{
+  flex:1;border:2px solid var(--line);background:#fff;border-radius:8px;padding:10px;
+  font-size:14px;font-weight:800;cursor:pointer;transition:.15s;
+}
+.ox-btn.o{color:var(--blue);}
+.ox-btn.x{color:var(--red);}
+.ox-btn:hover{border-color:var(--gold);}
+.ox-btn.correct{background:var(--green);color:#fff;border-color:var(--green);}
+.ox-btn.wrong{background:var(--red);color:#fff;border-color:var(--red);}
+.ox-explain{
+  margin-top:10px;padding:10px 12px;background:#fff;border-radius:8px;font-size:12.5px;
+  line-height:1.6;color:var(--muted);border-left:3px solid var(--gold);display:none;
+}
+.ox-explain.show{display:block;}
+.ox-score{
+  text-align:center;font-size:13px;font-weight:800;color:var(--navy);margin-top:8px;
+}
+
+/* ===== 5. 암기테스트 (빈칸채우기) ===== */
+.blank-test{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:10px;}
+.blank-test .bt-text{font-size:13.5px;line-height:2;margin-bottom:10px;}
+.blank-input{
+  border:none;border-bottom:2px solid var(--gold);background:transparent;
+  font-size:13.5px;font-weight:700;color:var(--navy);text-align:center;
+  width:90px;padding:2px 4px;font-family:inherit;
+}
+.blank-input.correct{border-color:var(--green);color:var(--green);background:#eaf6ee;}
+.blank-input.wrong{border-color:var(--red);color:var(--red);background:#fdeceb;}
+.bt-actions{display:flex;gap:8px;margin-top:8px;}
+
+/* ===== 6. 두문자 ===== */
+.mnemonic-card{
+  background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:#fff;border-radius:12px;
+  padding:20px;text-align:center;margin-bottom:10px;
+}
+.mnemonic-letters{
+  font-size:28px;font-weight:800;letter-spacing:8px;color:var(--gold);margin-bottom:10px;
+}
+.mnemonic-desc{font-size:13px;line-height:1.8;}
+.mnemonic-map{
+  display:grid;gap:8px;margin-top:14px;text-align:left;
+}
+.mnemonic-row{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;}
+.mnemonic-row .letter{
+  background:var(--gold);color:var(--navy);font-weight:800;border-radius:6px;
+  width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.mnemonic-row .desc{line-height:1.6;padding-top:2px;}
+
+/* ===== 7. 답안활용처 ===== */
+.usage-item{
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.usage-item .usage-tag{
+  background:var(--navy);color:#fff;font-size:11px;font-weight:800;border-radius:6px;
+  padding:4px 8px;flex-shrink:0;white-space:nowrap;
+}
+.usage-item .usage-body{font-size:12.5px;line-height:1.7;}
+.usage-item .usage-body .where{font-weight:700;color:var(--navy);margin-bottom:3px;}
+
+/* ===== 전문 보기 (details) ===== */
+.fulltext-toggle{
+  margin-top:14px;
+}
+.fulltext-toggle summary{
+  cursor:pointer;font-size:12.5px;font-weight:700;color:var(--blue);padding:8px 0;
+  list-style:none;
+}
+.fulltext-toggle summary::before{content:"▶ ";}
+.fulltext-toggle[open] summary::before{content:"▼ ";}
+.fulltext-body{
+  font-size:12.5px;line-height:1.8;color:var(--muted);background:var(--paper);
+  border-radius:8px;padding:14px;margin-top:6px;white-space:pre-wrap;
+}
+
+/* ===== TWO-COLUMN LAYOUT ===== */
+.main-grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start;}
+@media(max-width:900px){.main-grid{grid-template-columns:1fr;}}
+.left-col{min-width:0;}
+.right-col{display:flex;flex-direction:column;gap:14px;}
+.panel{
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;
+}
+.panel h3{font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+
+/* ===== domain edit (header) ===== */
+.domain-badge{cursor:default;}
+.brand .title .step-admin-gear{font-size:13px;cursor:pointer;color:#9aa3c4;}
+.brand .title .step-admin-gear:hover{color:#fff;}
+
+/* ===== STAGE GAUGE PANEL ===== */
+.stage-alert{
+  background:#fdf3e3;border:1px solid #f1ddb0;border-radius:9px;
+  padding:10px 12px;margin-bottom:12px;font-size:12px;color:#8a6a1f;
+  display:flex;gap:8px;align-items:flex-start;
+}
+.stage-block{border:1px solid var(--line);border-radius:9px;padding:12px;margin-bottom:10px;}
+.stage-block:last-child{margin-bottom:0;}
+.stage-block-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.stage-name{display:flex;align-items:center;gap:6px;font-weight:700;font-size:12.5px;}
+.flag{width:16px;height:16px;border-radius:3px;display:inline-block;}
+.flag.pool{background:#bfae8a;}
+.flag.s1{background:var(--green);}
+.flag.s2{background:var(--orange);}
+.flag.s3{background:var(--purple);}
+.flag.clear{background:var(--gold);}
+.stage-count{font-size:17px;font-weight:800;color:var(--navy);}
+.full-tag{background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:5px;}
+.progress-bar{height:6px;border-radius:4px;background:#eee;overflow:hidden;margin-top:6px;}
+.progress-bar > div{height:100%;border-radius:4px;}
+.progress-bar.green > div{background:var(--green);}
+.progress-bar.orange > div{background:var(--orange);}
+.progress-bar.purple > div{background:var(--purple);}
+.full-note{font-size:11px;color:var(--red);margin-top:6px;}
+.api-key-note{font-size:11.5px;color:var(--muted);line-height:1.6;}
+
+/* ===== CASE LIST (right panel) ===== */
+.case-list{display:flex;flex-direction:column;gap:8px;max-height:360px;overflow-y:auto;}
+.case-list-item{
+  border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:12px;cursor:pointer;
+  display:flex;align-items:center;gap:8px;transition:.15s;
+}
+.case-list-item:hover{border-color:var(--gold);}
+.case-list-item.current{background:var(--navy);color:#fff;border-color:var(--navy);}
+.case-list-item .tag{
+  padding:2px 7px;border-radius:5px;font-size:10px;font-weight:800;flex-shrink:0;
+}
+.case-list-item .tag.pool{background:#bfae8a;color:#33291a;}
+.case-list-item .tag.s1{background:var(--green);color:#fff;}
+.case-list-item .tag.s2{background:var(--orange);color:#fff;}
+.case-list-item .tag.s3{background:var(--purple);color:#fff;}
+.case-list-item .tag.clear{background:var(--gold);color:var(--navy);}
+.case-list-item .name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/* ===== ADMIN CONSOLE ===== */
+.admin-toggle{
+  position:fixed;bottom:20px;right:20px;z-index:150;
+  background:var(--navy);color:#fff;border:none;border-radius:24px;
+  padding:11px 18px;font-size:12.5px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.2);
+}
+.admin-console{
+  position:fixed;top:0;right:0;bottom:0;width:min(480px,100%);background:var(--navy);color:#fff;
+  z-index:250;transform:translateX(100%);transition:.25s;overflow-y:auto;padding:20px;
+}
+.admin-console.open{transform:translateX(0);}
+.admin-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.admin-head .title{font-weight:800;font-size:15px;display:flex;align-items:center;gap:8px;}
+.admin-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;}
+.admin-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;
+  padding:14px;margin-bottom:14px;
+}
+.admin-card h4{font-size:12.5px;font-weight:700;margin-bottom:10px;color:var(--gold);}
+.admin-input{
+  width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  color:#fff;border-radius:7px;padding:8px 10px;font-size:12px;font-family:inherit;margin-bottom:8px;
+}
+.admin-input::placeholder{color:#7e87ac;}
+.admin-btn{
+  background:var(--gold);color:var(--navy);border:none;border-radius:7px;
+  padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;width:100%;
+}
+.admin-btn.secondary{background:rgba(255,255,255,.1);color:#fff;}
+.admin-btn.danger{background:var(--red);color:#fff;}
+.admin-result{font-size:11.5px;color:#c5cae5;margin-top:8px;line-height:1.6;}
+.admin-table{width:100%;font-size:11.5px;border-collapse:collapse;}
+.admin-table th,.admin-table td{padding:6px 4px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);}
+.admin-table th{color:#9aa3c4;font-weight:700;}
+
+/* ===== Light-theme overrides for editor overlays opened from dark admin console ===== */
+.prompt-editor-box .admin-input{background:#fff;color:var(--navy);border:1px solid var(--line);}
+.prompt-editor-box .admin-input::placeholder{color:#9aa3bd;}
+.prompt-editor-box .admin-input:focus{outline:2px solid var(--blue);outline-offset:-1px;border-color:var(--blue);}
+.prompt-editor-box .admin-btn{width:auto;}
+.prompt-editor-box .admin-btn.secondary{background:#eef0f6;color:var(--navy);}
+.prompt-editor-box .admin-btn.danger{background:#e25555;color:#fff;}
+
+/* ===== prompt-editor overlay (shared) ===== */
+.prompt-editor-overlay{
+  position:fixed;inset:0;background:rgba(15,27,61,.5);
+  display:flex;align-items:center;justify-content:center;z-index:300;
+  padding:20px;
+}
+.prompt-editor-box{
+  background:#fff;border-radius:12px;padding:20px;max-width:520px;width:100%;
+  box-shadow:0 12px 40px rgba(0,0,0,.25);
+}
+.prompt-editor-box h4{font-size:13.5px;color:var(--navy);margin-bottom:12px;}
+.prompt-editor-box textarea{
+  width:100%;min-height:120px;border:1px solid var(--line);border-radius:8px;
+  padding:10px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:12px;
+}
+.prompt-editor-box textarea:focus{outline:2px solid var(--blue);outline-offset:-1px;}
+.prompt-editor-actions{display:flex;gap:8px;align-items:center;}
+.btn-secondary{
+  background:#eef0f6;color:var(--navy);border:none;border-radius:7px;
+  padding:9px 16px;font-size:12.5px;font-weight:700;cursor:pointer;
+}
+.btn-submit{
+  background:var(--navy);color:#fff;border:none;border-radius:7px;
+  padding:9px 16px;font-size:12.5px;font-weight:700;cursor:pointer;flex:1;
+}
+
+/* ===== utility ===== */
+.note{font-size:11.5px;color:var(--muted);line-height:1.6;margin-top:8px;}
+.toast{
+  position:fixed;bottom:20px;right:20px;background:var(--navy);color:#fff;
+  padding:10px 18px;border-radius:8px;font-size:12.5px;font-weight:700;
+  opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:200;
+}
+.toast.show{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="mark">行</div>
+    <div>
+      <div class="title">1행2필 <span style="font-weight:400;color:#9aa3c4;">| 판례 범용 학습엔진</span>
+        <span class="domain-badge" id="domainBadge">학습영역 미설정</span>
+        <span class="step-admin-gear" id="domainEditBtn" title="학습영역 설정">⚙</span>
+      </div>
+      <div class="sub">How to 행정법 강의 · 판례 필수암기 학습도구</div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+<div class="main-grid">
+<div class="left-col">
+
+  <!-- 판례 헤더 -->
+  <div class="case-header">
+    <span class="case-num" id="caseNumBadge">판례 0001</span>
+    <h1 id="caseTitle">연탄공장 건축허가취소 사건 (인근주민의 원고적격)</h1>
+    <div class="meta" id="caseMeta">대법원 1975. 5. 13. 선고 73누96, 97 판결 · 행정소송법 제12조(원고적격) · 주거지역 내 연탄공장 건축허가</div>
+  </div>
+
+  <!-- 도구 탭 -->
+  <div class="tool-tabs">
+    <div class="tool-tab active" data-tool="intro"><span class="emoji">📖</span>추출소개</div>
+    <div class="tool-tab" data-tool="memo"><span class="emoji">🖍️</span>필수암기문장</div>
+    <div class="tool-tab" data-tool="flash"><span class="emoji">🔄</span>플래시카드</div>
+    <div class="tool-tab" data-tool="ox"><span class="emoji">⭕</span>OX문제</div>
+    <div class="tool-tab" data-tool="blank"><span class="emoji">✏️</span>암기테스트</div>
+    <div class="tool-tab" data-tool="mnemonic"><span class="emoji">🔑</span>암기두문자</div>
+    <div class="tool-tab" data-tool="usage"><span class="emoji">📝</span>답안활용처</div>
+  </div>
+
+  <!-- ============ 1. 추출소개 ============ -->
+  <div class="tool-panel active" data-panel="intro">
+    <div class="panel-card">
+      <h3><span class="num">1</span>판례 추출 소개</h3>
+      <div class="intro-grid" id="introGrid"></div>
+      <details class="fulltext-toggle">
+        <summary>전문 보기 (요약 정리본)</summary>
+        <div class="fulltext-body" id="fulltextBody"></div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 2. 필수암기문장 ============ -->
+  <div class="tool-panel" data-panel="memo">
+    <div class="panel-card">
+      <h3><span class="num">2</span>필수암기문장</h3>
+      <div class="note" style="margin-top:0;margin-bottom:12px;">시험 답안에 그대로 인용 가능한 핵심 판시 문장입니다. 정확한 표현으로 암기하세요.</div>
+      <div id="memoContainer"></div>
+    </div>
+  </div>
+
+  <!-- ============ 3. 플래시카드 ============ -->
+  <div class="tool-panel" data-panel="flash">
+    <div class="panel-card">
+      <h3><span class="num">3</span>플래시카드</h3>
+      <div class="flashcard-wrap">
+        <div class="flashcard" id="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face front">
+              <div class="face-label">Q</div>
+              <div class="face-text" id="fcFront"></div>
+              <div class="face-hint">클릭하면 답이 보입니다</div>
+            </div>
+            <div class="flashcard-face back">
+              <div class="face-label">A</div>
+              <div class="face-text" id="fcBack"></div>
+              <div class="face-hint">클릭하면 질문으로 돌아갑니다</div>
+            </div>
+          </div>
+        </div>
+        <div class="flashcard-nav">
+          <button class="fc-btn secondary" id="fcPrev">◀ 이전</button>
+          <span class="fc-counter" id="fcCounter">1 / 5</span>
+          <button class="fc-btn" id="fcNext">다음 ▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 4. OX 문제 ============ -->
+  <div class="tool-panel" data-panel="ox">
+    <div class="panel-card">
+      <h3><span class="num">4</span>OX 문제</h3>
+      <div id="oxContainer"></div>
+      <div class="ox-score" id="oxScore"></div>
+    </div>
+  </div>
+
+  <!-- ============ 5. 암기테스트 (빈칸채우기) ============ -->
+  <div class="tool-panel" data-panel="blank">
+    <div class="panel-card">
+      <h3><span class="num">5</span>필수암기문장 암기테스트</h3>
+      <div class="note" style="margin-top:0;margin-bottom:12px;">빈칸에 들어갈 단어를 입력한 뒤 "채점하기"를 누르세요.</div>
+      <div id="blankContainer"></div>
+      <div class="bt-actions">
+        <button class="fc-btn" id="blankCheck">채점하기</button>
+        <button class="fc-btn secondary" id="blankReset">다시 풀기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 6. 암기두문자 ============ -->
+  <div class="tool-panel" data-panel="mnemonic">
+    <div class="panel-card">
+      <h3><span class="num">6</span>암기 두문자</h3>
+      <div id="mnemonicContainer"></div>
+    </div>
+  </div>
+
+  <!-- ============ 7. 답안활용처 ============ -->
+  <div class="tool-panel" data-panel="usage">
+    <div class="panel-card">
+      <h3><span class="num">7</span>답안 활용처</h3>
+      <div class="note" style="margin-top:0;margin-bottom:12px;">이 판례의 법리가 실제 답안 작성에서 어떤 쟁점·목차에 사용되는지 안내합니다.</div>
+      <div id="usageContainer"></div>
+    </div>
+  </div>
+
+</div><!-- /left-col -->
+
+<div class="right-col">
+
+  <!-- 학습 현황 / 스테이지 게이지 -->
+  <div class="panel">
+    <h3>📊 나의 학습 현황</h3>
+    <div class="api-key-note" style="margin-bottom:10px;">전체 등록 판례 <b id="totalCaseCount">1</b>건 중, 학습 진행 현황입니다. (POOL→STAGE1 10건→STAGE2 15건→STAGE3 20건)</div>
+    <div class="stage-alert" id="stageAlert" style="display:none;"></div>
+
+    <div class="stage-block">
+      <div class="stage-block-head">
+        <div class="stage-name"><span class="flag pool"></span>POOL (무제한)</div>
+        <div class="stage-count" id="countPool">0</div>
+      </div>
+    </div>
+
+    <div class="stage-block">
+      <div class="stage-block-head">
+        <div class="stage-name"><span class="flag s1"></span>STAGE 1 (최대 10개)</div>
+        <div class="stage-count" id="countS1">0/10</div>
+      </div>
+      <div class="progress-bar green"><div id="barS1" style="width:0%"></div></div>
+      <div class="full-note" id="noteS1" style="display:none;">⚠ 가득 참</div>
+    </div>
+
+    <div class="stage-block">
+      <div class="stage-block-head">
+        <div class="stage-name"><span class="flag s2"></span>STAGE 2 (최대 15개)</div>
+        <div class="stage-count" id="countS2">0/15</div>
+      </div>
+      <div class="progress-bar orange"><div id="barS2" style="width:0%"></div></div>
+      <div class="full-note" id="noteS2" style="display:none;">⚠ 가득 참</div>
+    </div>
+
+    <div class="stage-block">
+      <div class="stage-block-head">
+        <div class="stage-name"><span class="flag s3"></span>STAGE 3 (최대 20개)</div>
+        <div class="stage-count" id="countS3">0/20</div>
+      </div>
+      <div class="progress-bar purple"><div id="barS3" style="width:0%"></div></div>
+      <div class="full-note" id="noteS3" style="display:none;">⚠ 가득 참</div>
+    </div>
+
+    <div class="stage-block" style="border-color:var(--gold);background:#fcf8ee;">
+      <div class="stage-block-head">
+        <div class="stage-name"><span class="flag clear"></span>CLEAR STACK (졸업)</div>
+        <div class="stage-count" id="countClear">0</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 등록된 판례 목록 -->
+  <div class="panel">
+    <h3>📚 등록된 판례 목록</h3>
+    <input class="admin-input" id="caseListSearch" style="background:var(--paper);color:var(--ink);border:1px solid var(--line);" placeholder="🔍 사건명·단원·주제 검색">
+    <div class="case-list" id="caseList"></div>
+  </div>
+
+</div><!-- /right-col -->
+</div><!-- /main-grid -->
+</div><!-- /layout -->
+
+<div class="toast" id="toast"></div>
+
+<!-- ================= ADMIN CONSOLE ================= -->
+<button class="admin-toggle" id="adminToggleBtn">⚙ 관리자 콘솔</button>
+<div class="admin-console" id="adminConsole">
+  <div class="admin-head">
+    <div class="title">⚙ 판례 관리자 콘솔</div>
+    <button class="admin-close" id="adminCloseBtn">×</button>
+  </div>
+
+  <div class="admin-card">
+    <h4>일괄 등록 (txt 파일 업로드)</h4>
+    <div class="api-key-note" style="margin-bottom:10px;">
+      <b>※ 사건명·단원·주제·쟁점·사실관계·판결요지·필수암기문장·OX문제·빈칸테스트·암기두문자·답안활용처 항목으로 구성된 txt 파일을 업로드합니다.</b> 자세한 형식은 양식 파일을 참고하세요. 등록된 판례는 기본적으로 "초안" 상태로 표시됩니다.
+    </div>
+    <input type="file" class="admin-input" id="bulkFileInput" accept=".txt">
+    <button class="admin-btn" onclick="handleBulkUpload()">파일 업로드 및 일괄 등록</button>
+    <button class="admin-btn secondary" style="margin-top:8px;" onclick="downloadTemplate()">양식 파일 다운로드</button>
+    <div class="admin-result" id="bulkUploadResult"></div>
+  </div>
+
+  <div class="admin-card">
+    <h4>단일 판례 등록</h4>
+    <input class="admin-input" id="singleCaseName" placeholder="사건명 (예: 연탄공장 건축허가취소 사건)">
+    <input class="admin-input" id="singleCaseMeta" placeholder="메타정보 (예: 대법원 1975.5.13. 선고 73누96 판결 · ...)">
+    <button class="admin-btn" onclick="openSingleCaseEditor()">새 판례 추가 (상세 입력창 열기)</button>
+    <div class="api-key-note" style="margin-top:8px;">사건명/메타정보를 입력한 뒤 위 버튼을 누르면, 7개 학습도구 항목을 모두 입력할 수 있는 상세 편집창이 열립니다.</div>
+  </div>
+
+  <div class="admin-card">
+    <h4>등록된 판례 관리</h4>
+    <table class="admin-table" id="adminCaseTable">
+      <tr><th>번호</th><th>스테이지</th><th>사건명</th><th>검수상태</th><th>작업</th></tr>
+    </table>
+  </div>
+
+  <div class="admin-card">
+    <h4>CLEAR STACK 관리</h4>
+    <div class="api-key-note" style="margin-bottom:8px;">STAGE 3에서 학습을 완료한 판례는 CLEAR STACK으로 이동합니다. 복습이 필요한 경우 다시 STAGE 1로 되돌릴 수 있습니다.</div>
+    <table class="admin-table" id="clearStackTable">
+      <tr><th>번호</th><th>사건명</th><th>작업</th></tr>
+    </table>
+  </div>
+
+  <div class="admin-card">
+    <h4>전체 초기화</h4>
+    <div class="api-key-note" style="margin-bottom:8px;">모든 판례 데이터, 학습현황, 학습영역 설정을 초기화합니다.</div>
+    <button class="admin-btn danger" onclick="fullReset()">전체 초기화 실행</button>
+  </div>
+</div>
+
+<script>
+/* ================= DATA STORE ================= */
+const CASES_KEY='1h2p_precedent_cases';
+const DOMAIN_KEY='1h2p_precedent_domain';
+const PROGRESS_KEY='1h2p_precedent_progress';
+const ADMIN_PW='1행2필';
+
+const STAGE_CAPS={ STAGE1:10, STAGE2:15, STAGE3:20 };
+
+const DEFAULT_CASE_0001 = {
+  number:'0001',
+  caseName:'연탄공장 건축허가취소 사건 (인근주민의 원고적격)',
+  meta:'대법원 1975. 5. 13. 선고 73누96, 97 판결 · 행정소송법 제12조(원고적격) · 주거지역 내 연탄공장 건축허가',
+  chapter:'제5편 행정쟁송법',
+  topic:'원고적격',
+  stage:'POOL',
+  status:'확정',
+  intro:{
+    issue:'주거지역 내에 위법하게 설치된 연탄공장에 대하여 건축허가가 행해진 경우, 그 인근에 거주하는 주민이 해당 건축허가의 취소를 구할 원고적격(법률상 이익)이 있는지가 문제되었다.',
+    facts:'도시계획법령상 주거지역으로 지정된 지역 내에 연탄공장 건축허가가 내려졌고, 그 공장 인근에 거주하는 주민이 매연·소음 등으로 주거환경상 피해를 입게 되자 위 건축허가의 취소를 구하는 소송을 제기하였다.',
+    summary:'주거지역 안에서는 일정한 건축이 법률상 제한되는데, 이러한 제한은 부수적으로 주거지역 거주자가 받게 되는 사익까지도 보호하려는 데 목적이 있다. 따라서 주거지역 내 위법한 건축허가로 인하여 거주환경의 안온함을 침해받게 되는 인근 주민은, 그 침해를 받지 않을 법률상 이익을 가지는 자로서 건축허가의 취소를 구할 원고적격이 있다.',
+    fulltext:'[관리자 입력 영역] 이곳에는 판례 전문 또는 상세 요약을 등록할 수 있습니다. 전문은 학습 흐름을 방해하지 않도록 기본적으로 접혀 있으며, 학습자가 필요할 때만 펼쳐서 확인합니다.\n\n본 판례는 행정소송법상 "법률상 이익"의 의미를 처분의 근거법규뿐 아니라 관련법규(도시계획법령상의 용도지역제 규정)까지 확장하여 해석함으로써, 제3자(인근주민)의 원고적격을 인정한 초기 대표 판례로 평가된다. 이후 법률상보호이익설의 토대가 되었으며, 경업자소송·경원자소송 등 제3자 원고적격 논의의 출발점이 되는 판례이다.'
+  },
+  memos:[
+    {tag:'암기문장 ①', text:'건축허가의 근거가 되는 법률이 주거지역 내에서의 일정한 건축을 제한하는 것은, 적합한 주거환경을 보호하려는 공익 목적과 아울러 그 지역 거주자의 사익까지도 보호하려는 데 목적이 있다.', source:'판결요지 핵심 부분'},
+    {tag:'암기문장 ②', text:'위법하게 건축허가가 행해짐으로써 주거지역 내의 안온하고 위생적인 생활환경이 침해되는 인근 주민은, 그 침해를 받지 않을 법률상 이익을 가지는 자로서 건축허가취소를 구할 원고적격이 있다.', source:'원고적격 인정 근거'},
+    {tag:'암기문장 ③', text:'법률상 이익이란 당해 처분의 근거 법규 및 관련 법규에 의하여 보호되는 직접적·구체적 이익을 말하고, 간접적이거나 사실적·경제적 이익은 포함되지 아니한다.', source:'법률상 이익의 일반 정의 (후속 판례에서 정식화된 표현 포함)'}
+  ],
+  flashcards: [
+    {q:'인근주민이 위법한 건축허가의 취소를 구할 원고적격이 인정되는 근거는?', a:'근거법규 및 관련법규(도시계획법령)가 공익뿐 아니라 인근주민의 주거환경상 사익도 보호하는 취지로 해석되기 때문이다.'},
+    {q:'주거지역 내 건축제한 규정의 보호목적은 무엇인가?', a:'적합한 주거환경 보호라는 공익 목적과 아울러, 그 지역 거주자의 사익까지도 보호하려는 데 목적이 있다.'},
+    {q:'"법률상 이익"에 포함되지 않는 이익의 유형은?', a:'간접적이거나 사실적·경제적 이익은 법률상 이익에 포함되지 않는다.'},
+    {q:'본 판례가 인정한 원고적격의 주체는 누구인가?', a:'위법한 건축허가로 주거의 안온함을 침해받는 인근주민(제3자)이다.'},
+    {q:'이 판례가 행정소송법상 어떤 학설의 토대가 되었는가?', a:'법률상보호이익설 — 처분의 근거법규 및 관련법규에 의해 보호되는 이익이면 원고적격을 인정한다는 입장의 출발점이 되었다.'}
+  ],
+  ox: [
+    {q:'주거지역 내 건축제한 규정은 오로지 공익 보호만을 목적으로 하므로, 인근주민은 이를 근거로 원고적격을 주장할 수 없다.', answer:false, explain:'건축제한 규정은 공익 목적과 아울러 그 지역 거주자의 사익도 보호하는 취지이므로, 인근주민도 이를 근거로 원고적격을 주장할 수 있다.'},
+    {q:'법률상 이익에는 사실적·경제적 이익도 포함된다.', answer:false, explain:'법률상 이익은 직접적·구체적 이익을 의미하며, 간접적이거나 사실적·경제적 이익은 포함되지 않는다.'},
+    {q:'본 판례는 처분의 근거법규뿐만 아니라 관련법규까지 고려하여 원고적격을 판단하였다.', answer:true, explain:'도시계획법령상 용도지역제 규정(관련법규)까지 고려하여 인근주민의 사익보호성을 인정한 것이 본 판례의 핵심이다.'},
+    {q:'위법한 건축허가로 인해 주거의 안온함을 침해받는 인근주민은 법률상 이익을 가지는 자로서 원고적격이 인정된다.', answer:true, explain:'암기문장 ②의 내용과 일치한다.'},
+    {q:'본 판례는 경업자소송에서의 원고적격 판단에는 적용될 수 없고, 인인소송에만 한정하여 적용된다.', answer:false, explain:'본 판례의 "근거·관련법규의 사익보호성" 판단구조는 경업자소송을 포함한 제3자 원고적격 판단 전반의 기본 논리로 활용된다.'}
+  ],
+  blanks: [
+    {
+      template:'건축허가의 근거가 되는 법률이 주거지역 내에서의 일정한 건축을 제한하는 것은, 적합한 [BLANK1]을 보호하려는 공익 목적과 아울러 그 지역 거주자의 [BLANK2]까지도 보호하려는 데 목적이 있다.',
+      blanks:['주거환경','사익']
+    },
+    {
+      template:'위법하게 건축허가가 행해짐으로써 주거지역 내의 안온하고 위생적인 생활환경이 침해되는 인근 주민은, 그 침해를 받지 않을 [BLANK1]을 가지는 자로서 건축허가취소를 구할 [BLANK2]이 있다.',
+      blanks:['법률상 이익','원고적격']
+    },
+    {
+      template:'법률상 이익이란 당해 처분의 [BLANK1] 및 관련 법규에 의하여 보호되는 직접적·구체적 이익을 말하고, 간접적이거나 [BLANK2]은 포함되지 아니한다.',
+      blanks:['근거 법규','사실적·경제적 이익']
+    }
+  ],
+  mnemonic:{
+    letters:'근 · 보 · 안 · 법',
+    desc:'"근거법규의 보호이익 + 안온한 환경 + 법률상 이익"<br>인근주민 원고적격 판단의 4단계 흐름을 기억하세요.',
+    rows:[
+      {letter:'근', desc:'<b>근</b>거법규(및 관련법규)가 무엇을 규율하는지 확인'},
+      {letter:'보', desc:'그 법규가 공익뿐 아니라 개인의 사익도 <b>보</b>호하는 취지인지 검토'},
+      {letter:'안', desc:'침해되는 이익이 주거의 <b>안</b>온함 등 직접적·구체적 이익인지 확인'},
+      {letter:'법', desc:'위 요건 충족 시 "<b>법</b>률상 이익"이 있다고 보아 원고적격 인정'}
+    ]
+  },
+  usages:[
+    {tag:'대상적격·원고적격', where:'제5편 행정쟁송법 - 취소소송의 원고적격 (제3자의 원고적격)', body:'경업자소송·인인소송(주변住民소송)에서 "법률상 이익"의 의미와 그 판단기준을 서술할 때, 본 판례의 암기문장 ①·②를 그대로 인용하여 "근거법규 및 관련법규가 사익도 보호하는 취지인지"를 검토하는 단락에 활용한다.'},
+    {tag:'법률상 이익의 의미', where:'법률상 보호이익설 vs 반사적 이익 구별 단락', body:'암기문장 ③("법률상 이익이란 ... 간접적이거나 사실적·경제적 이익은 포함되지 아니한다")은 법률상 이익과 반사적 이익을 구별하는 정의 문장으로, 원고적격 판단의 도입부에 일반론으로 서술한다.'},
+    {tag:'환경영향평가 대상지역 주민', where:'행정계획·개발사업 인인소송 (예: 산업단지 지정, 원자력발전소 부지승인 등)', body:'본 판례의 "안온한 환경 침해 → 법률상 이익" 논리구조는 환경영향평가 대상지역 내 주민의 원고적격을 인정하는 후속 판례들의 토대가 되므로, 관련 사례에서 원고적격 판단의 기본 논리로 인용할 수 있다.'}
+  ]
+};
+
+function getCases(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(CASES_KEY));
+    if(Array.isArray(saved) && saved.length>0) return saved;
+  }catch(e){}
+  return [JSON.parse(JSON.stringify(DEFAULT_CASE_0001))];
+}
+function saveCases(list){ localStorage.setItem(CASES_KEY, JSON.stringify(list)); }
+
+let currentCaseNumber='0001';
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1800);
+}
+
+/* ================= TOOL TAB SWITCHING ================= */
+document.querySelectorAll('.tool-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.tool-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector(`.tool-panel[data-panel="${tab.dataset.tool}"]`).classList.add('active');
+  });
+});
+
+/* ================= RENDER CURRENT CASE (all 7 tools) ================= */
+function escapeHtml(s){
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function getCurrentCase(){
+  const list=getCases();
+  return list.find(c=>c.number===currentCaseNumber) || list[0];
+}
+
+function renderCurrentCase(){
+  const c=getCurrentCase();
+  if(!c) return;
+  currentCaseNumber=c.number;
+
+  // header
+  document.getElementById('caseNumBadge').textContent='판례 '+c.number;
+  document.getElementById('caseTitle').textContent=c.caseName;
+  document.getElementById('caseMeta').textContent=c.meta;
+
+  // 1. intro
+  document.getElementById('introGrid').innerHTML = `
+    <div class="intro-block">
+      <div class="label">사건의 쟁점</div>
+      <div class="content">${escapeHtml(c.intro.issue)}</div>
+    </div>
+    <div class="intro-block">
+      <div class="label">사실관계 요약</div>
+      <div class="content">${escapeHtml(c.intro.facts)}</div>
+    </div>
+    <div class="intro-block full">
+      <div class="label">판결요지 (패러프레이즈)</div>
+      <div class="content">${escapeHtml(c.intro.summary)}</div>
+    </div>
+  `;
+  document.getElementById('fulltextBody').textContent = c.intro.fulltext || '';
+
+  // 2. memo
+  document.getElementById('memoContainer').innerHTML = (c.memos||[]).map(m=>`
+    <div class="memo-sentence">
+      <span class="tag">${escapeHtml(m.tag)}</span>
+      <div class="text">${escapeHtml(m.text)}</div>
+      <div class="source">— ${escapeHtml(m.source)}</div>
+    </div>
+  `).join('');
+
+  // 3. flashcards
+  fcIndex=0;
+  renderFlashcard();
+
+  // 4. OX
+  oxAnswered={};
+  renderOX();
+
+  // 5. blanks
+  renderBlanks();
+
+  // 6. mnemonic
+  const mn=c.mnemonic||{letters:'',desc:'',rows:[]};
+  document.getElementById('mnemonicContainer').innerHTML = `
+    <div class="mnemonic-card">
+      <div class="mnemonic-letters">${escapeHtml(mn.letters)}</div>
+      <div class="mnemonic-desc">${mn.desc||''}</div>
+      <div class="mnemonic-map">
+        ${(mn.rows||[]).map(r=>`<div class="mnemonic-row"><span class="letter">${escapeHtml(r.letter)}</span><span class="desc">${r.desc||''}</span></div>`).join('')}
+      </div>
+    </div>
+  `;
+
+  // 7. usage
+  document.getElementById('usageContainer').innerHTML = (c.usages||[]).map(u=>`
+    <div class="usage-item">
+      <span class="usage-tag">${escapeHtml(u.tag)}</span>
+      <div class="usage-body">
+        <div class="where">${escapeHtml(u.where)}</div>
+        ${escapeHtml(u.body)}
+      </div>
+    </div>
+  `).join('');
+
+  renderCaseList();
+}
+
+/* ================= 3. FLASHCARD ================= */
+let fcIndex=0;
+function renderFlashcard(){
+  const c=getCurrentCase();
+  const cards=c.flashcards||[];
+  if(cards.length===0){
+    document.getElementById('fcFront').textContent='등록된 플래시카드가 없습니다.';
+    document.getElementById('fcBack').textContent='';
+    document.getElementById('fcCounter').textContent='0 / 0';
+    return;
+  }
+  const card=cards[fcIndex];
+  document.getElementById('fcFront').textContent=card.q;
+  document.getElementById('fcBack').textContent=card.a;
+  document.getElementById('fcCounter').textContent=`${fcIndex+1} / ${cards.length}`;
+  document.getElementById('flashcard').classList.remove('flipped');
+}
+document.getElementById('flashcard').addEventListener('click',function(){
+  this.classList.toggle('flipped');
+});
+document.getElementById('fcNext').addEventListener('click',()=>{
+  const cards=getCurrentCase().flashcards||[];
+  if(cards.length===0) return;
+  fcIndex=(fcIndex+1)%cards.length;
+  renderFlashcard();
+});
+document.getElementById('fcPrev').addEventListener('click',()=>{
+  const cards=getCurrentCase().flashcards||[];
+  if(cards.length===0) return;
+  fcIndex=(fcIndex-1+cards.length)%cards.length;
+  renderFlashcard();
+});
+
+/* ================= 4. OX QUIZ ================= */
+let oxAnswered={};
+function renderOX(){
+  const c=getCurrentCase();
+  const items=c.ox||[];
+  const container=document.getElementById('oxContainer');
+  container.innerHTML = items.map((item,i)=>`
+    <div class="ox-item">
+      <div class="q-num">문제 ${i+1}</div>
+      <div class="q-text">${escapeHtml(item.q)}</div>
+      <div class="ox-buttons">
+        <button class="ox-btn o" data-idx="${i}" data-choice="true">O</button>
+        <button class="ox-btn x" data-idx="${i}" data-choice="false">X</button>
+      </div>
+      <div class="ox-explain" id="oxExplain${i}">${escapeHtml(item.explain)}</div>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.ox-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const idx=parseInt(btn.dataset.idx);
+      if(oxAnswered[idx]!==undefined) return; // already answered
+      const choice = btn.dataset.choice==='true';
+      const correct = items[idx].answer;
+      oxAnswered[idx] = (choice===correct);
+
+      const buttons = container.querySelectorAll(`.ox-btn[data-idx="${idx}"]`);
+      buttons.forEach(b=>{
+        const bChoice = b.dataset.choice==='true';
+        if(bChoice===correct) b.classList.add('correct');
+        else if(bChoice===choice) b.classList.add('wrong');
+      });
+      document.getElementById(`oxExplain${idx}`).classList.add('show');
+      updateOXScore();
+    });
+  });
+  updateOXScore();
+}
+function updateOXScore(){
+  const items=getCurrentCase().ox||[];
+  const total=items.length;
+  const answered=Object.keys(oxAnswered).length;
+  const correct=Object.values(oxAnswered).filter(v=>v).length;
+  const el=document.getElementById('oxScore');
+  if(answered===0){ el.textContent=''; return; }
+  el.textContent = `${answered} / ${total} 풀이 · 정답 ${correct}개`;
+  if(answered===total && total>0){
+    el.textContent += `  →  최종 점수: ${Math.round(correct/total*100)}점`;
+  }
+}
+
+/* ================= 5. BLANK FILL TEST ================= */
+function renderBlanks(){
+  const c=getCurrentCase();
+  const items=c.blanks||[];
+  const container=document.getElementById('blankContainer');
+  container.innerHTML = items.map((item,si)=>{
+    let html=escapeHtml(item.template);
+    item.blanks.forEach((b,bi)=>{
+      html = html.replace(`[BLANK${bi+1}]`, `<input type="text" class="blank-input" id="blank_${si}_${bi}" data-answer="${b.replace(/"/g,'&quot;')}" style="width:${Math.max(60,b.length*16)}px;">`);
+    });
+    return `<div class="blank-test"><div class="bt-text">${html}</div></div>`;
+  }).join('');
+}
+function checkBlanks(){
+  let total=0, correct=0;
+  document.querySelectorAll('.blank-input').forEach(input=>{
+    total++;
+    const userVal=input.value.trim().replace(/\s+/g,'');
+    const answer=input.dataset.answer.trim().replace(/\s+/g,'');
+    input.classList.remove('correct','wrong');
+    if(userVal===answer){
+      input.classList.add('correct');
+      correct++;
+    } else {
+      input.classList.add('wrong');
+      input.value=input.dataset.answer; // reveal correct answer
+    }
+  });
+  toast(`${correct} / ${total} 정답`);
+}
+function resetBlanks(){
+  renderBlanks();
+}
+document.getElementById('blankCheck').addEventListener('click',checkBlanks);
+document.getElementById('blankReset').addEventListener('click',resetBlanks);
+
+/* ================= LEARNING DOMAIN BADGE (admin-editable) ================= */
+function renderDomainBadge(){
+  const val = localStorage.getItem(DOMAIN_KEY) || '';
+  const badge = document.getElementById('domainBadge');
+  badge.textContent = val ? val : '학습영역 미설정';
+}
+function openDomainEditor(){
+  const pw = prompt('관리자 비밀번호를 입력하세요');
+  if(pw===null) return;
+  if(pw!==ADMIN_PW){ toast('비밀번호가 일치하지 않습니다'); return; }
+
+  const cur = localStorage.getItem(DOMAIN_KEY) || '';
+  const overlay = document.createElement('div');
+  overlay.className='prompt-editor-overlay';
+  overlay.innerHTML=`
+    <div class="prompt-editor-box" style="max-width:420px;">
+      <h4>학습영역 설정</h4>
+      <div class="api-key-note" style="margin-bottom:10px;">현재 학습엔진의 학습영역(주제)을 입력하세요. 예: 대상적격, 원고적격, 협의의 소익</div>
+      <input class="admin-input" id="domainInput" style="margin-bottom:12px;" value="${cur.replace(/"/g,'&quot;')}" placeholder="예: 원고적격">
+      <div class="prompt-editor-actions">
+        <button class="admin-btn secondary" id="domainClear" style="width:auto;">비우기</button>
+        <div style="flex:1;"></div>
+        <button class="btn-secondary" id="domainCancel">취소</button>
+        <button class="btn-submit" id="domainSave" style="flex:none;">저장</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  const input = document.getElementById('domainInput');
+  input.focus();
+  input.select();
+  input.addEventListener('keydown',(e)=>{ if(e.key==='Enter'){ e.preventDefault(); document.getElementById('domainSave').click(); } });
+
+  document.getElementById('domainCancel').onclick=()=>overlay.remove();
+  document.getElementById('domainClear').onclick=()=>{ input.value=''; };
+  document.getElementById('domainSave').onclick=()=>{
+    const trimmed = input.value.trim();
+    if(trimmed) localStorage.setItem(DOMAIN_KEY, trimmed);
+    else localStorage.removeItem(DOMAIN_KEY);
+    renderDomainBadge();
+    overlay.remove();
+    toast('학습영역이 설정되었습니다');
+  };
+}
+document.getElementById('domainEditBtn').addEventListener('click', openDomainEditor);
+
+/* ================= PROGRESS / STAGE GAUGE ================= */
+function getProgress(){
+  try{
+    return JSON.parse(localStorage.getItem(PROGRESS_KEY)) || {POOL:0,STAGE1:0,STAGE2:0,STAGE3:0,CLEAR:0};
+  }catch(e){
+    return {POOL:0,STAGE1:0,STAGE2:0,STAGE3:0,CLEAR:0};
+  }
+}
+function saveProgress(p){ localStorage.setItem(PROGRESS_KEY, JSON.stringify(p)); }
+
+function renderStagePanel(){
+  const cases=getCases();
+  document.getElementById('totalCaseCount').textContent = cases.length;
+
+  // counts derived directly from each case's stage field (source of truth)
+  const counts={POOL:0,STAGE1:0,STAGE2:0,STAGE3:0,CLEAR:0};
+  cases.forEach(c=>{ if(counts[c.stage]!==undefined) counts[c.stage]++; });
+
+  document.getElementById('countPool').textContent = counts.POOL.toLocaleString();
+  document.getElementById('countClear').textContent = counts.CLEAR.toLocaleString();
+
+  // STAGE1
+  const s1cap=STAGE_CAPS.STAGE1;
+  const s1cur=Math.min(counts.STAGE1, s1cap);
+  const s1full=counts.STAGE1>=s1cap;
+  document.getElementById('countS1').innerHTML = `${counts.STAGE1}/${s1cap}`+(s1full?' <span class="full-tag">FULL</span>':'');
+  document.getElementById('barS1').style.width = Math.round((s1cur/s1cap)*100)+'%';
+  document.getElementById('noteS1').style.display = s1full ? '' : 'none';
+
+  // STAGE2
+  const s2cap=STAGE_CAPS.STAGE2;
+  const s2cur=Math.min(counts.STAGE2, s2cap);
+  const s2full=counts.STAGE2>=s2cap;
+  document.getElementById('countS2').innerHTML = `${counts.STAGE2}/${s2cap}`+(s2full?' <span class="full-tag">FULL</span>':'');
+  document.getElementById('barS2').style.width = Math.round((s2cur/s2cap)*100)+'%';
+  document.getElementById('noteS2').style.display = s2full ? '' : 'none';
+
+  // STAGE3
+  const s3cap=STAGE_CAPS.STAGE3;
+  const s3cur=Math.min(counts.STAGE3, s3cap);
+  const s3full=counts.STAGE3>=s3cap;
+  document.getElementById('countS3').innerHTML = `${counts.STAGE3}/${s3cap}`+(s3full?' <span class="full-tag">FULL</span>':'');
+  document.getElementById('barS3').style.width = Math.round((s3cur/s3cap)*100)+'%';
+  document.getElementById('noteS3').style.display = s3full ? '' : 'none';
+
+  // alert
+  const alertEl=document.getElementById('stageAlert');
+  if(s1full || s2full || s3full){
+    const which = s1full ? 'STAGE 1' : (s2full ? 'STAGE 2' : 'STAGE 3');
+    alertEl.style.display='';
+    alertEl.innerHTML = `⚠️ <div><b>${which} 집중 모드</b><br>${which}가 가득 찼습니다. 먼저 ${which} 판례를 학습하세요.</div>`;
+  } else {
+    alertEl.style.display='none';
+  }
+}
+
+/* ================= CASE LIST (right panel) ================= */
+const STAGE_TAG_MAP={POOL:'pool',STAGE1:'s1',STAGE2:'s2',STAGE3:'s3',CLEAR:'clear'};
+function renderCaseList(){
+  const cases=getCases();
+  const q=(document.getElementById('caseListSearch').value||'').trim().toLowerCase();
+  const container=document.getElementById('caseList');
+  container.innerHTML = cases.filter(c=>{
+    if(!q) return true;
+    return [c.number,c.caseName,c.chapter,c.topic].some(f=>(f||'').toLowerCase().includes(q));
+  }).map(c=>{
+    const tagClass=STAGE_TAG_MAP[c.stage]||'pool';
+    const cur = c.number===currentCaseNumber ? 'current' : '';
+    return `<div class="case-list-item ${cur}" onclick="switchToCase('${c.number}')">
+      <span class="tag ${tagClass}">${c.stage}</span>
+      <span class="name">${escapeHtml(c.number)} · ${escapeHtml(c.caseName)}</span>
+    </div>`;
+  }).join('') || '<div class="api-key-note">등록된 판례가 없습니다.</div>';
+}
+document.getElementById('caseListSearch').addEventListener('input', renderCaseList);
+
+function switchToCase(number){
+  currentCaseNumber=number;
+  renderCurrentCase();
+  renderStagePanel();
+  document.querySelectorAll('.tool-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector('.tool-tab[data-tool="intro"]').classList.add('active');
+  document.querySelector('.tool-panel[data-panel="intro"]').classList.add('active');
+}
+
+/* ================= ADMIN CONSOLE TOGGLE ================= */
+document.getElementById('adminToggleBtn').addEventListener('click',()=>{
+  const pw = prompt('관리자 비밀번호를 입력하세요');
+  if(pw===null) return;
+  if(pw!==ADMIN_PW){ toast('비밀번호가 일치하지 않습니다'); return; }
+  document.getElementById('adminConsole').classList.add('open');
+  renderAdminCaseTable();
+  renderClearStackTable();
+});
+document.getElementById('adminCloseBtn').addEventListener('click',()=>{
+  document.getElementById('adminConsole').classList.remove('open');
+});
+
+/* ================= ADMIN: CASE TABLE (edit / delete / promote / status) ================= */
+function renderAdminCaseTable(){
+  const tbl=document.getElementById('adminCaseTable');
+  let html='<tr><th>번호</th><th>스테이지</th><th>사건명</th><th>검수상태</th><th>작업</th></tr>';
+  getCases().forEach(c=>{
+    const tagClass=STAGE_TAG_MAP[c.stage]||'pool';
+    const status=c.status||'초안';
+    const statusClass = status==='확정' ? 'clear' : 's2';
+    html+=`<tr>
+      <td>${c.number}</td>
+      <td><span class="tag ${tagClass}" style="padding:2px 6px;border-radius:5px;font-size:10px;font-weight:800;">${c.stage}</span></td>
+      <td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(c.caseName)}</td>
+      <td><span class="tag ${statusClass}" style="cursor:pointer;padding:2px 6px;border-radius:5px;font-size:10px;font-weight:800;" onclick="toggleCaseStatus('${c.number}')" title="클릭하여 초안/확정 전환">${status}</span></td>
+      <td style="white-space:nowrap;">
+        <button class="admin-btn secondary" style="width:auto;padding:4px 8px;font-size:10px;margin:0 3px 0 0;" onclick="openEditCaseModal('${c.number}')">수정</button>
+        <button class="admin-btn secondary" style="width:auto;padding:4px 8px;font-size:10px;margin:0 3px 0 0;" onclick="promoteCase('${c.number}')" title="다음 스테이지로 이동">▶다음</button>
+        <button class="admin-btn danger" style="width:auto;padding:4px 8px;font-size:10px;margin:0;" onclick="deleteCase('${c.number}')">삭제</button>
+      </td>
+    </tr>`;
+  });
+  tbl.innerHTML=html;
+}
+
+function toggleCaseStatus(number){
+  const list=getCases();
+  const rec=list.find(c=>c.number===number);
+  if(!rec) return;
+  rec.status = (rec.status==='확정') ? '초안' : '확정';
+  saveCases(list);
+  renderAdminCaseTable();
+  toast(number+'번 판례가 "'+rec.status+'" 상태로 변경되었습니다');
+}
+
+const STAGE_ORDER=['POOL','STAGE1','STAGE2','STAGE3','CLEAR'];
+function promoteCase(number){
+  const list=getCases();
+  const rec=list.find(c=>c.number===number);
+  if(!rec) return;
+  const idx=STAGE_ORDER.indexOf(rec.stage);
+  if(idx<0 || idx>=STAGE_ORDER.length-1){ toast('더 이상 이동할 수 없습니다'); return; }
+
+  const nextStage=STAGE_ORDER[idx+1];
+  // enforce caps for STAGE1~3
+  if(STAGE_CAPS[nextStage]!==undefined){
+    const curCount=list.filter(c=>c.stage===nextStage).length;
+    if(curCount>=STAGE_CAPS[nextStage]){
+      toast(nextStage+'가 가득 차서 이동할 수 없습니다 (최대 '+STAGE_CAPS[nextStage]+'개)');
+      return;
+    }
+  }
+  rec.stage=nextStage;
+  saveCases(list);
+  renderAdminCaseTable();
+  renderClearStackTable();
+  renderStagePanel();
+  renderCaseList();
+  toast(number+'번 판례가 '+nextStage+'로 이동했습니다');
+}
+
+function deleteCase(number){
+  const pw = prompt('관리자 비밀번호를 입력하세요');
+  if(pw===null) return;
+  if(pw!==ADMIN_PW){ toast('비밀번호가 일치하지 않습니다'); return; }
+  if(!confirm(number+'번 판례를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) return;
+
+  let list=getCases();
+  if(list.length<=1){ toast('최소 1건의 판례는 남아있어야 합니다'); return; }
+  list=list.filter(c=>c.number!==number);
+  saveCases(list);
+
+  if(currentCaseNumber===number){
+    currentCaseNumber=list[0].number;
+    renderCurrentCase();
+  }
+  renderAdminCaseTable();
+  renderClearStackTable();
+  renderStagePanel();
+  renderCaseList();
+  toast(number+'번 판례가 삭제되었습니다');
+}
+
+/* ================= ADMIN: CLEAR STACK ================= */
+function renderClearStackTable(){
+  const tbl=document.getElementById('clearStackTable');
+  let html='<tr><th>번호</th><th>사건명</th><th>작업</th></tr>';
+  getCases().filter(c=>c.stage==='CLEAR').forEach(c=>{
+    html+=`<tr>
+      <td>${c.number}</td>
+      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(c.caseName)}</td>
+      <td><button class="admin-btn secondary" style="width:auto;padding:4px 8px;font-size:10px;" onclick="returnToStage1('${c.number}')">STAGE1로 복귀</button></td>
+    </tr>`;
+  });
+  tbl.innerHTML=html;
+}
+function returnToStage1(number){
+  const list=getCases();
+  const rec=list.find(c=>c.number===number);
+  if(!rec) return;
+  const curCount=list.filter(c=>c.stage==='STAGE1').length;
+  if(curCount>=STAGE_CAPS.STAGE1){
+    toast('STAGE1이 가득 차서 복귀할 수 없습니다 (최대 '+STAGE_CAPS.STAGE1+'개)');
+    return;
+  }
+  rec.stage='STAGE1';
+  saveCases(list);
+  renderAdminCaseTable();
+  renderClearStackTable();
+  renderStagePanel();
+  renderCaseList();
+  toast(number+'번 판례가 STAGE1로 복귀했습니다');
+}
+
+/* ================= ADMIN: SINGLE CASE EDITOR (add / edit) ================= */
+function blankCaseTemplate(number, name, meta){
+  return {
+    number,
+    caseName: name || '새 판례',
+    meta: meta || '',
+    chapter:'', topic:'',
+    stage:'POOL', status:'초안',
+    intro:{issue:'',facts:'',summary:'',fulltext:''},
+    memos:[{tag:'암기문장 ①',text:'',source:''}],
+    flashcards:[{q:'',a:''}],
+    ox:[{q:'',answer:true,explain:''}],
+    blanks:[{template:'',blanks:[]}],
+    mnemonic:{letters:'',desc:'',rows:[{letter:'',desc:''}]},
+    usages:[{tag:'',where:'',body:''}]
+  };
+}
+
+function nextCaseNumber(){
+  const nums=getCases().map(c=>parseInt(c.number)||0);
+  const max=Math.max(0,...nums);
+  return String(max+1).padStart(4,'0');
+}
+
+function openSingleCaseEditor(existingNumber){
+  const pw = prompt('관리자 비밀번호를 입력하세요');
+  if(pw===null) return;
+  if(pw!==ADMIN_PW){ toast('비밀번호가 일치하지 않습니다'); return; }
+
+  const list=getCases();
+  let rec, isNew=false;
+  if(existingNumber){
+    rec=list.find(c=>c.number===existingNumber);
+    if(!rec){ toast('해당 판례를 찾을 수 없습니다'); return; }
+  } else {
+    const name=document.getElementById('singleCaseName').value.trim();
+    const meta=document.getElementById('singleCaseMeta').value.trim();
+    if(!name){ toast('사건명을 입력하세요'); return; }
+    rec=blankCaseTemplate(nextCaseNumber(), name, meta);
+    isNew=true;
+  }
+
+  const overlay=document.createElement('div');
+  overlay.className='prompt-editor-overlay';
+  overlay.innerHTML=`
+    <div class="prompt-editor-box" style="max-width:680px;max-height:88vh;overflow-y:auto;">
+      <h4>${isNew?'새 판례 등록':rec.number+'번 판례 수정'}</h4>
+
+      <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <input class="admin-input" id="ecName" style="flex:1;margin:0;" value="${escapeHtml(rec.caseName)}" placeholder="사건명">
+      </div>
+      <input class="admin-input" id="ecMeta" value="${escapeHtml(rec.meta)}" placeholder="메타정보 (선고일·법원·조문 등)">
+      <div style="display:flex;gap:8px;">
+        <input class="admin-input" id="ecChapter" style="flex:1;" value="${escapeHtml(rec.chapter)}" placeholder="단원">
+        <input class="admin-input" id="ecTopic" style="flex:1;" value="${escapeHtml(rec.topic)}" placeholder="주제">
+      </div>
+
+      <div style="font-size:12px;font-weight:800;color:var(--gold);margin:10px 0 4px;">1. 추출소개</div>
+      <textarea class="admin-input" id="ecIssue" style="min-height:50px;" placeholder="사건의 쟁점">${escapeHtml(rec.intro.issue)}</textarea>
+      <textarea class="admin-input" id="ecFacts" style="min-height:50px;" placeholder="사실관계 요약">${escapeHtml(rec.intro.facts)}</textarea>
+      <textarea class="admin-input" id="ecSummary" style="min-height:60px;" placeholder="판결요지 (패러프레이즈)">${escapeHtml(rec.intro.summary)}</textarea>
+      <textarea class="admin-input" id="ecFulltext" style="min-height:60px;" placeholder="전문 보기(요약 정리본)">${escapeHtml(rec.intro.fulltext)}</textarea>
+
+      <div style="font-size:12px;font-weight:800;color:var(--gold);margin:10px 0 4px;">2. 필수암기문장 (한 줄당 1문장 — "태그|문장|출처" 형식, 쉼표 대신 | 로 구분)</div>
+      <textarea class="admin-input" id="ecMemos" style="min-height:80px;" placeholder="암기문장 ①|문장 내용|출처">${(rec.memos||[]).map(m=>`${m.tag}|${m.text}|${m.source}`).join('\\n')}</textarea>
+
+      <div style="font-size:12px;font-weight:800;color:var(--gold);margin:10px 0 4px;display:flex;align-items:center;justify-content:space-between;">
+        <span>3. 플래시카드 (한 줄당 1카드 — "질문|답변")</span>
+        <button class="admin-btn secondary" id="ecFlashGenBtn" style="width:auto;padding:4px 10px;font-size:10.5px;margin:0;">✨ 필수암기문장에서 자동생성</button>
+      </div>
+      <textarea class="admin-input" id="ecFlash" style="min-height:80px;" placeholder="질문|답변">${(rec.flashcards||[]).map(f=>`${f.q}|${f.a}`).join('\\n')}</textarea>
+      <div class="api-key-note" id="ecFlashGenStatus" style="margin-bottom:8px;"></div>
+
+      <div style="font-size:12px;font-weight:800;color:var(--gold);margin:10px 0 4px;">4. OX문제 (한 줄당 1문항 — "문장|O 또는 X|해설")</div>
+      <textarea class="admin-input" id="ecOx" style="min-height:80px;" placeholder="문장|O|해설">${(rec.ox||[]).map(o=>`${o.q}|${o.answer?'O':'X'}|${o.explain}`).join('\\n')}</textarea>
+
+      <div style="font-size:12px;font-weight:800;color:var(--gold);margin:10px 0 4px;">5. 암기테스트 (한 줄당 1문항 — 빈칸은 [정답] 형식으로 표시. 예: 적합한 [주거환경]을 보호하려는...)</div>
+      <textarea class="admin-input" id="ecBlanks" style="min-height:80px;" placeholder="적합한 [주거환경]을 보호하려는 공익 목적과 아울러 그 지역 거주자의 [사익]까지도...">${(rec.blanks||[]).map(b=>{
+        let t=b.template;
+        (b.blanks||[]).forEach((ans,i)=>{ t=t.replace(`[BLANK${i+1}]`, `[${ans}]`); });
+        return t;
+      }).join('\\n')}</textarea>
+
+      <div style="font-size:12px;font-weight:800;color:var(--gold);margin:10px 0 4px;">6. 암기두문자</div>
+      <input class="admin-input" id="ecMnemonicLetters" value="${escapeHtml(rec.mnemonic.letters)}" placeholder="두문자 (예: 근 · 보 · 안 · 법)">
+      <textarea class="admin-input" id="ecMnemonicDesc" style="min-height:40px;" placeholder="두문자 설명">${rec.mnemonic.desc||''}</textarea>
+      <textarea class="admin-input" id="ecMnemonicRows" style="min-height:70px;" placeholder="한 줄당 1행 — &quot;글자|설명&quot; 형식">${(rec.mnemonic.rows||[]).map(r=>`${r.letter}|${r.desc}`).join('\\n')}</textarea>
+
+      <div style="font-size:12px;font-weight:800;color:var(--gold);margin:10px 0 4px;">7. 답안활용처 (한 줄당 1건 — "태그|위치|설명")</div>
+      <textarea class="admin-input" id="ecUsages" style="min-height:80px;" placeholder="대상적격·원고적격|제5편...|설명">${(rec.usages||[]).map(u=>`${u.tag}|${u.where}|${u.body}`).join('\\n')}</textarea>
+
+      <div class="prompt-editor-actions">
+        <div style="flex:1;"></div>
+        <button class="btn-secondary" id="ecCancel">취소</button>
+        <button class="btn-submit" id="ecSave" style="flex:none;">저장</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  document.getElementById('ecFlashGenBtn').onclick=async ()=>{
+    const memosRaw=document.getElementById('ecMemos').value.trim();
+    if(!memosRaw){ toast('먼저 필수암기문장을 입력하세요'); return; }
+    const statusEl=document.getElementById('ecFlashGenStatus');
+    const btn=document.getElementById('ecFlashGenBtn');
+    btn.disabled=true;
+    statusEl.textContent='⏳ 생성 중...';
+    try{
+      const sentences = memosRaw.split('\n').map(l=>l.trim()).filter(l=>l).map(l=>{
+        const parts=l.split('|');
+        return (parts[1]||parts[0]||'').trim();
+      }).filter(s=>s);
+
+      const sys = '너는 행정법 시험 대비 플래시카드를 만드는 도우미다. 입력으로 주어진 핵심 판시 문장들을 보고, 각 문장마다 1개의 플래시카드를 만들어라. 질문(q)은 그 문장의 핵심 법리를 묻는 질문 형태로 작성하고, 답변(a)은 해당 문장의 내용을 답으로 제시한다(원문을 그대로 복사해도 됨). 반드시 JSON 배열만 출력하라. 다른 텍스트, 설명, 코드블록 표시 없이 순수 JSON만 출력한다. 형식: [{"q":"...","a":"..."}, ...]';
+      const userMsg = '다음 문장들로 플래시카드를 만들어줘:\n' + sentences.map((s,i)=>`${i+1}. ${s}`).join('\n');
+
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-6",
+          max_tokens: 1000,
+          system: sys,
+          messages: [ { role: "user", content: userMsg } ]
+        })
+      });
+      const data = await response.json();
+      const textBlock = (data.content||[]).find(b=>b.type==='text');
+      if(!textBlock) throw new Error('응답이 없습니다');
+      let raw = textBlock.text.trim();
+      raw = raw.replace(/^```json\s*/i,'').replace(/^```\s*/,'').replace(/```\s*$/,'').trim();
+      const cards = JSON.parse(raw);
+      if(!Array.isArray(cards) || cards.length===0) throw new Error('생성된 카드가 없습니다');
+
+      const lines = cards.map(c=>`${(c.q||'').replace(/\|/g,'/')}|${(c.a||'').replace(/\|/g,'/')}`);
+      document.getElementById('ecFlash').value = lines.join('\n');
+      statusEl.textContent = `✅ ${cards.length}개 카드가 생성되었습니다. 내용을 검수한 뒤 저장하세요.`;
+    }catch(err){
+      console.error(err);
+      statusEl.textContent = '⚠ 생성 중 오류가 발생했습니다: '+err.message;
+    }finally{
+      btn.disabled=false;
+    }
+  };
+
+  document.getElementById('ecCancel').onclick=()=>overlay.remove();
+  document.getElementById('ecSave').onclick=()=>{
+    rec.caseName=document.getElementById('ecName').value.trim()||rec.caseName;
+    rec.meta=document.getElementById('ecMeta').value.trim();
+    rec.chapter=document.getElementById('ecChapter').value.trim();
+    rec.topic=document.getElementById('ecTopic').value.trim();
+
+    rec.intro={
+      issue:document.getElementById('ecIssue').value,
+      facts:document.getElementById('ecFacts').value,
+      summary:document.getElementById('ecSummary').value,
+      fulltext:document.getElementById('ecFulltext').value
+    };
+
+    rec.memos = document.getElementById('ecMemos').value.split('\n').map(l=>l.trim()).filter(l=>l).map(l=>{
+      const [tag,text,source]=l.split('|');
+      return {tag:(tag||'').trim(), text:(text||'').trim(), source:(source||'').trim()};
+    });
+
+    rec.flashcards = document.getElementById('ecFlash').value.split('\n').map(l=>l.trim()).filter(l=>l).map(l=>{
+      const [q,a]=l.split('|');
+      return {q:(q||'').trim(), a:(a||'').trim()};
+    });
+
+    rec.ox = document.getElementById('ecOx').value.split('\n').map(l=>l.trim()).filter(l=>l).map(l=>{
+      const parts=l.split('|');
+      const q=(parts[0]||'').trim();
+      const ans=(parts[1]||'').trim().toUpperCase();
+      const explain=(parts[2]||'').trim();
+      return {q, answer: ans==='O'||ans==='TRUE'||ans==='참', explain};
+    });
+
+    rec.blanks = document.getElementById('ecBlanks').value.split('\n').map(l=>l.trim()).filter(l=>l).map(line=>{
+      const blanksArr=[];
+      let i=1;
+      const template=line.replace(/\[([^\]]+)\]/g, (m,p1)=>{
+        blanksArr.push(p1.trim());
+        const placeholder=`[BLANK${i}]`;
+        i++;
+        return placeholder;
+      });
+      return {template, blanks:blanksArr};
+    });
+
+    rec.mnemonic = {
+      letters: document.getElementById('ecMnemonicLetters').value.trim(),
+      desc: document.getElementById('ecMnemonicDesc').value,
+      rows: document.getElementById('ecMnemonicRows').value.split('\n').map(l=>l.trim()).filter(l=>l).map(l=>{
+        const [letter,desc]=l.split('|');
+        return {letter:(letter||'').trim(), desc:(desc||'').trim()};
+      })
+    };
+
+    rec.usages = document.getElementById('ecUsages').value.split('\n').map(l=>l.trim()).filter(l=>l).map(l=>{
+      const [tag,where,body]=l.split('|');
+      return {tag:(tag||'').trim(), where:(where||'').trim(), body:(body||'').trim()};
+    });
+
+    if(isNew){
+      list.push(rec);
+    }
+    saveCases(list);
+
+    if(currentCaseNumber===rec.number || isNew){
+      currentCaseNumber=rec.number;
+      renderCurrentCase();
+    }
+    renderAdminCaseTable();
+    renderClearStackTable();
+    renderStagePanel();
+    renderCaseList();
+
+    overlay.remove();
+    if(isNew){
+      document.getElementById('singleCaseName').value='';
+      document.getElementById('singleCaseMeta').value='';
+    }
+    toast((isNew?'새 판례가 등록':rec.number+'번 판례가 수정')+'되었습니다');
+  };
+}
+function openEditCaseModal(number){
+  openSingleCaseEditor(number);
+}
+
+/* ================= ADMIN: BULK UPLOAD ================= */
+function parseBulkPrecedentText(text){
+  const blocks = text.split(/\n\s*={3,}\s*\n|\n{3,}/).map(b=>b.trim()).filter(b=>b.length>0);
+  const cases=[];
+  const errors=[];
+
+  blocks.forEach((block,idx)=>{
+    const get=(label)=>{
+      const re=new RegExp(label+'\\s*[:：]\\s*([\\s\\S]*?)(?=\\n(?:사건명|단원|주제|메타정보|쟁점|사실관계|판결요지|전문|필수암기문장|플래시카드|OX문제|암기테스트|암기두문자|답안활용처)\\s*[:：]|$)');
+      const m=block.match(re);
+      return m ? m[1].trim() : '';
+    };
+    const caseName=get('사건명');
+    const meta=get('메타정보');
+    const chapter=get('단원');
+    const topic=get('주제');
+    const issue=get('쟁점');
+    const facts=get('사실관계');
+    const summary=get('판결요지');
+    const fulltext=get('전문');
+    const memosRaw=get('필수암기문장');
+    const flashRaw=get('플래시카드');
+    const oxRaw=get('OX문제');
+    const blanksRaw=get('암기테스트');
+    const mnemonicRaw=get('암기두문자');
+    const usagesRaw=get('답안활용처');
+
+    if(!caseName || !issue || !summary){
+      errors.push(`#${idx+1}번째 블록: 사건명/쟁점/판결요지 항목이 누락되어 건너뜁니다.`);
+      return;
+    }
+
+    const rec=blankCaseTemplate('', caseName, meta);
+    rec.chapter=chapter; rec.topic=topic;
+    rec.intro={issue, facts, summary, fulltext};
+
+    if(memosRaw) rec.memos = memosRaw.split('\n').map(l=>l.trim()).filter(l=>l).map(l=>{
+      const [tag,t,source]=l.split('|'); return {tag:(tag||'').trim(),text:(t||'').trim(),source:(source||'').trim()};
+    });
+    if(flashRaw) rec.flashcards = flashRaw.split('\n').map(l=>l.trim()).filter(l=>l).map(l=>{
+      const [q,a]=l.split('|'); return {q:(q||'').trim(),a:(a||'').trim()};
+    });
+    if(oxRaw) rec.ox = oxRaw.split('\n').map(l=>l.trim()).filter(l=>l).map(l=>{
+      const parts=l.split('|');
+      const ans=(parts[1]||'').trim().toUpperCase();
+      return {q:(parts[0]||'').trim(), answer: ans==='O'||ans==='TRUE'||ans==='참', explain:(parts[2]||'').trim()};
+    });
+    if(blanksRaw) rec.blanks = blanksRaw.split('\n').map(l=>l.trim()).filter(l=>l).map(line=>{
+      const blanksArr=[]; let i=1;
+      const template=line.replace(/\[([^\]]+)\]/g,(m,p1)=>{ blanksArr.push(p1.trim()); const ph=`[BLANK${i}]`; i++; return ph; });
+      return {template, blanks:blanksArr};
+    });
+    if(mnemonicRaw){
+      const lines=mnemonicRaw.split('\n').map(l=>l.trim()).filter(l=>l);
+      const letters=lines[0]||'';
+      const desc=lines[1]||'';
+      const rows=lines.slice(2).map(l=>{ const [letter,desc2]=l.split('|'); return {letter:(letter||'').trim(),desc:(desc2||'').trim()}; });
+      rec.mnemonic={letters,desc,rows};
+    }
+    if(usagesRaw) rec.usages = usagesRaw.split('\n').map(l=>l.trim()).filter(l=>l).map(l=>{
+      const [tag,where,body]=l.split('|'); return {tag:(tag||'').trim(),where:(where||'').trim(),body:(body||'').trim()};
+    });
+
+    cases.push(rec);
+  });
+
+  return {cases, errors};
+}
+
+function handleBulkUpload(){
+  const fileInput=document.getElementById('bulkFileInput');
+  const resultEl=document.getElementById('bulkUploadResult');
+  if(!fileInput.files.length){
+    resultEl.textContent='먼저 txt 파일을 선택하세요.';
+    return;
+  }
+  const file=fileInput.files[0];
+  const reader=new FileReader();
+  reader.onload=(e)=>{
+    const text=e.target.result;
+    const {cases, errors} = parseBulkPrecedentText(text);
+    if(cases.length===0){
+      resultEl.innerHTML='⚠ 등록 가능한 판례를 찾지 못했습니다. 양식을 확인해주세요.';
+      return;
+    }
+    const existing=getCases();
+    let nextNum=Math.max(0,...existing.map(c=>parseInt(c.number)||0))+1;
+    cases.forEach(c=>{
+      c.number=String(nextNum).padStart(4,'0');
+      nextNum++;
+    });
+    saveCases(existing.concat(cases));
+    renderAdminCaseTable();
+    renderClearStackTable();
+    renderStagePanel();
+    renderCaseList();
+
+    let html=`✅ ${cases.length}건 판례가 POOL에 등록되었습니다.`;
+    if(errors.length){
+      html+=`<br>⚠ ${errors.length}개 블록은 형식 오류로 제외되었습니다:<br>`+errors.join('<br>');
+    }
+    resultEl.innerHTML=html;
+    toast(cases.length+'건 판례가 일괄 등록되었습니다');
+  };
+  reader.readAsText(file,'UTF-8');
+}
+
+function downloadTemplate(){
+  const sample=
+`사건명: 예시 판례명 (쟁점 요약)
+메타정보: 대법원 0000.0.0. 선고 00누0000 판결 · 관련 법령
+단원: 제5편 행정쟁송법
+주제: 원고적격
+쟁점: 사건의 쟁점을 서술합니다.
+사실관계: 사실관계 요약을 서술합니다.
+판결요지: 판결요지를 패러프레이즈하여 서술합니다.
+전문: 전문 보기에 표시할 요약 정리본입니다.
+필수암기문장: 암기문장 ①|문장 내용|출처
+암기문장 ②|문장 내용|출처
+플래시카드: 질문1|답변1
+질문2|답변2
+OX문제: 문장1|O|해설1
+문장2|X|해설2
+암기테스트: 적합한 [정답1]을 보호하려는 목적과 아울러 [정답2]까지도 보호한다.
+암기두문자: 가 · 나 · 다
+두문자에 대한 설명입니다.
+가|첫 글자 설명
+나|둘째 글자 설명
+다|셋째 글자 설명
+답안활용처: 태그1|위치1|설명1
+태그2|위치2|설명2`;
+
+  const blob=new Blob([sample],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='판례_일괄등록_양식.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+/* ================= FULL RESET ================= */
+function fullReset(){
+  if(!confirm('모든 판례 데이터, 학습현황, 학습영역 설정을 초기화합니다.\n계속하시겠습니까?')) return;
+  localStorage.removeItem(CASES_KEY);
+  localStorage.removeItem(DOMAIN_KEY);
+  localStorage.removeItem(PROGRESS_KEY);
+  currentCaseNumber='0001';
+  renderDomainBadge();
+  renderCurrentCase();
+  renderStagePanel();
+  renderAdminCaseTable();
+  renderClearStackTable();
+  toast('전체 초기화되었습니다');
+}
+
+/* ================= INIT ================= */
+renderDomainBadge();
+renderCurrentCase();
+renderStagePanel();
+</script>
+</body>
+</html>
