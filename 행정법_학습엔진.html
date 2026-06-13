@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1행2필 | 행정법 사례답안 학습엔진</title>
+<style>
+:root{
+  --navy:#0f1b3d;
+  --navy-soft:#16204a;
+  --gold:#c9a14a;
+  --paper:#f7f5f0;
+  --ink:#1c2333;
+  --line:#e3e0d8;
+  --blue:#2f5fb3;
+  --green:#2f7d4f;
+  --orange:#d97b29;
+  --purple:#7048a8;
+  --red:#c4453f;
+  --muted:#8a8578;
+  font-family:"Pretendard","Noto Sans KR",-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.6;
+}
+::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar-thumb{background:#d8d4c8;border-radius:4px;}
+
+/* ===== HEADER ===== */
+header{
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 24px;
+  position:sticky;top:0;z-index:50;
+  box-shadow:0 2px 12px rgba(0,0,0,.15);
+}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand .mark{
+  width:34px;height:34px;border-radius:8px;
+  background:linear-gradient(135deg,var(--gold),#a87f2e);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;color:var(--navy);font-size:15px;
+}
+.brand .title{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.brand .sub{font-size:11px;color:#9aa3c4;font-weight:400;letter-spacing:.5px;}
+.header-actions{display:flex;gap:10px;align-items:center;}
+.hbtn{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  color:#fff;padding:8px 14px;border-radius:8px;
+  font-size:12.5px;cursor:pointer;font-weight:600;
+  display:flex;align-items:center;gap:6px;
+  transition:.15s;
+}
+.hbtn:hover{background:rgba(255,255,255,.16);}
+.hbtn.danger{background:rgba(196,69,63,.2);border-color:rgba(196,69,63,.4);}
+.hbtn.danger:hover{background:rgba(196,69,63,.35);}
+
+/* ===== LAYOUT ===== */
+.layout{
+  display:grid;
+  grid-template-columns:280px 1fr 320px;
+  gap:14px;
+  padding:14px;
+  align-items:start;
+}
+@media (max-width:1200px){
+  .layout{grid-template-columns:1fr;}
+}
+
+.panel{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:16px;
+}
+.panel h3{
+  font-size:13px;font-weight:700;color:var(--navy);
+  margin-bottom:10px;display:flex;align-items:center;gap:6px;
+}
+
+/* ===== LEFT: PROBLEM INFO ===== */
+.problem-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:12px;
+}
+.problem-nav .num{
+  font-size:20px;font-weight:800;color:var(--navy);
+  letter-spacing:1px;
+}
+.navbtn{
+  width:30px;height:30px;border-radius:8px;border:1px solid var(--line);
+  background:#fff;cursor:pointer;font-size:14px;color:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+}
+.navbtn:hover{background:var(--paper);}
+
+.pool-badge{
+  font-size:11px;color:var(--muted);margin-bottom:14px;
+  display:flex;justify-content:space-between;
+}
+.field{margin-bottom:10px;}
+.field-label{
+  font-size:11.5px;font-weight:700;color:#5a5648;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:4px;
+}
+.lock-icon{font-size:11px;color:var(--muted);}
+.field-box{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:10px 12px;
+  font-size:12.5px;
+  min-height:36px;
+  color:#7c7669;
+  position:relative;
+  overflow:hidden;
+}
+.field-box.blurred{
+  filter:blur(4px);
+  user-select:none;
+}
+.field-box.revealed{
+  filter:none;color:var(--ink);
+  background:#fbfaf7;
+}
+.score-row{display:flex;gap:10px;}
+.score-row .field{flex:1;}
+.score-display{
+  text-align:center;font-weight:800;font-size:22px;color:var(--navy);
+  padding:8px 0;
+}
+.score-display .unit{font-size:12px;font-weight:600;color:var(--muted);margin-left:2px;}
+
+.btn-primary{
+  width:100%;background:var(--navy);color:#fff;border:none;
+  padding:12px;border-radius:9px;font-size:13.5px;font-weight:700;
+  cursor:pointer;margin-top:6px;transition:.15s;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.btn-primary:hover{background:#1c2a5e;}
+.btn-primary:disabled{background:#c9c5b8;cursor:not-allowed;}
+
+/* ===== CENTER: MAIN WORK AREA ===== */
+.center-col{display:flex;flex-direction:column;gap:14px;}
+.top-bar-panel{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:10px;
+}
+.mode-switch{
+  display:flex;background:var(--paper);border-radius:9px;padding:3px;border:1px solid var(--line);
+}
+.mode-switch button{
+  border:none;background:transparent;padding:8px 18px;border-radius:7px;
+  font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;
+}
+.mode-switch button.active{background:var(--navy);color:#fff;}
+.accum-count{font-size:12px;color:var(--muted);}
+.accum-count b{color:var(--navy);font-size:15px;}
+.mode-hint{
+  font-size:11.5px;color:var(--muted);background:#fbf6e8;
+  border:1px solid #efe2bd;border-radius:7px;padding:5px 10px;
+}
+
+.steps-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
+.step-card{
+  border:1px solid var(--line);border-radius:10px;padding:14px;
+  display:flex;flex-direction:column;background:#fff;
+}
+.step-head{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;
+}
+.step-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;}
+.step-badge{
+  width:22px;height:22px;border-radius:6px;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;
+}
+.step-admin-gear{
+  cursor:pointer;color:var(--muted);font-size:14px;padding:2px 4px;border-radius:5px;
+  margin-left:auto;
+}
+.step-admin-gear:hover{color:var(--blue);background:var(--paper);}
+.step-prompt{
+  font-size:12px;color:#7c7669;margin-bottom:8px;line-height:1.55;
+  min-height:36px;
+}
+.step-tabs{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;}
+.step-tab{
+  border:1px solid var(--line);background:var(--paper);border-radius:6px;
+  padding:5px 10px;font-size:11.5px;font-weight:600;color:#7c7669;cursor:pointer;
+}
+.step-tab.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+.step-textarea{
+  flex:1;width:100%;min-height:160px;border:1px solid var(--line);
+  border-radius:8px;padding:10px;font-size:12.5px;font-family:inherit;
+  resize:vertical;background:#fdfcfa;
+}
+.step-textarea:focus{outline:2px solid var(--blue);outline-offset:-1px;border-color:var(--blue);}
+.char-count{
+  text-align:right;font-size:11px;color:var(--muted);margin-top:5px;
+}
+.char-count.over{color:var(--red);font-weight:700;}
+
+.actions-row{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-secondary{
+  background:#fff;border:1px solid var(--line);color:var(--ink);
+  padding:11px 18px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;
+}
+.btn-secondary:hover{background:var(--paper);}
+.btn-submit{
+  flex:1;background:var(--navy);color:#fff;border:none;
+  padding:11px 18px;border-radius:9px;font-size:13.5px;font-weight:700;cursor:pointer;
+}
+.btn-submit:hover{background:#1c2a5e;}
+.btn-reset{
+  background:#fff;border:1px solid #e9c3c1;color:var(--red);
+  padding:11px 18px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;
+}
+
+/* rule strip */
+.rule-strip{
+  display:flex;align-items:center;gap:16px;
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;
+  padding:12px 16px;flex-wrap:wrap;font-size:12px;color:#6f6a5d;
+}
+.rule-strip .flow{display:flex;align-items:center;gap:8px;font-weight:700;}
+.flow .stage-chip{
+  background:#fff;border:1px solid var(--line);border-radius:6px;padding:4px 10px;font-size:11.5px;
+}
+.flow .arrow{color:var(--muted);}
+
+/* ===== RIGHT: STAGE STATUS + AI ===== */
+.stage-alert{
+  background:#fdf3e3;border:1px solid #f1ddb0;border-radius:9px;
+  padding:10px 12px;margin-bottom:12px;font-size:12px;color:#8a6a1f;
+  display:flex;gap:8px;align-items:flex-start;
+}
+.stage-block{
+  border:1px solid var(--line);border-radius:9px;padding:12px;margin-bottom:10px;
+}
+.stage-block-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.stage-name{display:flex;align-items:center;gap:6px;font-weight:700;font-size:12.5px;}
+.flag{width:16px;height:16px;border-radius:3px;display:inline-block;}
+.flag.pool{background:#bfae8a;}
+.flag.s1{background:var(--green);}
+.flag.s2{background:var(--orange);}
+.flag.s3{background:var(--purple);}
+.flag.clear{background:var(--gold);}
+.stage-count{font-size:17px;font-weight:800;color:var(--navy);}
+.stage-count .cap{font-size:11px;color:var(--muted);font-weight:600;}
+.full-tag{
+  background:var(--red);color:#fff;font-size:10px;font-weight:800;
+  padding:2px 7px;border-radius:5px;
+}
+.progress-bar{
+  height:6px;border-radius:4px;background:#eee;overflow:hidden;margin-top:6px;
+}
+.progress-bar > div{height:100%;border-radius:4px;}
+.progress-bar.green > div{background:var(--green);}
+.progress-bar.orange > div{background:var(--orange);}
+.progress-bar.purple > div{background:var(--purple);}
+.full-note{font-size:11px;color:var(--red);margin-top:6px;}
+
+.score-rules{
+  display:flex;gap:8px;margin-top:12px;
+}
+.score-rule{
+  flex:1;border-radius:8px;padding:8px 10px;font-size:11px;font-weight:700;text-align:center;
+}
+.score-rule.up{background:#eaf5ee;color:var(--green);}
+.score-rule.down{background:#fbeceb;color:var(--red);}
+.score-rule small{display:block;font-weight:500;color:#999;margin-top:2px;}
+
+/* AI chat */
+.chat-panel{display:flex;flex-direction:column;height:520px;}
+.chat-head{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;
+}
+.chat-messages{
+  flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;
+  padding-right:4px;margin-bottom:10px;
+}
+.msg{
+  max-width:88%;padding:9px 12px;border-radius:10px;font-size:12.5px;line-height:1.55;
+  white-space:pre-wrap;
+}
+.msg.bot{background:var(--paper);align-self:flex-start;border:1px solid var(--line);}
+.msg.user{background:var(--navy);color:#fff;align-self:flex-end;}
+.msg.loading{color:var(--muted);font-style:italic;}
+.chat-suggest{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+.chat-suggest button{
+  text-align:left;border:1px solid var(--line);background:#fff;border-radius:8px;
+  padding:8px 10px;font-size:12px;color:#5a5648;cursor:pointer;
+}
+.chat-suggest button:hover{background:var(--paper);border-color:var(--blue);color:var(--blue);}
+.chat-input-row{display:flex;gap:6px;}
+.chat-input-row input{
+  flex:1;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12.5px;font-family:inherit;
+}
+.chat-input-row input:focus{outline:2px solid var(--blue);outline-offset:-1px;}
+.chat-send{
+  background:var(--navy);color:#fff;border:none;border-radius:8px;width:42px;cursor:pointer;font-size:15px;
+}
+
+/* ===== ADMIN CONSOLE ===== */
+.admin-toggle{
+  position:fixed;bottom:20px;right:20px;z-index:100;
+  background:var(--navy);color:#fff;border:none;border-radius:50px;
+  padding:13px 20px;font-size:13px;font-weight:700;cursor:pointer;
+  box-shadow:0 6px 20px rgba(15,27,61,.35);
+  display:flex;align-items:center;gap:8px;
+}
+.admin-toggle:hover{background:#1c2a5e;}
+.admin-console{
+  background:var(--navy);color:#fff;border-radius:14px;margin:0 14px 14px;
+  padding:18px;display:none;
+}
+.admin-console.open{display:block;}
+.admin-head{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;
+  padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.1);
+}
+.admin-head .title{font-weight:800;font-size:15px;display:flex;align-items:center;gap:8px;}
+.admin-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.admin-tab{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  color:#c5cae5;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;
+}
+.admin-tab.active{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.admin-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;
+}
+.admin-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;padding:14px;
+}
+.admin-card h4{font-size:12.5px;font-weight:700;margin-bottom:10px;color:var(--gold);}
+.admin-card .stat-row{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;color:#c5cae5;border-bottom:1px solid rgba(255,255,255,.05);}
+.admin-card .stat-row b{color:#fff;}
+.admin-input{
+  width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  color:#fff;border-radius:7px;padding:8px 10px;font-size:12px;font-family:inherit;margin-bottom:8px;
+}
+.admin-input::placeholder{color:#7e87ac;}
+.admin-btn{
+  background:var(--gold);color:var(--navy);border:none;border-radius:7px;
+  padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;width:100%;
+}
+.admin-btn.secondary{background:rgba(255,255,255,.1);color:#fff;}
+.admin-btn.danger{background:var(--red);color:#fff;}
+table.admin-table{width:100%;font-size:11.5px;border-collapse:collapse;color:#c5cae5;}
+table.admin-table th{text-align:left;padding:6px 8px;color:#8e98c2;font-weight:700;border-bottom:1px solid rgba(255,255,255,.1);}
+table.admin-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.05);}
+.tag{padding:2px 8px;border-radius:5px;font-size:10.5px;font-weight:800;}
+.tag.pool{background:#bfae8a;color:#33291a;}
+.tag.s1{background:var(--green);color:#fff;}
+.tag.s2{background:var(--orange);color:#fff;}
+.tag.s3{background:var(--purple);color:#fff;}
+.tag.clear{background:var(--gold);color:var(--navy);}
+.toggle-pill{
+  width:36px;height:20px;border-radius:10px;background:rgba(255,255,255,.15);
+  position:relative;cursor:pointer;display:inline-block;
+}
+.toggle-pill.on{background:var(--green);}
+.toggle-pill .dot{
+  position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;
+  transition:.15s;
+}
+.toggle-pill.on .dot{left:18px;}
+.toast{
+  position:fixed;bottom:80px;right:20px;background:var(--navy);color:#fff;
+  padding:11px 18px;border-radius:9px;font-size:12.5px;font-weight:600;
+  box-shadow:0 6px 20px rgba(0,0,0,.2);z-index:200;
+  opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* config dropdown small */
+.cfg-link{font-size:11px;color:var(--blue);cursor:pointer;font-weight:600;}
+.api-key-row{
+  display:flex;gap:6px;align-items:center;margin-bottom:10px;
+}
+.api-key-row input{flex:1;}
+.api-key-note{font-size:10.5px;color:#8e98c2;margin-top:-4px;margin-bottom:8px;}
+
+@media(max-width:700px){
+  .layout{padding:8px;gap:8px;}
+  header{padding:10px 14px;}
+}
+
+/* prompt editor modal */
+.prompt-editor-overlay{
+  position:fixed;inset:0;background:rgba(15,27,61,.5);
+  display:flex;align-items:center;justify-content:center;z-index:300;
+  padding:20px;
+}
+.prompt-editor-box{
+  background:#fff;border-radius:12px;padding:20px;max-width:520px;width:100%;
+  box-shadow:0 12px 40px rgba(0,0,0,.25);
+}
+.prompt-editor-box h4{font-size:13.5px;color:var(--navy);margin-bottom:12px;}
+.prompt-editor-box textarea{
+  width:100%;min-height:120px;border:1px solid var(--line);border-radius:8px;
+  padding:10px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:12px;
+}
+.prompt-editor-box textarea:focus{outline:2px solid var(--blue);outline-offset:-1px;}
+.prompt-editor-actions{display:flex;gap:8px;align-items:center;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="mark">行</div>
+    <div>
+      <div class="title">1행2필 <span style="font-weight:400;color:#9aa3c4;">| 행정법 사례답안 학습엔진</span></div>
+      <div class="sub">How to 행정법 강의 · STAGE 2 집중 학습</div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="hbtn" id="apiKeyBtn">🔑 API 키 설정</button>
+    <button class="hbtn" id="adminBtnTop">⚙ 관리자</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- LEFT: PROBLEM INFO -->
+  <div class="panel">
+    <div class="problem-nav">
+      <button class="navbtn" id="prevProblem">‹</button>
+      <div class="num">0032</div>
+      <button class="navbtn" id="nextProblem">›</button>
+    </div>
+    <div class="pool-badge">
+      <span>현재 스테이지</span>
+      <span style="color:var(--orange);font-weight:800;">STAGE 2</span>
+    </div>
+
+    <div class="field">
+      <div class="field-label">문제영</div>
+      <div class="field-box revealed">공무원의 직무상 불법행위에 대한 국가배상 (출제일 2024-05-20)</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">사례문제 <span class="lock-icon" data-lock="case">🔒</span></div>
+      <div class="field-box blurred" data-field="case">A시 소속 공무원 甲은 자신의 직무권한을 행사함에 있어 고의로 乙에게 손해를 가하였다. 이 경우 乙이 A시를 상대로 국가배상을 청구할 수 있는지 그 요건을 중심으로 논하라.</div>
+    </div>
+    <div class="field">
+      <div class="field-label">정답 <span class="lock-icon" data-lock="answer">🔒</span></div>
+      <div class="field-box blurred" data-field="answer">국가배상법 제2조의 요건(공무원, 직무집행관련성, 고의·과실, 위법성, 손해의 발생 및 인과관계)을 모두 충족하므로 A시는 乙에 대하여 국가배상책임을 진다.</div>
+    </div>
+    <div class="field">
+      <div class="field-label">핵심키워드 <span class="lock-icon" data-lock="keyword">🔒</span></div>
+      <div class="field-box blurred" data-field="keyword">국가배상법 제2조 / 직무관련성 / 고의·과실 / 위법성 / 인과관계 / 외형설</div>
+    </div>
+    <div class="field">
+      <div class="field-label">키워드 일치율 <span class="lock-icon" data-lock="rate">🔒</span></div>
+      <div class="field-box blurred" data-field="rate">—%</div>
+    </div>
+
+    <div class="score-row">
+      <div class="field">
+        <div class="field-label">예상점수 <span class="lock-icon" data-lock="score">🔒</span></div>
+        <div class="field-box blurred" data-field="score" style="text-align:center;">
+          <span class="score-display" id="scoreDisplay" style="font-size:22px;">--<span class="unit">점</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">답안 개선 방향 <span class="lock-icon" data-lock="advice">🔒</span></div>
+      <div class="field-box blurred" data-field="advice">사인의 적용 단계에서 "외형설"에 따른 직무관련성 판단 기준을 명시하면 배점이 상승합니다. 인과관계 서술을 더 구체화하세요.</div>
+    </div>
+
+    <button class="btn-primary" id="revealBtn">👁 완료 후 결과 확인</button>
+  </div>
+
+  <!-- CENTER -->
+  <div class="center-col">
+    <div class="panel top-bar-panel">
+      <div class="mode-switch">
+        <button class="active" data-mode="beginner">초보자 모드</button>
+        <button data-mode="advanced">상급자 모드</button>
+      </div>
+      <div class="accum-count">누적 사례 개수 <b>24</b></div>
+      <div class="mode-hint" id="modeHint">※ 상급자 모드에서는 보다 심화된 논리 구성과 완성도 높은 답안을 작성합니다.</div>
+    </div>
+
+    <div class="panel">
+      <div class="steps-grid" id="stepsGrid"><!-- injected --></div>
+
+      <div class="actions-row" style="margin-top:14px;">
+        <button class="btn-secondary" id="saveTemp">임시저장</button>
+        <button class="btn-submit" id="submitBtn">완료 및 채점하기 ✓</button>
+        <button class="btn-reset" id="resetBtn">초기화</button>
+      </div>
+    </div>
+
+    <div class="rule-strip">
+      <span>📌 예상점수 규칙 안내</span>
+      <span>예상점수 <b>80점 이상</b> → 다음 스테이지로 이동 · <b>79점 이하</b> → STAGE 1로 강등(복귀)</span>
+      <div class="flow" style="margin-left:auto;">
+        <span class="stage-chip">POOL</span><span class="arrow">→</span>
+        <span class="stage-chip">STAGE 1</span><span class="arrow">→</span>
+        <span class="stage-chip">STAGE 2</span><span class="arrow">→</span>
+        <span class="stage-chip">STAGE 3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <div class="panel">
+      <h3>📊 스테이지 현황</h3>
+      <div class="stage-alert">
+        ⚠️ <div><b>STAGE 2 집중 모드</b><br>STAGE 2가 가득 찼습니다. 먼저 STAGE 2 문제를 풀이하세요.</div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-block-head">
+          <div class="stage-name"><span class="flag pool"></span>POOL (무제한)</div>
+          <div class="stage-count">1,248</div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-block-head">
+          <div class="stage-name"><span class="flag s1"></span>STAGE 1 (무제한)</div>
+          <div class="stage-count">37</div>
+        </div>
+        <div class="progress-bar green"><div style="width:18%"></div></div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-block-head">
+          <div class="stage-name"><span class="flag s2"></span>STAGE 2 (최대 4개)</div>
+          <div class="stage-count">4/4 <span class="full-tag">FULL</span></div>
+        </div>
+        <div class="progress-bar orange"><div style="width:100%"></div></div>
+        <div class="full-note">⚠ 가득 참</div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-block-head">
+          <div class="stage-name"><span class="flag s3"></span>STAGE 3 (최대 7개)</div>
+          <div class="stage-count">7/7 <span class="full-tag">FULL</span></div>
+        </div>
+        <div class="progress-bar purple"><div style="width:100%"></div></div>
+        <div class="full-note">⚠ 가득 참</div>
+      </div>
+
+      <div class="stage-block" style="border-color:var(--gold);background:#fcf8ee;">
+        <div class="stage-block-head">
+          <div class="stage-name"><span class="flag clear"></span>CLEAR STACK (졸업)</div>
+          <div class="stage-count">128</div>
+        </div>
+      </div>
+
+      <div class="score-rules">
+        <div class="score-rule up">↑ 80점 이상<small>다음 스테이지로 이동</small></div>
+        <div class="score-rule down">↓ 79점 이하<small>STAGE 1로 강등</small></div>
+      </div>
+    </div>
+
+    <div class="panel chat-panel">
+      <div class="chat-head">
+        <h3 style="margin:0;">💬 AI 대화창</h3>
+        <span class="cfg-link" id="clearChat">대화 지우기</span>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg bot">안녕하세요! 행정법 학습을 도와드리는 AI 튜터입니다. 무엇을 도와드릴까요?</div>
+      </div>
+      <div class="chat-suggest" id="chatSuggest">
+        <button data-q="이 사례문제의 쟁점이 무엇인지 알기 어려워요. 핵심 쟁점을 짚어주세요.">쟁점 파악이 어려워요</button>
+        <button data-q="국가배상법 제2조와 관련된 핵심 판례를 알려주세요.">관련 판례를 알려주세요</button>
+        <button data-q="이 사례에서 '외형설'과 다른 학설(주관설 등)의 비교가 필요한가요?">학설 비교가 필요해요</button>
+        <button data-q="제가 작성한 답안 구조(문제의 소재-인지여부-인정여부-설문의 해결)가 적절한지 점검해주세요.">답안 구조를 점검해 주세요</button>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" placeholder="메시지를 입력하세요...">
+        <button class="chat-send" id="chatSend">➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN CONSOLE -->
+<div class="admin-console" id="adminConsole">
+  <div class="admin-head">
+    <div class="title">🔒 관리자 전용 마스터 관리 콘솔</div>
+    <button class="hbtn danger" id="adminClose">모드 종료 ✕</button>
+  </div>
+  <div class="admin-tabs">
+    <button class="admin-tab active" data-tab="dash">대시보드</button>
+    <button class="admin-tab" data-tab="problems">문제 관리</button>
+    <button class="admin-tab" data-tab="clearstack">CLEAR STACK 관리</button>
+    <button class="admin-tab" data-tab="users">사용자 관리</button>
+    <button class="admin-tab" data-tab="settings">시스템 설정</button>
+  </div>
+
+  <!-- DASH -->
+  <div class="admin-tab-content" data-content="dash">
+    <div class="admin-grid">
+      <div class="admin-card">
+        <h4>전체 학습 현황</h4>
+        <div class="stat-row"><span>전체 문제 수</span><b>1,248</b></div>
+        <div class="stat-row"><span>전체 학습 횟수</span><b>12,480</b></div>
+        <div class="stat-row"><span>평균 예상점수</span><b>82.3점</b></div>
+        <div class="stat-row"><span>CLEAR STACK 수</span><b>128 (10.3%)</b></div>
+      </div>
+      <div class="admin-card">
+        <h4>스테이지별 현황</h4>
+        <div class="stat-row"><span><span class="tag pool">POOL</span></span><b>1,074</b></div>
+        <div class="stat-row"><span><span class="tag s1">STAGE1</span></span><b>37</b></div>
+        <div class="stat-row"><span><span class="tag s2">STAGE2</span></span><b>4/4 FULL</b></div>
+        <div class="stat-row"><span><span class="tag s3">STAGE3</span></span><b>7/7 FULL</b></div>
+        <div class="stat-row"><span><span class="tag clear">CLEAR</span></span><b>128</b></div>
+      </div>
+      <div class="admin-card">
+        <h4>최근 활동</h4>
+        <table class="admin-table">
+          <tr><th>번호</th><th>스테이지</th><th>사례제목</th><th>일자</th></tr>
+          <tr><td>0001</td><td><span class="tag pool">POOL</span></td><td>직무상 불법행위 국가배상</td><td>05-20</td></tr>
+          <tr><td>0002</td><td><span class="tag s2">STAGE2</span></td><td>개발행위허가 취소</td><td>05-21</td></tr>
+          <tr><td>0003</td><td><span class="tag clear">CLEAR</span></td><td>징계처분 취소소송</td><td>05-22</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEMS -->
+  <div class="admin-tab-content" data-content="problems" style="display:none;">
+    <div class="admin-grid">
+      <div class="admin-card">
+        <h4>단일 사례 투입 (4단 구조)</h4>
+        <input class="admin-input" placeholder="1. 사례지문을 입력하세요...">
+        <input class="admin-input" placeholder="2. 정답 내용을 입력하세요...">
+        <input class="admin-input" placeholder="3. 핵심 키워드를 입력하세요...">
+        <input class="admin-input" placeholder="4. 핵심 논리를 입력하세요...">
+        <button class="admin-btn" onclick="toast('사례가 등록되었습니다')">텍스트 주입 실행</button>
+      </div>
+      <div class="admin-card">
+        <h4>등록된 문제 목록</h4>
+        <input class="admin-input" placeholder="🔍 문제 검색">
+        <table class="admin-table">
+          <tr><th>번호</th><th>스테이지</th><th>사례제목</th><th>상태</th></tr>
+          <tr><td>0001</td><td><span class="tag pool">POOL</span></td><td>국가배상 (직무상 불법행위)</td><td>활성</td></tr>
+          <tr><td>0002</td><td><span class="tag s1">STAGE1</span></td><td>행정처분 위법성 판단 기준</td><td>활성</td></tr>
+          <tr><td>0003</td><td><span class="tag s1">STAGE1</span></td><td>공법상 계약의 해제</td><td>활성</td></tr>
+          <tr><td>0004</td><td><span class="tag s2">STAGE2</span></td><td>개발행위허가 취소</td><td>활성</td></tr>
+          <tr><td>0005</td><td><span class="tag s3">STAGE3</span></td><td>공무원 징계처분 취소소송</td><td>활성</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLEAR STACK -->
+  <div class="admin-tab-content" data-content="clearstack" style="display:none;">
+    <div class="admin-grid">
+      <div class="admin-card">
+        <h4>CLEAR STACK 복습/실전 설정</h4>
+        <div class="stat-row"><span>복습 모드에서 CLEAR STACK 문제 포함</span><span class="toggle-pill on" onclick="this.classList.toggle('on')"><span class="dot"></span></span></div>
+        <div class="stat-row"><span>실전 모드에서 CLEAR STACK 문제 포함</span><span class="toggle-pill" onclick="this.classList.toggle('on')"><span class="dot"></span></span></div>
+        <div style="margin-top:12px;">
+          <button class="admin-btn secondary" onclick="toast('선택한 문제가 제출함으로 복귀되었습니다')">제출함(복귀)</button>
+        </div>
+      </div>
+      <div class="admin-card">
+        <h4>졸업(졸업한) 문제 목록</h4>
+        <table class="admin-table">
+          <tr><th>번호</th><th>사례제목</th><th>졸업일</th><th>최종점수</th></tr>
+          <tr><td>C001</td><td>공무원의 직무상 불법행위에 대한 국가배상</td><td>05-21</td><td>92점</td></tr>
+          <tr><td>C002</td><td>개발행위허가의 취소</td><td>05-21</td><td>88점</td></tr>
+          <tr><td>C003</td><td>영업정지처분의 취소</td><td>05-22</td><td>93점</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- USERS -->
+  <div class="admin-tab-content" data-content="users" style="display:none;">
+    <div class="admin-card" style="max-width:600px;">
+      <h4>사용자 계정 관리</h4>
+      <table class="admin-table">
+        <tr><th>사용자ID</th><th>이름</th><th>역할</th><th>상태</th></tr>
+        <tr><td>user01</td><td>김학생</td><td>학습자</td><td>활성</td></tr>
+        <tr><td>user02</td><td>이학생</td><td>학습자</td><td>활성</td></tr>
+        <tr><td>admin</td><td>관리자</td><td>관리자</td><td>활성</td></tr>
+        <tr><td>manager</td><td>매니저</td><td>관리자</td><td>활성</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="admin-tab-content" data-content="settings" style="display:none;">
+    <div class="admin-grid">
+      <div class="admin-card">
+        <h4>스테이지 용량 설정</h4>
+        <div class="stat-row"><span>STAGE 1 용량</span><b>무제한</b></div>
+        <div class="stat-row"><span>STAGE 2 용량</span><b>4개</b></div>
+        <div class="stat-row"><span>STAGE 3 용량</span><b>7개</b></div>
+        <div class="stat-row"><span>승급 기준점수</span><b>80점 이상</b></div>
+        <div class="stat-row"><span>강등 기준점수</span><b>79점 이하</b></div>
+      </div>
+      <div class="admin-card">
+        <h4>AI 대화창 (Claude API) 설정</h4>
+        <div class="api-key-row">
+          <input class="admin-input" id="adminApiKeyInput" placeholder="sk-ant-...">
+          <button class="admin-btn" style="width:auto;flex-shrink:0;" onclick="saveApiKey()">저장</button>
+        </div>
+        <div class="api-key-note">API 키는 이 브라우저에만 저장되며 서버로 전송되지 않습니다.</div>
+        <button class="admin-btn secondary" onclick="toast('전체 백업이 완료되었습니다')">전체 백업</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="admin-toggle" id="adminFloatBtn">⚙ 관리자 콘솔</button>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= STATE ================= */
+const stepsConfig = {
+  beginner: [
+    {label:'문제의 소재', roman:'Ⅰ', prompt:'사례에서 쟁점이 되는 법적 문제의 소재를 서술하세요.', tabs:null},
+    {label:'인지 여부', roman:'Ⅱ', prompt:'관련 법리와 판례를 검토하여 쟁점을 인지하고 법적 근거를 제시하세요.', tabs:['1. 학설','2. 판례','3. 검토','4. 사안의 경우']},
+    {label:'인정 여부', roman:'Ⅲ', prompt:'사안의 적용 및 설문에 대한 해결방안을 서술하세요.', tabs:['1. 관련','2. 사안의 경우']},
+    {label:'설문의 해결', roman:'Ⅳ', prompt:'사안의 결론을 정리하고, 유사사례에 대한 시사점을 도출하세요.', tabs:null}
+  ],
+  advanced: [
+    {label:'문제의 소재', roman:'Ⅰ', prompt:'사례에서 쟁점이 되는 법적 문제의 소재를 명확히 파악하고, 사안의 배경과 법적 핵심을 정리합니다.', tabs:null},
+    {label:'인지 여부', roman:'Ⅱ', prompt:'관련 법리와 판례, 사안의 적용 가능성을 검토하여 쟁점을 인지하고 법적 근거를 제시합니다.', tabs:['1. 학설','2. 판례','3. 검토','4. 사안의 경우']},
+    {label:'설문의 해결', roman:'Ⅲ', prompt:'최종 결론을 논리적으로 구성하고, 사안에 대한 해결 방안을 체계적으로 제시합니다.', tabs:null}
+  ]
+};
+
+let currentMode = 'beginner';
+let answers = {}; // {mode: {stepIndex: text}}
+let activeTabs = {}; // {stepIndex: tabLabel}
+
+const maxLens = {beginner:[1000,1500,1000,500], advanced:[1000,1500,1000]};
+
+/* ================= RENDER STEPS ================= */
+function renderSteps(){
+  const grid = document.getElementById('stepsGrid');
+  grid.innerHTML='';
+  const cfg = stepsConfig[currentMode];
+  if(!answers[currentMode]) answers[currentMode]={};
+  cfg.forEach((step,i)=>{
+    const card = document.createElement('div');
+    card.className='step-card';
+    let tabsHtml='';
+    if(step.tabs){
+      if(activeTabs[i]===undefined) activeTabs[i]=0;
+      tabsHtml = `<div class="step-tabs">`+step.tabs.map((t,ti)=>
+        `<button class="step-tab ${ti===activeTabs[i]?'active':''}" data-step="${i}" data-tab="${ti}">${t}</button>`
+      ).join('')+`</div>`;
+    }
+    const val = answers[currentMode][i]||'';
+    const maxLen = maxLens[currentMode][i];
+    card.innerHTML = `
+      <div class="step-head">
+        <div class="step-title"><span class="step-badge">${step.roman}</span>${step.label}</div>
+        <span class="step-admin-gear" data-step="${i}" title="이 항목 안내문구 설정">⚙</span>
+      </div>
+      <div class="step-prompt" data-prompt="${i}">${getPrompt(i,step.prompt)}</div>
+      ${tabsHtml}
+      <textarea class="step-textarea" data-step="${i}" maxlength="${maxLen}" placeholder="이 부분에 내용을 입력하세요...">${val}</textarea>
+      <div class="char-count" data-step="${i}">글자수 ${val.length} / ${maxLen}</div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // bind events
+  grid.querySelectorAll('.step-admin-gear').forEach(g=>{
+    g.addEventListener('click',()=> openPromptEditor(parseInt(g.dataset.step)));
+  });
+  grid.querySelectorAll('.step-textarea').forEach(ta=>{
+    ta.addEventListener('input',()=>{
+      const i = ta.dataset.step;
+      answers[currentMode][i]=ta.value;
+      const max = ta.maxLength;
+      const cc = grid.querySelector(`.char-count[data-step="${i}"]`);
+      cc.textContent = `글자수 ${ta.value.length} / ${max}`;
+      cc.classList.toggle('over', ta.value.length>=max);
+    });
+  });
+  grid.querySelectorAll('.step-tab').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const i=btn.dataset.step, t=parseInt(btn.dataset.tab);
+      activeTabs[i]=t;
+      renderSteps();
+    });
+  });
+}
+
+/* ================= CUSTOM STEP PROMPTS (admin-editable) ================= */
+const PROMPT_KEY='1h2p_step_prompts'; // {beginner:{0:'...'}, advanced:{...}}
+function getAllPrompts(){
+  try{ return JSON.parse(localStorage.getItem(PROMPT_KEY))||{}; }catch(e){ return {}; }
+}
+function getPrompt(i, fallback){
+  const all = getAllPrompts();
+  return (all[currentMode] && all[currentMode][i]!==undefined) ? all[currentMode][i] : fallback;
+}
+function setPrompt(i, text){
+  const all = getAllPrompts();
+  if(!all[currentMode]) all[currentMode]={};
+  all[currentMode][i]=text;
+  localStorage.setItem(PROMPT_KEY, JSON.stringify(all));
+}
+
+function openPromptEditor(i){
+  const pw = prompt('관리자 비밀번호를 입력하세요');
+  if(pw===null) return;
+  if(pw!==ADMIN_PW){ toast('비밀번호가 일치하지 않습니다'); return; }
+
+  const step = stepsConfig[currentMode][i];
+  const cur = getPrompt(i, step.prompt);
+  const overlay = document.createElement('div');
+  overlay.className='prompt-editor-overlay';
+  overlay.innerHTML=`
+    <div class="prompt-editor-box">
+      <h4>${step.roman}. ${step.label} — 안내 문구 설정 (${currentMode==='advanced'?'상급자':'초보자'} 모드)</h4>
+      <textarea id="promptEditTextarea">${cur}</textarea>
+      <div class="prompt-editor-actions">
+        <button class="admin-btn secondary" id="promptEditDefault" style="width:auto;">기본값으로 복원</button>
+        <div style="flex:1;"></div>
+        <button class="btn-secondary" id="promptEditCancel">취소</button>
+        <button class="btn-submit" id="promptEditSave" style="flex:none;">저장</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  document.getElementById('promptEditCancel').onclick=()=>overlay.remove();
+  document.getElementById('promptEditDefault').onclick=()=>{
+    document.getElementById('promptEditTextarea').value = step.prompt;
+  };
+  document.getElementById('promptEditSave').onclick=()=>{
+    const val = document.getElementById('promptEditTextarea').value;
+    setPrompt(i,val);
+    overlay.remove();
+    renderSteps();
+    toast('안내 문구가 저장되었습니다');
+  };
+}
+
+/* ================= MODE SWITCH ================= */
+document.querySelectorAll('.mode-switch button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.mode-switch button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentMode = btn.dataset.mode;
+    activeTabs = {};
+    document.getElementById('modeHint').textContent = currentMode==='advanced'
+      ? '※ 상급자 모드에서는 보다 심화된 논리 구성과 완성도 높은 답안을 작성합니다.'
+      : '※ 초보자 모드에서는 4단계 구조로 차근차근 답안을 작성합니다.';
+    renderSteps();
+  });
+});
+
+/* ================= ACTIONS ================= */
+document.getElementById('saveTemp').addEventListener('click',()=>{
+  toast('임시저장되었습니다');
+});
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  if(!confirm('작성한 내용을 모두 초기화하시겠습니까?')) return;
+  answers[currentMode]={};
+  renderSteps();
+  toast('초기화되었습니다');
+});
+document.getElementById('submitBtn').addEventListener('click',()=>{
+  const cfg = stepsConfig[currentMode];
+  const filled = cfg.every((_,i)=> (answers[currentMode]?.[i]||'').trim().length>0);
+  if(!filled){
+    toast('모든 영역을 작성한 후 채점할 수 있습니다');
+    return;
+  }
+  // mock scoring
+  let total=0;
+  cfg.forEach((_,i)=>{
+    const len=(answers[currentMode][i]||'').length;
+    total += Math.min(25, Math.round(len/ (maxLens[currentMode][i]/25)));
+  });
+  total = Math.min(100, total + 10);
+  document.getElementById('scoreDisplay').innerHTML = total+'<span class="unit">점</span>';
+  document.querySelectorAll('.field-box.blurred').forEach(el=>{
+    el.classList.remove('blurred');
+    el.classList.add('revealed');
+  });
+  document.querySelectorAll('.lock-icon').forEach(el=> el.textContent='✓');
+  toast(total>=80 ? `채점 완료! 예상점수 ${total}점 — 다음 스테이지로 이동 대상입니다` : `채점 완료! 예상점수 ${total}점 — STAGE 1로 강등 대상입니다`);
+});
+
+document.getElementById('revealBtn').addEventListener('click',()=>{
+  document.querySelectorAll('.field-box.blurred').forEach(el=>{
+    el.classList.remove('blurred');
+    el.classList.add('revealed');
+  });
+  document.querySelectorAll('.lock-icon').forEach(el=> el.textContent='✓');
+  toast('결과가 공개되었습니다');
+});
+
+document.getElementById('prevProblem').addEventListener('click',()=> toast('이전 문제로 이동합니다 (데모)'));
+document.getElementById('nextProblem').addEventListener('click',()=> toast('다음 문제로 이동합니다 (데모)'));
+
+/* ================= TOAST ================= */
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+/* ================= ADMIN CONSOLE ================= */
+const ADMIN_PW = '1행2필';
+let adminUnlocked = false;
+
+function toggleAdmin(){
+  const panel = document.getElementById('adminConsole');
+  if(panel.classList.contains('open')){
+    panel.classList.remove('open');
+    adminUnlocked = false;
+    return;
+  }
+  if(adminUnlocked){
+    panel.classList.add('open');
+    return;
+  }
+  const pw = prompt('관리자 비밀번호를 입력하세요');
+  if(pw===null) return;
+  if(pw===ADMIN_PW){
+    adminUnlocked = true;
+    panel.classList.add('open');
+  }else{
+    toast('비밀번호가 일치하지 않습니다');
+  }
+}
+document.getElementById('adminFloatBtn').addEventListener('click',toggleAdmin);
+document.getElementById('adminBtnTop').addEventListener('click',toggleAdmin);
+document.getElementById('adminClose').addEventListener('click',toggleAdmin);
+
+document.querySelectorAll('.admin-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.admin-tab-content').forEach(c=>{
+      c.style.display = c.dataset.content===tab.dataset.tab ? 'block':'none';
+    });
+  });
+});
+
+/* ================= API KEY ================= */
+const LS_KEY='1h2p_claude_api_key';
+function getApiKey(){ return localStorage.getItem(LS_KEY)||''; }
+function saveApiKey(){
+  const v = document.getElementById('adminApiKeyInput').value.trim();
+  if(v){ localStorage.setItem(LS_KEY,v); toast('API 키가 저장되었습니다'); }
+}
+document.getElementById('apiKeyBtn').addEventListener('click',()=>{
+  toggleAdmin();
+  if(!document.getElementById('adminConsole').classList.contains('open')) return;
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelector('.admin-tab[data-tab="settings"]').classList.add('active');
+  document.querySelectorAll('.admin-tab-content').forEach(c=> c.style.display = c.dataset.content==='settings'?'block':'none');
+});
+window.addEventListener('load',()=>{
+  const k=getApiKey();
+  if(k) document.getElementById('adminApiKeyInput').value=k;
+});
+
+/* ================= AI CHAT ================= */
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+let chatHistory=[];
+
+function appendMsg(text, who){
+  const d=document.createElement('div');
+  d.className='msg '+who;
+  d.textContent=text;
+  chatMessages.appendChild(d);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  return d;
+}
+
+async function sendChat(text){
+  if(!text.trim()) return;
+  document.getElementById('chatSuggest').style.display='none';
+  appendMsg(text,'user');
+  chatHistory.push({role:'user',content:text});
+  chatInput.value='';
+  const loadingEl = appendMsg('AI 튜터가 답변을 작성 중입니다...','bot loading');
+
+  const apiKey = getApiKey();
+  if(!apiKey){
+    loadingEl.remove();
+    appendMsg('⚠ Claude API 키가 설정되지 않았습니다. 우측 상단 "API 키 설정"에서 키를 입력해 주세요.','bot');
+    return;
+  }
+
+  const systemPrompt = `당신은 한국 행정법 수험(변호사시험/5급/7·9급/노무사) 사례형 답안 작성을 돕는 AI 튜터입니다.
+현재 학습 문제: "공무원의 직무상 불법행위에 대한 국가배상" (문제번호 0032, STAGE 2)
+사례 개요: A시 소속 공무원 甲이 직무권한 행사 중 고의로 乙에게 손해를 가한 경우, 乙이 A시를 상대로 국가배상을 청구할 수 있는지 그 요건(국가배상법 제2조: 공무원, 직무관련성, 고의·과실, 위법성, 손해 및 인과관계)을 중심으로 논하는 문제입니다.
+학생이 작성한 답안의 논리 구조(문제의 소재 → 인지 여부 → 인정 여부/설문의 해결)를 점검하고, 관련 판례·학설을 안내하며, 실로기스무스(...이므로...이어서...이다) 방식의 서술을 권장하세요.
+답변은 간결하고 핵심적으로, 한국어로 작성하세요.`;
+
+  try{
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:1000,
+        system: systemPrompt,
+        messages: chatHistory
+      })
+    });
+    const data = await res.json();
+    loadingEl.remove();
+    if(data.content){
+      const textBlocks = data.content.filter(b=>b.type==='text').map(b=>b.text).join('\n');
+      appendMsg(textBlocks||'(응답이 비어있습니다)','bot');
+      chatHistory.push({role:'assistant',content:textBlocks});
+    } else {
+      appendMsg('⚠ 오류: '+(data.error?.message||'알 수 없는 오류'),'bot');
+    }
+  }catch(e){
+    loadingEl.remove();
+    appendMsg('⚠ API 호출 중 오류가 발생했습니다: '+e.message,'bot');
+  }
+}
+
+document.getElementById('chatSend').addEventListener('click',()=> sendChat(chatInput.value));
+chatInput.addEventListener('keydown',e=>{ if(e.key==='Enter') sendChat(chatInput.value); });
+document.querySelectorAll('#chatSuggest button').forEach(b=>{
+  b.addEventListener('click',()=> sendChat(b.dataset.q));
+});
+document.getElementById('clearChat').addEventListener('click',()=>{
+  chatMessages.innerHTML='<div class="msg bot">안녕하세요! 행정법 학습을 도와드리는 AI 튜터입니다. 무엇을 도와드릴까요?</div>';
+  chatHistory=[];
+  document.getElementById('chatSuggest').style.display='flex';
+});
+
+/* INIT */
+renderSteps();
+</script>
+</body>
+</html>
