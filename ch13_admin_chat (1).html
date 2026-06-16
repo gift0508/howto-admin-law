@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제13강 본안의 개관 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:200px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.mem-note{margin-top:8px;padding:7px 10px;border-radius:5px;font-size:11.5px;line-height:1.6}
+.mn-blue{background:var(--blue-l);color:var(--blue)}.mn-green{background:var(--green-l);color:var(--green)}.mn-gold{background:var(--gold-l);color:var(--gold)}.mn-red{background:var(--red-l);color:var(--red)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+
+/* ── AI 대화창 ── */
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제13강 본안의 개관</div>
+  <div class="hdr-sub">§8② 민사소송법 준용 · 법원(法源) · 기속행위·재량행위 · 하자의 4영역 · 중대명백설</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- ══ TAB 1 · 요약노트 ══ -->
+<div id="panel-summary" class="panel on">
+
+<div class="card"><div class="card-head ch-blue">⚖️ 본안의 의의 — 심리와 청구인용/기각</div><div class="card-body">
+<div class="body-text">본안(본안심판)은 판결을 내리기 위하여 필요한 모든 소송행위를 하는 절차이자 <span class="kw">위법성을 판단하는 단계</span>이다. 취소소송의 원고의 주장(청구취지·청구원인)을 받아들이는 것을 <span class="kw">청구인용</span>, 배척하는 것을 <span class="kw">청구기각</span>이라 한다.</div>
+<div class="alert al-blue" style="margin-top:10px"><div class="alert-label">📌 심리 = 소송자료의 수집</div>
+판결 전 원고의 주장에 대한 바른 판단을 위해 <span class="hl">소송자료</span>를 수집하는 과정을 <span class="kw">심리(본안의 심리)</span>라 한다. 소송자료는 ① <span class="kw">사실자료</span>(어떤 사실이 현실로 있었음을 진술) ② <span class="kw">증거자료</span>(그 사실이 실제로 존재하였음을 추정케 함)로 구성된다.
+</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 심리의 진행 구조</div>
+원고의 <span class="kw">주요사실</span>(위법사유 요건에 해당하는 소송사실) ↔ 피고의 <span class="kw">탄핵자료</span>(원고 자료의 존재·주장력을 떨어뜨리는 자료)가 논박하며 쌓인다. 판사는 미흡한 자료를 <span class="hl">쟁점 사항의 정리</span>로 미리 추출하고, 논박은 쟁점 사항 중심으로 진행된다. 쟁점 추출·판단 기준에 관한 학문 = <span class="kw">법원론</span>
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">📜 행정소송법 §8② — 민사소송법의 준용</div><div class="card-body">
+<div class="body-text">본안 절차를 어떻게 규정할 것인가는 주로 <span class="kw">민사소송법 학자</span>들의 연구 영역이다. 행정소송법 §8②은 그 연구 성과에 <span class="hl">"숟가락을 얹어"</span> 본안 심리의 기초를 민사소송법 규정의 준용으로 처리한다. 그 기초가 되는 원칙이 <span class="kw">변론주의</span>이다.</div>
+<div class="alert al-blue" style="margin-top:10px"><div class="alert-label">📌 §8②을 기초로 본안에서 학습할 4가지 주제</div>
+① 취소소송 절차 규정 방식의 확인<br>
+② 취소소송 과정의 동태성(피고변경·소변경·병합 등)<br>
+③ 처분의 위법성 판단 기준(법원·기속/재량·하자의 4영역)<br>
+④ 위법성 확인 후 취소 vs 무효 선언의 기준(중대·명백설)
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">⚙️ 정당한 판결 확보를 위한 제도들</div><div class="card-body">
+<table class="tbl"><thead><tr><th>제도</th><th>내용</th></tr></thead><tbody>
+<tr><td><span class="kw">집행정지제도</span></td><td>청구인용판결이 나오기 전에 그 판결이 목적으로 하는 처분의 효과가 소멸되는 사태를 방지하기 위한 예외적 제도</td></tr>
+<tr><td><span class="kw">직권심리주의</span></td><td>본안판결의 정당성 확보를 위해 명문으로 규정 — 변론주의를 기초로 하되 법원이 직권으로 심리에 관여</td></tr>
+<tr><td><span class="kw">행정심판기록제출명령</span></td><td>본안판결의 정당성 확보를 위한 명문 제도</td></tr>
+</tbody></table>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 시각 차이가 발생하는 3가지 쟁점</div>
+① <span class="kw">주장책임·입증책임</span> — 취소소송과 민사소송의 성질 차이로 시각차 존재<br>
+② <span class="kw">위법성 판단시</span> — 소송 진행 중 위법성 심사 기준이 변동되면 어느 시점 기준을 채택할지<br>
+③ <span class="kw">처분사유의 추가·변경</span> — 민사소송에 없는 취소소송 특유의 제도, 행정소송법상 명문 규정 없음(근거와 허용범위는 학설·판례)
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">🔁 취소소송과정의 동태성</div><div class="card-body">
+<table class="tbl"><thead><tr><th>동태적 변화</th><th>해소 방식 / 학습 위치</th></tr></thead><tbody>
+<tr><td>피고의 변동</td><td><span class="kw">피고경정</span> (취소소송의 피고적격 단원에서 기학습)</td></tr>
+<tr><td>관련청구소송의 이송</td><td><span class="kw">관련청구소송의 이송·병합</span> (취소소송의 관할법원 단원에서 기학습)</td></tr>
+<tr><td>제3자·다른 행정청의 참가</td><td><span class="kw">소송참가제도</span> — 원고·피고 양 진영에 힘을 더함</td></tr>
+<tr><td>청구취지1.의 변화</td><td><span class="kw">소변경제도</span></td></tr>
+<tr><td>전 소송 자료의 활용</td><td><span class="kw">병합제도</span> — 전 소송 자료를 후 소송으로 이전</td></tr>
+<tr><td>원고의 처분자료 획득</td><td><span class="kw">정보공개법</span></td></tr>
+<tr><td>피고(행정청)의 처분자료 수집</td><td><span class="kw">행정조사</span></td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">🔍 위법성 판단의 3가지 작업</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 작업① — 법원(法源)의 확정</div>
+처분이 법에 위반한다고 판단하기 위한 <span class="kw">기준 = 법원(法源)</span>. 관련 행정소송법적 논점은 <span class="hl">명령·규칙의 위헌·위법심사</span>다. 처분 자체는 외형상 법령에 근거한 적법한 처분이었더라도, 그 근거 법령이 헌법·법률에 위반되면 그 법령의 <span class="kw">법원으로서의 성격을 박탈</span> → 처분의 근거가 사라져 처분이 위법하게 된다.
+</div>
+<div class="alert al-green" style="margin-top:10px"><div class="alert-label">📌 작업② — 기속행위·재량행위의 분류</div>
+법원이 밝혀지면 그 법원을 적용하기 위해 처분을 <span class="kw">기속행위/재량행위</span>로 분류해야 한다.
+<div class="판례박스" style="margin-top:8px">어떤 처분이 기속행위인지 재량행위인지는 당해 처분의 <span class="kw">근거가 된 법규의 체제·형식·그 문언</span>, 당해 처분이 행해진 <span class="kw">행정 분야의 주된 목적과 특성</span>, 그 처분의 <span class="kw">개별적 성질과 유형</span> 등을 모두 고려하여 판단하여야 한다.</div>
+<div class="body-text" style="margin-top:8px">→ 적용 순서: ⓐ 분류기준으로 6개 법률행위적 행정행위 + 4개 준법률행위적 행정행위가 기속/재량 중 어디에 속하는지 결정 → ⓑ 기속/재량별 위법성 판단기준 적용</div>
+</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 작업③ — 하자의 4영역과 각 영역의 위법성 판단기준</div>
+<table class="tbl" style="margin-top:6px"><thead><tr><th>하자 영역</th><th>위법성 판단기준(법원)</th></tr></thead><tbody>
+<tr><td><span class="kw">주체</span></td><td>행정조직법 + 처분의 근거 법률상 권한 규정</td></tr>
+<tr><td><span class="kw">절차</span></td><td>행정절차법 + 처분의 근거 법률상 절차 규정</td></tr>
+<tr><td><span class="kw">형식</span></td><td>행정절차법 + 처분의 근거 법률상 형식 규정</td></tr>
+<tr><td rowspan="2"><span class="kw">내용</span></td><td><span class="hl">기속행위</span>: 근거 법률</td></tr>
+<tr><td><span class="hl">재량행위</span>: 근거 법률 + 행정기본법 + 행정법의 일반원칙</td></tr>
+</tbody></table>
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">⚖️ 취소 vs 무효 — 중대·명백설</div><div class="card-body">
+<div class="body-text">위법성 판단이 끝나 처분에 하자가 존재한다고 판명되더라도, 행정소송법 §4(항고소송의 종류)는 <span class="kw">취소와 무효를 엄격히 구별</span>한다. 어떤 기준으로 취소할지 또는 당연무효를 선언할지는 학설·판례로 해결하며, 그 기준이 <span class="hl">중대·명백설</span>이다.</div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 2 · 플래시카드 ══ -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">본안이란</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">위법성 판단 단계</div><ul><li>판결을 위한 모든 소송행위 절차</li><li>위법성을 판단하는 단계</li><li>청구인용=원고주장 수용, 청구기각=배척</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📂</div><div class="fc-term">심리=소송자료 수집</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">사실자료·증거자료</div><ul><li>심리 주체=판사</li><li>사실자료: 사실이 있었음을 진술</li><li>증거자료: 그 사실의 존재를 추정케 함</li><li>주요사실(원고)↔탄핵자료(피고)의 논박</li><li>쟁점사항 정리 후 논박 진행=법원론</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📜</div><div class="fc-term">행정소송법 §8②</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gd"><div class="fc-bt">민사소송법 준용·변론주의</div><ul><li>본안 절차연구는 주로 민사소송법 학자 영역</li><li>§8②으로 민사소송법 규정 준용</li><li>그 기초=변론주의</li><li>본안단계 필수 인용조문</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚙️</div><div class="fc-term">정당한 판결<br>확보제도</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">집행정지·직권심리·기록제출명령</div><ul><li>집행정지: 인용판결 전 처분효과 소멸 방지</li><li>직권심리주의: 본안판결 정당성 확보</li><li>행정심판기록제출명령</li><li>주장책임·입증책임·위법성판단시·처분사유 추가변경=시각차 쟁점</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔁</div><div class="fc-term">취소소송과정의<br>동태성</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b pp"><div class="fc-bt">7가지 동태적 요소</div><ul><li>피고변동→피고경정</li><li>관련청구 이송→관할법원 단원</li><li>소송참가(제3자·다른 행정청)·소변경·병합</li><li>정보공개법(원고)·행정조사(피고)</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔍</div><div class="fc-term">위법성판단<br>3가지 작업</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">법원→기속재량분류→하자4영역</div><ul><li>①법원(法源) 확정 — 명령규칙 위헌위법심사</li><li>②기속/재량행위 분류 — 체제형식문언·목적특성·개별성질유형</li><li>③하자의 4영역(주체·절차·형식·내용)</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🧩</div><div class="fc-term">명령·규칙의<br>위헌·위법심사</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">법원성 박탈 메커니즘</div><ul><li>처분은 외형상 적법(법령에 근거)</li><li>근거법령이 헌법·법률에 위반</li><li>→ 그 법령의 법원성 박탈</li><li>→ 처분의 근거 소멸 → 처분 위법</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📊</div><div class="fc-term">하자 4영역별<br>판단기준</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">주체·절차·형식·내용</div><ul><li>주체: 행정조직법+근거법률 권한규정</li><li>절차: 행정절차법+근거법률 절차규정</li><li>형식: 행정절차법+근거법률 형식규정</li><li>내용(기속): 근거법률</li><li>내용(재량): 근거법률+행정기본법+행정법 일반원칙</li><li>최종: 취소 vs 무효 = 중대·명백설</li></ul></div>
+      </div>
+    </div>
+    </div></div>
+
+<!-- ══ TAB 3 · OX퀴즈 ══ -->
+<div id="panel-quiz" class="panel">
+  <div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+  <div id="qc"></div>
+</div>
+
+<!-- ══ TAB 4 · 필수암기문장 ══ -->
+<div id="panel-memory" class="panel">
+  <div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+  <div class="mem-progress">
+    <div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div>
+    <div class="mem-prog-label" id="prog-label">0 / 0 공개</div>
+    <button class="mem-reveal-all" onclick="revealAll()">전체 공개</button>
+  </div>
+
+<div class="mem-section-title">본안의 의의 — 심리와 청구</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">본안의 정의</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">본안은 심리·심판과 함께 쓰이며 본안 혹은 본안심판이라 한다. 본안은 <span class="mem-blank" onclick="toggleBlank(this)">판결을 내리기 위하여 필요한 모든 소송행위들을 하는 절차</span>이자 <span class="mem-blank" onclick="toggleBlank(this)">위법성을 판단하는 단계</span>이다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">심리의 의미</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">원고의 주장에 관한 모든 자료들을 <span class="mem-blank" onclick="toggleBlank(this)">소송자료</span>라 하는데, 그러한 「소송자료의 수집」을 「<span class="mem-blank" onclick="toggleBlank(this)">심리</span>」라 한다. 소송자료의 수집의 주체는 취소소송을 주관하는 <span class="mem-blank" onclick="toggleBlank(this)">판사</span>이다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">소송자료의 두 종류</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">소송자료는 분쟁의 대상이 된 사건과 관련하여 어떤 사실이 현실로 있었음을 진술하는 <span class="mem-blank" onclick="toggleBlank(this)">사실자료</span>와 그 사실자료가 말하는 사실이 실제로 존재하였음을 추정케 하는 <span class="mem-blank" onclick="toggleBlank(this)">증거자료</span>이다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">주요사실과 탄핵자료</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">원고가 주장하는 위법사유들의 요건에 해당하는 소송사실들을 「<span class="mem-blank" onclick="toggleBlank(this)">주요사실</span>」이라 한다. 원고의 소송자료들의 존재와 주장의 힘을 떨어뜨리는 피고의 소송자료들을 「<span class="mem-blank" onclick="toggleBlank(this)">탄핵자료</span>」라 한다.</div></div></div></div>
+
+<div class="mem-section-title gn">행정소송법 §8② — 본안 절차의 기초</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">조문</span><span class="mem-item-label">§8②의 의미</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">어떻게 해야 심판 역할을 잘 수행할 것인지는 주로 <span class="mem-blank" onclick="toggleBlank(this)">민사소송법 학자</span>들이 고민한다. 우리 행정법은 행정소송법 <span class="mem-blank" onclick="toggleBlank(this)">제8조 제2항</span>을 통하여 그분들의 연구에 숟가락을 얹어간다.</div><div class="mem-note mn-blue">본안 단계 학습 시 반드시 인용되는 조문</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-sent">제도</span><span class="mem-item-label">집행정지제도의 목적</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">취소소송의 원고의 청구를 인용하는 판결이 내려졌을 때 그 취소인용판결이 목적으로 하는 처분이 <span class="mem-blank" onclick="toggleBlank(this)">취소인용판결 전에 효과가 소멸되는 황당한 사태를 방지</span>하기 위하여 예외적인 <span class="mem-blank" onclick="toggleBlank(this)">집행정지제도</span>를 두고 있다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-sent">개념</span><span class="mem-item-label">처분사유의 추가·변경의 특성</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">처분사유의 추가·변경제도는 <span class="mem-blank" onclick="toggleBlank(this)">민사소송에 없는 취소소송만의 특유한 제도</span>임과 동시에 <span class="mem-blank" onclick="toggleBlank(this)">행정소송법상 명문의 규정도 없다</span>.</div></div></div></div>
+
+<div class="mem-section-title gd">처분의 위법성 판단 — 3가지 작업</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">작업① — 법원(法源)과 명령·규칙의 위헌·위법심사</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">명령·규칙의 위헌·위법심사는 취소소송의 대상이 되는 처분이 외형적으로 법령에 근거한 적법한 처분이었지만, 실제는 그 처분이 근거하는 법령이 헌법과 법률에 위반될 때, 그 처분의 근거가 된 법령의 <span class="mem-blank" onclick="toggleBlank(this)">법원으로서의 성격을 박탈</span>함으로써 그 처분의 근거를 없애는 방법이다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">작업② — 기속행위·재량행위의 구별기준</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">취소소송의 대상이 되는 처분이 기속행위인지 재량행위인지는 당해 처분의 <span class="mem-blank" onclick="toggleBlank(this)">근거가 된 법규의 체제·형식·그 문언</span>, 당해 처분이 행해진 <span class="mem-blank" onclick="toggleBlank(this)">행정 분야의 주된 목적과 특성</span>, 그 처분의 <span class="mem-blank" onclick="toggleBlank(this)">개별적 성질과 유형</span> 등을 모두 고려하여 판단하여야 한다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">작업③ — 하자의 4영역과 판단기준</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정행위의 하자가 존재하는 영역은 4영역인데, 바로 <span class="mem-blank" onclick="toggleBlank(this)">주체 영역, 절차 영역, 형식 영역, 내용 영역</span>이다. 내용 영역의 위법성 판단기준은 먼저 행정행위를 기속행위와 재량행위로 나눈 다음, 기속행위인 경우에는 <span class="mem-blank" onclick="toggleBlank(this)">근거 법률</span>이고, 재량행위인 경우에는 근거 법률 외에 <span class="mem-blank" onclick="toggleBlank(this)">행정기본법, 행정법의 일반원칙</span>이다.</div></div></div></div>
+
+<div class="mem-section-title" style="color:var(--purple);border-color:var(--purple)">취소와 무효의 구별</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-sent">결론</span><span class="mem-item-label">취소 vs 무효 — 중대·명백설</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">취소소송의 대상이 되는 처분에 하자가 존재한다고 판명되더라도, 행정소송법 제4조에 의한 항고소송의 종류 규정에 의하면 <span class="mem-blank" onclick="toggleBlank(this)">취소와 무효를 엄격히 구별</span>하고 있으므로, 어떤 기준으로 처분을 취소해야 하는지 혹은 당연무효임을 선언해야 하는지 문제 된다. 그것은 학설과 판례로 해결하며 바로 <span class="mem-blank" onclick="toggleBlank(this)">중대·명백설</span>이다.</div></div></div></div>
+
+</div>
+
+<!-- ══ TAB 5 · 문제의 소재 ══ -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">본안 개관은 ① 처분의 위법성 판단 기준(법원·기속재량·하자영역)의 적용, ② 명령·규칙의 위헌·위법심사를 통한 처분의 위법성 도출, ③ 위법성이 인정된 처분의 취소·무효 구별 3가지로 출제된다.</div></div>
+
+<div class="ms-section"><div class="ms-section-title">① 처분의 위법성 판단 기준의 적용이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">처분에 하자가 있다고 주장될 때, 그 하자가 어느 영역(주체·절차·형식·내용)에 속하는지, 그리고 어떤 법원을 기준으로 위법성을 판단해야 하는지가 문제되는 경우</div><div class="ms-example">예: "甲에 대한 영업정지처분의 위법성을 판단하기 위한 법적 기준은 무엇인가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">위법성 판단의 3단계 작업 — ①법원(法源) 확정 ②기속/재량행위 분류(처분의 근거 법규 체제·형식·문언, 행정분야의 목적·특성, 처분의 개별적 성질·유형 고려) ③하자의 4영역(주체·절차·형식·내용)별 판단기준 적용</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">처분의 하자가 속하는 영역 확정 → 기속/재량 여부 판단(특히 내용 영역) → 해당 영역의 법원(행정조직법·행정절차법·근거법률·행정기본법·행정법 일반원칙)을 적용하여 위법성 결론 도출</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">법원(法源)</span><span class="ms-kw">기속행위·재량행위</span><span class="ms-kw">하자의 4영역</span><span class="ms-kw">행정소송법 §8②</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gn">② 처분의 근거 법령 자체의 위헌·위법이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">처분 자체는 그 근거 법령에 따라 적법하게 행해진 것처럼 보이나, 그 근거 법령(명령·규칙)이 상위법(헌법·법률)에 위반되는 경우</div><div class="ms-example">예: "甲에 대한 처분의 근거가 된 시행령 규정이 법률의 위임범위를 벗어났다면 처분의 효력은 어떻게 되는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">명령·규칙의 위헌·위법심사 — 근거 법령이 헌법·법률에 위반되면 그 법령의 법원으로서의 성격이 박탈되어 처분의 근거가 소멸</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">근거 법령의 위헌·위법 여부 검토 → 위헌·위법 확인 시 그 법령의 법원성 박탈 → 처분은 근거 없는 처분이 되어 위법 → 이후 취소/무효 판단으로 연결</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">명령·규칙의 위헌·위법심사</span><span class="ms-kw">법원성의 박탈</span><span class="ms-kw">근거없는 처분</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gd">③ 위법성이 인정된 처분의 취소·무효 구별이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">위법성 판단의 3단계 작업을 거쳐 처분에 하자가 존재한다고 판명된 후, 그 처분을 취소소송으로 취소할 것인지 무효확인소송으로 당연무효를 선언할 것인지가 문제되는 경우</div><div class="ms-example">예: "甲이 제기할 소송은 취소소송이어야 하는가, 무효확인소송이어야 하는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">행정소송법 §4(항고소송의 종류)는 취소와 무효를 엄격히 구별. 그 구별 기준은 학설·판례인 중대·명백설</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">하자의 중대성(법규 위반의 정도)과 명백성(외관상 명백한지)을 검토 → 중대·명백 모두 충족 시 무효, 그렇지 않으면 취소사유로 결론</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">중대·명백설</span><span class="ms-kw">행정소송법 §4</span><span class="ms-kw">취소사유·무효사유</span></div></div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 6 · 마인드맵 ══ -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- ══ TAB 7 · AI 대화창 ══ -->
+<div id="panel-chat" class="panel">
+  <div class="chat-wrap">
+    <div class="chat-prep" style="text-align:center;padding:56px 22px;background:#f6f8fc;border:1px dashed #cdd6e6;border-radius:16px;margin:8px 0">
+      <div style="font-size:36px;line-height:1;margin-bottom:14px">🛠️</div>
+      <div style="font-size:16px;font-weight:800;color:#16203A;letter-spacing:-.2px">더 나은 서비스를 위하여 준비 중입니다</div>
+    </div>
+    <div class="chat-intro" style="display:none">
+      <div class="chat-intro-title">💬 AI 강의 도우미</div>
+      <div class="chat-intro-text">제13강 본안의 개관에 대해 무엇이든 질문하세요.<br>개념 설명 · OX 근거 · 판례 요지 · 답안 작성법 모두 답변합니다.</div>
+    </div>
+    <div class="chat-notice" style="display:none">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+    <div class="chat-chips" id="chips" style="display:none">
+      <span class="chip" onclick="chipSend(this)">본안 심리의 구조 — 주요사실과 탄핵자료</span>
+      <span class="chip" onclick="chipSend(this)">행정소송법 §8②의 의미</span>
+      <span class="chip" onclick="chipSend(this)">처분 위법성 판단 3단계 작업</span>
+      <span class="chip" onclick="chipSend(this)">하자의 4영역별 판단기준</span>
+      <span class="chip" onclick="chipSend(this)">실로기스무스 답안 예시</span>
+    </div>
+    <div class="chat-msgs" id="chatMsgs" style="display:none"></div>
+    <div class="chat-input-row" style="display:none">
+      <textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  var exp=document.getElementById('e'+i);
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q": "본안이란 판결을 내리기 위하여 필요한 모든 소송행위들을 하는 절차이자 위법성을 판단하는 단계이다.", "a": true, "e": "본안은 심리·심판과 함께 쓰이며, 판결을 내리기 위하여 필요한 모든 소송행위들을 하는 절차이자 위법성을 판단하는 단계이다."},
+{"q": "취소소송의 원고의 주장을 받아들이는 것을 청구기각이라 하고, 배척하는 것을 청구인용이라 한다.", "a": false, "e": "취소소송의 원고의 주장을 받아들이는 것을 청구인용이라 하고, 그 주장을 배척하는 것을 청구기각이라 한다."},
+{"q": "소송자료의 수집을 심리라 하며, 그 수집의 주체는 취소소송의 원고이다.", "a": false, "e": "소송자료의 수집을 심리라 하는데, 그 수집의 주체는 취소소송의 원고가 아니라 취소소송을 주관하는 판사이다."},
+{"q": "소송자료는 어떤 사실이 현실로 있었음을 진술하는 사실자료와 그 사실의 존재를 추정케 하는 증거자료로 구성된다.", "a": true, "e": "소송자료는 분쟁의 대상이 된 사건과 관련하여 어떤 사실이 현실로 있었음을 진술하는 사실자료와, 그 사실자료가 말하는 사실이 실제로 존재하였음을 추정케 하는 증거자료이다."},
+{"q": "원고가 주장하는 위법사유들의 요건에 해당하는 소송사실을 탄핵자료라 하고, 그 자료의 힘을 떨어뜨리는 피고의 자료를 주요사실이라 한다.", "a": false, "e": "원고가 주장하는 위법사유들의 요건에 해당하는 소송사실을 주요사실이라 하고, 원고의 소송자료들의 존재와 주장의 힘을 떨어뜨리는 피고의 소송자료들을 탄핵자료라 한다."},
+{"q": "본안 절차를 어떻게 규정할 것인가에 관한 연구는 주로 형사소송법 학자들이 담당하며, 행정소송법은 이를 행정소송법 제8조 제2항을 통하여 준용한다.", "a": false, "e": "본안에서 어떻게 해야 심판 역할을 잘 수행할 것인지는 주로 민사소송법 학자들이 고민하며, 행정소송법 제8조 제2항을 통하여 그 연구 성과(민사소송법 규정)를 준용한다."},
+{"q": "행정소송법 제8조 제2항이 정한 본안 심리의 기초가 되는 원칙은 변론주의이다.", "a": true, "e": "행정소송법 제8조 제2항에 의하여 취소소송의 전 심리 과정을 이끌어가는 기초로서 민사소송법의 규정을 준용하는데, 그 기초가 되는 원칙을 변론주의라 한다."},
+{"q": "집행정지제도는 청구인용판결이 내려지기 전에 그 판결이 목적으로 하는 처분의 효과가 소멸되는 사태를 방지하기 위한 예외적 제도이다.", "a": true, "e": "취소소송의 원고의 청구를 인용하는 판결이 내려졌을 때 그 취소인용판결이 목적으로 하는 처분이 판결 전에 효과가 소멸되는 사태를 방지하기 위하여 예외적인 집행정지제도를 두고 있다."},
+{"q": "처분사유의 추가·변경제도는 행정소송법에 명문으로 규정되어 있으며 민사소송에도 동일하게 존재하는 제도이다.", "a": false, "e": "처분사유의 추가·변경제도는 민사소송에 없는 취소소송만의 특유한 제도임과 동시에 행정소송법상 명문의 규정도 없는 제도로서, 그 근거와 허용범위는 학설·판례에 의해 정해진다."},
+{"q": "취소소송의 피고가 소송 진행 중 변동되는 문제는 피고경정을 통하여 해소된다.", "a": true, "e": "취소소송과정의 동태성과 관련하여, 취소소송의 피고의 변동은 취소소송의 피고적격에서 다루는 피고경정을 통하여 해소된다."},
+{"q": "처분의 위법성을 판단하기 위한 첫째 작업은 처분이 위법한지를 판단하는 기준인 법원(法源)을 확정하는 작업이며, 그와 관련된 행정소송법적 논점은 명령·규칙의 위헌·위법심사이다.", "a": true, "e": "처분의 위법성을 판단하기 위한 3가지 작업 중 첫째 작업은 판사가 무엇을 기준으로 처분이 법에 위반한다고 판단할 것인가를 밝히는 작업, 즉 법원(法源)을 확정하는 작업이며, 이와 관련된 행정소송법적 논점은 명령·규칙의 위헌·위법심사이다."},
+{"q": "명령·규칙의 위헌·위법심사는 처분 자체에 직접적인 하자가 있는 경우에만 적용되는 심사방식이다.", "a": false, "e": "명령·규칙의 위헌·위법심사는 처분 자체는 외형적으로 법령에 근거한 적법한 처분이었지만, 그 처분이 근거하는 법령이 헌법과 법률에 위반될 때 그 법령의 법원으로서의 성격을 박탈하여 처분의 근거를 없애는 방법이다."},
+{"q": "어떤 처분이 기속행위인지 재량행위인지는 당해 처분의 근거가 된 법규의 체제·형식·문언, 행정 분야의 주된 목적과 특성, 처분의 개별적 성질과 유형 등을 모두 고려하여 판단한다.", "a": true, "e": "판례는 처분이 기속행위인지 재량행위인지를 당해 처분의 근거가 된 법규의 체제·형식·그 문언, 당해 처분이 행해진 행정 분야의 주된 목적과 특성, 그 처분의 개별적 성질과 유형 등을 모두 고려하여 판단하여야 한다고 본다."},
+{"q": "행정행위의 하자가 존재하는 영역은 주체·절차·형식·내용의 4영역이며, 각 영역마다 별도의 위법성 판단기준(법원)이 존재한다.", "a": true, "e": "행정행위의 하자가 존재하는 영역은 주체 영역, 절차 영역, 형식 영역, 내용 영역의 4영역이며, 그 4영역마다 위법성 판단기준으로 별도의 법원들이 있다."},
+{"q": "재량행위의 내용 영역에서 위법성 판단기준은 근거 법률에 한정되며, 행정기본법이나 행정법의 일반원칙은 적용되지 않는다.", "a": false, "e": "내용 영역의 위법성 판단기준은 기속행위인 경우 근거 법률이지만, 재량행위인 경우에는 근거 법률 외에 행정기본법, 행정법의 일반원칙도 위법성 판단기준이 된다."},
+{"q": "처분에 하자가 존재한다고 판명되면 행정소송법 제4조에 따라 항상 무효확인소송을 제기해야 하며, 취소소송을 제기할 수는 없다.", "a": false, "e": "행정소송법 제4조에 의한 항고소송의 종류 규정은 취소와 무효를 엄격히 구별하므로, 처분에 하자가 존재한다고 판명되더라도 그 하자가 취소사유인지 무효사유인지에 따라 취소소송 또는 무효확인소송 중 적절한 것을 제기해야 하며, 그 구별 기준이 중대·명백설이다."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "본안의의": ["본안=심리·심판, 위법성을 판단하는 단계", "청구인용=원고주장 수용 / 청구기각=배척"],
+    "심리소송자료": ["심리=소송자료의 수집, 주체는 판사", "사실자료(사실의 진술) + 증거자료(사실존재 추정)", "주요사실(원고)↔탄핵자료(피고)의 논박", "쟁점사항 정리 → 법원론"],
+    "행정소송법8조2항": ["본안절차 연구는 주로 민사소송법 학자 영역", "행정소송법§8②으로 민사소송법 규정 준용", "그 기초=변론주의", "본안단계 필수 인용조문"],
+    "판결확보제도": ["집행정지: 인용판결 전 처분효과소멸 방지", "직권심리주의, 행정심판기록제출명령", "쟁점: 주장입증책임·위법성판단시·처분사유추가변경"],
+    "동태성": ["피고변동→피고경정", "관련청구이송→관할법원", "소송참가(원고측·피고측)·소변경·병합", "정보공개법(원고)·행정조사(피고)"],
+    "법원확정": ["법원(法源)=처분 위법판단의 기준", "명령·규칙의 위헌·위법심사", "근거법령이 헌법·법률위반 → 법원성 박탈 → 처분 근거소멸"],
+    "기속재량분류": ["근거 법규의 체제·형식·문언", "행정분야의 주된 목적과 특성", "처분의 개별적 성질과 유형", "→ 6개 법률행위적+4개 준법률행위적 행정행위에 적용"],
+    "하자4영역": ["주체: 행정조직법+근거법률 권한규정", "절차: 행정절차법+근거법률 절차규정", "형식: 행정절차법+근거법률 형식규정", "내용(기속): 근거법률 / 내용(재량): 근거법률+행정기본법+일반원칙"],
+    "취소무효구별": ["행정소송법§4 — 취소·무효 엄격 구별", "구별기준=중대·명백설", "위법성 판단 종료 후 최종 단계"]
+  };
+  var tree={"name":"본안의 개관","depth":0,"children":[
+    {"name":"본안의 의의","depth":1,"children":[
+      {"name":"본안의의",depth:3},{"name":"심리소송자료",depth:3}
+    ]},
+    {"name":"본안 절차의 기초(§8②)","depth":1,"children":[
+      {"name":"행정소송법8조2항",depth:3},{"name":"판결확보제도",depth:3},{"name":"동태성",depth:3}
+    ]},
+    {"name":"처분의 위법성 판단","depth":1,"children":[
+      {"name":"법원확정",depth:3},{"name":"기속재량분류",depth:3},{"name":"하자4영역",depth:3}
+    ]},
+    {"name":"취소와 무효의 구별","depth":1,"children":[
+      {"name":"취소무효구별",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,145]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+
+// ── AI 대화창 ──
+var CHAT_KEY = 'ch13_chat_history';
+var CHAT_TTL = 7 * 24 * 60 * 60 * 1000; // 7일
+var chatHistory = [];
+
+var SYSTEM_PROMPT = `당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제13강 본안의 개관」
+주요 내용: 본안의 의의(심리=소송자료의 수집, 청구인용/청구기각, 사실자료·증거자료, 주요사실·탄핵자료, 법원론), 행정소송법 §8②에 의한 민사소송법 준용과 변론주의, 정당한 판결 확보를 위한 제도(집행정지·직권심리주의·행정심판기록제출명령, 주장책임·입증책임·위법성판단시·처분사유의 추가변경의 시각차), 취소소송과정의 동태성(피고경정·관련청구이송·소송참가·소변경·병합·정보공개법·행정조사), 처분의 위법성 판단을 위한 3가지 작업(①법원의 확정과 명령·규칙의 위헌·위법심사 ②기속행위·재량행위의 분류기준 ③하자의 4영역인 주체·절차·형식·내용 영역별 판단기준), 위법성 판명 후 취소와 무효의 구별기준인 중대·명백설.
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생(행정사·노무사·변시·5급 등)의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 법조문 번호(§8②, §4 등)를 자연스럽게 활용한다.
+4. 답안 작성법 질문에는 실로기스무스(…이므로 …이어서 …이다) 패턴을 적용한 예시를 보여준다.
+5. 판례 요지는 핵심 문장 위주로 간결하게 제시한다.
+6. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){
+  try{
+    localStorage.setItem(CHAT_KEY, JSON.stringify({
+      ts: Date.now(),
+      history: chatHistory
+    }));
+  }catch(e){}
+}
+
+function loadChat(){
+  try{
+    var raw = localStorage.getItem(CHAT_KEY);
+    if(!raw) return false;
+    var data = JSON.parse(raw);
+    if(!data.ts || (Date.now() - data.ts) > CHAT_TTL){
+      localStorage.removeItem(CHAT_KEY);
+      return false;
+    }
+    chatHistory = data.history || [];
+    var msgs = document.getElementById('chatMsgs');
+    msgs.innerHTML = '';
+    chatHistory.forEach(function(m){
+      addMsg(m.role === 'user' ? 'user' : 'ai', m.content);
+    });
+    if(chatHistory.length > 0) document.getElementById('chips').style.display = 'none';
+    return chatHistory.length > 0;
+  }catch(e){
+    return false;
+  }
+}
+
+function chatWelcome(){
+  if(loadChat()) return;
+  addMsg('ai','안녕하세요! 제13강 본안의 개관 AI 도우미입니다. 개념 질문, OX 해설, 판례, 답안 작성법 등 무엇이든 물어보세요.');
+}
+
+function addMsg(role, text){
+  var msgs = document.getElementById('chatMsgs');
+  var div = document.createElement('div');
+  div.className = 'msg ' + role;
+  var now = new Date();
+  var t = now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML = '<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function showTyping(){
+  var msgs = document.getElementById('chatMsgs');
+  var div = document.createElement('div');
+  div.className = 'msg ai chat-typing';
+  div.id = 'typing-indicator';
+  div.innerHTML = '<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function hideTyping(){
+  var el = document.getElementById('typing-indicator');
+  if(el) el.remove();
+}
+
+async function sendChat(){
+  var inp = document.getElementById('chatInput');
+  var text = inp.value.trim();
+  if(!text) return;
+  inp.value = ''; inp.style.height = '';
+  document.getElementById('chatSend').disabled = true;
+
+  addMsg('user', text);
+  chatHistory.push({role:'user', content: text});
+  saveChat();
+  document.getElementById('chips').style.display = 'none';
+
+  showTyping();
+
+  try {
+    var res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:1000,
+        system: SYSTEM_PROMPT,
+        messages: chatHistory
+      })
+    });
+    var data = await res.json();
+    hideTyping();
+    var reply = (data.content && data.content[0] && data.content[0].text) ? data.content[0].text : '답변을 가져오지 못했습니다.';
+    addMsg('ai', reply);
+    chatHistory.push({role:'assistant', content: reply});
+    saveChat();
+  } catch(e){
+    hideTyping();
+    addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+  }
+  document.getElementById('chatSend').disabled = false;
+}
+
+function chipSend(el){
+  document.getElementById('chatInput').value = el.textContent;
+  el.parentNode.style.display='none';
+  sendChat();
+}
+
+function chatKey(e){
+  if(e.key==='Enter' && !e.shiftKey){e.preventDefault();sendChat();}
+}
+function autoResize(el){
+  el.style.height='auto';
+  el.style.height=Math.min(el.scrollHeight,90)+'px';
+}
+</script>
+</body>
+</html>

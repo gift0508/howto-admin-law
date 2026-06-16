@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제11강 제소기간과 하자의 승계 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:200px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.mem-note{margin-top:8px;padding:7px 10px;border-radius:5px;font-size:11.5px;line-height:1.6}
+.mn-blue{background:var(--blue-l);color:var(--blue)}.mn-green{background:var(--green-l);color:var(--green)}.mn-gold{background:var(--gold-l);color:var(--gold)}.mn-red{background:var(--red-l);color:var(--red)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+
+/* ── AI 대화창 ── */
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제11강 제소기간과 하자의 승계</div>
+  <div class="hdr-sub">§20 안 날·있은 날 · 불가쟁력 · 하자승계론 vs 구속력이론</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- ══ TAB 1 · 요약노트 ══ -->
+<div id="panel-summary" class="panel on">
+
+<div class="card"><div class="card-head ch-blue">⏱️ 제소기간의 의의 — 왜 필요한가</div><div class="card-body">
+<div class="body-text">취소소송은 <span class="kw">형성소송</span>이므로 청구인용판결이 나오면 취소된 행정행위로 정착된 <span class="hl">법률관계의 안정성이 파괴</span>된다. 그래서 일정 기간 내에만 그 흠을 다툴 수 있도록 제소기간을 취소소송요건으로 둔다. 제소기간을 충족하지 못하면 <span class="r">부적법소각하판결</span>을 면치 못한다.</div>
+<div class="alert al-blue" style="margin-top:10px"><div class="alert-label">📌 공정력과 불가쟁력 — 동일 현상의 두 측면</div>
+행정청의 처분은 흠이 있더라도 <span class="kw">일단 유효</span>한 것으로 보되(=<span class="hl">공정력</span>, 실체법적 효력), 제소기간이 지나면 그 흠을 더 이상 다툴 수 없다(=<span class="hl">불가쟁력</span>, 소송법적 효력). 둘은 무관계한 논의가 아니라 <span class="kw">제소기간 경과라는 동일한 현상</span>을 실체법·소송법 측면에서 바라본 것이다.
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">📏 제소기간의 길이 — 기산점과 길이의 결합</div><div class="card-body">
+<div class="body-text" style="margin-bottom:10px">제소기간 = <span class="kw">기산점(시작점)</span> + <span class="kw">길이</span>. 길이에는 누구도 늘이거나 줄일 수 없는 <span class="hl">불변기간</span>과, 정당한 사유가 있으면 변화 가능한 기간 두 종류가 있다.</div>
+<table class="tbl"><thead><tr><th>구분</th><th>기산점</th><th>길이</th><th>예외</th></tr></thead><tbody>
+<tr><td>일반 (행정심판 미경유)</td><td>처분이 있음을 <span class="kw">안 날</span> = 통지·공고 등으로 현실적으로 안 날</td><td>90일</td><td><span class="r">불변기간</span> — 정당한 사유 있어도 ✗</td></tr>
+<tr><td>일반 (행정심판 미경유)</td><td>처분이 <span class="kw">있은 날</span> = 행정처분이 상대방에게 도달하여 효력 발생한 날</td><td>1년</td><td><span class="g">정당한 사유</span> 있으면 경과해도 제소 가능</td></tr>
+<tr><td>행정심판 경유</td><td>재결서의 <span class="kw">정본을 송달받은 날</span></td><td>90일</td><td>불변기간</td></tr>
+<tr><td>행정심판 경유</td><td><span class="kw">재결이 있은 날</span></td><td>1년</td><td>정당한 사유 있으면 경과해도 제소 가능</td></tr>
+</tbody></table>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 핵심판례 — 제3자의 정당한 사유</div>
+행정처분의 직접 상대방이 아닌 <span class="kw">제3자</span>는 처분이 있음을 곧 알 수 없는 처지이므로, 행정심판법 §27③의 <span class="hl">심판청구 제척기간 내에 처분이 있음을 알았다는 특별한 사정이 없는 한</span> 정당한 사유가 있는 때에 해당한다.<div class="출처">대판 1989.5.9. 88누5150</div>
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">⚖️ 제소기간 경과의 효과 — 불가쟁력</div><div class="card-body">
+<div class="alert al-gold"><div class="alert-label">📌 불가쟁력 = 형식적 확정력</div>
+처분의 위법성이 매우 농후하더라도 취소소송의 제기가 제소기간을 도과했다면 더 이상 그 처분을 다툴 수 없는 효력 = <span class="kw">불가쟁력(형식적 확정력)</span>. 불가쟁력으로 인해 제소기간이 지난 취소소송의 제기는 <span class="r">부적법소각하판결</span>을 면치 못한다.
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">🔗 하자의 승계 — 의의와 전제요건</div><div class="card-body">
+<div class="body-text" style="margin-bottom:10px">불가쟁력이 발생한 선행처분을 기초로 적법·유효한 후행처분이 누적되면, 국민은 어떤 방법으로도 구제받을 길이 없게 된다. 이를 방지하기 위해 예외적으로 선행처분의 위법을 후행처분 단계에서 다투게 하는 것이 <span class="kw">하자의 승계</span> 논의이다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 하자 승계 논의의 4가지 전제 요건</div>
+① 선행행위·후행행위 모두 <span class="hl">항고소송의 대상인 처분</span>일 것<br>
+② 선행행위는 <span class="hl">당연무효가 아닌 취소사유</span>의 하자가 존재할 것<br>
+③ 선행행위의 하자를 제소기간 내에 다투지 않아 <span class="hl">불가쟁력</span>이 발생할 것<br>
+④ 후행행위는 <span class="hl">적법</span>할 것<br>
+<span style="font-size:11px;color:#888">※ ④의 '적법'은 후행행위에 위법사유가 없다는 뜻이 아니라, 후행행위를 대상으로 한 취소소송의 제기가 적법(=소송요건 충족)하다는 의미. 청구취지1.은 항상 '후행행위를 취소한다'</span>
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">🔀 하자승계론 vs 구속력이론</div><div class="card-body">
+<table class="tbl"><thead><tr><th>구분</th><th>관점</th><th>핵심 기준</th></tr></thead><tbody>
+<tr><td><span class="kw">하자승계론</span></td><td>하자 그 자체에 관심 — 승계 요건과 인정범위를 직접 검토</td><td>선행·후행처분이 <span class="hl">상호관련성을 가지며 결합하여 1개의 효과</span>를 완성하는 경우 → 승계 ✅<br>서로 <span class="hl">독립하여 별개의 효과</span> → 선행처분 당연무효가 아닌 한 승계 ✗</td></tr>
+<tr><td><span class="kw">구속력이론</span></td><td>선행행위 불가쟁력(=구속력)이 후행행위에 미치는지를 검토</td><td>원칙: 구속력으로 인해 선행행위 하자 주장 ✗<br>예외: 후행행위가 <span class="hl">예측불가능·수인불가능</span>한 경우 → 구속력 차단 → 선행행위 하자 주장 ✅</td></tr>
+</tbody></table>
+<div class="alert al-green" style="margin-top:10px"><div class="alert-label">📌 양 학설의 공통점·상이점</div>
+공통점: <span class="kw">하자 승계 논의의 전제 요건</span>을 만족해야 한다는 점은 동일<br>
+상이점: 하자를 다루는 시각 자체가 다름 (하자 자체의 승계 vs 불가쟁력=구속력의 차단 여부)
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">🔑 핵심판례 — 결합효과/독립효과 + 예측·수인가능성</div><div class="card-body">
+<div class="판례박스">두 개 이상의 행정처분이 연속적으로 행하여지는 경우 선행처분과 후행처분이 서로 결합하여 <span class="kw">1개의 법률효과를 완성</span>하는 때에는 선행처분에 하자가 있으면 그 하자는 후행처분에 승계되므로, 선행처분에 불가쟁력이 생겨 그 효력을 다툴 수 없게 된 경우에도 선행처분의 하자를 이유로 후행처분의 효력을 다툴 수 있다.<br><br>
+반면 선행처분과 후행처분이 서로 <span class="kw">독립하여 별개의 법률효과</span>를 발생시키는 때에는, 선행처분에 불가쟁력이 생긴 경우 선행처분의 하자가 <span class="r">중대·명백하여 당연무효</span>인 경우를 제외하고는 선행처분의 하자를 이유로 후행처분의 효력을 다툴 수 없는 것이 원칙이다.<br><br>
+다만 별개의 효과를 목적으로 하는 경우에도, 선행처분의 불가쟁력·구속력이 불이익을 입는 자에게 <span class="hl">수인한도를 넘는 가혹함</span>을 가져오고 그 결과가 <span class="hl">예측가능한 것이 아닌 경우</span>에는 헌법상 재판받을 권리 보장의 이념에 비추어 선행처분의 구속력은 인정될 수 없고, 후행처분 취소소송에서 선행처분의 위법을 독립된 위법사유로 주장할 수 있다.
+<div class="출처">대판 1994.1.25. 93누8542</div></div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 2 · 플래시카드 ══ -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⏱️</div><div class="fc-term">제소기간의 존재이유</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">법률관계의 안정성</div><ul><li>취소소송 = 형성소송</li><li>인용판결 시 정착된 법률관계 파괴</li><li>제소기간 미충족 → 부적법소각하</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">공정력 vs 불가쟁력</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">동일 현상의 두 측면</div><ul><li>공정력 = 실체법적 효력 (일단 유효)</li><li>불가쟁력 = 소송법적 효력 (더 다툴 수 없음)</li><li>둘 다 제소기간 경과라는 동일 현상에서 도출</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📅</div><div class="fc-term">제소기간 90일·1년</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gd"><div class="fc-bt">안 날 vs 있은 날</div><ul><li>안 날 + 90일 → 불변기간(정당한 사유 ✗)</li><li>있은 날 + 1년 → 정당한 사유 있으면 ✅</li><li>행정심판 경유: 재결서 정본송달일+90일 / 재결일+1년</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🧑‍⚖️</div><div class="fc-term">제3자의 정당한 사유</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">대판 88누5150</div><ul><li>제3자는 처분을 곧 알 수 없는 처지</li><li>행정심판법§27③ 제척기간 내 처분을 알았다는</li><li>특별한 사정 없으면 → 정당한 사유 인정</li><li>1년 경과해도 제소 가능</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🚫</div><div class="fc-term">불가쟁력</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b pp"><div class="fc-bt">형식적 확정력</div><ul><li>제소기간 도과 → 더 이상 처분을 다툴 수 없음</li><li>처분의 위법성이 농후해도 적용</li><li>위반 시 부적법소각하판결</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔗</div><div class="fc-term">하자승계 전제요건</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">4가지 요건</div><ul><li>①선·후행 모두 처분(항고소송 대상)</li><li>②선행은 취소사유(당연무효✗)</li><li>③선행에 불가쟁력 발생</li><li>④후행 소제기가 적법(소송요건 충족)</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚔️</div><div class="fc-term">하자승계론 vs<br>구속력이론</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">시각의 차이</div><ul><li>하자승계론: 결합효과→승계✅ / 독립효과→✗</li><li>구속력이론: 원칙 구속(주장✗)</li><li>예외: 예측불가능·수인불가능 → 구속력 차단</li><li>공통: 전제요건 충족 필요</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📜</div><div class="fc-term">대판 93누8542</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">결합효과/독립효과 + 예외</div><ul><li>1개 법률효과 완성(결합) → 하자 승계 ✅</li><li>별개 법률효과(독립) → 원칙 승계 ✗ (당연무효 예외)</li><li>독립효과라도 수인한도 초과+예측불가능 → 구속력 부정</li><li>→ 선행처분 위법을 독립된 위법사유로 주장 가능</li></ul></div>
+      </div>
+    </div>
+    </div></div>
+
+<!-- ══ TAB 3 · OX퀴즈 ══ -->
+<div id="panel-quiz" class="panel">
+  <div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+  <div id="qc"></div>
+</div>
+
+<!-- ══ TAB 4 · 필수암기문장 ══ -->
+<div id="panel-memory" class="panel">
+  <div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+  <div class="mem-progress">
+    <div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div>
+    <div class="mem-prog-label" id="prog-label">0 / 0 공개</div>
+    <button class="mem-reveal-all" onclick="revealAll()">전체 공개</button>
+  </div>
+
+<div class="mem-section-title">제소기간 — 조문 및 기본개념</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">조문</span><span class="mem-item-label">제소기간 본문 (§20)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">취소소송은 처분등이 있음을 <span class="mem-blank" onclick="toggleBlank(this)">안 날</span>부터 <span class="mem-blank" onclick="toggleBlank(this)">90일</span> 이내에 제기하여야 한다. 취소소송은 처분등이 <span class="mem-blank" onclick="toggleBlank(this)">있은 날</span>부터 <span class="mem-blank" onclick="toggleBlank(this)">1년</span>을 경과하면 이를 제기하지 못한다. 다만, <span class="mem-blank" onclick="toggleBlank(this)">정당한 사유</span>가 있는 때에는 그러하지 아니하다.</div><div class="mem-note mn-blue">행정소송법 §20</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">제소기간을 둔 이유</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">취소소송은 <span class="mem-blank" onclick="toggleBlank(this)">형성소송</span>이므로 청구인용판결이 나오면 취소된 행정행위로 인하여 정착된 <span class="mem-blank" onclick="toggleBlank(this)">법률관계의 안정성이 파괴</span>되기 때문에 제소기간을 취소소송요건으로 둔다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">공정력과 불가쟁력의 관계</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">실체법적 효력인 <span class="mem-blank" onclick="toggleBlank(this)">공정력</span>과 소송법적 효력인 <span class="mem-blank" onclick="toggleBlank(this)">불가쟁력</span>은 서로 전혀 무관계한 논의가 아니라 <span class="mem-blank" onclick="toggleBlank(this)">제소기간의 경과라는 동일한 현상</span>을 실체법적 효력의 측면과 소송법적 효력의 측면에서 바라본 것에 불과하다.</div></div></div></div>
+
+<div class="mem-section-title gn">제소기간의 기산점</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">'안 날'의 의미</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">처분등이 있음을 안 날이란 <span class="mem-blank" onclick="toggleBlank(this)">통지·공고 기타의 방법에 의하여 당해 처분이 있었다는 사실을 현실적으로 안 날</span>을 의미한다. 90일의 기간은 <span class="mem-blank" onclick="toggleBlank(this)">불변기간</span>으로 한다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">'있은 날'의 의미</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">처분등이 있은 날이란 상대방 있는 행정행위의 경우에는 특별한 규정이 없는 한 의사표시의 일반적 법리에 따라 그 <span class="mem-blank" onclick="toggleBlank(this)">행정처분이 상대방에게 도달되어 효력을 발생한 날</span>을 의미한다. 정당한 사유가 있으면 1년의 기간이 경과하여도 <span class="mem-blank" onclick="toggleBlank(this)">제소할 수 있다</span>.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">제3자의 정당한 사유</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정처분의 직접 상대방이 아닌 제3자는 행정처분이 있음을 곧 알 수 없는 처지이므로 <span class="mem-blank" onclick="toggleBlank(this)">행정심판법 제27조 제3항 소정의 심판청구의 제척기간 내에 처분이 있음을 알았다는 특별한 사정이 없는 한</span> 정당한 사유가 있는 때에 해당한다.</div><div class="mem-note mn-gold">대판 1989.5.9. 88누5150</div></div></div></div>
+
+<div class="mem-section-title gd">불가쟁력 및 하자의 승계</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">불가쟁력의 의미</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">처분의 위법성이 매우 농후함에도 처분에 대한 취소소송의 제기가 취소소송의 제소기간을 도과한 소제기라면 더 이상 그 처분을 다툴 수 없게 되는 효력을 <span class="mem-blank" onclick="toggleBlank(this)">불가쟁력</span>이라 한다. 불가쟁력을 다른 말로 <span class="mem-blank" onclick="toggleBlank(this)">형식적 확정력</span>이라 한다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">요건</span><span class="mem-item-label">하자 승계 논의의 전제 요건</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">하자의 승계가 논의되려면, ①선행행위와 후행행위가 모두 <span class="mem-blank" onclick="toggleBlank(this)">항고소송의 대상이 되는 행정처분</span>일 것, ②선행행위는 <span class="mem-blank" onclick="toggleBlank(this)">당연무효가 아닌 취소사유</span>에 해당하는 하자가 존재할 것, ③선행행위의 하자를 제소기간 내에 다투지 않아 선행행위에 <span class="mem-blank" onclick="toggleBlank(this)">불가쟁력</span>이 발생할 것, ④후행행위는 <span class="mem-blank" onclick="toggleBlank(this)">적법</span>할 것이라는 전제 요건을 충족하여야 한다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-sent">의미</span><span class="mem-item-label">전제요건④ '적법'의 진정한 의미</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">하자 승계 논의의 전제 요건에서 후행행위는 적법하여야 한다는 의미는 후행행위는 위법사유가 없어야 한다는 의미가 아니라 <span class="mem-blank" onclick="toggleBlank(this)">후행행위를 대상으로 하는 취소소송의 제기가 적법하여야 한다</span>는 의미이다.</div><div class="mem-note mn-blue">청구취지1.은 항상 '후행행위를 취소한다'</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-sent">학설</span><span class="mem-item-label">하자승계론</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">하자승계론은 선행행위와 후행행위가 <span class="mem-blank" onclick="toggleBlank(this)">상호관련성을 가지면서 결합하여 하나의 효과를 완성하는 경우</span>에는 하자가 승계되고, <span class="mem-blank" onclick="toggleBlank(this)">서로 독립하여 별개의 효과를 발생하는 경우</span>에는 선행처분이 당연무효가 아닌 한 하자 승계가 부인된다고 본다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-sent">학설</span><span class="mem-item-label">구속력이론</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">구속력이론에 의하면, 선행행위에 발생한 불가쟁력이 후행행위에 미치는 구속력 때문에 후행행위를 다투면서 선행행위의 하자 있음을 주장하지 못하나, 후행행위가 <span class="mem-blank" onclick="toggleBlank(this)">예측불가능하거나 수인불가능</span>한 경우에는 예외적으로 그 구속력이 차단되므로 후행행위를 다투면서 선행행위의 하자있음을 주장할 수 있다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">결합효과/독립효과 + 예외 (93누8542)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">선행처분과 후행처분이 서로 결합하여 <span class="mem-blank" onclick="toggleBlank(this)">1개의 법률효과를 완성</span>하는 때에는 선행처분의 하자는 후행처분에 승계되므로 선행처분에 불가쟁력이 생긴 경우에도 후행처분의 효력을 다툴 수 있는 반면, 선행처분과 후행처분이 서로 <span class="mem-blank" onclick="toggleBlank(this)">독립하여 별개의 법률효과를 발생</span>시키는 때에는 선행처분의 하자가 중대·명백하여 당연무효인 경우를 제외하고는 다툴 수 없는 것이 원칙이다. 다만 그 결과가 <span class="mem-blank" onclick="toggleBlank(this)">수인한도를 넘는 가혹</span>함을 가져오며 <span class="mem-blank" onclick="toggleBlank(this)">예측가능한 것이 아닌 경우</span>에는 선행처분의 후행처분에 대한 구속력은 인정될 수 없다.</div><div class="mem-note mn-gold">대법원 1994.1.25. 선고 93누8542 판결</div></div></div></div>
+
+</div>
+
+<!-- ══ TAB 5 · 문제의 소재 ══ -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제소기간 단원은 ① 제소기간 준수 여부 판단, ② 제소기간 도과 후 정당한 사유 검토, ③ 불가쟁력 발생 후 하자승계 가능성 검토 3가지로 출제된다.</div></div>
+
+<div class="ms-section"><div class="ms-section-title">① 제소기간 준수 여부가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">처분을 안 날과 있은 날, 행정심판 경유 여부에 따라 제소기간 충족 여부가 다투어지는 경우</div><div class="ms-example">예: "甲의 취소소송은 제소기간을 준수하였는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">행정소송법 §20 — 안 날부터 90일(불변기간) / 있은 날부터 1년(정당한 사유 시 예외). 행정심판 경유 시 재결서 정본송달일·재결일 기준으로 동일한 길이 적용</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">처분의 통지·공고 시점 확인 → 안 날·있은 날 확정 → 90일/1년 기산 → 행정심판 경유 시 재결서 송달일로 재기산</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">행정소송법 §20</span><span class="ms-kw">안 날·있은 날</span><span class="ms-kw">불변기간</span><span class="ms-kw">재결서 정본송달</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gn">② 1년 경과 후 정당한 사유가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">처분의 직접 상대방이 아닌 제3자가 처분이 있은 날부터 1년이 지난 후 그 사실을 알게 되어 취소소송을 제기하는 경우</div><div class="ms-example">예: "제3자 甲이 1년이 지난 후 제기한 취소소송은 적법한가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">§20② 단서 — 1년 경과에 정당한 사유가 있으면 제소 가능. 대판 88누5150 — 제3자는 행정심판법§27③ 제척기간 내 처분을 알았다는 특별한 사정이 없으면 정당한 사유 인정</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">제3자 여부 확인 → 처분을 안 시점이 행정심판 제척기간 내였는지 검토 → 특별한 사정 없으면 정당한 사유 인정 → 1년 경과에도 제소 가능</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">정당한 사유</span><span class="ms-kw">제3자의 제소기간</span><span class="ms-kw">행정심판법 §27③</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gd">③ 불가쟁력 발생 후 후행처분에서 선행처분의 하자를 다툴 수 있는지가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">선행처분의 제소기간이 도과하여 불가쟁력이 발생한 후, 그에 기초한 후행처분이 행해진 경우 선행처분의 하자를 후행처분 취소소송에서 다툴 수 있는지</div><div class="ms-example">예: "甲은 후행처분 취소소송에서 선행처분의 위법성을 주장할 수 있는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">하자 승계 논의의 4가지 전제요건 충족 여부 검토(①선후행 모두 처분 ②선행은 취소사유 ③선행 불가쟁력 ④후행소송 적법) → 충족 시 결합효과/독립효과 구별 (대판 93누8542)</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">선·후행처분이 1개의 법률효과를 완성하는지(결합) 또는 별개의 효과를 발생시키는지(독립) 판단 → 결합이면 승계 인정 → 독립이면 원칙 부정하되 수인한도 초과+예측불가능성 검토하여 예외적 구속력 부정 가능</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">하자의 승계</span><span class="ms-kw">하자승계론·구속력이론</span><span class="ms-kw">결합효과·독립효과</span><span class="ms-kw">수인한도·예측가능성</span><span class="ms-kw">대판 93누8542</span></div></div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 6 · 마인드맵 ══ -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- ══ TAB 7 · AI 대화창 ══ -->
+<div id="panel-chat" class="panel">
+  <div class="chat-wrap">
+    <div class="chat-prep" style="text-align:center;padding:56px 22px;background:#f6f8fc;border:1px dashed #cdd6e6;border-radius:16px;margin:8px 0">
+      <div style="font-size:36px;line-height:1;margin-bottom:14px">🛠️</div>
+      <div style="font-size:16px;font-weight:800;color:#16203A;letter-spacing:-.2px">더 나은 서비스를 위하여 준비 중입니다</div>
+    </div>
+    <div class="chat-intro" style="display:none">
+      <div class="chat-intro-title">💬 AI 강의 도우미</div>
+      <div class="chat-intro-text">제11강 제소기간과 하자의 승계에 대해 무엇이든 질문하세요.<br>개념 설명 · OX 근거 · 판례 요지 · 답안 작성법 모두 답변합니다.</div>
+    </div>
+    <div class="chat-notice" style="display:none">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+    <div class="chat-chips" id="chips" style="display:none">
+      <span class="chip" onclick="chipSend(this)">제소기간 90일·1년 정리</span>
+      <span class="chip" onclick="chipSend(this)">공정력과 불가쟁력의 관계</span>
+      <span class="chip" onclick="chipSend(this)">하자승계 전제요건 4가지</span>
+      <span class="chip" onclick="chipSend(this)">하자승계론과 구속력이론 비교</span>
+      <span class="chip" onclick="chipSend(this)">실로기스무스 답안 예시</span>
+    </div>
+    <div class="chat-msgs" id="chatMsgs" style="display:none"></div>
+    <div class="chat-input-row" style="display:none">
+      <textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  var exp=document.getElementById('e'+i);
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q": "취소소송은 처분등이 있음을 안 날부터 90일 이내에 제기하여야 하며, 이 90일의 기간은 불변기간이다.", "a": true, "e": "행정소송법 §20①에 따라 처분등이 있음을 안 날부터 90일 이내에 제기하여야 하고, 이 90일의 기간은 불변기간으로서 정당한 사유가 있더라도 그 기간이 늘어나지 않는다."},
+{"q": "취소소송은 처분등이 있은 날부터 1년이 경과하면 정당한 사유가 있더라도 제기할 수 없다.", "a": false, "e": "행정소송법 §20②에 따라 처분등이 있은 날부터 1년을 경과하면 원칙적으로 제기할 수 없으나, 정당한 사유가 있는 때에는 그러하지 아니하다."},
+{"q": "행정심판을 거친 경우 취소소송의 제소기간은 재결서의 정본을 송달받은 날부터 90일, 재결이 있은 날부터 1년이며 그 길이는 동일하다.", "a": true, "e": "행정심판청구가 있은 경우 제소기간의 길이는 안 날·있은 날을 기준으로 한 경우와 동일하게 90일과 1년이며, 다만 그 기산점이 재결서 정본 송달일과 재결이 있은 날로 바뀐다."},
+{"q": "처분의 공정력과 불가쟁력은 서로 무관한 별개의 효력으로서 함께 논의할 필요가 없다.", "a": false, "e": "공정력(실체법적 효력)과 불가쟁력(소송법적 효력)은 제소기간의 경과라는 동일한 현상을 실체법적 측면과 소송법적 측면에서 바라본 것에 불과하므로 서로 무관한 논의가 아니다."},
+{"q": "처분이 있음을 안 날이란 처분이 있었다는 사실을 통지·공고 등의 방법으로 현실적으로 안 날을 의미한다.", "a": true, "e": "처분등이 있음을 안 날이란 통지·공고 기타의 방법에 의하여 당해 처분이 있었다는 사실을 현실적으로 안 날을 의미한다."},
+{"q": "처분의 직접 상대방이 아닌 제3자는 행정심판법상 심판청구의 제척기간 내에 처분이 있음을 알았다는 특별한 사정이 없는 한, 1년이 지난 후에도 정당한 사유가 있는 것으로 보아 제소가 가능하다.", "a": true, "e": "대판 1989.5.9. 88누5150에 따르면 처분의 직접 상대방이 아닌 제3자는 처분이 있음을 곧 알 수 없는 처지이므로, 행정심판법§27③ 제척기간 내에 처분이 있음을 알았다는 특별한 사정이 없는 한 정당한 사유가 있는 때에 해당한다."},
+{"q": "불가쟁력이 발생하면 처분의 위법성이 매우 크더라도 더 이상 그 처분을 취소소송으로 다툴 수 없다.", "a": true, "e": "불가쟁력(형식적 확정력)은 처분의 위법성이 매우 농후함에도 제소기간을 도과한 소제기라면 더 이상 그 처분을 다툴 수 없게 되는 효력이다."},
+{"q": "하자 승계가 논의되기 위한 전제요건 중 하나는 선행행위에 당연무효의 하자가 존재하여야 한다는 것이다.", "a": false, "e": "하자 승계 논의의 전제요건은 선행행위에 당연무효가 아닌 취소사유에 해당하는 하자가 존재할 것을 요구한다. 선행행위가 당연무효라면 하자의 승계가 아니라 무효의 주장으로 직접 다룰 수 있다."},
+{"q": "하자 승계 논의의 전제요건에서 후행행위가 적법하여야 한다는 것은 후행행위에 위법사유가 전혀 없어야 한다는 의미이다.", "a": false, "e": "후행행위가 적법하여야 한다는 것은 후행행위에 위법사유가 없어야 한다는 의미가 아니라, 후행행위를 대상으로 하는 취소소송의 제기 자체가 적법(소송요건 충족)해야 한다는 의미이다."},
+{"q": "하자승계론에 따르면 선행처분과 후행처분이 서로 독립하여 별개의 효과를 발생시키는 경우에는 선행처분이 당연무효가 아닌 한 원칙적으로 하자 승계가 부인된다.", "a": true, "e": "하자승계론은 선행행위와 후행행위가 상호관련성을 가지고 결합하여 하나의 효과를 완성하는 경우에는 하자가 승계되지만, 서로 독립하여 별개의 효과를 발생하는 경우에는 선행처분이 당연무효가 아닌 한 하자 승계가 부인된다고 본다."},
+{"q": "구속력이론에 따르면 후행행위가 예측불가능하거나 수인불가능한 경우에는 선행행위의 구속력이 차단되어 후행행위를 다투면서 선행행위의 하자를 주장할 수 있다.", "a": true, "e": "구속력이론은 원칙적으로 선행행위의 불가쟁력이 후행행위에 구속력을 미치지만, 후행행위가 예측불가능하거나 수인불가능한 경우에는 예외적으로 그 구속력이 차단되어 선행행위의 하자를 주장할 수 있다고 본다."},
+{"q": "대법원 93누8542 판결에 따르면 선행처분과 후행처분이 서로 결합하여 1개의 법률효과를 완성하는 경우, 선행처분에 불가쟁력이 생겨도 그 하자를 이유로 후행처분의 효력을 다툴 수 있다.", "a": true, "e": "대법원 1994.1.25. 선고 93누8542 판결에 따르면 선행처분과 후행처분이 서로 결합하여 1개의 법률효과를 완성하는 경우에는 선행처분에 하자가 있으면 그 하자는 후행처분에 승계되므로, 선행처분에 불가쟁력이 생긴 경우에도 그 하자를 이유로 후행처분의 효력을 다툴 수 있다."},
+{"q": "대법원 93누8542 판결에 따르면 선행처분과 후행처분이 서로 독립하여 별개의 효과를 목적으로 하는 경우라도, 그 결과가 수인한도를 넘는 가혹함을 가져오며 예측가능한 것이 아닌 경우에는 선행처분의 구속력이 인정되지 않을 수 있다.", "a": true, "e": "대법원 93누8542 판결은 선행처분과 후행처분이 서로 독립하여 별개의 효과를 목적으로 하는 경우라도, 선행처분의 불가쟁력이나 구속력이 불이익을 입는 자에게 수인한도를 넘는 가혹함을 가져오고 그 결과가 예측가능한 것이 아닌 경우에는 선행처분의 후행처분에 대한 구속력은 인정될 수 없다고 판시하였다."},
+{"q": "하자 승계 논의와 관련하여 취소소송 소장의 청구취지1.은 '선행행위를 취소한다'라고 써야 한다.", "a": false, "e": "하자 승계 논의에서 청구취지1.은 항상 '후행행위를 취소한다'라고 써야 한다. 선행행위에는 이미 불가쟁력이 발생했기 때문에 선행행위 자체를 취소소송의 대상으로 삼을 수 없고, 후행행위 취소소송에서 선행행위의 위법을 청구원인으로 주장하는 구조이다."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "제소기간의의": ["취소소송=형성소송 → 인용판결시 법률관계 안정성 파괴", "제소기간 미충족 → 부적법소각하판결"],
+    "공정력불가쟁력": ["공정력=실체법적 효력(일단 유효)", "불가쟁력=소송법적 효력(더 다툴 수 없음)", "둘 다 제소기간 경과라는 동일현상의 두 측면"],
+    "안날90일": ["통지·공고 등으로 현실적으로 안 날", "90일 = 불변기간", "정당한 사유 있어도 연장 불가"],
+    "있은날1년": ["행정처분이 상대방에게 도달하여 효력발생한 날", "1년", "정당한 사유 있으면 경과해도 제소 가능"],
+    "행정심판경유": ["재결서 정본송달일 + 90일(불변기간)", "재결이 있은 날 + 1년(정당한 사유 시 예외)"],
+    "정당한사유판례": ["제3자는 처분을 곧 알 수 없는 처지", "행정심판법§27③ 제척기간 내 처분을 알았다는 특별한 사정 없으면 정당한 사유 인정", "대판 1989.5.9. 88누5150"],
+    "불가쟁력": ["형식적 확정력", "제소기간 도과 → 더 이상 다툴 수 없음", "위법성이 농후해도 부적법소각하"],
+    "하자승계전제요건": ["①선·후행 모두 항고소송 대상 처분", "②선행은 취소사유(당연무효✗)", "③선행에 불가쟁력 발생", "④후행소송이 적법(소송요건 충족)", "청구취지1.=후행행위를 취소한다"],
+    "하자승계론": ["하자 자체에 관심", "결합하여 1개 효과 완성 → 승계✅", "독립하여 별개 효과 → 당연무효 아니면 승계✗"],
+    "구속력이론": ["선행행위 불가쟁력=구속력", "원칙: 구속력으로 선행하자 주장✗", "예외: 예측불가능·수인불가능 → 구속력 차단 → 주장✅"],
+    "판례93누8542": ["결합효과(1개 법률효과) → 승계 인정", "독립효과 → 원칙 부정(당연무효 예외)", "독립효과라도 수인한도초과+예측불가능 → 구속력 부정", "선행처분 위법을 독립된 위법사유로 주장 가능"]
+  };
+  var tree={"name":"제소기간과 하자의 승계","depth":0,"children":[
+    {"name":"제소기간 의의","depth":1,"children":[
+      {"name":"제소기간의의",depth:3},{"name":"공정력불가쟁력",depth:3}
+    ]},
+    {"name":"제소기간의 길이","depth":1,"children":[
+      {"name":"안날90일",depth:3},{"name":"있은날1년",depth:3},{"name":"행정심판경유",depth:3},{"name":"정당한사유판례",depth:3}
+    ]},
+    {"name":"제소기간 경과의 효과","depth":1,"children":[
+      {"name":"불가쟁력",depth:3}
+    ]},
+    {"name":"하자의 승계","depth":1,"children":[
+      {"name":"하자승계전제요건",depth:3},{"name":"하자승계론",depth:3},{"name":"구속력이론",depth:3},{"name":"판례93누8542",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,145]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+
+// ── AI 대화창 ──
+var CHAT_KEY = 'ch11_chat_history';
+var CHAT_TTL = 7 * 24 * 60 * 60 * 1000; // 7일
+var chatHistory = [];
+
+var SYSTEM_PROMPT = `당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제11강 제소기간과 하자의 승계」
+주요 내용: 행정소송법 §20 제소기간(처분이 있음을 안 날부터 90일/불변기간, 처분이 있은 날부터 1년/정당한 사유 시 예외, 행정심판 경유 시 재결서 정본송달일·재결일 기준), 공정력과 불가쟁력의 관계(동일 현상의 실체법적·소송법적 측면), 제3자의 정당한 사유에 관한 판례(대판 88누5150), 불가쟁력(형식적 확정력), 하자의 승계 논의(4가지 전제요건, 하자승계론 vs 구속력이론), 결합효과·독립효과와 예측가능성·수인가능성에 관한 핵심판례(대판 93누8542).
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생(행정사·노무사·변시·5급 등)의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 법조문 번호(§20, 행정심판법 §27③ 등)와 판례 번호를 자연스럽게 활용한다.
+4. 답안 작성법 질문에는 실로기스무스(…이므로 …이어서 …이다) 패턴을 적용한 예시를 보여준다. 하자승계 관련 답안에서는 청구취지1.이 항상 '후행행위를 취소한다'임을 강조한다.
+5. 판례 요지는 핵심 문장 위주로 간결하게 제시한다.
+6. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){
+  try{
+    localStorage.setItem(CHAT_KEY, JSON.stringify({
+      ts: Date.now(),
+      history: chatHistory
+    }));
+  }catch(e){}
+}
+
+function loadChat(){
+  try{
+    var raw = localStorage.getItem(CHAT_KEY);
+    if(!raw) return false;
+    var data = JSON.parse(raw);
+    if(!data.ts || (Date.now() - data.ts) > CHAT_TTL){
+      localStorage.removeItem(CHAT_KEY);
+      return false;
+    }
+    chatHistory = data.history || [];
+    var msgs = document.getElementById('chatMsgs');
+    msgs.innerHTML = '';
+    chatHistory.forEach(function(m){
+      addMsg(m.role === 'user' ? 'user' : 'ai', m.content);
+    });
+    if(chatHistory.length > 0) document.getElementById('chips').style.display = 'none';
+    return chatHistory.length > 0;
+  }catch(e){
+    return false;
+  }
+}
+
+function chatWelcome(){
+  if(loadChat()) return;
+  addMsg('ai','안녕하세요! 제11강 제소기간과 하자의 승계 AI 도우미입니다. 개념 질문, OX 해설, 판례, 답안 작성법 등 무엇이든 물어보세요.');
+}
+
+function addMsg(role, text){
+  var msgs = document.getElementById('chatMsgs');
+  var div = document.createElement('div');
+  div.className = 'msg ' + role;
+  var now = new Date();
+  var t = now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML = '<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function showTyping(){
+  var msgs = document.getElementById('chatMsgs');
+  var div = document.createElement('div');
+  div.className = 'msg ai chat-typing';
+  div.id = 'typing-indicator';
+  div.innerHTML = '<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function hideTyping(){
+  var el = document.getElementById('typing-indicator');
+  if(el) el.remove();
+}
+
+async function sendChat(){
+  var inp = document.getElementById('chatInput');
+  var text = inp.value.trim();
+  if(!text) return;
+  inp.value = ''; inp.style.height = '';
+  document.getElementById('chatSend').disabled = true;
+
+  addMsg('user', text);
+  chatHistory.push({role:'user', content: text});
+  saveChat();
+  document.getElementById('chips').style.display = 'none';
+
+  showTyping();
+
+  try {
+    var res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:1000,
+        system: SYSTEM_PROMPT,
+        messages: chatHistory
+      })
+    });
+    var data = await res.json();
+    hideTyping();
+    var reply = (data.content && data.content[0] && data.content[0].text) ? data.content[0].text : '답변을 가져오지 못했습니다.';
+    addMsg('ai', reply);
+    chatHistory.push({role:'assistant', content: reply});
+    saveChat();
+  } catch(e){
+    hideTyping();
+    addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+  }
+  document.getElementById('chatSend').disabled = false;
+}
+
+function chipSend(el){
+  document.getElementById('chatInput').value = el.textContent;
+  el.parentNode.style.display='none';
+  sendChat();
+}
+
+function chatKey(e){
+  if(e.key==='Enter' && !e.shiftKey){e.preventDefault();sendChat();}
+}
+function autoResize(el){
+  el.style.height='auto';
+  el.style.height=Math.min(el.scrollHeight,90)+'px';
+}
+</script>
+</body>
+</html>
