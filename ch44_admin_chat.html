@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제44강 손해전보제도2 손실보상제도 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:230px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:10.5px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-preparing{background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;font-weight:700;color:var(--red);flex-shrink:0;text-align:center;letter-spacing:.3px}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제44강 손해전보제도2 — 손실보상제도</div>
+  <div class="hdr-sub">손실보상 성립요건 · 경계이론·분리이론 · 토지보상법 절차·보상금증감소송</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- TAB 1 -->
+<div id="panel-summary" class="panel on">
+<div class="card"><div class="card-head ch-blue">📋 개관 — 손실보상의 헌법적 근거와 성립요건</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px">손실보상제도는 <span class="hl">헌법 §23③</span>(공공필요에 의한 재산권의 수용·사용·제한 및 보상은 법률로써 하되 정당한 보상 지급)에 근거하는 손해전보제도이다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 성립요건 — 5가지 (+정당한 보상)</div><span class="hl">① 공공필요 ② 재산권 ③ 적법한 침해 ④ 특별한 희생 ⑤ 보상규정의 존재</span>가 모두 갖추어질 때 손실보상청구권이 발생하며, 그 지급은 <span class="hl">⑥ 정당한 보상</span>이어야 한다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">1-①②③ 성립요건 — 공공필요·재산권·적법한 침해</div><div class="card-body">
+<table class="tbl"><thead><tr><th>요건</th><th>내용</th></tr></thead><tbody>
+<tr><td>① 공공필요</td><td>공익사업·공공복리 위해 재산권 제한 불가피. <span class="hl">수용의 사유이자 한계</span>. 공익↔사익 이익형량(비례·보충성·평등)</td></tr>
+<tr><td>② 재산권</td><td>가치 있는 재산권(물권/채권·공법/사법 불문). <span class="hl">'가치 있는'=현재 가치</span>·영업기회·이득가능성 ✕</td></tr>
+<tr><td>③ 적법한 침해</td><td>수용·사용·제한=<span class="hl">공용침해</span>. 법률수용(처분 법률·예외적)·행정수용(법률 수권·일반적·근거=형식적 의미 법률). 적법·의도·현실적</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">1-④ 성립요건 — 특별한 희생</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 주요 학설</div>· <span class="kw">형식적 기준설</span>: 동일 상황의 모든 사람이 동일하게 침해되면 특별 희생 ✕<br>· <span class="kw">특별희생설(실질설)</span>: 불평등 취급+수인 요구 불가한 희생 강제 시 인정<br>· <span class="kw">중대설</span>: 침해의 중대성·범위에 비추어 수인 불가 시 보상</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 그 밖의 학설 — '목사보수상'</div><span class="hl">목</span>적위배설 · <span class="hl">사</span>적이용설 · <span class="hl">보</span>호가치설 · <span class="hl">수</span>인설 · <span class="hl">상</span>황구속성의 이론</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">1-⑤ 성립요건 — 보상규정의 존재 (경계이론·분리이론)</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px">정당한 보상규정은 <span class="hl">불가분조항</span>이다. 특별한 희생이 있음에도 보상규정이 없는 경우의 처리는 헌법 §23②와 §23③의 관계(경계이론·분리이론)에 따라 달라진다.</div>
+<table class="tbl"><thead><tr><th>이론</th><th>내용 · 해결방법</th></tr></thead><tbody>
+<tr><td>경계이론</td><td>내용규정과 공용침해는 정도 차이뿐·<span class="hl">경계 벗어나면 보상의무 있는 공용침해로 전환</span>. 해결: <span class="hl">방침규정설·직접효력규정설·위헌무효설·유추적용설</span></td></tr>
+<tr><td>분리이론</td><td>입법자 의사로 공용침해와 내용규정 분리·내용규정이 비례원칙 위반 시 <span class="hl">보상이 아니라 위헌성 제거</span>에 초점. 해결: 위헌법률심판</td></tr>
+</tbody></table>
+<div class="판례박스" style="margin-top:10px">개발제한구역제도(도시계획법 §21) 자체는 원칙적으로 합헌이나, 일부 토지소유자에게 사회적 제약을 넘는 가혹한 부담이 생기는 예외적 경우에 <span class="hl">보상규정을 두지 않은 것에 위헌성</span>이 있어 <span class="hl">헌법불합치결정</span>을 한다. 입법자는 보상입법 의무가 있고, 금전보상만이 아니라 지정 해제·매수청구권 등도 가능하다.<div class="출처">헌재 1998.12.24. 89헌마214 등</div></div>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">1-⑥ 정당한 보상 · 토지보상법 절차 개관</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 정당한 보상 = 완전보상</div>원칙적으로 수용 재산의 <span class="hl">객관적 가치를 완전하게 보상(완전보상)</span>. 토지는 인근 유사토지 거래가격 기준 합리적 조정. 지급 원칙: <span class="hl">사업시행자보상·현금보상·개별급·선급·일시급</span>.</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 토지보상법 절차</div><span class="hl">협의 → 재결(수용재결) → 이의신청(이의재결) → 행정소송 / 보상금증감소송</span></div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">절차 ①②③ — 협의·재결·이의신청</div><div class="card-body">
+<table class="tbl"><thead><tr><th>절차</th><th>내용</th></tr></thead><tbody>
+<tr><td>① 협의</td><td>성실 협의·성립 시 토지수용위 협의성립 확인 신청·<span class="hl">확인=재결로 봄·성립이나 내용 다툴 수 ✕</span></td></tr>
+<tr><td>② 재결(수용재결)</td><td>협의 불성립 시 사업인정고시일부터 <span class="hl">1년 이내</span> 관할토지수용위 재결 신청. 최초 재결=수용재결·<span class="hl">피수용자 신청 ✕</span>. 판례: 영업손실 보상은 <span class="hl">재결절차를 거친 후</span> 불복(재결 없이 곧바로 손실보상 청구 ✕)</td></tr>
+<tr><td>③ 이의신청(이의재결)</td><td>중토위 재결→중토위 / 지토위 재결→지토위 거쳐 중토위. <span class="hl">임의적 절차</span>·행정심판 일종(복심적 쟁송·행정심판법 준용)·재결서 정본 받은 날부터 <span class="hl">30일</span>·사업 진행·수용 정지 ✕</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">절차 ④ — 행정소송 (원처분주의)</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px">재결 불복 시 재결서 받은 날부터 <span class="hl">60일</span>, 이의신청을 거쳤으면 이의재결서 받은 날부터 <span class="hl">30일</span> 이내 제기. 재결·이의신청 절차는 제소를 위한 <span class="hl">필수적 절차</span>. 행정심판법 §27·행정소송법 §20 적용 ✕·집행정지 ✕.</div>
+<div class="판례박스">§85① 전문이 원처분(수용재결)에 대해서도 행정소송을 제기할 수 있음을 명시하고 중토위 이의신청을 임의적 절차로 규정하므로, 수용재결에 불복하는 취소소송은 이의신청을 거친 경우에도 <span class="hl">수용재결을 한 토지수용위원회를 피고로 수용재결의 취소</span>를 구해야 하고, <span class="hl">이의재결 자체에 고유한 위법</span>이 있을 때에만 중토위를 피고로 이의재결의 취소를 구할 수 있다(원처분주의).<div class="출처">대판 2010.1.28. 2008두1504</div></div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">절차 ⑤ — 보상금증감소송</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">보상금증감소송</span>(§85②)은 수용재결·이의재결 중 보상금에 불복하여 증액·감액을 청구하는 소송으로, 토지소유자·관계인이면 <span class="hl">사업시행자를</span>, 사업시행자이면 <span class="hl">토지소유자·관계인을</span> 피고로 한다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 성질 · 학설</div>처분청(토지수용위) 피고 ✕·대등 당사자 → 형식적 관점 당사자소송 + 재결 다투는 의미(항고소송 성질) → <span class="hl">전체로서 형식적 당사자소송</span>(단일소송). 형성소송설 vs <span class="hl">확인·급부소송설</span>(§85②이 위원회를 피고에서 제외 → 확인·급부소송설 타당).</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 원고·피고·제소기간·입증책임</div>원고=토지소유자·관계인, 피고=<span class="hl">사업시행자</span>(행정청 ✕). 제소기간 수용재결 60일·이의재결 30일. 입증책임: <span class="hl">정당한 보상금액이 더 많다는 점은 원고</span>가 입증.</div>
+<div class="판례박스" style="margin-top:10px">잔여지 수용청구를 받아들이지 않은 재결에 불복하는 소송은 잔여지 수용청구권이 <span class="hl">형성권적 성질</span>을 가지므로 보상금증감소송에 해당하여 <span class="hl">사업시행자를 피고</span>로 하여야 한다.<div class="출처">대판 2010.8.19. 2008두822</div></div>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">2. 수용유사침해·수용적 침해·희생보상</div><div class="card-body">
+<div class="alert al-red"><div class="alert-label">📌 판례 — 부정</div>판례는 이들 이론이 <span class="hl">독일의 관습법</span>이라는 이유로 우리 제도에서 논의되는 것을 부정한다.</div>
+<table class="tbl" style="margin-top:10px"><thead><tr><th>제도</th><th>내용</th></tr></thead><tbody>
+<tr><td>수용유사침해</td><td>보상규정 없어 <span class="hl">위법</span>한 공권력 행사에도 조절적 보상(수용과 차이=침해의 적법성 유무)</td></tr>
+<tr><td>수용적 침해</td><td>적법·직접적 침해의 <span class="hl">의도하지 않은 부수적 피해</span>로 특별한 희생</td></tr>
+<tr><td>희생보상청구권</td><td>비재산적 법익(생명·건강·명예·자유) 특별 희생에 대한 보상</td></tr>
+</tbody></table>
+</div></div>
+</div>
+
+<!-- TAB 2 -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">손실보상·<br>헌법§23③·5요건</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">공공필요·재산권·침해·희생·보상규정</div><ul><li>헌법§23③ 공공필요 수용·사용·제한+정당한 보상</li><li>성립요건: 공공필요·재산권·적법한 침해·특별한 희생·보상규정 존재</li><li>5요건 충족 시 손실보상청구권 발생</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🏗️</div><div class="fc-term">①공공필요</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">수용의 사유이자 한계</div><ul><li>공익사업·공공복리 위해 재산권 제한 불가피</li><li>수용의 사유이자 한계</li><li>공익↔사익 이익형량(비례·보충성·평등)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">💎</div><div class="fc-term">②재산권</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">가치 있는 재산권</div><ul><li>물권/채권·공법/사법 불문</li><li>'가치 있는'=현재 가치</li><li>영업기회·이득가능성 ✕</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🎯</div><div class="fc-term">③적법한 침해<br>(공용침해)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">법률수용 / 행정수용</div><ul><li>수용·사용·제한=공용침해</li><li>법률수용(처분 법률·예외적)·행정수용(법률 수권·일반적)</li><li>근거=형식적 의미 법률·적법·의도·현실적</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⚡</div><div class="fc-term">④특별한 희생<br>(목사보수상)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">형식적 기준설·특별희생설·중대설</div><ul><li>형식적 기준설(동일 침해 시 특별 희생 ✕)·특별희생설·중대설</li><li>목적위배설·사적이용설·보호가치설·수인설·상황구속성</li><li>'목사보수상'으로 암기</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🔵</div><div class="fc-term">⑤보상규정<br>경계이론</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">경계 벗어나면 공용침해 전환</div><ul><li>내용규정과 공용침해는 정도 차이뿐</li><li>경계 벗어나면 보상의무 있는 공용침해로 전환</li><li>사회적 제약 벗어나는 규제는 보상규정 유무 불문 보상</li><li>정당한 보상규정=불가분조항</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🟣</div><div class="fc-term">⑤보상규정<br>분리이론</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">위헌성 제거에 초점</div><ul><li>입법자 의사로 공용침해와 내용규정 분리</li><li>내용규정이 비례원칙 위반 시 구제</li><li>보상이 아니라 위헌성 제거에 초점</li><li>해결: 위헌법률심판</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🛠️</div><div class="fc-term">경계이론<br>해결방법</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">방침·직접효력·위헌무효·유추적용</div><ul><li>방침규정설: 법률 정해져야 청구권</li><li>직접효력규정설: §23③ 직접 근거</li><li>위헌무효설: 위헌무효 법률→국가배상청구권</li><li>유추적용설: §23①·§11 근거·관계규정 유추</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📕</div><div class="fc-term">판례<br>(89헌마214)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">헌법불합치</div><ul><li>개발제한구역제도 자체는 원칙 합헌</li><li>가혹한 부담에 보상규정 없는 것에 위헌성</li><li>헌법불합치결정·입법자 보상입법 의무</li><li>금전보상만 아니라 지정 해제·매수청구권 등 가능</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">💰</div><div class="fc-term">⑥정당한 보상</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">완전보상</div><ul><li>객관적 가치를 완전하게 보상(완전보상)</li><li>토지는 인근 유사토지 거래가격 기준 합리적 조정</li><li>사업시행자보상·현금보상·개별급·선급·일시급 원칙</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📋</div><div class="fc-term">절차<br>협의·재결</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">확인=재결 / 1년 이내</div><ul><li>협의: 성립 시 확인=재결로 봄·다툴 수 ✕</li><li>재결(수용재결): 협의 불성립 시 사업인정고시일부터 1년 이내</li><li>피수용자 신청 ✕·최초 재결=수용재결</li><li>판례: 영업손실은 재결절차 거친 후 불복(직접 청구 ✕)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📨</div><div class="fc-term">이의신청<br>(이의재결)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">임의적·30일</div><ul><li>중토위 재결→중토위 / 지토위 재결→지토위 거쳐 중토위</li><li>임의적 절차·행정심판 일종(복심적 쟁송·행정심판법 준용)</li><li>재결서 정본 받은 날부터 30일</li><li>사업 진행·수용 정지 ✕</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">행정소송<br>(2008두1504)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">원처분주의·60일/30일</div><ul><li>재결 60일·이의 거치면 이의재결 30일·필수적 절차</li><li>원처분주의: 수용재결 한 토지수용위 피고로 수용재결 취소</li><li>이의재결 자체 고유 위법 시만 중토위 피고</li><li>행정심판법§27·행정소송법§20 적용 ✕</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📈</div><div class="fc-term">보상금증감소송<br>(2008두822)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">형식적 당사자소송·확인급부설</div><ul><li>토지소유자·관계인↔사업시행자 피고·처분청 ✕</li><li>전체로서 형식적 당사자소송·확인·급부소송설 타당</li><li>입증책임 원고(정당한 보상금액 더 많다는 점)</li><li>판례: 잔여지 수용청구 거부→형성권·사업시행자 피고</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🌐</div><div class="fc-term">수용유사·수용적<br>침해·희생보상</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">판례 부정(독일 관습법)</div><ul><li>수용유사침해: 위법한 공권력 행사에도 조절적 보상(차이=적법성)</li><li>수용적 침해: 적법·직접 침해의 의도하지 않은 부수적 피해</li><li>희생보상청구권: 비재산적 법익(생명·건강·명예·자유)</li><li>판례: 우리 제도에서 부정(독일 관습법)</li></ul></div>
+</div></div>
+</div></div>
+
+<!-- TAB 3 -->
+<div id="panel-quiz" class="panel">
+<div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+<div id="qc"></div>
+</div>
+
+<!-- TAB 4 -->
+<div id="panel-memory" class="panel">
+<div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+<div class="mem-progress"><div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div><div class="mem-prog-label" id="prog-label">0 / 0 공개</div><button class="mem-reveal-all" onclick="revealAll()">전체 공개</button></div>
+<div class="mem-section-title">성립요건</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">손실보상의 근거와 성립요건</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">손실보상제도는 <span class="mem-blank" onclick="toggleBlank(this)">헌법 제23조 제3항</span>에 근거하며, 성립요건은 <span class="mem-blank" onclick="toggleBlank(this)">공공필요·재산권·적법한 침해·특별한 희생·보상규정의 존재</span>이다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">재산권과 공공필요</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">공공필요는 <span class="mem-blank" onclick="toggleBlank(this)">수용의 사유이자 한계</span>로 작용하며, 손실보상을 발생시키는 재산권은 물권·채권·공법·사법을 불문하나 '가치 있는'은 현재 가치를 의미하여 <span class="mem-blank" onclick="toggleBlank(this)">영업기회나 이득가능성은 포함되지 않는다</span>.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">공용침해 — 법률수용·행정수용</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">수용·사용·제한을 포괄하는 넓은 의미의 수용을 <span class="mem-blank" onclick="toggleBlank(this)">공용침해</span>라 하며, 법률에 의한 직접 침해를 법률수용, 법률에 근거한 행정작용에 의한 침해를 행정수용이라 하고 그 근거는 모두 <span class="mem-blank" onclick="toggleBlank(this)">형식적 의미의 법률</span>이다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">특별한 희생 — 학설</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">특별한 희생의 판단기준으로 <span class="mem-blank" onclick="toggleBlank(this)">형식적 기준설·특별희생설·중대설</span>이 있고, 그 밖에 목적위배설·사적이용설·보호가치설·수인설·상황구속성('<span class="mem-blank" onclick="toggleBlank(this)">목사보수상</span>')의 이론이 있다.</div></div></div></div>
+<div class="mem-section-title gn">보상규정 · 정당한 보상</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">경계이론과 분리이론</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">경계이론은 내용규정의 <span class="mem-blank" onclick="toggleBlank(this)">경계를 벗어나면 보상의무 있는 공용침해로 전환</span>된다고 보고, 분리이론은 내용규정이 비례원칙에 반하면 보상이 아니라 <span class="mem-blank" onclick="toggleBlank(this)">위헌성의 제거</span>에 초점을 둔다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">경계이론의 해결방법</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">경계이론에 입각한 해결방법으로 <span class="mem-blank" onclick="toggleBlank(this)">방침규정설·직접효력규정설·위헌무효설·유추적용설</span>이 있고, 위헌무효설은 보상규정 없는 수용 법률을 위헌무효로 보아 사인에게 <span class="mem-blank" onclick="toggleBlank(this)">국가배상청구권</span>을 인정한다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">개발제한구역 (89헌마214)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">헌재는 개발제한구역제도 자체는 원칙적으로 합헌이나, 가혹한 부담이 생기는 예외적 경우에 <span class="mem-blank" onclick="toggleBlank(this)">보상규정을 두지 않은 것에 위헌성</span>이 있다고 하여 <span class="mem-blank" onclick="toggleBlank(this)">헌법불합치결정</span>을 하였다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">정당한 보상 — 완전보상</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">'정당한 보상'이란 원칙적으로 수용되는 재산의 객관적 가치를 완전하게 보상하는 <span class="mem-blank" onclick="toggleBlank(this)">완전보상</span>을 뜻하며, 그 지급은 사업시행자보상·현금보상·개별급·선급·<span class="mem-blank" onclick="toggleBlank(this)">일시급</span>의 원칙을 충족하여야 한다.</div></div></div></div>
+<div class="mem-section-title gd">절차 · 보상금증감소송 · 기타 보상</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">재결전치 — 영업손실 보상</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">협의 불성립 시 사업시행자는 사업인정고시일부터 <span class="mem-blank" onclick="toggleBlank(this)">1년 이내</span>에 재결을 신청할 수 있고, 판례는 영업손실 보상은 <span class="mem-blank" onclick="toggleBlank(this)">재결절차를 거친 후 불복</span>해야 하며 재결 없이 곧바로 손실보상을 청구할 수 없다고 본다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">이의신청과 원처분주의 (2008두1504)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">이의신청은 <span class="mem-blank" onclick="toggleBlank(this)">임의적 절차</span>이며, 판례는 이의신청을 거친 경우에도 원칙적으로 <span class="mem-blank" onclick="toggleBlank(this)">수용재결을 한 토지수용위원회를 피고로 수용재결의 취소</span>를 구하고 이의재결 자체에 고유한 위법이 있을 때에만 이의재결을 다툰다는 원처분주의를 취한다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">보상금증감소송의 성질</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">보상금증감소송은 토지소유자·관계인과 사업시행자를 당사자로 하는 <span class="mem-blank" onclick="toggleBlank(this)">형식적 당사자소송</span>이며, 토지보상법 §85②이 위원회를 피고에서 제외하고 있어 <span class="mem-blank" onclick="toggleBlank(this)">확인·급부소송설</span>이 타당하다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">수용유사침해·수용적 침해</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">수용유사침해와 수용의 차이는 <span class="mem-blank" onclick="toggleBlank(this)">침해의 적법성 유무</span>에 있고, 수용적 침해는 적법·직접적 침해의 의도하지 않은 부수적 피해에 대한 보상이나, 판례는 이들 이론을 <span class="mem-blank" onclick="toggleBlank(this)">독일의 관습법이라는 이유로 우리 제도에서 부정</span>한다.</div></div></div></div>
+</div>
+
+<!-- TAB 5 -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제44강은 ① 보상규정이 없는 경우의 해결(경계이론·분리이론), ② 손실보상의 절차(재결전치·원처분주의), ③ 보상금증감소송의 성질이 핵심 출제 포인트이다.</div></div>
+<div class="ms-section"><div class="ms-section-title">① 보상규정이 없는 경우의 해결이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">특별한 희생이 있음에도 법률에 보상규정이 없을 때 국민의 권리를 어떻게 구제하는지</div><div class="ms-example">예: "공용침해만 규정하고 보상규정을 두지 않은 법률에 따라 재산권이 침해된 경우 손실보상을 받을 수 있는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">정당한 보상규정은 <span class="g">불가분조항</span>이다. 헌법 §23②와 §23③의 관계를 경계이론(경계 벗어나면 공용침해로 전환·방침규정설·직접효력규정설·위헌무효설·유추적용설)과 분리이론(보상이 아니라 위헌성 제거·위헌법률심판)으로 나누어 해결한다. 판례(89헌마214)는 분리이론적 접근으로 헌법불합치결정을 하였다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">불가분조항 → 경계이론/분리이론 구분 → 각 해결방법(경계: 4설 / 분리: 위헌법률심판) → 판례(헌법불합치)</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">불가분조항</span><span class="ms-kw">경계이론·분리이론</span><span class="ms-kw">89헌마214</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gn">② 손실보상의 절차(재결전치·원처분주의)가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">손실보상을 다투는 절차와 행정소송의 대상·피고</div><div class="ms-example">예: "이의신청을 거친 후 행정소송을 제기할 때 무엇을 대상으로, 누구를 피고로 해야 하는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">절차는 <span class="g">협의→재결(수용재결)→이의신청(이의재결)→행정소송</span>이다. 영업손실 보상도 재결절차를 거쳐야 한다(재결전치). 이의신청은 임의적이며, §85①이 원처분에 대한 소송을 명시하므로 <span class="g">원처분주의</span>가 적용되어 수용재결을 한 토지수용위원회를 피고로 수용재결의 취소를 구하고, 이의재결은 고유한 위법이 있을 때만 대상이 된다(2008두1504).</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">절차 흐름 → 재결전치(영업손실) → 원처분주의(수용재결 대상·토지수용위 피고) → 이의재결은 고유 위법 시만</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">재결전치</span><span class="ms-kw">원처분주의</span><span class="ms-kw">2008두1504</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gd">③ 보상금증감소송의 성질이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">보상금의 증감만을 다투는 소송의 형태·당사자·성질</div><div class="ms-example">예: "보상액이 부당하다고 다툴 때 누구를 피고로 어떤 소송을 제기하는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">보상금증감소송(§85②)은 처분청을 피고로 하지 않고 <span class="g">토지소유자·관계인과 사업시행자를 대등 당사자</span>로 하여, 형식은 당사자소송이나 실질은 재결을 다투는 항고소송 성질을 가지므로 <span class="g">전체로서 형식적 당사자소송</span>이다. §85②이 위원회를 피고에서 제외하므로 확인·급부소송설이 타당하다. 잔여지 수용청구 거부도 형성권적 성질상 보상금증감소송에 해당한다(2008두822).</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">당사자(소유자·관계인↔사업시행자) → 형식적 당사자소송 → 형성소송설/확인·급부소송설(후자 타당) → 입증책임 원고</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">형식적 당사자소송</span><span class="ms-kw">확인·급부소송설</span><span class="ms-kw">2008두822</span></div></div>
+</div></div>
+</div>
+
+<!-- TAB 6 -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- TAB 7 -->
+<div id="panel-chat" class="panel">
+<div class="chat-wrap">
+<div class="chat-intro"><div class="chat-intro-title">💬 AI 강의 도우미</div><div class="chat-intro-text">제44강 손해전보제도2(손실보상제도)에 대해 무엇이든 질문하세요.<br>성립요건·경계이론·분리이론·토지보상법 절차·보상금증감소송 모두 답변합니다.</div></div>
+<div class="chat-preparing">🔧 더 나은 서비스를 위하여 준비중입니다.</div>
+<div class="chat-notice">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+<div class="chat-chips" id="chips">
+<span class="chip" onclick="chipSend(this)">손실보상의 성립요건 5가지</span>
+<span class="chip" onclick="chipSend(this)">특별한 희생의 판단기준(목사보수상)</span>
+<span class="chip" onclick="chipSend(this)">보상규정 없는 경우 경계이론·분리이론</span>
+<span class="chip" onclick="chipSend(this)">토지보상법 절차와 원처분주의</span>
+<span class="chip" onclick="chipSend(this)">보상금증감소송의 성질</span>
+</div>
+<div class="chat-msgs" id="chatMsgs"></div>
+<div class="chat-input-row"><textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea><button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button></div>
+</div>
+</div>
+
+</div>
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  var exp=document.getElementById('e'+i);exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q":"손실보상제도는 헌법 제23조 제3항에 근거하며, 성립요건은 공공필요·재산권·적법한 침해·특별한 희생·보상규정의 존재이다.", "a":true, "e":"손실보상제도는 헌법 제23조 제3항에 근거하며, 성립요건은 공공필요·재산권·적법한 침해·특별한 희생·보상규정의 존재로, 5가지가 모두 갖추어질 때 손실보상청구권이 발생한다."},
+{"q":"손실보상청구권을 발생시키는 재산권은 물권에 한하며 채권은 포함되지 않는다.", "a":false, "e":"재산권의 종류는 물권인가 채권인가, 공법상 권리인가 사법상 권리인가를 가리지 않는다."},
+{"q":"'가치 있는' 재산권에는 영업기회나 이득가능성도 포함된다.", "a":false, "e":"'가치 있는'은 현재 가치가 있는 것을 의미하며, 영업기회나 이득가능성은 포함되지 않는다."},
+{"q":"공용침해에는 수용·사용·제한이 포함되며, 법률에 의한 직접 침해를 법률수용, 법률에 근거한 행정작용에 의한 침해를 행정수용이라 한다.", "a":true, "e":"수용·사용·제한을 포괄하는 넓은 의미의 수용을 공용침해라 하며, 법률에 의한 직접 침해를 법률수용, 법률에 근거한 행정작용에 의한 침해를 행정수용이라 한다."},
+{"q":"형식적 기준설은 동일한 상황의 모든 사람이 동일하게 침해되면 특별한 희생이 존재하지 않는다고 본다.", "a":true, "e":"형식적 기준설은 동일한 상황 하에 있는 모든 사람이 동일한 방식으로 침해된다면 특별희생은 존재하지 않는다고 본다."},
+{"q":"정당한 보상규정은 불가분조항이다.", "a":true, "e":"정당한 보상규정은 불가분조항이라는 점에 이견이 없다."},
+{"q":"경계이론은 재산권 내용규정의 경계를 벗어나면 보상의무 있는 공용침해로 전환된다고 본다.", "a":true, "e":"경계이론은 재산권 내용과 공용침해가 정도의 차이가 있을 뿐이며, 내용규정의 경계를 벗어나면 보상의무가 있는 공용침해로 전환된다고 본다."},
+{"q":"분리이론은 재산권 내용규정이 비례원칙에 반해 기본권을 침해하면 보상이 아니라 위헌성 제거에 초점을 둔다.", "a":true, "e":"분리이론은 내용규정이 비례원칙에 반하여 한계를 벗어나 기본권을 침해하면 구제하되, 보상의 문제가 아니라 위헌성의 제거에 초점을 둔다."},
+{"q":"위헌무효설은 보상규정 없는 수용 법률을 위헌무효로 보아 사인에게 국가배상청구권을 인정한다.", "a":true, "e":"위헌무효설은 보상규정 없는 수용 법률을 불가분조항을 결여한 위헌무효인 법률로 보아, 그에 의한 위법한 수용에 대해 사인에게 손실보상청구권이 아니라 국가배상청구권을 인정한다."},
+{"q":"분리이론에 따르면 보상규정이 없는 경우 위헌법률심판제도를 통해 재산권 침해법률의 위헌성을 다툰다.", "a":true, "e":"분리이론에 입각한 해결방법은 재산권 침해 작용을 다투는 구체적 소송에서 재산권 침해법률의 위헌성을 위헌법률심판제도를 통해 다투는 것이다."},
+{"q":"헌재는 개발제한구역제도 자체를 위헌으로 보아 단순위헌결정을 하였다.", "a":false, "e":"헌재는 개발제한구역제도 자체는 원칙적으로 합헌이나 가혹한 부담이 생기는 예외적 경우에 보상규정을 두지 않은 것에 위헌성이 있다고 하여 헌법불합치결정을 하였다(89헌마214)."},
+{"q":"'정당한 보상'이란 원칙적으로 수용되는 재산의 객관적 가치를 완전하게 보상하는 완전보상을 뜻한다.", "a":true, "e":"'정당한 보상'이란 원칙적으로 수용되는 재산의 객관적 재산 가치를 완전하게 보상하여야 한다는 완전보상을 뜻한다."},
+{"q":"협의가 성립하여 토지수용위원회의 확인을 받으면 이는 재결로 보며 당사자는 그 협의의 성립·내용을 다툴 수 없다.", "a":true, "e":"협의성립의 확인은 토지보상법에 따른 재결로 보며, 사업시행자·토지소유자 및 관계인은 그 확인된 협의의 성립이나 내용을 다툴 수 없다."},
+{"q":"수용재결은 피수용자도 신청할 수 있다.", "a":false, "e":"협의 불성립 시 사업시행자가 사업인정고시일부터 1년 이내에 재결을 신청할 수 있으며, 피수용자는 수용재결을 신청할 수 없다."},
+{"q":"판례에 의하면 영업손실 보상은 재결절차를 거치지 않고 곧바로 사업시행자를 상대로 손실보상을 청구할 수 있다.", "a":false, "e":"판례는 영업손실 보상은 재결절차를 거친 다음 그 재결에 불복이 있을 때 비로소 권리구제를 받을 수 있을 뿐, 재결절차 없이 곧바로 손실보상을 청구하는 것은 허용되지 않는다고 본다."},
+{"q":"토지보상법상 이의신청은 제소를 위한 필요적 절차이다.", "a":false, "e":"이의신청은 제소를 위한 필요적 절차가 아니라 임의적 절차이며, 행정심판의 일종으로서 복심적 쟁송의 성질을 갖는다."},
+{"q":"수용재결에 불복하는 행정소송은 재결서를 받은 날부터 60일 이내에, 이의신청을 거친 경우 이의재결서를 받은 날부터 30일 이내에 제기한다.", "a":true, "e":"재결에 불복할 때에는 재결서를 받은 날부터 60일 이내에, 이의신청을 거쳤을 때에는 이의신청에 대한 재결서를 받은 날부터 30일 이내에 행정소송을 제기할 수 있다."},
+{"q":"판례에 의하면 이의신청을 거친 경우에도 원칙적으로 수용재결을 한 토지수용위원회를 피고로 수용재결의 취소를 구해야 한다(원처분주의).", "a":true, "e":"판례는 이의신청을 거친 경우에도 수용재결을 한 토지수용위원회를 피고로 수용재결의 취소를 구해야 하고, 이의재결 자체에 고유한 위법이 있을 때에만 중앙토지수용위원회를 피고로 이의재결의 취소를 구할 수 있다고 본다(2008두1504·원처분주의)."},
+{"q":"보상금증감소송은 처분청인 토지수용위원회를 피고로 한다.", "a":false, "e":"보상금증감소송은 처분청인 토지수용위원회를 피고로 하지 않고, 토지소유자·관계인 또는 사업시행자를 피고로 하는 형식적 당사자소송이다."},
+{"q":"판례에 의하면 보상금증액청구소송에서 정당한 보상금액이 더 많다는 점의 입증책임은 원고에게 있다.", "a":true, "e":"판례는 재결에서 정한 손실보상금액보다 정당한 손실보상금액이 더 많다는 점에 대한 입증책임은 원고에게 있다고 판시하였다."},
+{"q":"판례는 수용유사침해보상이론과 수용적 침해보상이론을 우리 제도에서 인정한다.", "a":false, "e":"판례는 수용유사침해보상이론과 수용적 침해보상이론이 독일의 관습법이라는 이유로 우리 제도에서 논의되는 것을 부정한다."},
+{"q":"잔여지 수용청구를 받아들이지 않은 재결에 불복하는 소송은 보상금증감소송에 해당하여 사업시행자를 피고로 한다.", "a":true, "e":"잔여지 수용청구권은 형성권적 성질을 가지므로, 잔여지 수용청구를 받아들이지 않은 재결에 불복하는 소송은 보상금증감소송에 해당하여 사업시행자를 피고로 한다(2008두822)."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "개관요건": ["손실보상=헌법§23③ 공공필요 수용·사용·제한+정당한 보상", "성립요건 5가지: 공공필요·재산권·적법한 침해·특별한 희생·보상규정 존재", "5요건 충족 시 손실보상청구권 발생", "지급은 ⑥정당한 보상이어야"],
+    "공공필요재산권침해": ["①공공필요: 공익사업·공공복리 위해 재산권 제한 불가피·수용의 사유이자 한계·이익형량(비례·보충성·평등)", "②재산권: 가치 있는 재산권(물권/채권·공법/사법 불문)·현재 가치·영업기회·이득가능성 ✕", "③적법한 침해: 수용·사용·제한=공용침해·법률수용(예외적)·행정수용(일반적)", "근거=형식적 의미 법률·적법·의도·현실적"],
+    "특별한희생": ["형식적 기준설(동일 침해 시 특별 희생 ✕)·특별희생설(실질설)·중대설", "목적위배설·사적이용설·보호가치설·수인설·상황구속성('목사보수상')", "고권주체 개별행위로 특정인 권리 침해+공공복지 위한 희생 여부로 구분"],
+    "보상규정": ["정당한 보상규정=불가분조항·헌법§23②와 §23③ 관계", "경계이론: 경계 벗어나면 보상의무 있는 공용침해로 전환·해결 방침규정설·직접효력규정설·위헌무효설·유추적용설", "분리이론: 비례원칙 위반 시 위헌성 제거에 초점·해결 위헌법률심판", "판례 89헌마214: 개발제한구역 제도 합헌·보상규정 없는 것에 위헌성·헌법불합치"],
+    "정당한보상": ["완전보상: 객관적 가치를 완전하게 보상·토지는 인근 유사토지 거래가격 기준", "지급 원칙: 사업시행자보상·현금보상·개별급·선급·일시급", "토지보상법 절차: 협의→재결(수용재결)→이의신청(이의재결)→행정소송/보상금증감소송"],
+    "토지보상절차": ["①협의: 성립 시 확인=재결로 봄·다툴 수 ✕", "②재결(수용재결): 협의 불성립 시 사업인정고시일부터 1년 이내·피수용자 신청 ✕·판례 영업손실은 재결전치", "③이의신청(이의재결): 임의적·행정심판 일종·재결서 정본 받은 날부터 30일·정지 ✕", "④행정소송: 재결 60일·이의 30일·필수적 절차·원처분주의(2008두1504 수용재결 한 토지수용위 피고·이의재결 고유 위법 시만)·행정심판법§27·행정소송법§20 적용 ✕"],
+    "보상금증감소송": ["§85②: 토지소유자·관계인↔사업시행자 피고·처분청 ✕", "전체로서 형식적 당사자소송(단일소송)·형성소송설 vs 확인·급부소송설(§85② 위원회 제외→확인급부설 타당)", "원고 토지소유자·관계인·피고 사업시행자(행정청 ✕)·제소기간 수용재결 60일·이의재결 30일", "입증책임 원고(정당한 보상금액 더 많다는 점)·판례 2008두822 잔여지 수용청구 형성권→사업시행자 피고"],
+    "수용유사적침해": ["판례: 독일 관습법이라는 이유로 우리 제도에서 부정", "수용유사침해: 위법한 공권력 행사에도 조절적 보상·수용과 차이=침해의 적법성 유무", "수용적 침해: 적법·직접 침해의 의도하지 않은 부수적 피해로 특별한 희생", "희생보상청구권: 비재산적 법익(생명·건강·명예·자유) 특별 희생·희생유사침해보상(위법 확장)"]
+  };
+  var tree={"name":"손실보상제도","depth":0,"children":[
+    {"name":"개관·요건","depth":1,"children":[
+      {"name":"개관요건",depth:3},{"name":"공공필요재산권침해",depth:3}
+    ]},
+    {"name":"특별한 희생·보상규정","depth":1,"children":[
+      {"name":"특별한희생",depth:3},{"name":"보상규정",depth:3}
+    ]},
+    {"name":"정당한 보상·절차","depth":1,"children":[
+      {"name":"정당한보상",depth:3},{"name":"토지보상절차",depth:3},{"name":"보상금증감소송",depth:3}
+    ]},
+    {"name":"기타 보상","depth":1,"children":[
+      {"name":"수용유사적침해",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([30,165]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020','#5a2d8c'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+var CHAT_KEY='ch44_chat_history';
+var CHAT_TTL=7*24*60*60*1000;
+var chatHistory=[];
+var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제44강 손해전보제도2 — 손실보상제도」
+주요 내용: 총설(손실보상=헌법§23③ 공공필요 재산권 수용·사용·제한+정당한 보상·성립요건 5가지 공공필요·재산권·적법한 침해·특별한 희생·보상규정 존재·5요건 충족 시 손실보상청구권 발생), 성립요건((1)공공필요: 공익사업·공공복리 위해 재산권 제한 불가피·수용의 사유이자 한계·공익↔사익 이익형량 비례·보충성·평등 / (2)재산권: 가치 있는 재산권·물권/채권·공법/사법 불문·'가치 있는'=현재 가치·영업기회·이득가능성 ✕ / (3)적법한 침해: 수용(박탈)·사용(일시)·제한=공용침해·법률수용 처분 법률 예외적·행정수용 법률 수권 일반적·근거 형식적 의미 법률·적법·의도·현실적 / (4)특별한 희생: 형식적 기준설 동일 침해 시 특별 희생 ✕·특별희생설 실질설·중대설·목적위배설·사적이용설·보호가치설·수인설·상황구속성 '목사보수상' / (5)보상규정 존재: 정당한 보상규정=불가분조항·보상규정 없이 공용침해만 규정 시 §23①·§11·§23③ 종합 해석상 발생·헌법§23②와 §23③ 관계 경계이론·분리이론·경계이론 내용규정 경계 벗어나면 보상의무 공용침해로 전환·사회적 제약 벗어나는 규제는 보상규정 유무 불문 보상·해결 방침규정설/직접효력규정설/위헌무효설(위헌무효 법률→국가배상청구권)/유추적용설·분리이론 입법자 의사로 공용침해와 내용규정 분리·비례원칙 위반 시 보상 아니라 위헌성 제거에 초점·해결 위헌법률심판·판례 헌재 89헌마214 개발제한구역제도 원칙 합헌·가혹한 부담에 보상규정 없는 것에 위헌성·헌법불합치결정·입법자 보상입법 의무·금전보상만 아니라 지정 해제·매수청구권 등 가능 / (6)정당한 보상: 완전보상 객관적 가치 완전 보상·토지는 인근 유사토지 거래가격 기준·사업시행자보상·현금보상·개별급·선급·일시급 원칙·토지보상법 절차 협의→재결 수용재결→이의신청 이의재결→행정소송/보상금증감소송·①협의 성립 시 확인=재결로 봄 다툴 수 ✕·②재결 수용재결 협의 불성립 시 사업인정고시일부터 1년 이내 관할토지수용위 신청 피수용자 신청 ✕ 최초 재결=수용재결 판례 영업손실은 재결절차 거친 후 불복 재결 없이 직접 손실보상 청구 ✕·③이의신청 이의재결 중토위 재결→중토위 지토위 재결→지토위 거쳐 중토위 임의적 절차 행정심판 일종 복심적 쟁송 행정심판법 준용 재결서 정본 받은 날부터 30일 사업 진행·수용 정지 ✕ 중토위 재결 위법·부당 시 취소·보상액 변경·④행정소송 재결 60일 이의 거치면 이의재결 30일 필수적 절차 원처분주의 §85① 원처분 행정소송 명시 판례 2008두1504 이의 거쳐도 수용재결 한 토지수용위 피고 수용재결 취소 이의재결 자체 고유 위법 시만 중토위 피고 이의재결 취소 행정심판법§27·행정소송법§20 적용 ✕ 집행정지 ✕·⑤보상금증감소송 §85② 토지소유자·관계인이면 사업시행자 사업시행자면 토지소유자·관계인 피고 처분청 토지수용위 피고 ✕ 대등 당사자 형식적 관점 당사자소송 실질 항고소송 성질 전체로서 형식적 당사자소송 단일소송 형성소송설 vs 확인·급부소송설 §85② 위원회 피고 제외→확인급부소송설 타당 원고 토지소유자·관계인 피고 사업시행자 행정청 ✕ 제소기간 수용재결 60일 이의재결 30일 입증책임 원고 정당한 보상금액 더 많다는 점 판례 2008두822 잔여지 수용청구 형성권적 성질→보상금증감소송 사업시행자 피고), 수용유사·수용적 침해·희생보상(판례 우리 제도 부정 독일 관습법·수용유사침해 위법한 공권력 행사에도 조절적 보상 수용과 차이 침해의 적법성 유무·수용적 침해 적법·직접 침해의 의도하지 않은 부수적 피해 특별한 희생·희생보상청구권 비재산적 법익 생명·건강·명예·자유 특별 희생·희생유사침해보상 위법 작용 확장).
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 성립요건은 '공공필요·재산권·적법한 침해·특별한 희생·보상규정 존재(+정당한 보상)'로 체계를 잡아 준다.
+4. 보상규정 없는 경우는 '불가분조항→경계이론(4설)/분리이론(위헌법률심판)→판례 89헌마214 헌법불합치'로, 절차는 '협의→재결→이의신청→행정소송(원처분주의 2008두1504)'로 정리해 준다.
+5. 보상금증감소송은 '형식적 당사자소송·확인급부소송설·사업시행자 피고·입증책임 원고·2008두822'로 강조해 준다.
+6. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){try{localStorage.setItem(CHAT_KEY,JSON.stringify({ts:Date.now(),history:chatHistory}));}catch(e){}}
+function loadChat(){
+  try{
+    var raw=localStorage.getItem(CHAT_KEY);if(!raw)return false;
+    var data=JSON.parse(raw);
+    if(!data.ts||(Date.now()-data.ts)>CHAT_TTL){localStorage.removeItem(CHAT_KEY);return false;}
+    chatHistory=data.history||[];
+    var msgs=document.getElementById('chatMsgs');msgs.innerHTML='';
+    chatHistory.forEach(function(m){addMsg(m.role==='user'?'user':'ai',m.content);});
+    if(chatHistory.length>0)document.getElementById('chips').style.display='none';
+    return chatHistory.length>0;
+  }catch(e){return false;}
+}
+function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제44강 손해전보제도2(손실보상제도) AI 도우미입니다. 성립요건·경계이론·분리이론·토지보상법 절차·보상금증감소송 등 무엇이든 물어보세요.');}
+function addMsg(role,text){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg '+role;
+  var now=new Date();var t=now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML='<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent=text;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg ai chat-typing';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){var el=document.getElementById('typing-indicator');if(el)el.remove();}
+async function sendChat(){
+  var inp=document.getElementById('chatInput');var text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='';document.getElementById('chatSend').disabled=true;
+  addMsg('user',text);chatHistory.push({role:'user',content:text});saveChat();
+  document.getElementById('chips').style.display='none';showTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})});
+    var data=await res.json();hideTyping();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'답변을 가져오지 못했습니다.';
+    addMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});saveChat();
+  }catch(e){hideTyping();addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');}
+  document.getElementById('chatSend').disabled=false;
+}
+function chipSend(el){document.getElementById('chatInput').value=el.textContent;el.parentNode.style.display='none';sendChat();}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+</script>
+</body>
+</html>

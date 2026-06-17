@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제18강 본안판단을 이끌어가는 원리 : 법치행정의 원리 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:200px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.mem-note{margin-top:8px;padding:7px 10px;border-radius:5px;font-size:11.5px;line-height:1.6}
+.mn-blue{background:var(--blue-l);color:var(--blue)}.mn-green{background:var(--green-l);color:var(--green)}.mn-gold{background:var(--gold-l);color:var(--gold)}.mn-red{background:var(--red-l);color:var(--red)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+/* ── AI 대화창 ── */
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-preparing{background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;font-weight:700;color:var(--red);flex-shrink:0;text-align:center;letter-spacing:.3px}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제18강 본안판단을 이끌어가는 원리 : 법치행정의 원리</div>
+  <div class="hdr-sub">법률의 법규창조력 · 법률우위의 원칙 · 법률유보의 원칙 · 형식적→실질적 법치주의</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- ══ TAB 1 · 요약노트 ══ -->
+<div id="panel-summary" class="panel on">
+
+<div class="card"><div class="card-head ch-blue">⚖️ 법치행정의 원리 — 의의와 오토 마이어의 3원칙</div><div class="card-body">
+<div class="body-text" style="margin-bottom:10px">법치행정의 원리란 전체 공행정은 <span class="kw">합헌적 법률에 따라 수행</span>되어야 한다는 원리이다. 행정법 자신의 존재의 기초이자, 취소소송 본안에서 처분의 위법성 판단 구조의 기초이다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 오토 마이어의 형식적 법치주의 3원칙</div>
+① <span class="kw">법률의 법규창조력</span> — 법률'만'이 판결·행정의 기준<br>
+② <span class="kw">법률우위의 원칙</span> — 행정은 법률에 위반되어서는 아니 된다<br>
+③ <span class="kw">법률유보의 원칙</span> — 일정한 행정은 반드시 법률에 명시적 근거를 가져야 한다
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">① 법률의 법규창조력</div><div class="card-body">
+<div class="alert al-green"><div class="alert-label">📌 의미</div>
+<span class="kw">국민의 대표기관인 국회만이</span> 국민을 구속하는 규범인 법률을 만들 수 있고, 그 법률<span class="hl">'만'</span>이 국민을 구속한다.
+</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 역사적 변화 — '만'의 의미 변화</div>
+초창기: 오로지 형식적 의미의 법률'만'이 기준<br>
+오늘날: 법률 외에도 <span class="kw">헌법·국제조약·관습법·행정법의 일반원칙</span> 등도 기준이 될 수 있음 → '만'의 범위가 넓어짐
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">② 법률우위의 원칙 — 형식적→실질적 법치주의</div><div class="card-body">
+<div class="body-text" style="margin-bottom:10px">국가의 행정은 <span class="kw">합헌적 절차에 따라 제정된 법률에 위반</span>되어서는 아니 된다.</div>
+<table class="tbl"><thead><tr><th>구분</th><th>개념 정의</th><th>배경</th></tr></thead><tbody>
+<tr><td><span class="kw">형식적 법치주의</span></td><td>행정은 형식적 의미의 법률에 위반되어서는 아니 된다</td><td>오토 마이어 시대 — 입법자=이성의 유출, 법률=오류 없는 규범</td></tr>
+<tr><td><span class="kw">실질적 법치주의</span></td><td>행정은 <span class="hl">내용적으로도 합헌적인</span> 법률에 위반되어서는 아니 된다</td><td>나치 정권의 형식적 법률 악용에 대한 반성 → 법률의 내용적 합헌성도 요구</td></tr>
+</tbody></table>
+<div class="alert al-red" style="margin-top:10px"><div class="alert-label">📌 핵심 — 법률우위 vs 법률유보의 구별</div>
+<span class="kw">명시적 근거 규정이 있다</span>면 → 법률유보의 문제가 아니라 그 근거 규정이 <span class="hl">합헌적인가</span>라는 <span class="kw">법률우위의 문제</span>가 제기됨
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">③ 법률유보의 원칙 — 의의와 발전</div><div class="card-body">
+<div class="body-text" style="margin-bottom:10px"><span class="kw">일정한 국가의 행정은 명시적 근거를 미리 법률에 가져야 한다</span>는 원칙. 법률유보의 문제 = "<span class="hl">어떤 행정이 존재할 때 그 행정이 법률에 미리 명시적으로 규정되고 있어야만 그 행정이 가능한가?</span>"의 문제</div>
+<table class="tbl"><thead><tr><th>학설</th><th>법률유보 적용 영역</th></tr></thead><tbody>
+<tr><td><span class="kw">침해유보설</span> (초창기)</td><td>국민의 자유·재산을 침해하는 행정에 한해 적용</td></tr>
+<tr><td><span class="kw">급부유보설</span></td><td>침해행정 + 급부행정에도 적용</td></tr>
+<tr><td><span class="kw">권력행정유보설</span></td><td>권력적 행정 전반에 적용</td></tr>
+<tr><td><span class="kw">전부유보설</span></td><td>모든 행정 영역에 적용</td></tr>
+<tr><td><span class="kw">본질성설(중요사항유보설)</span></td><td><span class="hl">기본권실현과 관련된 본질적·중요한 사항</span>은 의회가 직접 결정해야 함 — 헌재 채택</td></tr>
+</tbody></table>
+<div class="판례박스" style="margin-top:10px">헌법 제40조의 의미는 적어도 <span class="kw">국민의 권리와 의무의 형성에 관한 사항을 비롯하여 국가의 통치조직과 작용에 관한 기본적이고 본질적인 사항</span>은 반드시 국회가 정하여야 한다는 것이다. 오늘날 법률유보원칙은 단순히 행정작용이 법률에 근거를 두기만 하면 충분한 것이 아니라, 국가 공동체와 그 구성원에게 <span class="kw">기본적이고도 중요한 의미를 갖는 영역</span>, 특히 <span class="kw">국민의 기본권실현과 관련된 영역</span>에 있어서는 국민의 대표자인 입법자가 그 <span class="kw">본질적 사항에 대해서 스스로 결정</span>하여야한다는 요구까지 내포하고 있다.<div class="출처">헌재 1999.5.27. 98헌바70</div></div>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">🔗 3원칙 상호 관계</div><div class="card-body">
+<table class="tbl"><thead><tr><th>원칙</th><th>질문의 형태</th><th>핵심 내용</th></tr></thead><tbody>
+<tr><td><span class="kw">법규창조력</span></td><td>무엇이 기준이 되는가?</td><td>법률(+헌법·관습법·일반원칙 등)만이 기준</td></tr>
+<tr><td><span class="kw">법률우위</span></td><td>기준이 되는 법률을 위반했는가?</td><td>행정은 합헌적 법률에 위반 불가 (명시적 근거가 있으면 우위의 문제)</td></tr>
+<tr><td><span class="kw">법률유보</span></td><td>행정을 하기 위한 명시적 근거가 있는가?</td><td>본질적·중요한 사항은 의회가 직접 법률로 규정해야 함</td></tr>
+</tbody></table>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 취소소송 본안 위법성 판단과의 연결</div>
+처분에 위법성이 있는지 판단할 때 → 법규창조력으로 <span class="kw">무엇이 법원(法源)인지</span> 확정 → 법률우위로 <span class="kw">처분이 그 법원에 위반했는지</span> 판단 → 법률유보로 <span class="kw">처분의 근거가 아예 없는지</span> 확인
+</div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 2 · 플래시카드 ══ -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">법치행정의 원리</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">합헌적 법률에 따른 공행정</div><ul><li>전체 공행정은 합헌적 법률에 따라 수행되어야 함</li><li>오토 마이어의 3원칙으로 구체화</li><li>행정법의 존재 기초</li><li>취소소송 본안 위법성 판단의 기초</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📜</div><div class="fc-term">법률의 법규창조력</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">국회만이 법률 제정 → 법률만이 기준</div><ul><li>국회만이 국민을 구속하는 법률 제정 가능</li><li>그 법률'만'이 국민을 구속</li><li>초창기: 형식적 법률만 / 오늘날: 헌법·국제조약·관습법·일반원칙도 포함</li><li>'만'의 범위 확대 = 핵심 변화</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔺</div><div class="fc-term">법률우위의 원칙</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gd"><div class="fc-bt">행정은 합헌적 법률에 위반 불가</div><ul><li>형식적 법치주의: 법률에 위반 불가</li><li>실질적 법치주의: 내용적으로도 합헌적인 법률에 위반 불가</li><li>나치 반성 → 형식적→실질적 법치주의로 전환</li><li>명시적 근거 있으면 → 법률유보✗, 법률우위 문제</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔒</div><div class="fc-term">법률유보의 원칙</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">일정 행정은 미리 법률 근거 필요</div><ul><li>일정한 행정은 명시적 근거를 미리 법률에 가져야 함</li><li>근거 없으면 그 행정 불가</li><li>침해유보설→급부·권력행정·전부유보→본질성설(현재)</li><li>본질성설=기본권 관련 본질적 사항은 의회가 직접 결정</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🏛️</div><div class="fc-term">형식적 vs 실질적<br>법치주의</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b pp"><div class="fc-bt">형식=오토마이어 / 실질=나치 반성</div><ul><li>형식: 형식적 법률이면 족함(오토 마이어 시대)</li><li>실질: 형식+내용적 합헌성까지 요구</li><li>나치 정권=형식적 법률로 반인륜 범죄 → 반성 계기</li><li>현재: 실질적 법치주의가 일반화</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔑</div><div class="fc-term">법률유보 학설 발전</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">침해→급부→권력→전부→본질성</div><ul><li>침해유보설: 자유·재산 침해만</li><li>급부유보설: 침해+급부행정</li><li>권력행정유보설: 권력적 행정 전반</li><li>전부유보설: 모든 행정</li><li>본질성설(현재): 기본권 관련 본질적 사항=의회 직접 결정</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📋</div><div class="fc-term">본질성설 — 헌재 판례</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">98헌바70</div><ul><li>국민의 권리·의무 형성에 관한 사항</li><li>국가 통치조직·작용에 관한 기본적·본질적 사항</li><li>→ 반드시 국회가 정해야 함</li><li>단순 법률 근거만으로 부족 → 본질적 사항은 입법자 스스로 결정</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔗</div><div class="fc-term">3원칙과 취소소송<br>본안 위법성 판단</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">법원확정→위반여부→근거유무</div><ul><li>법규창조력 → 법원(法源) 확정(무엇이 기준인가)</li><li>법률우위 → 처분이 그 법원에 위반했는가</li><li>법률유보 → 처분의 근거가 아예 없는가</li><li>세 원칙이 본안 위법성 판단의 3단계 작업과 연결</li></ul></div>
+      </div>
+    </div>
+    </div></div>
+
+<!-- ══ TAB 3 · OX퀴즈 ══ -->
+<div id="panel-quiz" class="panel">
+  <div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+  <div id="qc"></div>
+</div>
+
+<!-- ══ TAB 4 · 필수암기문장 ══ -->
+<div id="panel-memory" class="panel">
+  <div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+  <div class="mem-progress">
+    <div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div>
+    <div class="mem-prog-label" id="prog-label">0 / 0 공개</div>
+    <button class="mem-reveal-all" onclick="revealAll()">전체 공개</button>
+  </div>
+
+<div class="mem-section-title">법치행정의 원리 — 의의</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">정의</span><span class="mem-item-label">법치행정의 원리 정의</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">법치행정의 정의: 전체 공행정은 <span class="mem-blank" onclick="toggleBlank(this)">합헌적 법률에 따라</span> 수행되어야 한다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">법규창조력의 의미</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">법률의 법규창조력이란 국민의 대표기관인 <span class="mem-blank" onclick="toggleBlank(this)">국회만이</span> 국민을 구속하는 규범인 법률을 만들 수 있고, 그 <span class="mem-blank" onclick="toggleBlank(this)">법률'만'이 국민을 구속</span>한다.</div></div></div></div>
+
+<div class="mem-section-title gn">법률우위의 원칙</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">법률우위 — 실질적 법치주의로의 전환</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">형식적 법치주의는 형식적 법률을 무기로 <span class="mem-blank" onclick="toggleBlank(this)">반인륜적 범죄행위를 저지른 나치 정권</span>에 대한 반성으로 형식적 법률이 아니라, 형식적 법률을 기본으로 하면서 그 형식적 법률이 <span class="mem-blank" onclick="toggleBlank(this)">내용적으로도 합헌적</span>일 것을 요구하는 법치주의, 즉 「<span class="mem-blank" onclick="toggleBlank(this)">실질적 법치주의</span>」가 일반화된다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">법률우위 vs 법률유보의 구별</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">명시적 근거 규정이 있다면 <span class="mem-blank" onclick="toggleBlank(this)">법률유보의 문제가 아니라</span> 그 명시적 근거 규정이 <span class="mem-blank" onclick="toggleBlank(this)">합헌적인가라는 법률우위의 문제</span>가 제기될 것이다.</div></div></div></div>
+
+<div class="mem-section-title gd">법률유보의 원칙</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">법률유보의 원칙 정의</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">법률유보의 원칙이란 일정한 국가의 행정은 <span class="mem-blank" onclick="toggleBlank(this)">명시적 근거를 미리 법률에 가져야</span> 한다는 원칙을 말한다. 법률유보의 문제는 「어떤 행정이 존재할 때 그 행정이 <span class="mem-blank" onclick="toggleBlank(this)">법률에 미리 명시적으로 규정되고 있어야만</span> 그 행정이 가능한가?」의 문제이다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">본질성설 — 헌재 98헌바70</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">헌법 제40조의 의미는 적어도 <span class="mem-blank" onclick="toggleBlank(this)">국민의 권리와 의무의 형성에 관한 사항을 비롯하여 국가의 통치조직과 작용에 관한 기본적이고 본질적인 사항</span>은 반드시 국회가 정하여야 한다는 것이다. 오늘날 법률유보원칙은 단순히 행정작용이 법률에 근거를 두기만 하면 충분한 것이 아니라, <span class="mem-blank" onclick="toggleBlank(this)">국민의 기본권실현과 관련된 영역</span>에 있어서는 국민의 대표자인 입법자가 그 <span class="mem-blank" onclick="toggleBlank(this)">본질적 사항에 대해서 스스로 결정</span>하여야한다는 요구까지 내포하고 있다.</div><div class="mem-note mn-gold">헌재 1999.5.27. 98헌바70</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">침해유보설 — 법률유보의 출발점</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">시민계급은 의회의 법률제정권을 가지자마자 일정한 국가행정은 반드시 그 행정의 근거를 미리 형식적 법률에 두어야 하고, 만약 두지 아니하였다면 <span class="mem-blank" onclick="toggleBlank(this)">국가행정을 할 수 없다</span>는 원칙을 세웠다. 이러한 법률유보의 원칙은 최초의 <span class="mem-blank" onclick="toggleBlank(this)">침해유보설</span>로부터 점점 그 적용의 범위를 넓혀가게 되었다.</div></div></div></div>
+
+</div>
+
+<!-- ══ TAB 5 · 문제의 소재 ══ -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제18강은 ① 법률우위·법률유보의 구별, ② 특정 행정이 법률유보 위반인지 법률우위 위반인지 판단, ③ 본질성설의 적용 3가지가 핵심 출제 포인트이다.</div></div>
+
+<div class="ms-section"><div class="ms-section-title">① 법률우위와 법률유보의 구별이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">어떤 행정작용에 명시적 근거가 있는 경우와 없는 경우 각각 어떤 원칙 위반이 문제되는지 구별해야 하는 경우</div><div class="ms-example">예: "행정청의 처분이 법규명령에 근거하고 있으나 그 법규명령이 상위법에 위반된 경우와, 아예 법률 근거 없이 행정청이 처분을 한 경우를 각각 구별하시오."</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">명시적 근거 있음 → 법률유보 문제 아님 → 그 근거 규정이 합헌적인가라는 법률우위의 문제. 명시적 근거 없음 → 법률유보 위반 문제</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">근거 법령의 존재 확인 → 있으면 법률우위(근거 법령이 합헌적인지) / 없으면 법률유보(명시적 근거 필요한 영역인지) → 본질성설 적용 시 기본권 관련 본질적 사항인지도 검토</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">법률우위의 원칙</span><span class="ms-kw">법률유보의 원칙</span><span class="ms-kw">명시적 근거 규정</span><span class="ms-kw">합헌성</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gn">② 형식적 vs 실질적 법치주의의 구별이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">형식적 법치주의와 실질적 법치주의의 차이, 그리고 현행 법치주의의 성격이 무엇인지 문제되는 경우</div><div class="ms-example">예: "형식적 법치주의와 실질적 법치주의의 차이를 설명하시오."</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">형식적=형식적 의미의 법률에만 위반 안 되면 됨. 실질적=형식 + 내용적 합헌성도 요구. 나치 반성으로 실질적 법치주의가 일반화</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">형식적 법치주의의 한계(나치 악용 가능성) → 실질적 법치주의로의 전환 논증 → 현재 법률우위의 원칙은 "합헌적 절차에 따라 제정된 법률에 위반 불가"라고 서술</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">형식적 법치주의</span><span class="ms-kw">실질적 법치주의</span><span class="ms-kw">나치 정권</span><span class="ms-kw">내용적 합헌성</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gd">③ 법률유보의 본질성설 적용이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">행정청이 시행령이나 시행규칙만을 근거로 기본권과 관련된 중요 사항을 규율한 경우, 법률유보 위반 여부가 문제되는 경우</div><div class="ms-example">예: "행정청이 법률의 위임 없이 시행령만으로 국민의 기본적 자유를 제한하는 규정을 둔 경우 법치행정의 원리상 문제점은?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">본질성설(헌재 98헌바70) — 국민의 기본권실현과 관련된 영역에서는 본질적 사항에 대해 입법자가 스스로 결정해야 함. 단순히 법률에 근거를 두기만 하면 되는 것이 아님</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">해당 사항이 기본권 관련 본질적 사항인지 검토 → 본질적 사항이면 의회(국회)가 직접 법률로 규정해야 → 시행령·시행규칙만으로 규율하면 법률유보 위반 → 처분의 근거가 위헌·위법 → 법률우위 위반으로도 연결</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">본질성설</span><span class="ms-kw">중요사항유보설</span><span class="ms-kw">기본권실현</span><span class="ms-kw">헌재 98헌바70</span><span class="ms-kw">법률유보 위반</span></div></div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 6 · 마인드맵 ══ -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- ══ TAB 7 · AI 대화창 ══ -->
+<div id="panel-chat" class="panel">
+  <div class="chat-wrap">
+    <div class="chat-intro">
+      <div class="chat-intro-title">💬 AI 강의 도우미</div>
+      <div class="chat-intro-text">제18강 법치행정의 원리에 대해 무엇이든 질문하세요.<br>개념 설명 · OX 근거 · 판례 요지 · 답안 작성법 모두 답변합니다.</div>
+    </div>
+    <div class="chat-preparing">🔧 더 나은 서비스를 위하여 준비중입니다.</div>
+    <div class="chat-notice">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+    <div class="chat-chips" id="chips">
+      <span class="chip" onclick="chipSend(this)">법률의 법규창조력·우위·유보의 차이</span>
+      <span class="chip" onclick="chipSend(this)">형식적 vs 실질적 법치주의</span>
+      <span class="chip" onclick="chipSend(this)">법률유보 학설 5가지 정리</span>
+      <span class="chip" onclick="chipSend(this)">본질성설과 헌재 98헌바70</span>
+      <span class="chip" onclick="chipSend(this)">실로기스무스 답안 예시</span>
+    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  var exp=document.getElementById('e'+i);exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q":"법치행정의 원리란 전체 공행정은 형식적 법률에 따라 수행되어야 한다는 원리이다.", "a":false, "e":"법치행정의 정의는 전체 공행정은 '합헌적 법률에 따라' 수행되어야 한다는 것이다. 단순히 형식적 법률이 아니라 내용적으로도 합헌적인 법률을 요구한다."},
+{"q":"법률의 법규창조력이란 국민의 대표기관인 국회만이 국민을 구속하는 규범인 법률을 만들 수 있고, 그 법률'만'이 국민을 구속한다는 의미이다.", "a":true, "e":"법률의 법규창조력은 국회만이 국민을 구속하는 법률을 제정할 수 있고, 그 법률'만'이 국민을 구속한다는 원칙이다. 오늘날에는 헌법·국제조약·관습법·행정법의 일반원칙 등도 포함되어 '만'의 범위가 확대되었다."},
+{"q":"오늘날 법규창조력에서 '법률만'의 의미는 오토 마이어 시대와 동일하게 형식적 의미의 법률만으로 한정된다.", "a":false, "e":"초창기에는 오로지 형식적 의미의 법률만이 기준이었으나, 오늘날에는 헌법·국제조약·관습법·행정법의 일반원칙 등도 포함되어 '만'의 범위가 넓어졌다."},
+{"q":"법률우위의 원칙이란 국가의 행정은 형식적으로 제정된 법률이기만 하면 그에 위반되어서는 아니 된다는 원칙이다.", "a":false, "e":"실질적 법치주의에 의하여 법률우위의 원칙은 '국가의 행정은 합헌적 절차에 따라 제정된 법률에 위반되어서는 아니 된다'로 정의된다. 단순한 형식적 제정 여부가 아니라 내용적 합헌성도 요구한다."},
+{"q":"실질적 법치주의는 나치 정권이 형식적 법률을 무기로 반인륜적 범죄를 저지른 것에 대한 반성으로 일반화되었다.", "a":true, "e":"형식적 법치주의의 한계가 나치 정권의 형식적 법률 악용에서 드러났고, 이에 대한 반성으로 형식적 법률이 내용적으로도 합헌적일 것을 요구하는 실질적 법치주의가 일반화되었다."},
+{"q":"어떤 행정작용에 명시적인 근거 규정이 있다면, 그 행정작용의 합법성 심사는 법률유보의 문제가 된다.", "a":false, "e":"명시적 근거 규정이 있다면 법률유보의 문제가 아니라 그 명시적 근거 규정이 합헌적인가라는 법률우위의 문제가 제기될 것이다."},
+{"q":"법률유보의 원칙이란 일정한 국가의 행정은 명시적 근거를 미리 법률에 가져야 한다는 원칙이다.", "a":true, "e":"법률유보의 원칙은 일정한 국가의 행정은 명시적 근거를 미리 법률에 가져야 한다는 원칙이며, 법률유보가 적용되는 영역에서 법률의 근거가 없다면 법률유보의 원칙 위반이 된다."},
+{"q":"침해유보설은 모든 행정에 대해 법률유보 원칙이 적용되어야 한다는 견해이다.", "a":false, "e":"침해유보설은 국민의 자유·재산을 침해하는 행정에 한해 법률유보 원칙이 적용되어야 한다는 견해이다. 모든 행정에 적용하자는 견해는 전부유보설이다."},
+{"q":"본질성설(중요사항유보설)에 의하면 기본권실현과 관련된 본질적·중요한 사항은 의회(국회)가 직접 법률로 규정해야 한다.", "a":true, "e":"본질성설은 국가 공동체와 그 구성원에게 기본적이고도 중요한 의미를 갖는 영역, 특히 국민의 기본권실현과 관련된 영역에 있어서는 입법자가 그 본질적 사항에 대해서 스스로 결정해야 한다는 견해로 헌재가 채택하고 있다."},
+{"q":"헌재 98헌바70에 따르면 오늘날 법률유보원칙은 행정작용이 법률에 단순히 근거를 두기만 하면 충분하다.", "a":false, "e":"헌재 98헌바70에 의하면 오늘날 법률유보원칙은 단순히 행정작용이 법률에 근거를 두기만 하면 충분한 것이 아니라, 국민의 기본권실현과 관련된 영역에 있어서는 국민의 대표자인 입법자가 그 본질적 사항에 대해서 스스로 결정하여야 한다는 요구까지 내포하고 있다."},
+{"q":"헌법 제40조에 따르면 국민의 권리와 의무의 형성에 관한 기본적이고 본질적인 사항은 반드시 국회가 정하여야 한다.", "a":true, "e":"헌재 98헌바70은 헌법 제40조의 의미는 적어도 국민의 권리와 의무의 형성에 관한 사항을 비롯하여 국가의 통치조직과 작용에 관한 기본적이고 본질적인 사항은 반드시 국회가 정하여야 한다는 것이라고 밝히고 있다."},
+{"q":"법률유보의 원칙은 사회와 국가의 성격이 변화됨에 따라 최초의 침해유보설로부터 점점 그 적용 범위를 넓혀왔다.", "a":true, "e":"법률유보의 원칙은 최초의 침해유보설로부터 급부유보설·권력행정유보설·전부유보설·본질성설로 발전하면서 적용 영역을 점점 넓혀왔다."},
+{"q":"법규창조력·법률우위·법률유보는 취소소송 본안에서 처분의 위법성 판단의 3단계 작업(법원확정·위반여부·근거유무)과 직접 연결된다.", "a":true, "e":"법규창조력은 법원(法源)을 확정하고, 법률우위는 그 법원에 처분이 위반했는지를 판단하며, 법률유보는 처분의 명시적 근거가 아예 없는지를 확인하는 구조로 취소소송 본안 위법성 판단의 3단계 작업과 연결된다."},
+{"q":"오토 마이어 시대의 형식적 법치주의에서 법률은 입법기구 구성원들인 이성인들이 만드는 것이어서 오류가 없는 이성의 유출물로 보았다.", "a":true, "e":"오토 마이어 시대에는 입법기구의 구성원들이 이성인들이어서 그들이 만드는 법은 세계 이성이 유출된 결과물이라고 보았다. 그래서 입법기구에서 만들어진 법은 오류가 전혀 없는 이성의 유출물이므로 반드시 지켜져야 한다고 보았으며, 이러한 의미가 바로 형식적 법치주의이다."},
+{"q":"법률유보의 원칙에서 '법률에 미리 명시적으로 규정'되어 있는 경우에는 법률유보의 문제보다 법률우위의 문제가 제기된다.", "a":true, "e":"명시적 근거 규정이 있다면 법률유보의 문제가 아니라 그 명시적 근거 규정이 합헌적인가라는 법률우위의 문제가 제기될 것이다. 법률유보에서의 법률은 합헌적 법률이어야 하기 때문이다."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "법치행정의의": ["전체 공행정은 합헌적 법률에 따라 수행되어야 함", "행정법의 존재 기초", "오토 마이어의 3원칙으로 구체화", "취소소송 본안 위법성 판단의 기초"],
+    "법규창조력": ["국회만이 국민을 구속하는 법률 제정 가능", "그 법률'만'이 국민을 구속", "초창기: 형식적 법률만", "오늘날: 헌법·국제조약·관습법·일반원칙도 포함 ('만' 확대)"],
+    "법률우위의원칙": ["행정은 합헌적 법률에 위반 불가", "형식적 법치주의: 형식적 법률에 위반 불가", "실질적 법치주의: 내용적 합헌성도 요구", "나치 반성 → 실질적 법치주의 일반화"],
+    "법률우위vs유보": ["명시적 근거 있음 → 법률우위의 문제(합헌적인가)", "명시적 근거 없음 → 법률유보의 문제(근거가 있어야 하는가)"],
+    "법률유보의원칙": ["일정한 행정은 명시적 근거를 미리 법률에 가져야 함", "근거 없으면 그 행정 불가", "침해유보설(출발점)→…→본질성설(현재)"],
+    "법률유보학설": ["침해유보설: 자유·재산 침해만", "급부유보설: 침해+급부", "권력행정유보설: 권력적 행정 전반", "전부유보설: 모든 행정", "본질성설: 기본권 관련 본질적 사항=의회 직접 결정"],
+    "본질성설판례": ["헌재 1999.5.27. 98헌바70", "헌법§40: 기본적·본질적 사항은 반드시 국회가 정해야", "단순 근거로 부족 → 본질적 사항은 입법자 스스로 결정", "국민의 기본권실현과 관련된 영역이 핵심"],
+    "3원칙과위법성판단": ["법규창조력 → 법원(法源) 확정", "법률우위 → 처분이 법원에 위반했는가", "법률유보 → 처분의 명시적 근거가 있는가"]
+  };
+  var tree={"name":"법치행정의 원리","depth":0,"children":[
+    {"name":"의의","depth":1,"children":[
+      {"name":"법치행정의의",depth:3}
+    ]},
+    {"name":"법률의 법규창조력","depth":1,"children":[
+      {"name":"법규창조력",depth:3}
+    ]},
+    {"name":"법률우위의 원칙","depth":1,"children":[
+      {"name":"법률우위의원칙",depth:3},{"name":"법률우위vs유보",depth:3}
+    ]},
+    {"name":"법률유보의 원칙","depth":1,"children":[
+      {"name":"법률유보의원칙",depth:3},{"name":"법률유보학설",depth:3},{"name":"본질성설판례",depth:3}
+    ]},
+    {"name":"3원칙과 본안 위법성","depth":1,"children":[
+      {"name":"3원칙과위법성판단",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,145]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020','#5a2d8c'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+var CHAT_KEY='ch18_chat_history';
+var CHAT_TTL=7*24*60*60*1000;
+var chatHistory=[];
+var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제18강 본안판단을 이끌어가는 원리 : 법치행정의 원리」
+주요 내용: 법치행정의 원리 정의(전체 공행정은 합헌적 법률에 따라 수행), 오토 마이어의 3원칙(①법률의 법규창조력=국회만이 법률 제정·법률만이 구속, '만'의 역사적 확대 ②법률우위의 원칙=합헌적 법률에 위반 불가, 형식적→실질적 법치주의로 전환과 나치 반성 ③법률유보의 원칙=명시적 근거를 미리 법률에), 법률유보의 학설 발전(침해유보→급부→권력행정→전부→본질성설), 본질성설과 헌재 98헌바70(기본권실현 관련 본질적 사항은 입법자가 직접 결정), 법률우위와 법률유보의 구별(명시적 근거 있으면 법률우위, 없으면 법률유보), 3원칙과 취소소송 본안 위법성 판단 3단계의 연결.
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생(행정사·노무사·변시·5급 등)의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 헌법 §40, 헌재 98헌바70 등 법조문·판례를 자연스럽게 활용한다.
+4. 답안 작성법 질문에는 실로기스무스 패턴을 적용한 예시를 보여준다.
+5. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){try{localStorage.setItem(CHAT_KEY,JSON.stringify({ts:Date.now(),history:chatHistory}));}catch(e){}}
+function loadChat(){
+  try{
+    var raw=localStorage.getItem(CHAT_KEY);if(!raw)return false;
+    var data=JSON.parse(raw);
+    if(!data.ts||(Date.now()-data.ts)>CHAT_TTL){localStorage.removeItem(CHAT_KEY);return false;}
+    chatHistory=data.history||[];
+    var msgs=document.getElementById('chatMsgs');msgs.innerHTML='';
+    chatHistory.forEach(function(m){addMsg(m.role==='user'?'user':'ai',m.content);});
+    if(chatHistory.length>0)document.getElementById('chips').style.display='none';
+    return chatHistory.length>0;
+  }catch(e){return false;}
+}
+function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제18강 법치행정의 원리 AI 도우미입니다. 법규창조력·법률우위·법률유보, 본질성설 등 무엇이든 물어보세요.');}
+function addMsg(role,text){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg '+role;
+  var now=new Date();var t=now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML='<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent=text;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg ai chat-typing';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){var el=document.getElementById('typing-indicator');if(el)el.remove();}
+async function sendChat(){
+  var inp=document.getElementById('chatInput');var text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='';document.getElementById('chatSend').disabled=true;
+  addMsg('user',text);chatHistory.push({role:'user',content:text});saveChat();
+  document.getElementById('chips').style.display='none';showTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})});
+    var data=await res.json();hideTyping();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'답변을 가져오지 못했습니다.';
+    addMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});saveChat();
+  }catch(e){hideTyping();addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');}
+  document.getElementById('chatSend').disabled=false;
+}
+function chipSend(el){document.getElementById('chatInput').value=el.textContent;el.parentNode.style.display='none';sendChat();}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+</script>
+</body>
+</html>

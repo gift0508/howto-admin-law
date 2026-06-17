@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제42강 유효한 행정의 실효성확보수단2 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:220px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:10.5px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-preparing{background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;font-weight:700;color:var(--red);flex-shrink:0;text-align:center;letter-spacing:.3px}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제42강 유효한 행정의 실효성확보수단2</div>
+  <div class="hdr-sub">행정상 즉시강제 · 과징금·가산세·가산금 · 관허사업 제한·공표</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- TAB 1 -->
+<div id="panel-summary" class="panel on">
+<div class="card"><div class="card-head ch-blue">1-1. 행정상 즉시강제 — 의의·법적 성질</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">행정상 즉시강제</span>란 의무를 명해서는 목적을 달성할 수 없거나 미리 의무를 명할 시간적 여유가 없는 경우에 행정기관이 <span class="hl">직접 개인의 신체·재산에 실력을 가해</span> 행정상 필요한 상태를 실현하는 작용이다(전염병자 강제격리·마약 압수 신체수색 등). 신체·주거의 자유를 침해하므로 예외적으로 인정되며 <span class="hl">헌법 §37②</span>의 적용을 받는다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 법적 성질 · 협의의 소익</div>의무부과행위(법적 행위)+실력행사(사실행위)+수인의무가 결합된 <span class="hl">합성행위</span>로 <span class="hl">처분성</span>이 인정된다. 다만 즉시강제가 완성되면 취소·변경을 구할 <span class="hl">협의의 소익이 없어</span>, 행정쟁송은 <span class="hl">장기간 계속되는 경우</span>에 의미를 갖는다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">1-2. 즉시강제 — 법률유보 · 실체법상 한계</div><div class="card-body">
+<div class="alert al-green"><div class="alert-label">📌 법률유보 · 근거 법률</div>§37②상 법률의 근거 필요. 일반법은 없으나 <span class="hl">경찰작용 영역은 경찰관직무집행법이 일반법</span>. 개별법: 마약류관리법·소방기본법·식품위생법·감염병예방법.</div>
+<table class="tbl" style="margin-top:10px"><thead><tr><th>실체법상 한계</th><th>내용</th></tr></thead><tbody>
+<tr><td>장해의 현재성</td><td>기존 장해 제거·<span class="hl">목전에 급박한 위험</span> 예방을 위해서만 발동(미래 위험 예견 발동 ✕). 목전 급박=위험 현재화가 거의 확실</td></tr>
+<tr><td>소극목적성</td><td>급박한 위험 제거·예방의 소극 목적·<span class="hl">새로운 질서 창조 위해 행사 ✕</span></td></tr>
+<tr><td>비례원칙</td><td>적합성·필요성·상당성(좁은 의미의 비례원칙)</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">1-3. 즉시강제 — 영장주의 · 구제</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px">헌법 §12(신체 구속)·§16(주거 수색)은 영장을 규정하나 <span class="hl">행정작용에 대해서는 명시가 없어</span> 견해가 나뉜다.</div>
+<table class="tbl"><thead><tr><th>견해</th><th>내용</th></tr></thead><tbody>
+<tr><td>영장필요설</td><td>형사·행정 불문 영장제도 적용 → 신체·주거 수색에 영장 필요</td></tr>
+<tr><td>영장불요설</td><td>영장제도는 형사작용에만 적용·즉시강제는 급박한 경우라 영장 불요</td></tr>
+<tr><td>절충설</td><td>원칙적 필요설 + 불가피한 특별 사유 시 <span class="hl">사전영장주의 적용 ✕</span></td></tr>
+</tbody></table>
+<div class="판례박스" style="margin-top:10px">사전영장주의는 인신보호를 위한 헌법상 기속원리이나, §12③ 단서처럼 <span class="hl">사전영장주의를 고수하다가는 행정목적을 달성할 수 없는 지극히 예외적인 경우에는 예외가 인정</span>되므로, 구 사회안전법 §11의 동행보호 규정은 요건을 엄격히 해석하는 한 헌법에 반하지 않는다.<div class="출처">대판 1997.6.13. 96다56115</div></div>
+<div class="alert al-blue" style="margin-top:10px"><div class="alert-label">📌 구제</div>위법한 즉시강제 → <span class="hl">국가배상</span>. 적법한 즉시강제로 특별한 희생에 해당하는 손실 + 개별법 있으면 → <span class="hl">손실보상</span>.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">2-1. 금전상 제재 — 과징금·가산세·가산금</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 과징금·부과금</div>형벌이 아니므로 <span class="hl">형벌과 병과 가능</span>. 협의의 과징금(경제적 이익 박탈·부당이득 환수만 또는 환수+제재) / <span class="hl">변형된 과징금</span>(영업정지 등에 갈음). 부과는 독립적 침익적 행정행위·법률유보(통칙 규정 없음·개별법).</div>
+<div class="판례박스" style="margin-top:10px">부당내부거래에 대한 과징금은 부당내부거래 억지라는 행정목적 실현을 위한 <span class="hl">행정상 제재금의 기본 성격에 부당이득 환수 요소가 부가</span>된 것으로, 헌법 §13①의 국가형벌권 행사로서의 '처벌'에 해당하지 않는다.<div class="출처">헌재 2003.7.24. 2001헌가29</div></div>
+<table class="tbl" style="margin-top:10px"><thead><tr><th>구분</th><th>내용</th></tr></thead><tbody>
+<tr><td>가산세</td><td>신고·납부 불이행·불성실 방지·성실 확보 위해 세액에 가산 징수(국세기본법 §2 4호). <span class="hl">정당한 사유 있으면 부과 ✕</span>(판례: 고의·과실 고려 ✕·법령 부지/오인·세무공무원 잘못 설명은 정당한 사유 ✕)</td></tr>
+<tr><td>가산금</td><td>국세 연체 시 <span class="hl">고지세액에 가산</span>하여 부과·징수(국세기본법 §2 5호)</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">2-2. 관허사업의 제한</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">관허사업의 제한(제재적 행정처분)</span>이란 의무위반자에 대해 인가·허가 등을 거부·정지·철회하여 <span class="hl">간접적으로 의무이행을 확보</span>하는 것이다. 권익침해 효과 → 철회권 유보 또는 법률유보 명문 근거 필요.</div>
+<div class="alert al-blue"><div class="alert-label">📌 무관련 관허사업의 제한 (국세징수법 §7)</div>국세 체납 시 세무서장이 사업 주무관서에 허가 등을 하지 않을 것을 요구 → 정당한 사유 없는 한 거부·정지·철회. 부당결부금지 위반·위헌 지적이 있으나, 부당결부금지가 무조건 적용되는 것은 아니고 <span class="hl">국가재정 안정을 위한 입법정책상 불가피한 최소한이어서 합헌</span>.</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 요청행위의 처분성</div>다수설은 <span class="hl">처분성 부정</span>(주무관서가 따르는 것은 법률규정의 효과이지 요청행위의 효과가 아님). 직접 권리 제한을 이유로 한 긍정설도 있다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-blue">2-3. 공급거부 · 공표</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 공급거부</div>행정서비스를 끊어 사업·일상생활에 어려움을 줌으로써 <span class="hl">간접적으로 의무이행을 확보</span>하는 수단.</div>
+<div class="body-text" style="margin:10px 0 8px"><span class="kw">공표</span>란 의무위반·불이행자의 명단·사실을 공중이 알 수 있도록 알리는 것(예: 청소년성매매자명단공개)으로, 간접적 의무이행 확보+<span class="hl">알권리 실현</span>의 의미를 가지며 <span class="hl">비권력적 사실행위</span>이다.</div>
+<div class="판례박스"><strong>처분성</strong> — 전통적 견해는 공표가 공권력 행사도 아니고 권리·의무에 영향을 주지 않아 처분이 아니라고 보았으나, 최근 판례는 <span class="hl">공표행위와 불이익 사이의 실질적 견련성 유무에 따라 항고소송의 대상이 되는 처분일 수 있다</span>고 본다.</div>
+<div class="alert al-red" style="margin-top:10px"><div class="alert-label">📌 한계 · 구제</div>비례원칙·부당결부금지·<span class="hl">무죄추정의 원칙</span> 준수. 위법한 공표 → 손해배상(사실행위이나 <span class="hl">국가배상법 §2 직무행위</span>에 해당)·결과제거청구권으로 민법 §764 유추 정정공고. 위법·부당 공표 시 관계 공무원의 형사 책임.</div>
+</div></div>
+</div>
+
+<!-- TAB 2 -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⚡</div><div class="fc-term">행정상 즉시강제<br>의의</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">의무 명할 여유 없음 / 직접 실력</div><ul><li>의무 명해서는 목적 달성 ✕ 또는 명할 여유 ✕</li><li>직접 신체·재산에 실력→필요한 상태 실현</li><li>예: 전염병자 강제격리·마약 압수 신체수색</li><li>신체·주거 자유 침해→헌법§37②</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">즉시강제<br>법적 성질·소익</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">합성행위·처분성 / 완성 시 소익 ✕</div><ul><li>의무부과+실력행사+수인의무=합성행위</li><li>처분성 인정</li><li>완성되면 협의의 소익 ✕</li><li>장기간 계속 시 행정쟁송 의미</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📜</div><div class="fc-term">즉시강제<br>법률유보·근거</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">경직법 일반법 / 개별법</div><ul><li>§37②상 법률 근거 필요</li><li>일반법 없음·경찰작용은 경찰관직무집행법 일반법</li><li>개별법: 마약류관리법·소방기본법·식품위생법·감염병예방법</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🚧</div><div class="fc-term">즉시강제<br>실체법상 한계</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">현재성·소극목적·비례</div><ul><li>장해의 현재성: 기존 장해·목전 급박 위험(미래 위험 ✕)</li><li>소극목적성: 소극 목적·새 질서 창조 ✕</li><li>비례원칙: 적합성·필요성·상당성</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📋</div><div class="fc-term">즉시강제<br>영장주의 견해</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">필요설·불요설·절충설</div><ul><li>영장필요설: 형사·행정 불문 영장 필요</li><li>영장불요설: 형사작용만 적용·급박→불요</li><li>절충설: 원칙 필요+불가피 특별 사유 시 사전영장 ✕</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📕</div><div class="fc-term">영장주의<br>판례(96다56115)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">예외적 경우 예외 인정</div><ul><li>사전영장주의=인신보호 헌법 기속원리</li><li>§12③ 단서처럼 행정목적 달성 못 하는 예외적 경우 예외</li><li>구 사회안전법§11 동행보호 요건 엄격 해석 시 합헌</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">💰</div><div class="fc-term">즉시강제<br>구제</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">국가배상·손실보상</div><ul><li>위법 즉시강제→국가배상</li><li>적법 즉시강제+특별한 희생+개별법→손실보상</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">💸</div><div class="fc-term">과징금<br>(2001헌가29)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">형벌 병과 가능 / 처벌 ✕</div><ul><li>형벌 ✕→형벌과 병과 가능</li><li>협의 과징금(부당이득 환수±제재)·변형 과징금(영업정지 갈음)</li><li>판례: 부당내부거래 과징금=제재금+부당이득 환수·처벌 ✕</li><li>독립적 침익적 행정행위·법률유보·통칙 규정 없음</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🧾</div><div class="fc-term">가산세</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">정당한 사유 / 고의·과실 불문</div><ul><li>신고·납부 불이행·불성실 방지·세액 가산(국세기본법§2 4호)</li><li>정당한 사유 있으면 부과 ✕</li><li>판례: 고의·과실 고려 ✕·법령 부지/오인 정당 사유 ✕</li><li>세무공무원 잘못 설명도 명백히 어긋나면 정당 사유 ✕</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🏦</div><div class="fc-term">가산금</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">국세 연체</div><ul><li>국세 연체 시 고지세액에 가산 부과·징수</li><li>국세기본법 §2 5호</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🚫</div><div class="fc-term">관허사업<br>제한</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">국세징수법§7 / 합헌·처분성 부정</div><ul><li>인가·허가 거부·정지·철회로 간접 의무이행 확보</li><li>무관련 제한(국세징수법§7): 체납 시 세무서장 요구</li><li>부당결부금지 위헌 지적 / 입법정책상 불가피→합헌</li><li>요청행위 처분성: 다수설 부정(법률규정 효과)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">💧</div><div class="fc-term">공급거부</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">행정서비스 차단</div><ul><li>행정서비스를 끊어 사업·일상에 어려움</li><li>간접적으로 의무이행 확보</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📢</div><div class="fc-term">공표</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">비권력적 사실행위 / 견련성</div><ul><li>의무위반자 명단·사실 공중 공개·간접 확보+알권리</li><li>비권력적 사실행위·전통적 견해 처분 ✕</li><li>최근 판례: 실질적 견련성 유무에 따라 처분일 수 있음</li><li>무죄추정·비례·부당결부금지·위법 시 국가배상(§2 직무행위)·정정공고</li></ul></div>
+</div></div>
+</div></div>
+
+<!-- TAB 3 -->
+<div id="panel-quiz" class="panel">
+<div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+<div id="qc"></div>
+</div>
+
+<!-- TAB 4 -->
+<div id="panel-memory" class="panel">
+<div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+<div class="mem-progress"><div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div><div class="mem-prog-label" id="prog-label">0 / 0 공개</div><button class="mem-reveal-all" onclick="revealAll()">전체 공개</button></div>
+<div class="mem-section-title">행정상 즉시강제</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">즉시강제의 의의</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정상 즉시강제란 의무를 명해서는 목적을 달성할 수 없거나 미리 의무를 명할 시간적 여유가 없는 경우에 행정기관이 <span class="mem-blank" onclick="toggleBlank(this)">직접 개인의 신체나 재산에 실력을 가해</span> 행정상 필요한 상태의 실현을 목적으로 하는 작용이다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">즉시강제의 법적 성질과 소익</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">즉시강제는 사실행위와 법적 행위가 결합된 <span class="mem-blank" onclick="toggleBlank(this)">합성행위로서 처분의 성질</span>을 가지나, 즉시강제가 완성되면 취소·변경을 구할 협의의 소익이 없어 행정쟁송은 <span class="mem-blank" onclick="toggleBlank(this)">장기간에 걸쳐 계속되는 경우</span>에 의미를 갖는다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">법률유보와 실체법상 한계</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">즉시강제는 §37②상 법률의 근거를 요하며 경찰작용 영역에서는 <span class="mem-blank" onclick="toggleBlank(this)">경찰관직무집행법이 일반법</span>으로 기능하고, 실체법상 한계로 <span class="mem-blank" onclick="toggleBlank(this)">장해의 현재성·소극목적성·비례원칙</span>에 따른 한계가 있다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">영장주의 (96다56115)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">사전영장주의는 인신보호를 위한 헌법상 기속원리이나, <span class="mem-blank" onclick="toggleBlank(this)">사전영장주의를 고수하다가는 행정목적을 달성할 수 없는 지극히 예외적인 경우</span>에는 예외가 인정되므로, 구 사회안전법상 동행보호 규정은 요건을 엄격히 해석하는 한 헌법에 반하지 않는다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">즉시강제의 구제</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">위법한 즉시강제로 손해를 입은 자는 <span class="mem-blank" onclick="toggleBlank(this)">국가배상</span>을 청구할 수 있고, 적법한 즉시강제로 특별한 희생에 해당하는 손실을 입고 개별법이 있으면 <span class="mem-blank" onclick="toggleBlank(this)">손실보상</span>을 청구할 수 있다.</div></div></div></div>
+<div class="mem-section-title gn">금전상 제재</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">과징금의 성질 (2001헌가29)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">과징금은 형벌이 아니므로 <span class="mem-blank" onclick="toggleBlank(this)">형벌과 병과가 가능</span>하며, 판례는 부당내부거래 과징금을 행정상 제재금의 기본 성격에 부당이득 환수 요소가 부가된 것으로 보아 <span class="mem-blank" onclick="toggleBlank(this)">국가형벌권 행사로서의 처벌에 해당하지 않는다</span>고 본다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">변형된 과징금</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">변형된 과징금이란 <span class="mem-blank" onclick="toggleBlank(this)">영업정지 등에 갈음하여 과징금을 부과</span>하는 경우를 말한다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">가산세와 정당한 사유</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">의무해태에 정당한 사유가 있으면 가산세를 부과할 수 없으나, 판례는 가산세 부과 시 <span class="mem-blank" onclick="toggleBlank(this)">납세자의 고의·과실은 고려되지 않으며</span>, <span class="mem-blank" onclick="toggleBlank(this)">법령의 부지·오인은 정당한 사유에 해당하지 않는다</span>고 본다.</div></div></div></div>
+<div class="mem-section-title gd">관허사업 제한 · 공표</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">무관련 관허사업의 제한 (국세징수법 §7)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">국세징수법 §7의 무관련 관허사업 제한은 부당결부금지 위반 지적이 있으나, 국가재정 안정을 위한 입법정책상 불가피한 최소한으로 <span class="mem-blank" onclick="toggleBlank(this)">합헌</span>으로 보며, 세무서장의 관허사업제한 요청행위는 다수설상 <span class="mem-blank" onclick="toggleBlank(this)">처분성이 부정</span>된다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">공표의 법적 성질과 처분성</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">공표는 <span class="mem-blank" onclick="toggleBlank(this)">비권력적 사실행위</span>로서 전통적 견해는 처분이 아니라고 보았으나, 최근 판례는 공표행위와 불이익 사이의 <span class="mem-blank" onclick="toggleBlank(this)">실질적 견련성 유무에 따라 항고소송의 대상이 되는 처분일 수 있다</span>고 본다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">공표의 한계와 구제</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">공표는 비례원칙·부당결부금지·<span class="mem-blank" onclick="toggleBlank(this)">무죄추정의 원칙</span>을 준수해야 하며, 위법한 공표는 사실행위이나 국가배상법 §2의 직무행위에 해당하여 손해배상의 대상이 되고 결과제거청구권으로 민법 §764를 유추하여 <span class="mem-blank" onclick="toggleBlank(this)">정정공고</span>를 구할 수도 있다.</div></div></div></div>
+</div>
+
+<!-- TAB 5 -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제42강은 ① 즉시강제의 법적 성질과 권리구제(협의의 소익), ② 즉시강제와 영장주의, ③ 과징금·관허사업 제한·공표의 법적 성질이 핵심 출제 포인트이다.</div></div>
+<div class="ms-section"><div class="ms-section-title">① 즉시강제의 법적 성질과 권리구제가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">즉시강제를 항고소송으로 다툴 수 있는지, 완성된 후에도 소익이 있는지</div><div class="ms-example">예: "이미 종료된 강제격리에 대해 취소소송을 제기할 협의의 소익이 있는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">즉시강제는 사실행위+법적 행위가 결합된 <span class="g">합성행위로 처분성</span>이 인정되나, 완성되면 협의의 소익이 없어 <span class="g">장기간 계속되는 경우</span>에만 행정쟁송의 의미가 있다. 위법 시 국가배상, 적법하나 특별한 희생 시 손실보상으로 구제한다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">법적 성질(합성행위·처분성) → 완성 여부로 협의의 소익 판단 → 주체·내용·절차·형식 하자 → 국가배상·손실보상</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">합성행위·처분성</span><span class="ms-kw">협의의 소익</span><span class="ms-kw">국가배상·손실보상</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gn">② 즉시강제와 영장주의가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">행정상 즉시강제에 헌법상 영장주의가 적용되는지</div><div class="ms-example">예: "급박한 위험 제거를 위한 신체 동행보호에 사전영장이 필요한가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">헌법 §12·§16은 영장을 규정하나 행정작용에 대해서는 명시가 없어 영장필요설·불요설·절충설이 대립한다. 판례는 사전영장주의가 인신보호 기속원리이나 <span class="g">고수하다가는 행정목적을 달성할 수 없는 예외적 경우에는 예외가 인정</span>된다고 본다(96다56115·요건을 엄격히 해석하는 한 합헌).</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">영장주의 적용 여부 학설 → 판례(예외 인정·엄격 해석) → 구체적 사안에서 급박성·요건 엄격 해석으로 판단</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">영장필요설·불요설·절충설</span><span class="ms-kw">96다56115</span><span class="ms-kw">예외적 인정</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gd">③ 과징금·관허사업 제한·공표의 법적 성질이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">현대적 수단들이 형벌인지·처분인지, 어떻게 다투는지</div><div class="ms-example">예: "과징금을 형벌과 함께 부과할 수 있는가? 공표는 항고소송으로 다툴 수 있는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text"><span class="g">과징금</span>은 형벌이 아니어서 병과 가능하고 부과는 침익적 행정행위이다(2001헌가29). <span class="g">관허사업제한 요청행위</span>는 다수설상 처분성이 부정된다. <span class="g">공표</span>는 비권력적 사실행위이나 최근 판례는 실질적 견련성에 따라 처분일 수 있다고 보며, 위법 시 국가배상·정정공고로 구제한다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">각 수단의 성질(과징금=제재금·처벌 ✕ / 요청행위=처분성 부정 / 공표=비권력적 사실행위, 견련성 시 처분) → 그에 따른 구제수단 검토</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">과징금(2001헌가29)</span><span class="ms-kw">요청행위 처분성</span><span class="ms-kw">공표·견련성</span></div></div>
+</div></div>
+</div>
+
+<!-- TAB 6 -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- TAB 7 -->
+<div id="panel-chat" class="panel">
+<div class="chat-wrap">
+<div class="chat-intro"><div class="chat-intro-title">💬 AI 강의 도우미</div><div class="chat-intro-text">제42강 유효한 행정의 실효성확보수단2에 대해 무엇이든 질문하세요.<br>즉시강제·과징금·가산세·관허사업 제한·공표 모두 답변합니다.</div></div>
+<div class="chat-preparing">🔧 더 나은 서비스를 위하여 준비중입니다.</div>
+<div class="chat-notice">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+<div class="chat-chips" id="chips">
+<span class="chip" onclick="chipSend(this)">행정상 즉시강제의 법적 성질과 소익</span>
+<span class="chip" onclick="chipSend(this)">즉시강제의 실체법상 한계</span>
+<span class="chip" onclick="chipSend(this)">즉시강제와 영장주의(판례)</span>
+<span class="chip" onclick="chipSend(this)">과징금의 성질과 형벌 병과</span>
+<span class="chip" onclick="chipSend(this)">공표의 법적 성질과 구제</span>
+</div>
+<div class="chat-msgs" id="chatMsgs"></div>
+<div class="chat-input-row"><textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea><button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button></div>
+</div>
+</div>
+
+</div>
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  var exp=document.getElementById('e'+i);exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q":"행정상 즉시강제는 의무를 명해서는 목적을 달성할 수 없거나 의무를 명할 시간적 여유가 없을 때 직접 신체·재산에 실력을 가하는 작용이다.", "a":true, "e":"행정상 즉시강제는 의무를 명해서는 공행정 목적을 달성할 수 없거나 미리 의무를 명할 시간적 여유가 없는 경우에 직접 개인의 신체·재산에 실력을 가해 행정상 필요한 상태를 실현하는 작용이다."},
+{"q":"행정상 즉시강제는 신체·주거의 자유를 침해하므로 헌법 제37조 제2항의 적용을 받는다.", "a":true, "e":"행정상 즉시강제는 신체의 자유와 주거의 자유를 침해하므로 매우 예외적으로 인정되며 헌법 제37조 제2항의 적용을 받는다."},
+{"q":"행정상 즉시강제는 사실행위와 법적 행위가 결합된 합성행위로서 항고소송의 대상이 되는 처분의 성질을 가진다.", "a":true, "e":"행정상 즉시강제는 사실행위와 법적 행위(수인의무)가 결합된 합성행위로서 항고소송의 대상이 되는 처분의 성질을 가진다."},
+{"q":"즉시강제가 완성된 후에도 취소·변경을 구할 협의의 소익이 인정된다.", "a":false, "e":"즉시강제가 완성되어 버리면 취소·변경을 구할 협의의 소익이 없게 되므로, 행정쟁송은 즉시강제가 장기간에 걸쳐 계속되는 경우에 의미를 갖는다."},
+{"q":"행정상 즉시강제에 관한 일반법은 없으나, 경찰작용 영역에서는 경찰관직무집행법이 일반법으로 기능한다.", "a":true, "e":"행정상 즉시강제에 관한 일반법은 없으나, 경찰공무원이 수행하는 경찰작용 영역에서는 경찰관직무집행법이 일반법으로 기능한다."},
+{"q":"장해의 현재성에 따른 한계상 즉시강제는 미래에 발생할지 모를 위험을 예견하여 발동될 수 있다.", "a":false, "e":"장해의 현재성에 따른 한계상 즉시강제는 기존의 장해를 제거하거나 목전에 급박한 위험을 예방하기 위하여 발동될 수 있을 뿐, 미래에 발생할지 모를 위험을 예견하여 발동될 수는 없다."},
+{"q":"소극목적성에 따른 한계상 즉시강제는 적극적으로 새로운 질서를 창조하기 위해 행사될 수 있다.", "a":false, "e":"소극목적성에 따른 한계상 즉시강제는 급박한 위험의 제거·예방이라는 소극 목적을 위해 발동되는 것이지 적극적으로 새로운 질서를 창조하기 위해 행사될 수는 없다."},
+{"q":"영장필요설은 영장제도가 형사·행정 작용을 불문하고 적용되어 행정목적이라도 신체·주거 수색에 영장이 필요하다는 견해이다.", "a":true, "e":"영장필요설은 헌법상 영장제도가 형사·행정 작용을 불문하고 적용되어 행정목적을 위한 것이라도 주거 출입·신체·주거 수색에 영장이 필요하다는 견해이다."},
+{"q":"판례에 의하면 사전영장주의를 고수하다가는 행정목적을 달성할 수 없는 지극히 예외적인 경우에는 예외가 인정된다.", "a":true, "e":"판례는 사전영장주의가 인신보호 기속원리이나 헌법 제12조 제3항 단서처럼 사전영장주의를 고수하다가는 행정목적을 달성할 수 없는 지극히 예외적인 경우에는 예외가 인정된다고 본다(96다56115)."},
+{"q":"위법한 즉시강제로 손해를 입은 자는 국가배상을 청구할 수 있고, 적법한 즉시강제로 특별한 희생에 해당하는 손실을 입고 개별법이 있으면 손실보상을 청구할 수 있다.", "a":true, "e":"위법한 즉시강제로 손해를 입은 자는 국가배상을, 적법한 즉시강제로 특별한 희생에 해당하는 손실을 입고 손실보상 개별법이 있으면 손실보상을 청구할 수 있다."},
+{"q":"과징금은 형벌이 아니므로 형벌과 병과가 가능하다.", "a":true, "e":"과징금은 형벌이 아니므로 형벌과 병과가 가능하다."},
+{"q":"판례에 의하면 부당내부거래에 대한 과징금은 국가형벌권 행사로서의 '처벌'에 해당한다.", "a":false, "e":"판례는 부당내부거래 과징금을 행정상 제재금의 기본 성격에 부당이득 환수 요소가 부가된 것으로 보아 헌법 제13조 제1항의 국가형벌권 행사로서의 '처벌'에 해당하지 않는다고 본다(2001헌가29)."},
+{"q":"판례에 의하면 가산세 부과 시 납세자의 고의·과실은 고려되지 않으며, 법령의 부지·오인은 정당한 사유에 해당하지 않는다.", "a":true, "e":"판례는 가산세 부과 시 납세자의 고의·과실은 고려되지 않으며, 법령의 부지·오인이나 세무공무원의 잘못된 설명을 믿은 것도 정당한 사유에 해당하지 않는다고 본다."},
+{"q":"무관련 관허사업의 제한(국세징수법 제7조)은 부당결부금지 원칙에 반하여 위헌이라는 것이 결론이다.", "a":false, "e":"위헌이라는 지적이 있으나, 부당결부금지가 무조건 적용되는 것은 아니고 국가재정 안정을 위한 입법정책상 불가피한 최소한이어서 국세징수법 제7조는 합헌으로 본다."},
+{"q":"다수설에 의하면 세무서장의 관허사업제한 요청행위는 처분성이 인정된다.", "a":false, "e":"다수설은 주무관서가 따르는 것은 법률규정에서 나오는 효과이지 요청행위에서 나오는 효과가 아니므로 요청행위의 처분성을 부정한다."},
+{"q":"공표는 비권력적 사실행위로서, 전통적 견해는 항고소송의 대상이 되는 처분이 아니라고 보았다.", "a":true, "e":"공표는 비권력적 사실행위로서 공권력 행사도 아니고 권리·의무에 영향을 주지 않아 처분이 아니라는 것이 전통적인 견해였다."},
+{"q":"최근 판례는 공표행위와 불이익 사이의 실질적 견련성 유무에 따라 공표가 항고소송의 대상이 되는 처분일 수 있다고 본다.", "a":true, "e":"최근 판례는 공표행위와 공표에 의해 입게 되는 이해관계인의 불이익 사이의 실질적 견련성 유무에 따라 공표가 항고소송의 대상이 되는 처분일 수 있다고 본다."},
+{"q":"위법한 공표로 손해를 입은 경우 공표는 사실행위이므로 국가배상법 제2조의 직무행위에 해당하지 않는다.", "a":false, "e":"공표는 사실행위이지만 국가배상법 제2조의 직무행위에 해당하므로, 위법한 공표는 손해배상의 대상이 된다."},
+{"q":"공급거부는 행정서비스를 끊어 간접적으로 의무이행을 확보하려는 수단이다.", "a":true, "e":"공급거부는 행정서비스를 끊어 사업이나 일상생활에 어려움을 줌으로써 간접적으로 의무이행을 확보하려는 수단이다."},
+{"q":"가산금은 국세를 연체할 때 그 고지세액에 가산하여 부과·징수하는 금액이다.", "a":true, "e":"가산금은 국세를 연체할 때 그 고지세액에 가산하여 부과·징수하는 금액으로 국세기본법에 정해져 있다."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "즉시강제의의": ["의무 명해서는 목적 달성 ✕ 또는 명할 여유 ✕→직접 신체·재산에 실력", "예: 전염병자 강제격리·마약 압수 신체수색", "신체·주거 자유 침해→예외적·헌법§37②", "법적 성질: 합성행위·처분성·완성 시 협의의 소익 ✕(장기 계속 시 의미)"],
+    "즉시강제한계": ["§37②상 법률 근거·일반법 없음·경찰관직무집행법 일반법(경찰 영역)", "개별법: 마약류관리법·소방기본법·식품위생법·감염병예방법", "장해의 현재성(기존 장해·목전 급박 위험·미래 위험 ✕)", "소극목적성(새 질서 창조 ✕)·비례원칙(적합·필요·상당)"],
+    "영장주의": ["헌법§12·§16 영장·행정작용 명시 ✕", "영장필요설/불요설/절충설(원칙 필요+불가피 시 사전영장 ✕)", "판례 96다56115: 행정목적 달성 못 하는 예외적 경우 예외 인정", "구제: 위법→국가배상·적법+특별한 희생+개별법→손실보상"],
+    "과징금": ["형벌 ✕→형벌과 병과 가능·협의 과징금(부당이득 환수±제재)·변형 과징금(영업정지 갈음)", "판례 2001헌가29: 부당내부거래 과징금=제재금+부당이득 환수·처벌 ✕", "독립적 침익적 행정행위·법률유보·통칙 규정 없음"],
+    "가산세가산금": ["가산세: 신고·납부 불이행·불성실 방지·세액 가산(국세기본법§2 4호)", "정당한 사유 있으면 부과 ✕·판례 고의·과실 고려 ✕·법령 부지/오인 ✕", "가산금: 국세 연체 시 고지세액 가산(국세기본법§2 5호)"],
+    "관허사업제한": ["인가·허가 거부·정지·철회로 간접 의무이행 확보·제재적 행정처분", "무관련 제한(국세징수법§7): 체납 시 세무서장 요구·부당결부금지 위헌 지적", "입법정책상 불가피한 최소한→합헌", "요청행위 처분성: 다수설 부정(법률규정 효과)·긍정설도 있음"],
+    "공표": ["의무위반자 명단·사실 공중 공개·간접 의무이행 확보+알권리", "비권력적 사실행위·전통적 견해 처분 ✕", "최근 판례: 실질적 견련성 유무에 따라 처분일 수 있음", "무죄추정·비례·부당결부금지·위법 시 국가배상(§2 직무행위)·정정공고(민법§764 유추)"]
+  };
+  var tree={"name":"실효성확보수단2","depth":0,"children":[
+    {"name":"행정상 즉시강제","depth":1,"children":[
+      {"name":"즉시강제의의",depth:3},{"name":"즉시강제한계",depth:3},{"name":"영장주의",depth:3}
+    ]},
+    {"name":"금전상 제재","depth":1,"children":[
+      {"name":"과징금",depth:3},{"name":"가산세가산금",depth:3}
+    ]},
+    {"name":"관허사업·공급거부","depth":1,"children":[
+      {"name":"관허사업제한",depth:3}
+    ]},
+    {"name":"공표","depth":1,"children":[
+      {"name":"공표",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,160]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020','#5a2d8c'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+var CHAT_KEY='ch42_chat_history';
+var CHAT_TTL=7*24*60*60*1000;
+var chatHistory=[];
+var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제42강 유효한 행정의 실효성확보수단2」
+주요 내용: 행정상 즉시강제(의무 명해서는 목적 달성 ✕ 또는 미리 의무 명할 여유 ✕→직접 신체·재산에 실력→행정상 필요한 상태 실현·예 전염병자 강제격리·마약 압수 신체수색·신체·주거 자유 침해→예외적·헌법§37②·법적 성질: 의무부과+실력행사+수인의무 결합 합성행위·처분성·완성 시 협의의 소익 ✕→장기간 계속 시 행정쟁송 의미·법률유보 §37②·일반법 없음·경찰작용은 경찰관직무집행법 일반법·개별법 마약류관리법·소방기본법·식품위생법·감염병예방법·실체법상 한계: 장해의 현재성(기존 장해 제거·목전 급박 위험 예방·미래 위험 ✕·목전 급박=현재화 거의 확실)·소극목적성(소극 목적·새 질서 창조 ✕)·비례원칙(적합성·필요성·상당성)·영장주의: 헌법§12·§16 영장·행정작용 명시 ✕·영장필요설/영장불요설/절충설(원칙 필요+불가피 특별 사유 시 사전영장 ✕)·판례 96다56115 사전영장주의 인신보호 기속원리이나 §12③ 단서처럼 행정목적 달성 못 하는 예외적 경우 예외 인정·구 사회안전법§11 동행보호 요건 엄격 해석 시 합헌·구제: 위법→국가배상·적법+특별한 희생+개별법→손실보상), 금전상 제재(과징금·부과금: 형벌 ✕→형벌과 병과 가능·협의 과징금=부당이득 환수만 또는 환수+제재·변형 과징금=영업정지 갈음·판례 2001헌가29 부당내부거래 과징금=행정상 제재금 기본 성격+부당이득 환수 요소·헌법§13① 처벌 ✕·독립적 침익적 행정행위·법률유보·통칙 규정 없음·가산세: 신고·납부 불이행·불성실 방지·세액 가산 국세기본법§2 4호·정당한 사유 있으면 부과 ✕·판례 고의·과실 고려 ✕·법령 부지/오인·세무공무원 잘못 설명 정당 사유 ✕·가산금: 국세 연체 시 고지세액 가산 국세기본법§2 5호), 관허사업의 제한(인가·허가 거부·정지·철회로 간접 의무이행 확보·제재적 행정처분·권익침해→철회권 유보 또는 법률유보·관련 사업 제한/국세체납 시 세무서장 요구 주무관서 제한·무관련 관허사업 제한 국세징수법§7: 체납 시 세무서장이 주무관서에 허가 등 안 할 것 요구·정당 사유 없으면 거부·정지·철회·부당결부금지 위반·영업 자유 침해 위헌 지적·부당결부금지 무조건 적용 ✕·국가재정 안정 입법정책상 불가피한 최소한→합헌·세무서장 요청행위 처분성 다수설 부정 주무관서 따름은 법률규정 효과·긍정설도 있음), 공급거부(행정서비스 끊어 간접 의무이행 확보), 공표(의무위반·불이행자 명단·사실 공중 공개·예 청소년성매매자명단공개·간접 의무이행 확보+알권리·비권력적 사실행위·전통적 견해 공권력 행사 ✕·처분 ✕·최근 판례 공표행위와 불이익 사이 실질적 견련성 유무에 따라 처분일 수 있음·취소소송은 이미 공표 사항 실효적 구제 ✕→예방적 부작위소송 마련 필요 견해·명문 없는 공표 적법성 문제·프라이버시 보호·중대 위반은 보호 어려움·이익형량·비례·부당결부금지·무죄추정 준수·위법 공표 손해배상 사실행위이나 국가배상법§2 직무행위·결과제거청구권 민법§764 유추 정정공고·위법·부당 공표 시 관계 공무원 형사 책임), 행정조사(실효성확보수단 이용 전 사전 조사·다음 강의 예고).
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 즉시강제는 '합성행위·처분성·완성 시 소익 ✕·실체법상 한계(현재성·소극목적·비례)·영장주의(판례 예외 인정)'로 핵심을 잡아 준다.
+4. 과징금(형벌 병과·처벌 ✕·2001헌가29), 가산세(정당한 사유·고의과실 불문), 관허사업 제한(국세징수법§7 합헌·요청행위 처분성 부정), 공표(비권력적 사실행위·견련성 시 처분·국가배상) 등 판례·쟁점을 정확히 짚어 준다.
+5. 구제는 '위법→국가배상 / 적법+특별한 희생→손실보상'으로 정리해 준다.
+6. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){try{localStorage.setItem(CHAT_KEY,JSON.stringify({ts:Date.now(),history:chatHistory}));}catch(e){}}
+function loadChat(){
+  try{
+    var raw=localStorage.getItem(CHAT_KEY);if(!raw)return false;
+    var data=JSON.parse(raw);
+    if(!data.ts||(Date.now()-data.ts)>CHAT_TTL){localStorage.removeItem(CHAT_KEY);return false;}
+    chatHistory=data.history||[];
+    var msgs=document.getElementById('chatMsgs');msgs.innerHTML='';
+    chatHistory.forEach(function(m){addMsg(m.role==='user'?'user':'ai',m.content);});
+    if(chatHistory.length>0)document.getElementById('chips').style.display='none';
+    return chatHistory.length>0;
+  }catch(e){return false;}
+}
+function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제42강 유효한 행정의 실효성확보수단2 AI 도우미입니다. 즉시강제·과징금·가산세·관허사업 제한·공표 등 무엇이든 물어보세요.');}
+function addMsg(role,text){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg '+role;
+  var now=new Date();var t=now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML='<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent=text;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg ai chat-typing';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){var el=document.getElementById('typing-indicator');if(el)el.remove();}
+async function sendChat(){
+  var inp=document.getElementById('chatInput');var text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='';document.getElementById('chatSend').disabled=true;
+  addMsg('user',text);chatHistory.push({role:'user',content:text});saveChat();
+  document.getElementById('chips').style.display='none';showTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})});
+    var data=await res.json();hideTyping();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'답변을 가져오지 못했습니다.';
+    addMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});saveChat();
+  }catch(e){hideTyping();addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');}
+  document.getElementById('chatSend').disabled=false;
+}
+function chipSend(el){document.getElementById('chatInput').value=el.textContent;el.parentNode.style.display='none';sendChat();}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+</script>
+</body>
+</html>

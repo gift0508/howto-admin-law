@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제31강 현대 행정의 주된 영역 — 행정계획 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:200px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.mem-note{margin-top:8px;padding:7px 10px;border-radius:5px;font-size:11.5px;line-height:1.6}
+.mn-blue{background:var(--blue-l);color:var(--blue)}.mn-green{background:var(--green-l);color:var(--green)}.mn-gold{background:var(--gold-l);color:var(--gold)}.mn-red{background:var(--red-l);color:var(--red)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-preparing{background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;font-weight:700;color:var(--red);flex-shrink:0;text-align:center;letter-spacing:.3px}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제31강 현대 행정의 주된 영역 — 행정계획</div>
+  <div class="hdr-sub">절차통제(공고·공람·집중효·고시) · 계획재량과 형량명령 · 계획보장청구권</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- ══ TAB 1 · 요약노트 ══ -->
+<div id="panel-summary" class="panel on">
+
+<div class="card"><div class="card-head ch-blue">📋 개관 — 행정계획의 의의와 통제의 딜레마</div><div class="card-body">
+<div class="판례박스"><span class="kw">행정계획</span>이란 행정에 관한 전문적·기술적 판단을 기초로 하여 특정한 행정목표를 달성하기 위하여 서로 관련되는 행정수단을 종합·조정함으로써 장래의 일정한 시점에 일정한 질서를 형성하기 위하여 설정된 활동기준이다.<div class="출처">대판 2007.4.12. 2005두1893</div></div>
+<div class="alert al-blue"><div class="alert-label">📌 통제의 딜레마</div>
+공익적 판단에는 <span class="hl">행정권의 제1차적 판단권</span>이 있고 전문성·기술성이 높아 사법통제가 어렵다. 그러나 우리 생활의 많은 영역이 계획으로 만들어지고 변경·소멸되므로, 국민의 권리보호라는 사법 작용의 본질상 통제 밖에 둘 수도 없다. → <span class="hl">권익 보호와 조화</span>되는 통제가 핵심 과제.
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">1. 절차통제 — 행정계획절차와 공고·공람</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px">계획 수립 과정에 관계자를 폭넓게 연루시키면 행정청의 <span class="kw">자의적 판단</span>을 방지할 수 있다. → 관계 행정기관 조정제도, 주민·이해관계인 참여제도를 개별법에 둔다.</div>
+<div class="판례박스">도시계획안의 내용을 공고·공람하게 한 것은 다수 이해관계자의 이익을 합리적으로 조정하여 국민의 권리·자유에 대한 부당한 침해를 방지하고 행정의 민주화·신뢰를 확보하기 위해 국민의 의사를 그 과정에 반영시키는 데 있으므로, 이러한 <span class="hl">공고·공람 절차에 하자가 있는 도시계획결정은 위법</span>하다.<div class="출처">대판 2000.3.23. 98두2768</div></div>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">집중효 — 의의 · 정도 · 인·허가의제와의 구별</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">집중효</span>란 계획확정기관(주무행정청)이 행정계획을 확정하면서 인·허가처분을 하면, 부수된 인·허가처분(관계행정청)을 그 확정된 처분으로 <span class="hl">대체</span>하는 효과이다. <span class="r">개별법에 명시 규정이 있어야</span> 인정되며(행정조직법정주의), 발생 행위도 명시된 것에 한정된다.</div>
+<div class="alert al-gold"><div class="alert-label">📌 집중효의 정도 (판례)</div>
+· <span class="g">절차집중 인정</span>: 의제되는 법률의 이해관계인 의견청취절차를 생략할 수 있다<br>
+· <span class="r">실체집중 부정</span>: 의제되는 법률의 인·허가 요건 불비를 이유로 주된 인·허가신청을 거부할 수 있다
+</div>
+<table class="tbl" style="margin-top:10px"><thead><tr><th>구분</th><th>집중효</th><th>인·허가의제</th></tr></thead><tbody>
+<tr><td>인정 범위</td><td>계획 확정에 특유</td><td>행정계획 + 일반 행정행위</td></tr>
+<tr><td>이해관계인 참여</td><td>집중적 참여 <span class="g">○</span></td><td>집중적 참여 <span class="r">결여</span></td></tr>
+<tr><td>본질</td><td colspan="2">둘 다 <span class="hl">절차간소화·사업의 신속</span>, 법령 근거로 권한 통합 → 본질적 차이는 크지 않음</td></tr>
+</tbody></table>
+<div class="alert al-blue" style="margin-top:10px"><div class="alert-label">📌 집중효의 효과</div>
+절차 간소화로 사업자 부담 해소·절차 촉진, 다수 인·허가부서 통합, 구비서류 감소
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">고시 — 효력발생요건</div><div class="card-body">
+<div class="alert al-red"><div class="alert-label">📌 개인의 자유·권리에 직접 관련된 계획</div>
+법규형식이 아니어도 국민에게 <span class="hl">관보 게재·고시</span>되어야 효력이 발생하며, 고시하지 않으면 <span class="r">아무런 효력이 발생하지 않는다</span>.
+</div>
+<div class="판례박스" style="margin-top:10px">건설부장관 또는 그 권한을 위임받은 시·도지사가 정당하게 도시계획결정 등의 처분을 하였더라도, 이를 <span class="hl">관보에 게재하여 고시하지 아니한 이상 대외적으로는 아무런 효력도 발생하지 아니한다</span>(도시계획결정 고시 = 효력발생요건).<div class="출처">대판 1985.12.10. 85누186</div></div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 법규형식의 계획</div>
+법령 등 공포에 관한 법률이 정한 형식을 갖추어 공포하여야 하며, 특별한 정함이 없으면 <span class="hl">공포일부터 20일</span>이 지나야 효력이 발생한다.
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">2. 내용통제 — 계획재량과 형량명령</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px">행정계획에 <span class="kw">처분성</span>이 인정되면 취소소송의 대상이 되고(행정소송법 §19·§2①1), 본안에서 위법성을 판단한다. 그 심사기준이 <span class="kw">형량명령</span>이다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 계획재량의 한계</div>
+형성의 자유 범위 내에서는 사법심사가 배제되나 무제한은 아니다. ① 목표가 법질서에 부합 ② 수단이 적합·필요·비례 ③ <span class="hl">형량명령</span>(관련자 모두의 이익을 정당하게 형량) ④ 법정 절차 준수
+</div>
+<div class="alert al-green" style="margin-top:10px"><div class="alert-label">📌 형량명령의 3단계</div>
+① 비교·형량할 <span class="hl">관련 이익의 조사</span> → ② 관련 이익의 <span class="hl">중요도에 따른 평가</span> → ③ <span class="hl">협의의 비교형량</span>
+</div>
+<div class="alert al-red" style="margin-top:10px"><div class="alert-label">📌 형량하자의 유형</div>
+① 형량을 <span class="hl">전혀 하지 않은 경우</span>(형량 해태)<br>
+② 반드시 고려할 특정 이익을 <span class="hl">누락한 경우</span>(형량 흠결)<br>
+③ 관련 공익·사익의 의미를 <span class="hl">잘못 평가</span>한 경우(오형량)<br>
+④ 공익·사익의 조정이 <span class="hl">비례원칙에 위반</span>되는 경우(오형량)
+</div>
+<div class="판례박스" style="margin-top:10px">행정주체는 행정계획을 입안·결정할 때 비교적 광범위한 형성의 자유를 가지나, 이는 무제한이 아니라 관련 이익을 공익과 사익 사이 및 공익 상호간·사익 상호간에도 정당하게 비교·교량하여야 하므로, <span class="hl">이익형량을 전혀 하지 않거나 고려 대상에 마땅히 포함시킬 사항을 누락한 경우, 또는 이익형량을 하였으나 정당성·객관성이 결여된 경우</span> 그 행정계획결정은 형량에 하자가 있어 위법하다.<div class="출처">대판 2011.2.24. 2010두21464</div></div>
+</div></div>
+
+<div class="card"><div class="card-head ch-blue">3. 계획의 변경과 신뢰보호 — 계획보장청구권</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px">행정계획은 목적이 변경되면 수단도 변하므로 <span class="kw">변경 가능성</span>을 본질적 속성으로 한다. 이는 관계자의 신뢰 침해를 가져오므로 <span class="hl">변경 가능성 ↔ 신뢰보호</span>의 충돌을 해결하는 수단으로 계획보장청구권이 논의된다.</div>
+<div class="alert al-gold"><div class="alert-label">📌 (1) 협의의 계획보장청구권 = 손실보상청구권</div>
+시행 중인 구체적 계획을 폐지·변경하여 손실을 입은 개인이 계획 주체에 대해 그 손실의 보상을 청구할 수 있는 권리
+</div>
+<div class="alert al-blue" style="margin-top:10px"><div class="alert-label">📌 (2) 계획관련행위청구권</div>
+· <span class="kw">계획청구권</span>: 계획과정으로 나아갈 것을 요구<br>
+· <span class="kw">계획존속청구권</span>: 변경·폐지 시 계획의 존속을 청구<br>
+· <span class="kw">광의의 계획준수청구권</span>: 기존 계획과 다른 방향 집행 시 기존 계획을 따를 것 요구(계획준수청구권) + 책정만 하고 집행 않는 계획의 집행 요구(<span class="hl">계획집행청구권</span>)<br>
+· <span class="kw">경과조치청구권</span>: 존속을 신뢰해 조치한 자가 변경·폐지로 입을 불이익 방지를 위해 경과조치를 청구<br>
+· <span class="kw">계획변경청구권</span>: 기존 계획의 변경을 청구
+</div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 2 · 플래시카드 ══ -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🗺️</div><div class="fc-term">행정계획<br>정의</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">대판 2005두1893</div><ul><li>전문적·기술적 판단을 기초로</li><li>특정 행정목표 달성 위해</li><li>관련 행정수단을 종합·조정</li><li>장래 일정 시점에 일정 질서 형성 위한 활동기준</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">통제의<br>딜레마</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">전문성 vs 권리보호</div><ul><li>공익 판단=행정권 제1차적 판단권</li><li>전문성·기술성 높아 사법통제 어려움</li><li>그러나 권리보호상 통제 밖에 둘 수 없음</li><li>→ 권익 보호와 조화되는 통제가 과제</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📢</div><div class="fc-term">공고·공람<br>(절차통제)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gd"><div class="fc-bt">대판 98두2768</div><ul><li>관계기관 조정·주민 참여로 자의 방지</li><li>공고·공람=이익 조정·민주화·신뢰 확보</li><li>공고·공람 절차에 하자 있는 도시계획결정=위법</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔗</div><div class="fc-term">집중효<br>의의</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">계획 확정 시 부수 인·허가 대체</div><ul><li>계획확정기관이 인·허가 시 부수 인·허가를 대체</li><li>개별법에 명시 규정 필요(행정조직법정주의)</li><li>발생 행위도 명시된 것에 한정</li><li>계획 확정에 특유한 제도</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📊</div><div class="fc-term">집중효의<br>정도</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b pp"><div class="fc-bt">절차집중 ○ / 실체집중 ✕</div><ul><li>절차집중 인정: 의제 법률의 의견청취절차 생략 가능</li><li>실체집중 부정: 의제 법률의 인·허가 요건 불비로 주된 인·허가 거부 가능</li><li>'집중'=그 요건 안 갖춰도 무방하다는 의미</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🆚</div><div class="fc-term">집중효 vs<br>인·허가의제</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">참여 유무 / 본질은 유사</div><ul><li>집중효: 계획에 특유·이해관계인 집중 참여 ○</li><li>인·허가의제: 일반 행정행위에도·집중 참여 ✕</li><li>본질: 둘 다 절차간소화·신속, 권한 통합</li><li>→ 본질적 차이 크지 않음</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📰</div><div class="fc-term">고시<br>효력발생요건</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gd"><div class="fc-bt">대판 85누186</div><ul><li>개인 자유·권리 직접 관련 계획: 고시해야 효력</li><li>고시 안 하면 효력 발생 ✕</li><li>도시계획결정 고시=대외적 효력발생요건</li><li>법규형식 계획: 공포일부터 20일 경과 시 효력</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🎯</div><div class="fc-term">계획재량<br>의 한계</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">형성의 자유 + 한계</div><ul><li>형성의 자유 범위 내 사법심사 배제(무제한 ✕)</li><li>목표=법질서 부합 / 수단=적합·필요·비례</li><li>형량명령(관련자 모두 이익 정당 형량)</li><li>법정 절차 준수</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">형량명령<br>3단계</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b pp"><div class="fc-bt">조사 → 평가 → 비교형량</div><ul><li>① 관련 이익의 조사</li><li>② 중요도에 따른 평가</li><li>③ 협의의 비교형량</li><li>위반 시 형량하자 → 위법</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">❌</div><div class="fc-term">형량하자<br>유형</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">대판 2010두21464</div><ul><li>형량 전혀 없음(해태)</li><li>고려할 특정 이익 누락(흠결)</li><li>공익·사익 의미 잘못 평가(오형량)</li><li>조정이 비례원칙 위반(오형량)</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🛡️</div><div class="fc-term">계획보장<br>청구권</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">변경 가능성 ↔ 신뢰보호</div><ul><li>협의(손실보상청구권): 폐지·변경 손실 보상</li><li>계획청구권·계획존속청구권</li><li>광의의 계획준수청구권(+계획집행청구권)</li><li>경과조치청구권·계획변경청구권</li></ul></div>
+      </div>
+    </div>
+    </div></div>
+
+<!-- ══ TAB 3 · OX퀴즈 ══ -->
+<div id="panel-quiz" class="panel">
+  <div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+  <div id="qc"></div>
+</div>
+
+<!-- ══ TAB 4 · 필수암기문장 ══ -->
+<div id="panel-memory" class="panel">
+  <div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+  <div class="mem-progress">
+    <div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div>
+    <div class="mem-prog-label" id="prog-label">0 / 0 공개</div>
+    <button class="mem-reveal-all" onclick="revealAll()">전체 공개</button>
+  </div>
+
+<div class="mem-section-title">행정계획 · 절차통제</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">행정계획의 정의 (2005두1893)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정계획이란 행정에 관한 <span class="mem-blank" onclick="toggleBlank(this)">전문적·기술적 판단을 기초</span>로 하여 특정한 행정목표를 달성하기 위하여 서로 관련되는 행정수단을 <span class="mem-blank" onclick="toggleBlank(this)">종합·조정</span>함으로써 장래의 일정한 시점에 일정한 질서를 형성하기 위하여 설정된 <span class="mem-blank" onclick="toggleBlank(this)">활동기준</span>이다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">공고·공람 절차의 하자 (98두2768)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">도시계획안의 공고·공람은 다수 이해관계자의 이익을 합리적으로 조정하여 권리·자유에 대한 부당한 침해를 방지하고 행정의 민주화·신뢰를 확보하려는 것이므로, 이러한 <span class="mem-blank" onclick="toggleBlank(this)">공고·공람 절차에 하자가 있는 도시계획결정은 위법</span>하다.</div></div></div></div>
+
+<div class="mem-section-title gn">집중효 · 고시</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">집중효의 의의와 요건</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">집중효란 계획확정기관이 행정계획을 확정하면서 인·허가처분을 하면 부수된 인·허가처분을 <span class="mem-blank" onclick="toggleBlank(this)">그 확정된 처분으로 대체</span>하는 효과로서, 행정조직법정주의의 원리상 <span class="mem-blank" onclick="toggleBlank(this)">개별 법률에 명시적으로 규정된 경우에만</span> 인정된다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">집중효의 정도 — 절차집중 ○ / 실체집중 ✕</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">판례는 의제되는 법률의 이해관계인 의견청취절차를 생략할 수 있다고 하여 <span class="mem-blank" onclick="toggleBlank(this)">절차집중을 인정</span>하나, 의제되는 법률의 인·허가 요건 불비를 이유로 주된 인·허가신청을 거부할 수 있다고 하여 <span class="mem-blank" onclick="toggleBlank(this)">실체집중은 부정</span>하는 것으로 보인다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">고시 — 효력발생요건 (85누186)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">개인의 자유와 권리에 직접 관련된 계획은 법규형식이 아니어도 국민에게 알려져야 효력이 발생하며, 도시계획결정을 정당하게 하였더라도 이를 <span class="mem-blank" onclick="toggleBlank(this)">관보에 게재하여 고시하지 아니한 이상</span> 대외적으로 <span class="mem-blank" onclick="toggleBlank(this)">아무런 효력도 발생하지 아니한다</span>.</div></div></div></div>
+
+<div class="mem-section-title gd">형량명령 · 계획보장청구권</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">계획재량과 형량명령</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정주체는 행정계획을 입안·결정할 때 비교적 광범위한 형성의 자유를 가지나, 이는 <span class="mem-blank" onclick="toggleBlank(this)">무제한이 아니라</span> 관련 이익을 공익과 사익 사이는 물론 공익 상호간·사익 상호간에도 <span class="mem-blank" onclick="toggleBlank(this)">정당하게 비교·교량</span>하여야 한다는 제한이 있다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">형량하자의 유형 (2010두21464)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">이익형량을 <span class="mem-blank" onclick="toggleBlank(this)">전혀 행하지 아니하거나</span> 고려 대상에 마땅히 포함시켜야 할 사항을 누락한 경우, 또는 이익형량을 하였으나 <span class="mem-blank" onclick="toggleBlank(this)">정당성과 객관성이 결여된 경우</span> 그 행정계획결정은 형량에 하자가 있어 위법하다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">형량명령의 3단계</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">형량명령의 준수는 비교·형량할 <span class="mem-blank" onclick="toggleBlank(this)">관련 이익의 조사</span>, 관련 이익의 <span class="mem-blank" onclick="toggleBlank(this)">중요도에 따른 평가</span>, <span class="mem-blank" onclick="toggleBlank(this)">협의의 비교형량</span>의 3단계에 걸쳐 행해진다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">계획보장청구권</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정계획은 <span class="mem-blank" onclick="toggleBlank(this)">변경 가능성</span>을 본질적 속성으로 하여 관계자의 신뢰 침해를 가져오므로, 협의의 계획보장청구권으로서 <span class="mem-blank" onclick="toggleBlank(this)">손실보상청구권</span>과 계획존속·준수·경과조치청구권 등 계획관련행위청구권이 논의된다.</div></div></div></div>
+
+</div>
+
+<!-- ══ TAB 5 · 문제의 소재 ══ -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제31강은 ① 행정계획의 처분성(취소소송 대상성), ② 계획재량의 형량명령·형량하자(내용통제), ③ 절차·형식의 하자(공고·공람·고시·집중효의 정도)가 핵심 출제 포인트이다.</div></div>
+
+<div class="ms-section"><div class="ms-section-title">① 행정계획의 처분성·취소소송 대상성이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">행정계획(도시·군관리계획 등)에 대해 취소소송으로 다툴 수 있는지(처분성 인정 여부)</div><div class="ms-example">예: "도시계획결정으로 자신의 토지가 제한을 받게 된 甲은 그 결정의 취소소송을 제기할 수 있는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">취소소송의 대상은 '공권력의 행사 또는 그 거부, 그 밖에 이에 준하는 행정작용'(행정소송법 §19·§2①1)이다. <span class="g">구속적 계획은 처분성이 인정</span>되어 취소소송의 대상이 된다(제28강 '이에 준하는 행정작용' 연계).</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">해당 계획이 국민의 권리·의무에 직접 영향을 미치는 구속적 계획인지 확인 → 처분성 인정(대상적격) → 본안에서 형량명령 위반 여부로 위법성 판단</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">행정계획의 법적 성질</span><span class="ms-kw">처분성</span><span class="ms-kw">구속적 계획</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gn">② 형량명령 위반(형량하자)으로 위법성이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">계획재량의 행사가 관련 이익을 제대로 형량하지 못하여 위법한지</div><div class="ms-example">예: "행정청이 주민의 이익을 전혀 고려하지 않고 계획을 결정하였다. 그 계획결정은 위법한가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">계획재량에는 형성의 자유가 있으나 무제한이 아니라 <span class="g">형량명령</span>의 제한이 있다. 조사→평가→비교형량의 3단계에 하자가 있으면(형량 해태·흠결·오형량) 그 계획결정은 위법하다(2010두21464).</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">형량의 3단계 중 어느 단계의 하자인지 특정 → 형량 전혀 없음/특정 이익 누락/잘못 평가/비례원칙 위반 → 형량하자 인정 → 계획결정 위법</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">계획재량</span><span class="ms-kw">형량명령</span><span class="ms-kw">형량하자(해태·흠결·오형량)</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gd">③ 절차·형식의 하자가 문제되는 경우 (공고·공람·고시·집중효)</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">공고·공람 절차를 결여하거나 계획을 고시하지 않은 경우, 또는 집중효의 정도가 문제되는 경우</div><div class="ms-example">예: "공람 절차를 거치지 않은 도시계획결정의 효력은?" / "고시하지 않은 계획의 효력은?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text"><span class="g">공고·공람 절차에 하자가 있으면 위법</span>(98두2768). 개인의 자유·권리에 직접 관련된 계획은 <span class="g">고시되어야 효력</span>이 발생한다(85누186). 집중효는 절차집중은 인정되나 실체집중은 부정된다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">절차 결여(공고·공람) → 위법(취소사유) / 고시 결여 → 효력 미발생 / 집중효 사안이면 절차집중·실체집중 구별하여 의제 인·허가 요건 심사</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">공고·공람</span><span class="ms-kw">고시=효력발생요건</span><span class="ms-kw">집중효의 정도</span></div></div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 6 · 마인드맵 ══ -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- ══ TAB 7 · AI 대화창 ══ -->
+<div id="panel-chat" class="panel">
+  <div class="chat-wrap">
+    <div class="chat-intro">
+      <div class="chat-intro-title">💬 AI 강의 도우미</div>
+      <div class="chat-intro-text">제31강 행정계획에 대해 무엇이든 질문하세요.<br>공고·공람·집중효·고시·형량명령·계획보장청구권 모두 답변합니다.</div>
+    </div>
+    <div class="chat-preparing">🔧 더 나은 서비스를 위하여 준비중입니다.</div>
+    <div class="chat-notice">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+    <div class="chat-chips" id="chips">
+      <span class="chip" onclick="chipSend(this)">행정계획의 정의와 처분성</span>
+      <span class="chip" onclick="chipSend(this)">집중효와 인·허가의제의 차이</span>
+      <span class="chip" onclick="chipSend(this)">집중효의 정도(절차집중·실체집중)</span>
+      <span class="chip" onclick="chipSend(this)">형량명령과 형량하자</span>
+      <span class="chip" onclick="chipSend(this)">계획보장청구권의 종류</span>
+    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  var exp=document.getElementById('e'+i);exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q":"판례에 의하면 행정계획이란 전문적·기술적 판단을 기초로 특정 행정목표를 달성하기 위해 관련 행정수단을 종합·조정하여 장래 일정 시점에 일정 질서를 형성하기 위해 설정한 활동기준이다.", "a":true, "e":"판례(2005두1893)는 행정계획을 전문적·기술적 판단을 기초로 특정 행정목표 달성을 위해 관련 행정수단을 종합·조정함으로써 장래의 일정 시점에 일정 질서를 형성하기 위해 설정된 활동기준이라고 정의한다."},
+{"q":"공고 및 공람 절차에 하자가 있는 도시계획결정도 적법하다.", "a":false, "e":"판례(98두2768)는 공고·공람 절차가 다수 이해관계자의 이익 조정·행정의 민주화·신뢰 확보를 위한 것이므로, 그 절차에 하자가 있는 도시계획결정은 위법하다고 본다."},
+{"q":"집중효는 개별법에 명시적 규정이 없어도 행정계획에 당연히 인정된다.", "a":false, "e":"집중효는 행정기관 권한의 변경이므로 행정조직법정주의의 원리상 개별 법률에 명시적으로 규정된 경우에만 인정되며, 발생하는 행위도 명시된 것에 한정된다."},
+{"q":"판례는 집중효와 관련하여 의제되는 법률에 규정된 이해관계인의 의견청취절차를 생략할 수 있다고 보아 절차집중을 인정한다.", "a":true, "e":"판례는 의제되는 법률에 규정된 이해관계인의 의견청취절차를 생략할 수 있다고 하여 절차집중을 인정한다."},
+{"q":"판례는 의제되는 법률에 규정된 인·허가 요건의 불비를 이유로 주된 인·허가신청을 거부할 수 있다고 보아 실체집중을 부정하는 것으로 보인다.", "a":true, "e":"판례는 의제되는 법률에 규정된 인·허가의 요건 불비를 이유로 주된 인·허가신청을 거부할 수 있다고 하여 실체집중은 부정하는 것으로 보인다."},
+{"q":"집중효는 행정계획에 특유한 제도이나, 인·허가의제는 행정계획뿐 아니라 일반 행정행위에도 인정된다.", "a":true, "e":"집중효는 계획 확정에 부여되는 특유한 효과이지만, 인·허가의제는 행정계획뿐 아니라 인가·허가 등 일반 행정행위에도 인정된다."},
+{"q":"인·허가의제는 집중효와 달리 이해관계인의 집중적 참여를 전제로 한다.", "a":false, "e":"집중효는 이해관계인의 집중적 참여 아래 내려지는 결정에 부여되는 효력이지만, 인·허가의제는 이해관계인의 집중적 참여가 결여되어 있다."},
+{"q":"개인의 자유·권리에 직접 관련된 계획은 법규형식이 아니어도 국민에게 고시되어야 효력이 발생한다.", "a":true, "e":"개인의 자유와 권리에 직접 관련하는 계획은 법규형식에 의한 것이 아니어도 국민들에게 알려져야(고시되어야) 효력이 발생한다."},
+{"q":"판례에 의하면 도시계획결정을 정당하게 하였더라도 이를 관보에 게재하여 고시하지 않으면 대외적으로 효력이 발생하지 않는다.", "a":true, "e":"판례(85누186)는 도시계획결정 등의 고시를 효력발생요건으로 보아, 정당하게 결정을 하였더라도 관보에 게재하여 고시하지 아니한 이상 대외적으로는 아무런 효력도 발생하지 않는다고 본다."},
+{"q":"계획재량에서 형성의 자유가 인정되는 범위 내에서도 사법심사가 전면적으로 이루어진다.", "a":false, "e":"본래 형성의 자유가 인정되는 범위 내에서는 사법심사가 배제된다. 다만 계획재량이 무제한인 것은 아니어서 형량명령 등의 한계가 있다."},
+{"q":"형량명령의 준수는 비교·형량할 관련 이익의 조사, 중요도에 따른 평가, 협의의 비교형량의 3단계로 행해진다.", "a":true, "e":"형량명령의 준수는 관련 이익의 조사 → 중요도에 따른 평가 → 협의의 비교형량의 3단계에 걸쳐 이루어진다."},
+{"q":"이익형량을 전혀 하지 않거나 고려 대상에 포함시켜야 할 사항을 누락한 경우, 또는 형량을 하였으나 정당성·객관성이 결여된 경우 그 계획결정은 형량하자로 위법하다.", "a":true, "e":"판례(2010두21464)는 이익형량을 전혀 하지 않거나 고려 대상에 마땅히 포함시킬 사항을 누락한 경우, 또는 이익형량을 하였으나 정당성·객관성이 결여된 경우 그 행정계획결정은 형량에 하자가 있어 위법하다고 본다."},
+{"q":"행정주체는 행정계획을 입안·결정할 때 비교적 광범위한 형성의 자유를 가지며, 이 자유는 무제한적이다.", "a":false, "e":"행정주체는 비교적 광범위한 형성의 자유를 가지나, 이는 무제한이 아니라 관련 이익을 공익·사익 사이 및 공익 상호간·사익 상호간에도 정당하게 비교·교량하여야 한다는 제한이 있다."},
+{"q":"행정계획은 변경 가능성을 본질적 속성으로 하므로, 변경 가능성과 신뢰보호 요구의 충돌이 문제된다.", "a":true, "e":"계획은 목적이 변경되면 수단도 변하므로 변경 가능성을 본질적 속성으로 가지며, 이는 관계자의 신뢰 침해를 가져와 변경 가능성과 신뢰보호 요구의 충돌이 문제된다."},
+{"q":"협의의 계획보장청구권으로서 손실보상청구권은 시행 중인 계획의 폐지·변경으로 손실을 입은 개인이 그 손실의 보상을 청구하는 권리이다.", "a":true, "e":"협의의 계획보장청구권으로서의 손실보상청구권은 입안·결정되어 시행 중인 구체적 행정계획을 폐지·변경함으로써 손실을 입은 개인이 계획 주체에 대해 그 손실의 보상을 청구할 수 있는 권리이다."},
+{"q":"계획존속청구권은 행정계획의 변경·폐지 시 그 존속을 청구할 수 있는 권리이다.", "a":true, "e":"계획존속청구권은 행정계획의 변경이나 폐지 시에 그 계획의 존속을 청구할 수 있는 사인의 권리이다."},
+{"q":"책정만 하고 집행하지 않는 계획의 집행을 요구할 수 있는 권리를 경과조치청구권이라 한다.", "a":false, "e":"책정만 하고 집행하지 않는 계획을 집행할 것을 요구할 수 있는 권리는 계획집행청구권이다. 경과조치청구권은 계획의 변경·폐지로 입을 불이익 방지를 위해 경과조치를 청구하는 권리이다."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "개관": ["행정계획(2005두1893): 전문적·기술적 판단 기초·행정수단 종합조정·장래 일정 질서 형성 활동기준", "공익 판단=행정권 제1차적 판단권·전문성 높아 사법통제 어려움", "그러나 권리보호상 통제 밖에 둘 수 없음", "→ 권익 보호와 조화되는 통제가 과제"],
+    "공고공람": ["관계기관 조정·주민 참여로 자의적 판단 방지", "공고·공람=이익 조정·민주화·신뢰 확보·국민 의사 반영", "공고·공람 절차에 하자 있는 도시계획결정=위법", "대판 98두2768"],
+    "집중효": ["계획확정기관이 인·허가 시 부수 인·허가를 대체", "개별법에 명시 규정 필요(행정조직법정주의)·발생 행위도 한정", "정도: 절차집중 ○(의견청취 생략) / 실체집중 ✕(요건 불비로 거부 가능)", "인·허가의제와 비교: 참여 ✕·일반 행정행위에도·본질 유사"],
+    "고시": ["개인 자유·권리 직접 관련 계획: 고시되어야 효력", "고시 안 하면 효력 발생 ✕", "도시계획결정 고시=대외적 효력발생요건(85누186)", "법규형식 계획: 공포일부터 20일 경과 시 효력"],
+    "계획재량": ["형성의 자유 범위 내 사법심사 배제(무제한 ✕)", "목표=법질서 부합 / 수단=적합·필요·비례", "형량명령(관련자 모두 이익 정당 형량)", "법정 절차 준수"],
+    "형량명령": ["① 관련 이익의 조사", "② 중요도에 따른 평가", "③ 협의의 비교형량", "위반 시 형량하자→위법"],
+    "형량하자": ["형량 전혀 없음(형량 해태)", "고려할 특정 이익 누락(형량 흠결)", "공익·사익 의미 잘못 평가(오형량)", "조정이 비례원칙 위반(오형량) / 대판 2010두21464"],
+    "협의보장": ["협의의 계획보장청구권=손실보상청구권", "시행 중 계획 폐지·변경으로 손실 입은 개인", "계획 주체에 손실 보상 청구"],
+    "계획관련행위": ["계획청구권: 계획과정으로 나아갈 것 요구", "계획존속청구권: 변경·폐지 시 존속 청구", "광의의 계획준수청구권(+계획집행청구권)", "경과조치청구권·계획변경청구권"]
+  };
+  var tree={"name":"행정계획","depth":0,"children":[
+    {"name":"개관","depth":1,"children":[
+      {"name":"개관",depth:3}
+    ]},
+    {"name":"절차통제","depth":1,"children":[
+      {"name":"공고공람",depth:3},{"name":"집중효",depth:3},{"name":"고시",depth:3}
+    ]},
+    {"name":"내용통제(형량명령)","depth":1,"children":[
+      {"name":"계획재량",depth:3},{"name":"형량명령",depth:3},{"name":"형량하자",depth:3}
+    ]},
+    {"name":"계획보장청구권","depth":1,"children":[
+      {"name":"협의보장",depth:3},{"name":"계획관련행위",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,145]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020','#5a2d8c'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+var CHAT_KEY='ch31_chat_history';
+var CHAT_TTL=7*24*60*60*1000;
+var chatHistory=[];
+var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제31강 현대 행정의 주된 영역 — 행정계획」
+주요 내용: 행정계획 정의(2005두1893: 전문적·기술적 판단 기초·특정 행정목표·관련 행정수단 종합조정·장래 일정 시점 일정 질서 형성 활동기준), 통제의 딜레마(공익 판단=행정권 제1차적 판단권·전문성 높아 사법통제 어려우나 권리보호상 통제 필요), 절차통제(공고·공람=이익 조정·민주화·신뢰 확보·하자 있는 도시계획결정 위법(98두2768)), 집중효(계획확정기관이 인·허가 시 부수 인·허가 대체·개별법 명시 규정 필요(행정조직법정주의)·발생 행위 한정 / 정도: 절차집중 인정(의제 법률 의견청취절차 생략 가능)·실체집중 부정(의제 법률 인·허가 요건 불비로 주된 인·허가 거부 가능) / 인·허가의제와 비교: 집중효=계획 특유·집중 참여○ vs 인·허가의제=일반 행정행위에도·집중 참여✕·본질은 절차간소화·신속·권한 통합으로 유사 / 효과: 사업자 부담 해소·부서 통합·구비서류 감소), 고시(개인 자유·권리 직접 관련 계획은 고시되어야 효력·고시 안 하면 효력✕·도시계획결정 고시=효력발생요건(85누186)·법규형식 계획은 공포일부터 20일), 계획재량과 형량명령(처분성 인정 시 취소소송 대상·형성의 자유 범위 내 사법심사 배제(무제한✕)·목표 법질서 부합·수단 적합필요비례·형량명령·절차 준수 / 형량명령 3단계: 관련 이익 조사→중요도 평가→협의의 비교형량 / 형량하자: 형량 전혀 없음(해태)·특정 이익 누락(흠결)·의미 잘못 평가/비례원칙 위반(오형량)·2010두21464: 이익형량 전혀 안 함·고려 대상 누락·정당성 객관성 결여 시 위법), 계획보장청구권(변경 가능성↔신뢰보호 충돌 / 협의=손실보상청구권 / 계획관련행위청구권: 계획청구권·계획존속청구권·광의의 계획준수청구권(+계획집행청구권)·경과조치청구권·계획변경청구권).
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 집중효는 '절차집중○·실체집중✕', 인·허가의제와의 비교(참여 유무·본질 유사)를 핵심으로 잡아 준다.
+4. 형량명령은 '조사→평가→비교형량 3단계'와 형량하자(해태·흠결·오형량) 유형으로 정리해 준다.
+5. 판례(2005두1893·98두2768·85누186·2010두21464)를 논점에 맞게 자연스럽게 인용한다.
+6. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){try{localStorage.setItem(CHAT_KEY,JSON.stringify({ts:Date.now(),history:chatHistory}));}catch(e){}}
+function loadChat(){
+  try{
+    var raw=localStorage.getItem(CHAT_KEY);if(!raw)return false;
+    var data=JSON.parse(raw);
+    if(!data.ts||(Date.now()-data.ts)>CHAT_TTL){localStorage.removeItem(CHAT_KEY);return false;}
+    chatHistory=data.history||[];
+    var msgs=document.getElementById('chatMsgs');msgs.innerHTML='';
+    chatHistory.forEach(function(m){addMsg(m.role==='user'?'user':'ai',m.content);});
+    if(chatHistory.length>0)document.getElementById('chips').style.display='none';
+    return chatHistory.length>0;
+  }catch(e){return false;}
+}
+function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제31강 행정계획 AI 도우미입니다. 공고·공람·집중효·고시·형량명령·계획보장청구권 등 무엇이든 물어보세요.');}
+function addMsg(role,text){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg '+role;
+  var now=new Date();var t=now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML='<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent=text;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg ai chat-typing';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){var el=document.getElementById('typing-indicator');if(el)el.remove();}
+async function sendChat(){
+  var inp=document.getElementById('chatInput');var text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='';document.getElementById('chatSend').disabled=true;
+  addMsg('user',text);chatHistory.push({role:'user',content:text});saveChat();
+  document.getElementById('chips').style.display='none';showTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})});
+    var data=await res.json();hideTyping();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'답변을 가져오지 못했습니다.';
+    addMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});saveChat();
+  }catch(e){hideTyping();addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');}
+  document.getElementById('chatSend').disabled=false;
+}
+function chipSend(el){document.getElementById('chatInput').value=el.textContent;el.parentNode.style.display='none';sendChat();}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+</script>
+</body>
+</html>

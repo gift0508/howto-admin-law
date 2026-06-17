@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제16강 소장의 문구변화와 관련된 제도들 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:200px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.mem-note{margin-top:8px;padding:7px 10px;border-radius:5px;font-size:11.5px;line-height:1.6}
+.mn-blue{background:var(--blue-l);color:var(--blue)}.mn-green{background:var(--green-l);color:var(--green)}.mn-gold{background:var(--gold-l);color:var(--gold)}.mn-red{background:var(--red-l);color:var(--red)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+/* ── AI 대화창 ── */
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-preparing{background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;font-weight:700;color:var(--red);flex-shrink:0;text-align:center;letter-spacing:.3px}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제16강 소장의 문구변화와 관련된 제도들</div>
+  <div class="hdr-sub">§16 제3자 소송참가 · §17 행정청 소송참가 · §21 소의 변경 · 처분변경으로 인한 소변경</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- ══ TAB 1 · 요약노트 ══ -->
+<div id="panel-summary" class="panel on">
+
+<div class="card"><div class="card-head ch-blue">👥 소송참가제도 — 개관</div><div class="card-body">
+<div class="body-text" style="margin-bottom:10px">소송참가란 타인 간의 소송 계속 중에 제3자가 그 소송의 결과에 따라 <span class="kw">자기의 권리 또는 이익의 침해를 받을 경우</span> 자기의 이익을 위해 그 소송절차에 <span class="hl">가입</span>하는 것.</div>
+<div class="alert al-blue"><div class="alert-label">📌 행정소송법상 소송참가 2종류 — 분류 이유</div>
+<span class="kw">제3자의 소송참가 (§16)</span> — 제3자는 권리주체인 당사자 → 법적 성질: <span class="hl">공동소송적 보조참가</span><br>
+<span class="kw">다른 행정청의 소송참가 (§17)</span> — 행정청은 권리주체가 아닌 일개 기관 → 법적 성질: <span class="hl">보조참가</span>
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">👤 제3자의 소송참가 — §16</div><div class="card-body">
+<div class="alert al-gold"><div class="alert-label">📌 §16① 조문</div>
+법원은 소송의 결과에 따라 <span class="kw">권리 또는 이익의 침해를 받을 제3자</span>가 있는 경우에는 <span class="hl">당사자 또는 제3자의 신청 또는 직권</span>에 의하여 결정으로써 그 제3자를 소송에 참가시킬 수 있다. — 판결선고 전까지 가능
+</div>
+<table class="tbl" style="margin-top:10px"><thead><tr><th>요소</th><th>내용</th></tr></thead><tbody>
+<tr><td>참가 요건</td><td>소송의 결과에 따라 <span class="kw">권리 또는 이익(= 법률상 이익)</span>의 침해를 받을 개연성이 있을 것<br>→ 취소판결의 형성력에 의한 직접 침해 또는 기속력에 의한 새 처분으로 인한 침해도 포함</td></tr>
+<tr><td>참가인의 지위</td><td>§16④ → 민사소송법 §67 준용 → 피참가인과 사이에 <span class="hl">필요적 공동소송에서의 공동소송인에 준하는 지위</span><br>강학상: <span class="kw">공동소송적 보조참가인</span></td></tr>
+<tr><td>가능한 소송행위</td><td>① 피참가인의 소송행위에 <span class="kw">저촉되는 소송행위도 가능</span><br>② <span class="kw">집행정지결정의 취소</span> 독자적으로 청구 가능<br>③ <span class="kw">독립상소</span> 가능 (상소기간은 피참가인과 독립하여 기산)</td></tr>
+<tr><td>효력</td><td>실제 소송행위 여부와 무관하게 <span class="kw">취소소송 판결의 효력</span>을 받음<br>→ 판결 확정 후 <span class="r">행정소송법 §31의 재심의 소 제기 불가</span></td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">🏛️ 다른 행정청의 소송참가 — §17</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 §17① 조문</div>
+법원은 다른 행정청을 소송에 참가시킬 <span class="kw">필요가 있다고 인정할 때</span>에는 당사자 또는 당해 행정청의 신청 또는 직권에 의하여 결정으로써 그 행정청을 소송에 참가시킬 수 있다.
+</div>
+<table class="tbl" style="margin-top:10px"><thead><tr><th>요소</th><th>내용</th></tr></thead><tbody>
+<tr><td>참가의 필요성</td><td>법원의 재량 — 관계 행정청을 소송에 끌어들여 소송자료를 모두 제출하게 함으로써 <span class="hl">사건의 적정한 심리와 재판</span>을 실현하기 위해 필요한 경우</td></tr>
+<tr><td>근거</td><td>§30①에 의하여 <span class="kw">취소판결의 효력이 다른 관계 행정청에게도 미치기</span> 때문 (취소판결의 기속력)</td></tr>
+<tr><td>참가인의 지위</td><td>§17③ → 민사소송법 §76 준용 → <span class="kw">보조참가인에 준하는 지위</span><br>공격·방어·이의·상소 기타 일체의 소송행위 가능, 단 <span class="r">당해 행정청의 소송행위와 저촉되는 소송행위 불가</span></td></tr>
+<tr><td>효력</td><td><span class="kw">참가적 효력만</span> 미침 (형성력 ✗)</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">📋 민사소송법상 소송참가의 허용 여부</div><div class="card-body">
+<table class="tbl"><thead><tr><th>유형</th><th>허용 여부</th><th>이유</th></tr></thead><tbody>
+<tr><td><span class="kw">보조참가</span></td><td><span class="g">다수설: 허용</span></td><td>참가인 자신의 이름으로 판결을 구하는 것이 아니라 당사자 일방을 보조하는 데 그치는 것 → 민사소송법 §71 요건 충족 시 행정소송에서도 허용. 제3자는 §16(공동소송적 보조참가) vs 민사소송법§71(보조참가) 선택 가능</td></tr>
+<tr><td><span class="kw">독립당사자참가</span></td><td><span class="r">부정 (판례)</span></td><td>행정소송에서는 행정청이나 그 소속기관 이외의 자를 피고로 삼을 수 없음 → 독립당사자참가의 구조상 인정 어려움</td></tr>
+<tr><td><span class="kw">공동소송참가</span></td><td><span class="g">다수설: 긍정</span>, <span class="r">판례: 부정</span></td><td>§16에 의한 참가인(공동소송적 보조참가인)과 공동소송참가인(필요적 공동소송인)은 소송상 지위가 다름 → 긍정설은 별도 인정 필요성 강조</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">🔄 소의 변경 — §21 및 처분변경으로 인한 소변경</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 소변경의 2가지 변화 지점 — 청구취지</div>
+취소소송 소장 청구취지에서 변할 수 있는 곳: <span class="kw">①처분 부분</span>(목적어) / <span class="kw">②취소한다 부분</span>(술어)<br>
+① 처분 부분 변경 → <span class="hl">처분변경으로 인한 소의 변경</span><br>
+② 술어 부분 변경 → <span class="hl">소송 종류 자체의 변경</span>(취소소송→당사자소송 등)
+</div>
+<table class="tbl" style="margin-top:10px"><thead><tr><th>유형</th><th>내용</th><th>효과</th></tr></thead><tbody>
+<tr><td>처분변경으로 인한 소변경 (§22)</td><td>소송 계속 중 처분이 A→B로 변경 시, 각하 후 재제기 대신 소를 변경 허용</td><td>당초 취소소송 제기 시에 신소가 제기된 것으로 봄</td></tr>
+<tr><td>소송종류 변경 (§21)</td><td>취소소송→당사자소송·다른 항고소송으로 변경</td><td>변경 전 소 제기 때에 새 소 제기된 것으로 봄. 종전 절차 유효 유지</td></tr>
+<tr><td>준용 규정</td><td>§37(무효등확인·부작위위법확인→취소소송·당사자소송)<br>§42(당사자소송→항고소송)</td><td>§21 준용</td></tr>
+<tr><td>민사소송법 준용 (§8②)</td><td>소송 종류 변경에 이르지 않는 변경 — 예: 일부취소→전부취소, 중간처분→최종처분의 취소로 변경</td><td>민사소송법 §262·§263 적용</td></tr>
+<tr><td>민사↔행정 소변경</td><td>행정소송으로 제기해야 할 사건을 민사소송으로 잘못 제기한 경우, 수소법원이 행정소송 관할도 갖는 경우</td><td>판례: <span class="kw">항고소송으로 소변경하도록 하여 심리·판단하여야 함</span></td></tr>
+</tbody></table>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 소의 변경을 허용하는 이유</div>
+<span class="kw">국민의 신속한 권리구제</span>를 위하여 절차법의 엄격성(법적 안정성)을 일정 부분 희생. 따라서 허용 범위를 지나치게 확대해서는 안 된다.
+</div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 2 · 플래시카드 ══ -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">👥</div><div class="fc-term">소송참가 2종류</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">§16 vs §17의 차이 이유</div><ul><li>제3자=권리주체(당사자) → §16, 공동소송적 보조참가인</li><li>다른 행정청=권리주체가 아닌 기관 → §17, 보조참가인</li><li>법적 성질이 다름 → 가능한 소송행위가 다름</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">👤</div><div class="fc-term">§16 제3자 소송참가<br>요건·지위</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">개연성 + 공동소송적 보조참가인</div><ul><li>요건: 소송결과에 따라 법률상 이익 침해의 개연성</li><li>신청 주체: 당사자·제3자 신청 또는 직권</li><li>시기: 판결선고 전까지</li><li>지위: §67 준용 → 공동소송적 보조참가인</li><li>피참가인 저촉 소송행위·독립상소·집행정지취소 신청 가능</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚠️</div><div class="fc-term">§16 참가인의<br>판결 효력·재심</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">소송행위 여부 불문·재심 불가</div><ul><li>실제 소송참가 여부 불문하고 판결 효력 받음</li><li>판결 확정 후 §31의 재심의 소 제기 불가</li><li>상소기간은 피참가인과 독립하여 기산</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🏛️</div><div class="fc-term">§17 다른 행정청<br>소송참가</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gd"><div class="fc-bt">보조참가인 지위 + 참가적 효력만</div><ul><li>근거: §30① 취소판결 기속력이 다른 관계 행정청에도 미침</li><li>요건: 법원이 필요하다고 인정할 때(재량)</li><li>지위: §76 준용 → 보조참가인 준하는 지위</li><li>저촉 소송행위 ✗ / 참가적 효력만(형성력 ✗)</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📋</div><div class="fc-term">민사소송법 소송참가<br>허용 여부</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b pp"><div class="fc-bt">보조참가◯ 독립◯(판례✗) 공동◯(판례✗)</div><ul><li>보조참가: 다수설 허용 (§71 요건 충족 시)</li><li>독립당사자참가: 판례 부정 (피고 제한)</li><li>공동소송참가: 다수설 긍정, 판례 부정</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔄</div><div class="fc-term">소변경 2가지 변화 지점</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">처분(목적어) vs 취소한다(술어)</div><ul><li>처분 부분 변경 → 처분변경으로 인한 소변경(§22)</li><li>술어 부분 변경 → 소송 종류 자체 변경(§21)</li><li>공통: 당초 소 제기시에 신소 제기된 것으로 봄</li><li>근거: 국민의 신속한 권리구제</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📜</div><div class="fc-term">소변경 준용 규정</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">§37·§42·§8②</div><ul><li>§37: 무효등확인·부작위위법확인→취소소송·당사자소송 (§21 준용)</li><li>§42: 당사자소송→항고소송 (§21 준용)</li><li>§8②: 민사소송법 §262·§263 — 소종류 변경에 이르지 않는 범위</li><li>민사→행정 잘못제기: 판례=항고소송으로 소변경 후 심리</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚡</div><div class="fc-term">소변경 허용의<br>긴장 관계</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">권리구제 vs 법적 안정성</div><ul><li>소변경 허용 측: 국민의 신속한 권리구제</li><li>소변경 불허 측: 소송절차의 법적 안정성 확보</li><li>불가변력=재결 거친 처분에 발생, 행정청 임의변경 불가</li><li>불가변력 없는 처분은 소송 중에도 행정청이 변경 가능</li></ul></div>
+      </div>
+    </div>
+    </div></div>
+
+<!-- ══ TAB 3 · OX퀴즈 ══ -->
+<div id="panel-quiz" class="panel">
+  <div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+  <div id="qc"></div>
+</div>
+
+<!-- ══ TAB 4 · 필수암기문장 ══ -->
+<div id="panel-memory" class="panel">
+  <div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+  <div class="mem-progress">
+    <div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div>
+    <div class="mem-prog-label" id="prog-label">0 / 0 공개</div>
+    <button class="mem-reveal-all" onclick="revealAll()">전체 공개</button>
+  </div>
+
+<div class="mem-section-title">소송참가제도 — §16 제3자의 소송참가</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">조문</span><span class="mem-item-label">행정소송법 §16① — 제3자의 소송참가</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">법원은 소송의 결과에 따라 <span class="mem-blank" onclick="toggleBlank(this)">권리 또는 이익의 침해를 받을 제3자</span>가 있는 경우에는 <span class="mem-blank" onclick="toggleBlank(this)">당사자 또는 제3자의 신청 또는 직권</span>에 의하여 결정으로써 그 제3자를 소송에 참가시킬 수 있다.</div><div class="mem-note mn-blue">판결선고 전까지 가능</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">제3자 소송참가의 요건 — '침해를 받는다'의 의미</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">권리 또는 이익의 '침해를 받는다'는 것은 소송의 결과에 따라 침해가 확정되는 것이 아니라 <span class="mem-blank" onclick="toggleBlank(this)">침해될 개연성이 있는 것</span>으로 족하다. 따라서 취소판결의 <span class="mem-blank" onclick="toggleBlank(this)">형성력 자체에 의한 직접 침해</span> 외에도 취소판결의 <span class="mem-blank" onclick="toggleBlank(this)">기속력 때문에 이루어지는 행정청의 새로운 처분</span>에 의한 침해도 포함된다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">제3자 소송참가인의 지위 — 공동소송적 보조참가인</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">취소소송에 참가하는 제3자는 행정소송법 §16④에 따라 민사소송법 <span class="mem-blank" onclick="toggleBlank(this)">§67</span>의 규정이 준용되어 피참가인과 사이에 <span class="mem-blank" onclick="toggleBlank(this)">필요적 공동소송에서의 공동소송인에 준하는 지위</span>에 서게 된다. 강학상 <span class="mem-blank" onclick="toggleBlank(this)">공동소송적 보조참가인</span>의 지위이다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-sent">결론</span><span class="mem-item-label">제3자 소송참가인의 가능한 소송행위</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">취소소송의 참가인이 되는 제3자는 피참가인의 소송행위에 <span class="mem-blank" onclick="toggleBlank(this)">저촉되는 소송행위도 할 수 있고</span>, <span class="mem-blank" onclick="toggleBlank(this)">집행정지결정의 취소도 독자적으로 청구</span>할 수 있으며, <span class="mem-blank" onclick="toggleBlank(this)">독립상소</span>도 가능하다. 취소소송 참가인의 상소기간은 <span class="mem-blank" onclick="toggleBlank(this)">피참가인의 상소기간과 독립하여 기산</span>된다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-sent">결론</span><span class="mem-item-label">제3자 소송참가인의 재심 불가</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">취소소송의 참가인이 된 제3자는 실제 취소소송에 참가하여 소송행위를 하였는지 여부를 <span class="mem-blank" onclick="toggleBlank(this)">불문하고 취소소송의 판결의 효력을 받게 된다</span>. 그 결과 취소소송의 참가인이 된 제3자는 판결확정 후 행정소송법 <span class="mem-blank" onclick="toggleBlank(this)">§31에 의한 재심의 소를 제기할 수 없다</span>.</div></div></div></div>
+
+<div class="mem-section-title gn">§17 다른 행정청의 소송참가</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">조문</span><span class="mem-item-label">행정소송법 §17① — 다른 행정청의 소송참가</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">법원은 다른 행정청을 소송에 참가시킬 <span class="mem-blank" onclick="toggleBlank(this)">필요가 있다고 인정할 때</span>에는 당사자 또는 당해 행정청의 신청 또는 직권에 의하여 결정으로써 그 행정청을 소송에 참가시킬 수 있다.</div><div class="mem-note mn-gold">근거: §30① 취소판결의 기속력이 다른 관계 행정청에도 미침</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">다른 행정청 소송참가인의 지위</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">취소소송에 참가하는 다른 행정청은 §17③에 따라 민사소송법 <span class="mem-blank" onclick="toggleBlank(this)">§76</span>의 규정이 준용되어 <span class="mem-blank" onclick="toggleBlank(this)">보조참가인에 준하는 지위</span>에 서게 된다. 공격·방어·이의·상소 기타 일체의 소송행위를 할 수 있으나 <span class="mem-blank" onclick="toggleBlank(this)">당해 행정청의 소송행위와 저촉되는 소송행위는 할 수 없다</span>.</div></div></div></div>
+
+<div class="mem-section-title gd">소의 변경</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">청구취지에서 변할 수 있는 2곳</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">취소소송 소장의 청구취지에서 변할 수 있는 곳은 2곳인데, 하나는 '취소한다'의 목적어인 <span class="mem-blank" onclick="toggleBlank(this)">「처분」 부분</span>이고, 다른 하나는 <span class="mem-blank" onclick="toggleBlank(this)">「취소한다」라는 술어 부분</span>이다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">민사→행정 소변경</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정소송으로 제기하여야 할 사건을 민사소송으로 잘못 제기한 경우 수소법원이 그 행정소송에 대한 관할도 동시에 가지고 있는 경우라면 <span class="mem-blank" onclick="toggleBlank(this)">항고소송으로 소의 변경을 하도록 하여 심리·판단하여야 한다</span>.</div></div></div></div>
+
+</div>
+
+<!-- ══ TAB 5 · 문제의 소재 ══ -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제16강은 ① 취소소송 진행 중 제3자가 취할 수 있는 소송상 수단, ② 처분 변경 시 소의 변경 허용 여부, ③ 잘못 제기된 소의 변경 3가지가 핵심 출제 포인트이다.</div></div>
+
+<div class="ms-section"><div class="ms-section-title">① 취소소송 진행 중 제3자의 소송상 수단이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">취소소송이 진행 중인데 그 소송의 결과에 따라 권리·이익 침해가 우려되는 제3자가 어떠한 소송상 수단을 취할 수 있는지가 문제되는 경우</div><div class="ms-example">예: "경업자 乙이 甲에 대한 허가처분 취소소송이 진행 중임을 알게 된 경우 乙이 취할 수 있는 소송상 수단은?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">§16 제3자 소송참가 — 소송결과에 따라 법률상 이익 침해 개연성 있는 제3자, 당사자·제3자 신청 또는 직권, 판결선고 전까지 가능. 지위: 공동소송적 보조참가인(§67 준용) → 저촉 소송행위·독립상소·집행정지취소신청 가능, 실제 참가 여부 불문 판결 효력, §31 재심 불가</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">제3자의 법률상 이익 침해 개연성 여부 검토 → §16 요건 충족 → 신청 주체·시기 확인 → 참가인의 지위(공동소송적 보조참가인)와 가능한 소송행위 논증 → 민사소송법 §71 보조참가도 선택지로 제시 가능</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">행정소송법 §16</span><span class="ms-kw">공동소송적 보조참가인</span><span class="ms-kw">독립상소</span><span class="ms-kw">§31 재심 불가</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gn">② 처분 변경으로 인한 소의 변경이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">취소소송 계속 중 피고 행정청이 기존 처분을 취소하고 새로운 처분을 한 경우, 원고가 소송을 계속할 방법이 문제되는 경우</div><div class="ms-example">예: "甲에 대한 영업정지 1월 처분에 대한 취소소송 계속 중, 행정청이 이를 취소하고 영업취소처분을 새로 발령하였다. 甲은 어떻게 해야 하는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">원칙: 처분 변경 시 종전 소 각하 후 재제기. 예외: §22(처분변경으로 인한 소변경) 허용. 불가변력 없는 처분이면 소송 중에도 행정청이 변경 가능. 소변경 허용 시 당초 소 제기시에 신소 제기된 것으로 봄</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">불가변력 없는 처분임을 전제(재결을 거치지 않은 처분) → §22에 의한 소변경 허용 → 변경의 효과(당초 소 제기시에 신소 제기된 것으로 보아 제소기간 준수, 종전 절차 유효 유지) 논증</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">행정소송법 §22</span><span class="ms-kw">처분변경으로 인한 소변경</span><span class="ms-kw">불가변력</span><span class="ms-kw">당초 소 제기시 신소 제기 의제</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gd">③ 행정소송을 민사소송으로 잘못 제기한 경우 소변경이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">행정소송으로 제기해야 할 사건을 민사소송으로 잘못 제기한 경우 수소법원이 어떻게 처리해야 하는지 문제되는 경우</div><div class="ms-example">예: "甲이 처분의 취소를 구하는 소를 민사법원에 제기하였고, 민사법원이 행정소송 관할도 겸하는 경우 법원은 어떻게 해야 하는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">§8②에 의한 민사소송법 준용. 판례: 수소법원이 행정소송 관할도 동시에 갖는 경우 각하가 아니라 항고소송으로 소의 변경을 하도록 하여 심리·판단</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">수소법원의 행정소송 관할 보유 여부 확인 → 관할 있으면 각하 ✗, 소변경 유도 → 관할 없으면 이송. 소변경 허용의 근거(§8②·판례) 적시</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">행정소송법 §8②</span><span class="ms-kw">민사→행정 소변경</span><span class="ms-kw">항고소송으로 소변경</span><span class="ms-kw">관할</span></div></div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 6 · 마인드맵 ══ -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- ══ TAB 7 · AI 대화창 ══ -->
+<div id="panel-chat" class="panel">
+  <div class="chat-wrap">
+    <div class="chat-intro">
+      <div class="chat-intro-title">💬 AI 강의 도우미</div>
+      <div class="chat-intro-text">제16강 소장의 문구변화와 관련된 제도들에 대해 무엇이든 질문하세요.<br>개념 설명 · OX 근거 · 판례 요지 · 답안 작성법 모두 답변합니다.</div>
+    </div>
+    <div class="chat-preparing">🔧 더 나은 서비스를 위하여 준비중입니다.</div>
+    <div class="chat-notice">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+    <div class="chat-chips" id="chips">
+      <span class="chip" onclick="chipSend(this)">§16과 §17 소송참가의 차이</span>
+      <span class="chip" onclick="chipSend(this)">공동소송적 보조참가인의 소송행위</span>
+      <span class="chip" onclick="chipSend(this)">민사소송법 소송참가의 허용 여부</span>
+      <span class="chip" onclick="chipSend(this)">소변경의 2가지 변화 지점</span>
+      <span class="chip" onclick="chipSend(this)">실로기스무스 답안 예시</span>
+    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  var exp=document.getElementById('e'+i);exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q":"행정소송법 제16조에 의한 제3자의 소송참가는 제3자의 신청으로만 가능하며 법원이 직권으로 결정할 수 없다.", "a":false, "e":"행정소송법 §16①에 따르면 제3자의 소송참가는 당사자 또는 제3자의 신청 또는 직권에 의하여 결정으로써 가능하다. 법원의 직권에 의한 결정도 허용된다."},
+{"q":"행정소송법 §16에 의한 제3자의 소송참가에서 '권리 또는 이익의 침해를 받는다'는 것은 소송 결과에 따라 침해가 확정되어야 함을 의미한다.", "a":false, "e":"'침해를 받는다'는 것은 침해가 확정되는 것이 아니라 침해될 개연성이 있는 것으로 족하다. 또한 취소판결의 기속력 때문에 이루어지는 행정청의 새로운 처분에 의한 침해도 포함된다."},
+{"q":"행정소송법 §16에 의한 제3자 소송참가인은 공동소송적 보조참가인의 지위에 서므로 피참가인의 소송행위에 저촉되는 소송행위는 할 수 없다.", "a":false, "e":"행정소송법 §16에 의한 제3자 소송참가인은 §16④에 따라 민사소송법 §67이 준용되어 공동소송적 보조참가인의 지위에 서게 된다. 이 지위에서는 피참가인의 소송행위에 저촉되는 소송행위도 할 수 있다."},
+{"q":"행정소송법 §16에 의한 제3자 소송참가인은 독립상소가 가능하며, 상소기간은 피참가인의 상소기간과 독립하여 기산된다.", "a":true, "e":"취소소송의 참가인이 되는 제3자는 독립상소가 가능하며, 취소소송의 참가인의 상소기간은 피참가인의 상소기간과 독립하여 기산된다."},
+{"q":"행정소송법 §16에 의한 제3자 소송참가인은 실제로 소송행위를 하지 않았다면 판결의 효력을 받지 않으므로 판결 확정 후 재심의 소를 제기할 수 있다.", "a":false, "e":"취소소송의 참가인이 된 제3자는 실제 소송에 참가하여 소송행위를 하였는지 여부를 불문하고 취소소송의 판결의 효력을 받게 되며, 그 결과 판결확정 후 행정소송법 §31에 의한 재심의 소를 제기할 수 없다."},
+{"q":"행정소송법 §17에 의한 다른 행정청의 소송참가가 인정되는 근거는 행정소송법 §30①에 의하여 취소판결의 기속력이 다른 관계 행정청에게도 미치기 때문이다.", "a":true, "e":"다른 행정청의 소송참가가 인정되는 것은 행정소송법 §30①에 의하여 취소판결의 효력이 다른 관계 행정청에게도 미치기 때문이다."},
+{"q":"행정소송법 §17에 의한 다른 행정청 소송참가인은 공동소송적 보조참가인의 지위에 서므로 당해 행정청의 소송행위와 저촉되는 소송행위도 가능하다.", "a":false, "e":"다른 행정청 소송참가인은 §17③에 따라 민사소송법 §76이 준용되어 보조참가인에 준하는 지위에 서게 된다. 보조참가인 지위에서는 당해 행정청의 소송행위와 저촉되는 소송행위는 할 수 없다."},
+{"q":"판례는 행정소송에서 독립당사자참가를 허용하지 않는다.", "a":true, "e":"판례는 행정소송에 있어서는 행정청이나 그 소속기관 이외의 자를 피고로 삼을 수 없다고 하여 독립당사자참가에 대해 부정적이다."},
+{"q":"민사소송법에 의한 보조참가는 취소소송에서 허용되지 않는다는 것이 다수설의 입장이다.", "a":false, "e":"보조참가는 참가인 자신의 이름으로 판결을 구하는 것이 아니라 당사자의 일방을 보조하는 데 그치는 것이므로 민사소송법 §71의 요건을 충족하는 한 행정소송에서도 허용되는 것으로 보는 것이 다수설이다."},
+{"q":"취소소송의 제3자는 행정소송법 §16에 의한 소송참가와 민사소송법상 보조참가 중 하나를 선택하여 할 수 있다.", "a":true, "e":"취소소송의 제3자는 자신의 선택에 따라 행정소송법 §16에 의하여 판결의 형성력을 받는 제3자의 소송참가를 하든가 민사소송법상 판결의 참가적 효력만을 받는 보조참가를 하든가 선택할 수 있다."},
+{"q":"불가변력은 모든 처분에 발생하는 효력으로, 행정청은 취소소송 계속 중에 처분을 변경할 수 없다.", "a":false, "e":"불가변력은 재결을 거친 처분에 발생하는 효력으로 행정청이 재결 이후에는 그 처분을 마음대로 변경하지 못하는 효력이다. 불가변력이 없는 처분이라면 취소소송이 진행 중일 때에도 행정청이 그것을 다른 처분으로 변경하는 것이 가능하다."},
+{"q":"취소소송 계속 중 처분이 변경된 경우, 행정소송법 §22에 의하여 소의 변경을 허용하면 당초의 취소소송이 제기된 때에 변경된 내용의 신소가 제기된 것으로 본다.", "a":true, "e":"처분의 변경으로 인한 취소소송의 소의 변경을 인정한다면 제도의 실효성을 위하여 당초의 취소소송이 제기된 때에 변경된 내용의 신소가 제기된 것으로 본다."},
+{"q":"행정소송법 §37에 의하면 당사자소송을 항고소송으로 변경하는 경우 §21의 규정이 준용된다.", "a":false, "e":"행정소송법 §37은 무효등 확인소송이나 부작위위법확인소송을 취소소송 또는 당사자소송으로 변경하는 경우에 §21을 준용한다. 당사자소송을 항고소송으로 변경하는 경우 §21을 준용하는 것은 행정소송법 §42이다."},
+{"q":"행정소송법 §8②에 의한 민사소송법의 준용으로 소송의 종류를 변경하는 범위에서도 민사소송법상의 소의 변경이 취소소송에 적용된다.", "a":false, "e":"행정소송법 §8②에 의하여 민사소송법 §262·§263에 따른 소의 변경이 준용되는 것은 소송의 종류의 변경에 이르지 않는 소의 변경이다. 예: 일부취소→전부취소 변경, 중간단계 처분→최종단계 처분의 취소로 변경 등."},
+{"q":"행정소송으로 제기해야 할 사건을 민사소송으로 잘못 제기한 경우, 수소법원이 행정소송 관할도 갖고 있다면 판례는 각하가 아닌 항고소송으로 소변경을 하도록 하여 심리·판단해야 한다는 입장이다.", "a":true, "e":"판례에 의하면 행정소송으로 제기하여야 할 사건을 민사소송으로 잘못 제기한 경우 수소법원이 그 행정소송에 대한 관할도 동시에 가지고 있는 경우라면 항고소송으로 소의 변경을 하도록 하여 심리·판단하여야 한다."},
+{"q":"취소소송의 소의 변경을 허용하는 이유는 국민의 신속한 권리구제를 위하여 절차법의 법적 안정성을 일부 희생하는 것이다.", "a":true, "e":"소의 변경이 허용되는 이유는 국민의 권리구제(신속한 권리구제) 때문이다. 반면에 국민의 권리구제 때문에 절차법인 소송법 특유의 엄격성(법적 안정성)이 희생되므로, 어느 범위에서 소의 변경을 인정할 것인가가 중요하다."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "소송참가개관": ["타인 간 소송 계속 중 제3자가 자기 이익 위해 소송절차에 가입", "§16 제3자(권리주체=당사자) → 공동소송적 보조참가인", "§17 다른 행정청(기관) → 보조참가인"],
+    "제3자소송참가요건": ["소송결과에 따라 법률상 이익 침해 개연성", "당사자·제3자 신청 또는 직권", "판결선고 전까지 가능", "형성력에 의한 직접침해 + 기속력에 의한 새 처분으로 인한 침해 포함"],
+    "제3자소송참가지위": ["§16④→민사소송법 §67 준용", "필요적 공동소송에서의 공동소송인에 준하는 지위", "강학상: 공동소송적 보조참가인", "피참가인 저촉 소송행위·독립상소·집행정지취소신청 가능"],
+    "제3자소송참가효력": ["실제 소송행위 여부 불문하고 판결 효력 받음", "판결 확정 후 §31의 재심의 소 제기 불가", "상소기간은 피참가인과 독립 기산"],
+    "행정청소송참가": ["근거: §30① 기속력이 다른 관계 행정청에도 미침", "요건: 필요성 인정(법원 재량)", "§17③→민사소송법 §76 준용 → 보조참가인 준하는 지위", "저촉 소송행위 불가 / 참가적 효력만"],
+    "민사소송참가허용": ["보조참가: 다수설 허용 (§71 요건 충족 시)", "독립당사자참가: 판례 부정(피고 제한)", "공동소송참가: 다수설 긍정, 판례 부정"],
+    "소변경2지점": ["처분 부분(목적어) 변경 → 처분변경으로 인한 소변경(§22)", "취소한다 부분(술어) 변경 → 소송종류 자체 변경(§21)", "공통: 당초 소 제기시에 신소 제기된 것으로 봄"],
+    "소변경준용": ["§21: 취소소송→당사자소송·다른 항고소송", "§37: 무효등확인·부작위위법확인→취소소송·당사자소송(§21준용)", "§42: 당사자소송→항고소송(§21준용)", "§8②: 민사소송법§262·§263 — 소종류 변경에 이르지 않는 범위"],
+    "민사행정소변경": ["행정소송으로 제기해야 할 사건을 민사소송으로 잘못 제기", "수소법원이 행정소송 관할도 갖는 경우", "판례: 각하✗ → 항고소송으로 소변경 후 심리·판단"]
+  };
+  var tree={"name":"소장의 문구변화와 소송의 동태성","depth":0,"children":[
+    {"name":"소송참가제도","depth":1,"children":[
+      {"name":"소송참가개관",depth:3},{"name":"제3자소송참가요건",depth:3},{"name":"제3자소송참가지위",depth:3},{"name":"제3자소송참가효력",depth:3},{"name":"행정청소송참가",depth:3},{"name":"민사소송참가허용",depth:3}
+    ]},
+    {"name":"소의 변경","depth":1,"children":[
+      {"name":"소변경2지점",depth:3},{"name":"소변경준용",depth:3},{"name":"민사행정소변경",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,145]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+// ── AI 대화창 ──
+var CHAT_KEY='ch16_chat_history';
+var CHAT_TTL=7*24*60*60*1000;
+var chatHistory=[];
+var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제16강 소장의 문구변화와 관련된 제도들(소송의 동태성)」
+주요 내용: 소송참가제도(§16 제3자의 소송참가 — 요건·공동소송적 보조참가인 지위·가능한 소송행위·재심 불가, §17 다른 행정청의 소송참가 — 근거·보조참가인 지위·참가적 효력), 민사소송법상 소송참가의 허용 여부(보조참가=다수설허용, 독립당사자참가=판례부정, 공동소송참가=다수설긍정·판례부정), 소의 변경(청구취지의 2가지 변화 지점=처분목적어·취소한다술어, 처분변경으로 인한 소변경§22, 소송종류 변경§21, 준용규정§37·§42, §8②에 의한 민사소송법 준용, 민사→행정 소변경 판례).
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생(행정사·노무사·변시·5급 등)의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 법조문(§16, §17, §21, §22, §37, §42, §8② 등)을 자연스럽게 활용한다.
+4. 답안 작성법 질문에는 실로기스무스 패턴을 적용한 예시를 보여준다.
+5. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){try{localStorage.setItem(CHAT_KEY,JSON.stringify({ts:Date.now(),history:chatHistory}));}catch(e){}}
+function loadChat(){
+  try{
+    var raw=localStorage.getItem(CHAT_KEY);if(!raw)return false;
+    var data=JSON.parse(raw);
+    if(!data.ts||(Date.now()-data.ts)>CHAT_TTL){localStorage.removeItem(CHAT_KEY);return false;}
+    chatHistory=data.history||[];
+    var msgs=document.getElementById('chatMsgs');msgs.innerHTML='';
+    chatHistory.forEach(function(m){addMsg(m.role==='user'?'user':'ai',m.content);});
+    if(chatHistory.length>0)document.getElementById('chips').style.display='none';
+    return chatHistory.length>0;
+  }catch(e){return false;}
+}
+function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제16강 소장의 문구변화와 관련된 제도들 AI 도우미입니다. §16·§17 소송참가, 소의 변경 등 무엇이든 물어보세요.');}
+function addMsg(role,text){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg '+role;
+  var now=new Date();var t=now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML='<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent=text;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg ai chat-typing';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){var el=document.getElementById('typing-indicator');if(el)el.remove();}
+async function sendChat(){
+  var inp=document.getElementById('chatInput');var text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='';document.getElementById('chatSend').disabled=true;
+  addMsg('user',text);chatHistory.push({role:'user',content:text});saveChat();
+  document.getElementById('chips').style.display='none';showTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})});
+    var data=await res.json();hideTyping();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'답변을 가져오지 못했습니다.';
+    addMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});saveChat();
+  }catch(e){hideTyping();addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');}
+  document.getElementById('chatSend').disabled=false;
+}
+function chipSend(el){document.getElementById('chatInput').value=el.textContent;el.parentNode.style.display='none';sendChat();}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+</script>
+</body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제38강 당사자소송 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:210px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.mem-note{margin-top:8px;padding:7px 10px;border-radius:5px;font-size:11.5px;line-height:1.6}
+.mn-blue{background:var(--blue-l);color:var(--blue)}.mn-green{background:var(--green-l);color:var(--green)}.mn-gold{background:var(--gold-l);color:var(--gold)}.mn-red{background:var(--red-l);color:var(--red)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-preparing{background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;font-weight:700;color:var(--red);flex-shrink:0;text-align:center;letter-spacing:.3px}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제38강 당사자소송</div>
+  <div class="hdr-sub">실질적·형식적 당사자소송 · 보상금증감소송 · 소송요건</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- TAB 1 -->
+<div id="panel-summary" class="panel on">
+<div class="card"><div class="card-head ch-blue">📋 개관 — 의의와 항고소송과의 구별</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">당사자소송</span>이란 행정청의 처분 등을 원인으로 하는 법률관계에 관한 소송, 그 밖에 공법상의 법률관계에 관한 소송으로서 <span class="hl">그 법률관계의 한쪽 당사자를 피고</span>로 하는 소송이다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 항고소송과의 구별</div>권리주체가 <span class="hl">대등한 지위에서 권리관계를 다투는 소송</span>이므로, 행정청의 우월적 지위에서의 공권력 행사·불행사를 직접 불복대상으로 하는 <span class="hl">항고소송과 구별</span>된다.</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 당사자 — 권리본위적 사고</div>처분 행정청은 기관이어서 당사자가 될 수 없으므로, 그 기관이 속한 권리주체인 <span class="hl">국가 또는 공공단체</span>가 당사자가 된다(권리능력·행위능력을 갖춘 권리주체).</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">1. 법률 규정의 태도 — 실질적 당사자소송</div><div class="card-body">
+<table class="tbl"><thead><tr><th>다툼의 대상(법률관계)</th><th>내용</th></tr></thead><tbody>
+<tr><td>처분등을 원인으로 한 법률관계</td><td>당연무효 처분에 입각한 <span class="hl">부당이득반환청구소송</span> / 위법한 처분에 입각한 <span class="hl">국가배상청구소송</span> (일응 유효한 처분에 입각한 부당이득반환청구 → 패소판결)</td></tr>
+<tr><td>기타 공법상 법률관계에 관한 소송</td><td>공법상 당사자소송의 일반적 모습 = <span class="hl">실질적 당사자소송</span></td></tr>
+</tbody></table>
+<div class="alert al-red" style="margin-top:10px"><div class="alert-label">📌 판례 — 청구권 규범설</div>판례는 <span class="hl">청구권 규범설</span>에 입각하여 부당이득반환청구소송과 국가배상청구소송을 당사자소송이 아니라 <span class="r">민사소송</span>으로 본다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">2. 형식적 당사자소송의 문제</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">형식적 당사자소송</span>이란 처분을 계기로 형성된 법률관계의 상대방이 사인(공무수탁사인이 아닌 <span class="hl">일반 사인</span>)인 경우, 처분 행정청이 아니라 <span class="hl">형식적으로는 상대방 사인을 상대로 하나 실질적으로는 그 계기가 된 처분을 다투는 것</span>을 당사자소송 형식으로 하는 것이다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 인정 필요성</div>돈 문제는 이해당사자(토지소유자·사업시행자) 사이에서 해결하는 것이 직접적. 인정하지 않으면 처분취소소송 → 재처분 → 다시 금액 조정의 불편한 과정을 반복하므로, <span class="hl">단번에 형식적 당사자소송으로 해결</span>하는 것이 바람직하다.</div>
+<div class="alert al-red" style="margin-top:10px"><div class="alert-label">📌 명문 규정의 문제 — 부정설</div>형식적 당사자소송은 <span class="hl">명문 규정</span>이 있어야 한다. 도로법 §92③은 토지수용위원회 재결 신청을 규정하나 보상금 재결에 관해 토지보상법 §85②와 같은 보상금증감청구 규정이 없다. 개별 규정이 없으면 원고적격·피고적격·제소기간 등 <span class="hl">소송요건이 불분명</span>하므로 <span class="r">부정설</span>이 타당하다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">보상금증감소송 (형식적 당사자소송의 예)</div><div class="card-body">
+<div class="판례박스" style="margin-bottom:0"><strong>토지보상법 §85②</strong> — 보상금의 증감에 관한 소송인 경우, 소송을 제기하는 자가 <span class="hl">토지소유자 또는 관계인인 때에는 사업시행자를</span>, <span class="hl">사업시행자인 때에는 토지소유자 또는 관계인을</span> 각각 피고로 한다.</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 성질 — 전체로서 형식적 당사자소송</div>처분청인 지방토지수용위원회를 피고로 하지 않고 대등한 당사자(토지소유자·관계인 ↔ 사업시행자)를 당사자로 하므로 <span class="hl">형식적 관점에서 당사자소송</span>이나, 토지수용재결처분을 다투는 의미도 가져 <span class="hl">항고소송의 성질</span>도 갖는다. → 전체로서 <span class="hl">형식적 당사자소송</span>.</div>
+<div class="alert al-blue" style="margin-top:10px"><div class="alert-label">📌 그 밖의 예</div>특허법·실용신안법·디자인보호법에서도 형식적 당사자소송의 예를 볼 수 있다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">소송요건 · 절차 · 판결의 효력</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 소송요건 — 대·원·피·협·관</div><span class="hl">대상 · 원고적격 · 피고적격 · 협의의 소익 · 관할</span></div>
+<div class="alert al-green" style="margin-top:10px"><div class="alert-label">📌 절차 · 가처분</div>소의 변경·소송참가·관할이송과 병합 등이 진행 중 역동적으로 변화하며, <span class="hl">민사집행법상의 가처분 규정이 준용</span>된다.</div>
+<div class="alert al-red" style="margin-top:10px"><div class="alert-label">📌 판결의 효력</div>당사자소송의 판결에는 취소판결의 <span class="hl">제3자효·재처분의무·간접강제 등 항고소송 특유의 효력은 없다</span>.</div>
+</div></div>
+</div>
+
+<!-- TAB 2 -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">당사자소송<br>의의·구별</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">대등 당사자 / 항고소송과 구별</div><ul><li>처분 원인 법률관계·기타 공법상 법률관계 소송</li><li>법률관계의 한쪽 당사자를 피고로</li><li>권리주체가 대등한 지위에서 권리관계 다툼</li><li>↔ 항고소송(우월적 지위 공권력 행사·불행사)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">👤</div><div class="fc-term">당사자<br>(권리본위적 사고)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">국가·공공단체</div><ul><li>처분 행정청은 기관→당사자 ✕</li><li>그 기관이 속한 권리주체=국가·공공단체</li><li>권리능력·행위능력 갖춘 권리주체</li><li>권리본위적 사고</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">💸</div><div class="fc-term">처분 원인<br>법률관계</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">부당이득·국가배상</div><ul><li>당연무효 처분 입각=부당이득반환청구소송</li><li>위법한 처분 입각=국가배상청구소송</li><li>일응 유효 처분 입각 부당이득=패소판결</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📕</div><div class="fc-term">판례<br>(청구권 규범설)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">민사소송으로 봄</div><ul><li>판례=청구권 규범설</li><li>부당이득반환청구소송=민사소송</li><li>국가배상청구소송=민사소송</li><li>(당사자소송 ✕)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🏛️</div><div class="fc-term">실질적<br>당사자소송</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">기타 공법상 법률관계</div><ul><li>'기타 공법상 법률관계에 관한 소송'</li><li>공법상 당사자소송의 일반적 모습</li><li>= 실질적 당사자소송</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🔀</div><div class="fc-term">형식적<br>당사자소송 의의</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">사인 상대 / 실질은 처분 다툼</div><ul><li>처분 계기 법률관계 상대방이 일반 사인</li><li>형식적으로 사인 상대(공무수탁사인 ✕)</li><li>실질적으로 그 계기 처분을 다툼</li><li>당사자소송 형식으로 가능한가</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">💡</div><div class="fc-term">형식적 당사자<br>소송 필요성</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">단번에 해결</div><ul><li>돈 문제는 이해당사자 간 해결이 직접적</li><li>인정 안 하면: 취소소송→재처분→금액 조정 반복</li><li>단번에 형식적 당사자소송으로 해결 바람직</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🚫</div><div class="fc-term">명문 규정<br>문제</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">개별 규정 없으면 부정설</div><ul><li>형식적 당사자소송은 명문 규정 필요</li><li>도로법§92③: 보상금증감 규정 없음</li><li>개별 규정 없으면 원·피·제소기간 불분명</li><li>→ 부정설 타당</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🏞️</div><div class="fc-term">보상금증감소송<br>(토지보상법§85②)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">전체로서 형식적 당사자소송</div><ul><li>토지소유자·관계인↔사업시행자를 당사자로</li><li>처분청(지방토지수용위) 피고 ✕</li><li>형식적 관점=당사자소송</li><li>재결처분 다투는 의미(항고소송 성질)도→전체로서 형식적 당사자소송</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📋</div><div class="fc-term">소송요건·<br>판결 효력</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">대원피협관 / 항고소송 특유 효력 ✕</div><ul><li>소송요건: 대상·원고적격·피고적격·협의의 소익·관할</li><li>소의 변경·소송참가·관할이송·병합</li><li>민사집행법상 가처분 준용</li><li>제3자효·재처분의무·간접강제 등 효력 없음</li></ul></div>
+</div></div>
+</div></div>
+
+<!-- TAB 3 -->
+<div id="panel-quiz" class="panel">
+<div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+<div id="qc"></div>
+</div>
+
+<!-- TAB 4 -->
+<div id="panel-memory" class="panel">
+<div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+<div class="mem-progress"><div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div><div class="mem-prog-label" id="prog-label">0 / 0 공개</div><button class="mem-reveal-all" onclick="revealAll()">전체 공개</button></div>
+<div class="mem-section-title">의의 · 법률 규정의 태도</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">당사자소송의 의의와 항고소송과의 구별</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">당사자소송은 처분 등을 원인으로 하는 법률관계 및 그 밖의 공법상 법률관계에 관한 소송으로서 그 법률관계의 한쪽 당사자를 피고로 하며, <span class="mem-blank" onclick="toggleBlank(this)">권리주체가 대등한 지위에서 권리관계를 다투는 소송</span>이라는 점에서 항고소송과 구별된다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">당사자 — 권리주체</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">처분 행정청은 기관이어서 당사자가 될 수 없으므로, 당사자소송의 원고·피고는 그 기관이 속한 권리주체인 <span class="mem-blank" onclick="toggleBlank(this)">국가 또는 공공단체</span>가 된다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">부당이득·국가배상의 소송 형태</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">판례는 <span class="mem-blank" onclick="toggleBlank(this)">청구권 규범설</span>에 입각하여 부당이득반환청구소송과 국가배상청구소송을 당사자소송이 아니라 <span class="mem-blank" onclick="toggleBlank(this)">민사소송</span>으로 본다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">실질적 당사자소송</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">'기타 공법상 법률관계에 관한 소송'이 공법상 당사자소송의 일반적 모습으로 이를 <span class="mem-blank" onclick="toggleBlank(this)">실질적 당사자소송</span>이라 한다.</div></div></div></div>
+<div class="mem-section-title gn">형식적 당사자소송</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">형식적 당사자소송의 의의</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">형식적 당사자소송이란 처분 행정청이 아니라 형식적으로는 법률관계의 상대방인 <span class="mem-blank" onclick="toggleBlank(this)">사인을 상대로 하나 실질적으로는 그 계기가 된 처분을 다투는 것</span>을 당사자소송 형식으로 하는 것이다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">명문 규정의 문제 — 부정설</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">형식적 당사자소송에 관한 <span class="mem-blank" onclick="toggleBlank(this)">개별 규정이 없는 경우</span>에는 원고적격·피고적격·제소기간 등 소송요건이 불분명한 점을 고려할 때 <span class="mem-blank" onclick="toggleBlank(this)">부정설</span>이 타당하다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">보상금증감소송의 성질 (토지보상법 §85②)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">보상금증감소송은 처분청인 지방토지수용위원회가 아니라 토지소유자·관계인과 사업시행자를 당사자로 하므로 형식적 관점에서 당사자소송이나, <span class="mem-blank" onclick="toggleBlank(this)">토지수용재결처분을 다투는 의미도 가져 항고소송의 성질</span>도 가지므로 전체로서 <span class="mem-blank" onclick="toggleBlank(this)">형식적 당사자소송</span>이라 한다.</div></div></div></div>
+<div class="mem-section-title gd">소송요건 · 효력</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">소송요건과 가처분</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">당사자소송의 소송요건도 <span class="mem-blank" onclick="toggleBlank(this)">대·원·피·협·관</span>(대상·원고적격·피고적격·협의의 소익·관할)이며, 민사집행법상의 <span class="mem-blank" onclick="toggleBlank(this)">가처분 규정이 준용</span>된다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">당사자소송 판결의 효력</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">당사자소송의 판결에는 취소판결의 <span class="mem-blank" onclick="toggleBlank(this)">제3자효·재처분의무·간접강제 등 항고소송 특유의 효력은 없다</span>.</div></div></div></div>
+</div>
+
+<!-- TAB 5 -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제38강은 ① 부당이득반환·국가배상이 당사자소송인지 민사소송인지, ② 형식적 당사자소송의 인정 여부(명문 규정), ③ 보상금증감소송의 성질이 핵심 출제 포인트이다.</div></div>
+<div class="ms-section"><div class="ms-section-title">① 부당이득·국가배상의 소송 형태가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">처분을 원인으로 한 부당이득반환·국가배상을 당사자소송으로 다툴지 민사소송으로 다툴지</div><div class="ms-example">예: "당연무효인 과세처분에 따라 납부한 세금의 반환을 구하는 부당이득반환청구는 당사자소송인가 민사소송인가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">'처분등을 원인으로 한 법률관계'에는 당연무효 처분에 입각한 부당이득반환청구소송, 위법한 처분에 입각한 국가배상청구소송이 있다. 다만 <span class="g">판례는 청구권 규범설에 입각하여 이들을 당사자소송이 아니라 민사소송</span>으로 본다(일응 유효한 처분에 입각한 부당이득반환청구는 패소판결).</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">처분의 효력(무효/위법) 검토 → 부당이득·국가배상은 판례상 민사소송 → 처분의 무효·위법은 선결문제로 판단</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">처분 원인 법률관계</span><span class="ms-kw">청구권 규범설</span><span class="ms-kw">민사소송</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gn">② 형식적 당사자소송의 인정 여부가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">개별법에 명문 규정이 없는데도 형식적 당사자소송을 인정할 수 있는지</div><div class="ms-example">예: "도로법상 보상금 재결에 대해 토지보상법 §85②와 같은 규정이 없는데도 사인을 피고로 한 형식적 당사자소송이 가능한가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">형식적 당사자소송은 이해당사자 간 분쟁을 단번에 해결하는 필요성이 있으나, <span class="g">명문 규정이 있어야</span> 한다. 개별 규정이 없으면 원고적격·피고적격·제소기간 등 소송요건이 불분명하므로 <span class="g">부정설</span>이 타당하다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">정의 → 필요성 → 명문 규정 유무 검토 → 규정 있으면 요건론·효과론(+후속 조치) / 규정 없으면 소송요건 불분명으로 부정</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">형식적 당사자소송</span><span class="ms-kw">명문 규정</span><span class="ms-kw">부정설</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gd">③ 보상금증감소송의 성질이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">토지보상법상 보상금증감소송이 어떤 성질의 소송인지</div><div class="ms-example">예: "토지소유자가 보상금 증액을 구하는 보상금증감소송은 당사자소송인가 항고소송인가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">토지보상법 §85②는 처분청(지방토지수용위원회)이 아니라 토지소유자·관계인과 사업시행자를 당사자로 하므로 <span class="g">형식적 관점에서 당사자소송</span>이나, 토지수용재결처분을 다투는 의미도 가져 <span class="g">항고소송의 성질</span>도 가진다. → 전체로서 형식적 당사자소송.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">당사자(대등) 구조 확인 → 형식적 당사자소송 / 재결처분 다툼 의미 → 항고소송 성질 → 전체로서 형식적 당사자소송으로 결론</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">보상금증감소송</span><span class="ms-kw">토지보상법 §85②</span><span class="ms-kw">형식적 당사자소송</span></div></div>
+</div></div>
+</div>
+
+<!-- TAB 6 -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- TAB 7 -->
+<div id="panel-chat" class="panel">
+<div class="chat-wrap">
+<div class="chat-intro"><div class="chat-intro-title">💬 AI 강의 도우미</div><div class="chat-intro-text">제38강 당사자소송에 대해 무엇이든 질문하세요.<br>실질적·형식적 당사자소송·보상금증감소송·소송요건 모두 답변합니다.</div></div>
+<div class="chat-preparing">🔧 더 나은 서비스를 위하여 준비중입니다.</div>
+<div class="chat-notice">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+<div class="chat-chips" id="chips">
+<span class="chip" onclick="chipSend(this)">당사자소송과 항고소송의 구별</span>
+<span class="chip" onclick="chipSend(this)">부당이득·국가배상은 당사자소송인가</span>
+<span class="chip" onclick="chipSend(this)">실질적·형식적 당사자소송의 차이</span>
+<span class="chip" onclick="chipSend(this)">형식적 당사자소송의 인정 여부</span>
+<span class="chip" onclick="chipSend(this)">보상금증감소송의 성질</span>
+</div>
+<div class="chat-msgs" id="chatMsgs"></div>
+<div class="chat-input-row"><textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea><button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button></div>
+</div>
+</div>
+
+</div>
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  var exp=document.getElementById('e'+i);exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q":"당사자소송은 권리주체가 대등한 지위에서 권리관계를 다투는 소송으로, 항고소송과 구별된다.", "a":true, "e":"당사자소송은 권리주체가 대등한 지위에서 권리관계를 다투는 소송이므로, 행정청의 우월적 지위에서의 공권력 행사·불행사를 직접 불복대상으로 하는 항고소송과 구별된다."},
+{"q":"당사자소송에서 처분 행정청은 기관이므로 당사자가 될 수 없고, 그 기관이 속한 권리주체인 국가 또는 공공단체가 당사자가 된다.", "a":true, "e":"처분 행정청은 기관이어서 원고나 피고가 될 수 없으므로, 그 기관이 속한 권리주체인 국가 또는 공공단체가 당사자가 된다(권리본위적 사고)."},
+{"q":"판례는 청구권 규범설에 입각하여 부당이득반환청구소송과 국가배상청구소송을 당사자소송으로 본다.", "a":false, "e":"판례는 청구권 규범설에 입각하여 부당이득반환청구소송과 국가배상청구소송을 당사자소송이 아니라 민사소송으로 본다."},
+{"q":"당연무효인 처분에 입각한 부당이득반환청구소송, 위법한 처분에 입각한 국가배상청구소송은 '처분등을 원인으로 한 법률관계'에 해당한다.", "a":true, "e":"'처분등을 원인으로 한 법률관계'에는 당연무효인 처분에 입각한 부당이득반환청구소송과 위법한 처분에 입각한 국가배상청구소송이 해당한다."},
+{"q":"일응 유효한 처분에 입각한 부당이득반환청구소송이라면 그 판결의 형식은 패소판결이 된다.", "a":true, "e":"일응 유효한 처분에 입각한 부당이득반환청구소송이라면 그 처분이 유효하므로 부당이득이 성립하지 않아 판결의 형식은 패소판결이 된다."},
+{"q":"'기타 공법상 법률관계에 관한 소송'은 공법상 당사자소송의 일반적 모습으로 실질적 당사자소송이라 한다.", "a":true, "e":"'기타 공법상 법률관계에 관한 소송'이 공법상 당사자소송의 일반적 모습으로, 이를 실질적 당사자소송이라 한다."},
+{"q":"형식적 당사자소송이란 형식적으로는 법률관계의 상대방인 사인을 상대로 하나 실질적으로는 그 계기가 된 처분을 다투는 것을 당사자소송 형식으로 하는 것이다.", "a":true, "e":"형식적 당사자소송이란 처분 행정청이 아니라 형식적으로는 법률관계의 상대방인 사인을 상대로 하나 실질적으로는 그 계기가 된 처분을 다투는 것을 당사자소송 형식으로 하는 것이다."},
+{"q":"형식적 당사자소송의 상대방인 사인은 공무수탁사인을 의미한다.", "a":false, "e":"형식적 당사자소송에서 상대방인 사인은 공무수탁사인이 아닌 일반 사인을 의미한다."},
+{"q":"형식적 당사자소송의 필요성은 돈 문제를 이해당사자 간에 단번에 해결하는 것이 바람직하다는 데 있다.", "a":true, "e":"돈 문제는 이해당사자(토지소유자·사업시행자) 간에 해결하는 것이 직접적이고, 인정하지 않으면 취소소송→재처분→금액 조정의 반복이 생기므로 단번에 형식적 당사자소송으로 해결하는 것이 바람직하다."},
+{"q":"형식적 당사자소송에 관한 개별 규정이 없는 경우에도 원고적격·피고적격·제소기간 등이 명확하므로 이를 인정할 수 있다.", "a":false, "e":"형식적 당사자소송에 관한 개별 규정이 없는 경우에는 원고적격·피고적격·제소기간 등 소송요건이 불분명한 점을 고려할 때 부정설이 타당하다."},
+{"q":"토지보상법 제85조 제2항의 보상금증감소송은 처분청인 지방토지수용위원회를 피고로 하지 않고 토지소유자·관계인과 사업시행자를 당사자로 한다.", "a":true, "e":"토지보상법은 보상금증감소송의 경우 처분청인 지방토지수용위원회를 피고로 하지 않고 대등한 당사자인 토지소유자·관계인과 사업시행자를 당사자로 한다."},
+{"q":"보상금증감소송은 형식적 관점에서 당사자소송에 속하나, 토지수용재결처분을 다투는 의미도 가져 항고소송의 성질도 가진다.", "a":true, "e":"보상금증감소송은 대등한 당사자를 당사자로 하므로 형식적 관점에서 당사자소송이나, 토지수용재결처분을 다투는 의미도 가져 항고소송의 성질도 가지므로 전체로서 형식적 당사자소송이라 부른다."},
+{"q":"형식적 당사자소송의 예는 토지보상법 외에 특허법·실용신안법·디자인보호법에서도 볼 수 있다.", "a":true, "e":"형식적 당사자소송의 예는 토지보상법 외에 특허법·실용신안법·디자인보호법에서도 볼 수 있다."},
+{"q":"당사자소송의 소송요건은 '대·원·피·협·관'으로, 대상·원고적격·피고적격·협의의 소익·관할이다.", "a":true, "e":"당사자소송의 소송요건도 대·원·피·협·관, 즉 대상·원고적격·피고적격·협의의 소익·관할이다."},
+{"q":"당사자소송에는 민사집행법상의 가처분 규정이 준용된다.", "a":true, "e":"당사자소송에는 민사집행법상의 가처분 규정이 준용된다."},
+{"q":"당사자소송의 판결에는 취소판결의 제3자효·재처분의무·간접강제 등 항고소송 특유의 효력이 인정된다.", "a":false, "e":"당사자소송의 판결에는 취소판결의 제3자효·재처분의무·간접강제 등 항고소송 특유의 효력은 인정되지 않는다."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "개관": ["처분 원인 법률관계·기타 공법상 법률관계 소송", "법률관계의 한쪽 당사자를 피고로", "권리주체가 대등한 지위에서 권리관계 다툼", "↔ 항고소송(우월적 지위 공권력 행사·불행사)"],
+    "권리본위": ["처분 행정청은 기관→당사자 ✕", "그 기관이 속한 권리주체=국가·공공단체", "권리능력·행위능력 갖춘 권리주체", "권리본위적 사고"],
+    "처분원인법률관계": ["당연무효 처분 입각=부당이득반환청구소송", "위법한 처분 입각=국가배상청구소송", "일응 유효 처분 입각 부당이득=패소판결", "판례 청구권 규범설→부당이득·국가배상은 민사소송"],
+    "실질적당사자소송": ["'기타 공법상 법률관계에 관한 소송'", "공법상 당사자소송의 일반적 모습", "= 실질적 당사자소송"],
+    "형식적의의": ["처분 계기 법률관계 상대방이 일반 사인(공무수탁사인 ✕)", "형식적으로 사인 상대·실질적으로 처분 다툼", "필요성: 돈 문제 이해당사자 간 단번 해결", "명문 규정 필요·개별 규정 없으면 소송요건 불분명→부정설"],
+    "보상금증감": ["토지보상법§85②: 토지소유자·관계인↔사업시행자를 당사자로", "처분청(지방토지수용위) 피고 ✕→형식적 관점 당사자소송", "재결처분 다투는 의미(항고소송 성질)도", "→ 전체로서 형식적 당사자소송·특허법·실용신안법·디자인보호법에도 예"],
+    "소송요건효력": ["소송요건: 대·원·피·협·관", "소의 변경·소송참가·관할이송·병합", "민사집행법상 가처분 규정 준용", "제3자효·재처분의무·간접강제 등 항고소송 특유 효력 없음"]
+  };
+  var tree={"name":"당사자소송","depth":0,"children":[
+    {"name":"개관","depth":1,"children":[
+      {"name":"개관",depth:3},{"name":"권리본위",depth:3}
+    ]},
+    {"name":"법률규정의 태도","depth":1,"children":[
+      {"name":"처분원인법률관계",depth:3},{"name":"실질적당사자소송",depth:3}
+    ]},
+    {"name":"형식적 당사자소송","depth":1,"children":[
+      {"name":"형식적의의",depth:3},{"name":"보상금증감",depth:3}
+    ]},
+    {"name":"소송요건·절차","depth":1,"children":[
+      {"name":"소송요건효력",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,150]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020','#5a2d8c'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+var CHAT_KEY='ch38_chat_history';
+var CHAT_TTL=7*24*60*60*1000;
+var chatHistory=[];
+var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제38강 당사자소송」
+주요 내용: 의의(처분 등을 원인으로 하는 법률관계 + 기타 공법상 법률관계에 관한 소송으로서 그 법률관계의 한쪽 당사자를 피고로·권리주체가 대등한 지위에서 권리관계 다툼→항고소송(우월적 지위 공권력 행사·불행사)과 구별), 당사자(처분 행정청은 기관→당사자 ✕·그 기관이 속한 권리주체 국가·공공단체·권리본위적 사고), 법률 규정의 태도(처분등 원인 법률관계: 당연무효 처분 입각 부당이득반환청구소송·위법한 처분 입각 국가배상청구소송·일응 유효 처분 입각 부당이득=패소판결 / 판례는 청구권 규범설에 입각하여 부당이득·국가배상을 당사자소송이 아니라 민사소송으로 봄 / 기타 공법상 법률관계 소송=실질적 당사자소송), 형식적 당사자소송(처분 계기 법률관계 상대방이 일반 사인(공무수탁사인 ✕)·형식적으로 사인 상대·실질적으로 처분 다툼·필요성=돈 문제 이해당사자 간 단번 해결(인정 안 하면 취소소송→재처분→금액 조정 반복)·명문 규정 필요·도로법§92③은 보상금증감 규정 없음·개별 규정 없으면 원고적격·피고적격·제소기간 등 소송요건 불분명→부정설), 보상금증감소송(토지보상법§85②: 토지소유자·관계인이면 사업시행자를·사업시행자면 토지소유자·관계인을 피고로·처분청 지방토지수용위 피고 ✕→형식적 관점 당사자소송·토지수용재결처분 다투는 의미도→항고소송 성질도→전체로서 형식적 당사자소송·특허법·실용신안법·디자인보호법에도 예), 소송요건·절차·효력(소송요건 대·원·피·협·관·소의 변경·소송참가·관할이송·병합·민사집행법상 가처분 준용·취소판결의 제3자효·재처분의무·간접강제 등 항고소송 특유 효력 없음).
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 당사자소송은 '대등 당사자·항고소송과 구별·실질적/형식적 당사자소송'으로 핵심을 잡아 준다.
+4. 부당이득·국가배상은 판례상 민사소송(청구권 규범설)임을 강조하고, 형식적 당사자소송은 '필요성·명문 규정·부정설'로 정리해 준다.
+5. 보상금증감소송은 '형식적 관점 당사자소송 + 항고소송 성질 → 전체로서 형식적 당사자소송'으로 설명해 준다.
+6. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){try{localStorage.setItem(CHAT_KEY,JSON.stringify({ts:Date.now(),history:chatHistory}));}catch(e){}}
+function loadChat(){
+  try{
+    var raw=localStorage.getItem(CHAT_KEY);if(!raw)return false;
+    var data=JSON.parse(raw);
+    if(!data.ts||(Date.now()-data.ts)>CHAT_TTL){localStorage.removeItem(CHAT_KEY);return false;}
+    chatHistory=data.history||[];
+    var msgs=document.getElementById('chatMsgs');msgs.innerHTML='';
+    chatHistory.forEach(function(m){addMsg(m.role==='user'?'user':'ai',m.content);});
+    if(chatHistory.length>0)document.getElementById('chips').style.display='none';
+    return chatHistory.length>0;
+  }catch(e){return false;}
+}
+function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제38강 당사자소송 AI 도우미입니다. 실질적·형식적 당사자소송·보상금증감소송·소송요건 등 무엇이든 물어보세요.');}
+function addMsg(role,text){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg '+role;
+  var now=new Date();var t=now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML='<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent=text;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg ai chat-typing';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){var el=document.getElementById('typing-indicator');if(el)el.remove();}
+async function sendChat(){
+  var inp=document.getElementById('chatInput');var text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='';document.getElementById('chatSend').disabled=true;
+  addMsg('user',text);chatHistory.push({role:'user',content:text});saveChat();
+  document.getElementById('chips').style.display='none';showTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})});
+    var data=await res.json();hideTyping();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'답변을 가져오지 못했습니다.';
+    addMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});saveChat();
+  }catch(e){hideTyping();addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');}
+  document.getElementById('chatSend').disabled=false;
+}
+function chipSend(el){document.getElementById('chatInput').value=el.textContent;el.parentNode.style.display='none';sendChat();}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+</script>
+</body>
+</html>

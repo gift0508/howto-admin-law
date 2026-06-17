@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제26강 준법률행위적 행정행위 — 확공통수 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:200px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.mem-note{margin-top:8px;padding:7px 10px;border-radius:5px;font-size:11.5px;line-height:1.6}
+.mn-blue{background:var(--blue-l);color:var(--blue)}.mn-green{background:var(--green-l);color:var(--green)}.mn-gold{background:var(--gold-l);color:var(--gold)}.mn-red{background:var(--red-l);color:var(--red)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-preparing{background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;font-weight:700;color:var(--red);flex-shrink:0;text-align:center;letter-spacing:.3px}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제26강 준법률행위적 행정행위 — 확공통수</div>
+  <div class="hdr-sub">확인 · 공증 · 통지 · 수리 · 준별론과 부관의 실익</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- ══ TAB 1 · 요약노트 ══ -->
+<div id="panel-summary" class="panel on">
+
+<div class="card"><div class="card-head ch-blue">📋 준법률행위적 행정행위 개관 — 확공통수</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">행정행위</span>란 행정청이 법 아래서 구체적 사실에 대한 법집행으로서 행하는 <span class="hl">권력적 단독행위로서 공법행위</span>를 말한다. 그중 효과의사를 요소로 하는 <span class="kw">법률행위적 행정행위</span>(하허면특인대)와 달리, <span class="kw">준법률행위적 행정행위</span>는 행정청의 어떤 행위(확인행위·공증행위·통지행위·수리행위)에 <span class="hl">법률이 직접 행정행위의 효력을 부여</span>하는 것이다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 준법률행위적 행정행위의 종류 — 확공통수</div>
+<span class="kw">확</span>인 / <span class="kw">공</span>증 / <span class="kw">통</span>지 / <span class="kw">수</span>리 &nbsp;→&nbsp; 「○○행위 + 법률로 효과부여 = ○○」의 구조
+</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 효과 발생의 근거 — 의사 ✕, 법률 ○</div>
+법률행위적 행정행위는 <span class="hl">행정청의 효과의사대로</span> 효과가 발생하나, 준법률행위적 행정행위는 효과의사와 무관하게 <span class="hl">법률이 정하는 바에 따라</span> 효과가 발생한다. 그러므로 그 본질상 <span class="r">기속적</span>일 수밖에 없다.
+</div>
+<div class="alert al-green" style="margin-top:10px"><div class="alert-label">📌 준별의 실익 — 부관의 가부(전통적 견해·통설)</div>
+법률행위적 행정행위에는 효과의사가 있어 <span class="hl">부관을 붙일 수 있으나</span>, 준법률행위적 행정행위에는 효과의사가 없어 <span class="hl">원칙적으로 부관을 붙일 수 없다</span>. &nbsp;※ 다만 부관의 가부는 의사표시 유무가 아니라 행정행위의 성질(기속·재량)에 따라 판단해야 한다는 비판도 있다.
+</div>
+<div class="alert al-red" style="margin-top:10px"><div class="alert-label">📌 준별론에 대한 비판</div>
+준법률행위적 행정행위와 법률행위적 행정행위의 준별은 <span class="hl">민법상의 분류를 기초로 일본에서 발전된 이론을 차용</span>한 것이다. 이에 대해 행정행위는 행정청의 자유로운 의사가 아니라 <span class="hl">법에 기속되어 입법자의 객관화된 의사를 실현</span>하는 것이므로 준별론은 지양되어야 한다는 비판이 있다.
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">① 확인(確認)</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">확인행위</span>란 특정의 사실 또는 법률관계의 존재 여부에 관해 <span class="hl">의문이 있거나 다툼이 있는 경우</span>에 공권적으로 판단하여 이를 확정하는 행위를 말한다. 이 행위에 법률로 법적 효과를 부여하면 <span class="g">확인</span>이 된다.</div>
+<table class="tbl"><thead><tr><th>항목</th><th>내용</th></tr></thead><tbody>
+<tr><td>성질</td><td>다툼·의문을 공권적으로 판단·확정 → <span class="kw">준사법적 행위</span> / <span class="r">기속행위</span></td></tr>
+<tr><td>효력</td><td>법률이 정하는 효과 발생. 분쟁을 종국적으로 확정하므로 <span class="hl">불가변력(실질적 존속력)</span>이 인정되는 경우가 많음</td></tr>
+<tr><td>예시</td><td>발명특허(특허결정)·당선인 결정·국가시험 합격자 결정·도로구역 결정·교과서 검정·준공검사·행정심판 재결·친일재산 국가귀속결정 등</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">② 공증(公證)</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">공증행위</span>란 특정의 사실 또는 법(률)관계의 존재 여부를 <span class="hl">공적으로 증명</span>하는 행위를 말한다. 이 행위에 법률로 법적 효과를 부여하면 <span class="g" style="color:var(--gold)">공증</span>이 된다. 의문·다툼이 없는 사항을 대상으로 하며 <span class="hl">공적 증거력</span>을 부여하고, 그 증거력은 <span class="hl">반증에 의해서만 번복</span>될 수 있다.</div>
+<div class="alert al-gold"><div class="alert-label">📌 핵심 — '공적장부에의 등록행위'가 모두 공증인 것은 아니다</div>
+"공적장부에의 등록행위(공증행위) + <span class="hl">법률로 효과부여</span> = 공증". 어떤 효력이 부여되어 준법률행위적 행정행위인 공증이 되는지, 그리고 그 <span class="kw">처분성</span>은 판례의 태도로 익혀야 한다.
+</div>
+<table class="tbl" style="margin-top:10px"><thead><tr><th>대상행위</th><th>처분성</th><th>판례의 논거</th></tr></thead><tbody>
+<tr><td>지목변경신청 거부</td><td><span class="g">○ (거부처분)</span></td><td>지목은 공법상 법률관계에 영향을 미치고, 토지소유자는 지목을 토대로 사용·수익·처분에 제한을 받아 <span class="hl">실체적 권리관계에 밀접</span></td></tr>
+<tr><td>건축물대장 용도변경신청 거부</td><td><span class="g">○ (거부처분)</span></td><td>건축물의 용도는 토지의 지목에 대응하는 것으로 <span class="hl">소유권 행사의 전제요건</span>이어서 실체적 권리관계에 밀접</td></tr>
+<tr><td>건축물대장 작성신청 거부</td><td><span class="g">○ (처분)</span></td><td>건축물대장의 작성은 <span class="hl">소유권 행사의 전제요건</span>으로서 실체적 권리관계에 밀접</td></tr>
+<tr><td>무허가건물등재대장 삭제</td><td><span class="r">✕ (처분 아님)</span></td><td>무허가 건물에 대한 <span class="hl">실체상의 권리관계에 변동을 가져오지 않음</span></td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">③ 통지(通知)</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">통지행위</span>란 특정인 또는 불특정 다수인에게 어떠한 사실을 알리는 행위를 말한다. 이 행위에 법률로 법적 효과를 부여하면 <span style="color:var(--purple);font-weight:700">통지</span>가 된다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 관념의 통지 vs 사실의 통지</div>
+준법률행위적 행정행위인 통지는 그 자체로 <span class="hl">일정한 법적 효과를 발생시키는 통지(관념의 통지)</span>이며, 아무런 효과가 없는 <span class="hl">단순한 사실의 통지(사실행위)</span>와 구별된다. 효과를 발생시키는 통지는 <span class="kw">처분</span>에 해당한다.
+</div>
+<div class="body-text" style="margin-top:10px"><strong>예시</strong> — 대집행의 계고·납세의 독촉·특허출원의 공고·귀화의 고시·토지수용에서 사업인정의 고시 등(법적 효과 발생 → 처분성 인정).</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">④ 수리(受理)</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">수리행위</span>란 행정청이 사인의 행위를 유효한 행위로 받아들이는 <span class="hl">인식의 표시행위</span>를 말한다. 이 행위에 법률로 법적 효과를 부여하면 <span class="r">수리</span>가 된다. 단순한 도달·접수(사실행위)와 구별된다.</div>
+<div class="alert al-red"><div class="alert-label">📌 신고와의 관계 — 수리를 요하는 신고</div>
+<span class="hl">자기완결적 신고</span>: 적법한 신고서가 도달하면 효과 발생 → 수리 불요(수리 거부는 원칙적으로 처분 ✕)<br>
+<span class="hl">수리를 요하는 신고(행위요건적 신고)</span>: 수리가 있어야 효과 발생 → 수리 거부는 <span class="kw">항고소송의 대상이 되는 처분</span>
+</div>
+<div class="body-text" style="margin-top:10px"><strong>예시</strong> — 혼인·출생신고의 수리, 행정심판청구서의 수리, 사직원(사직서)의 수리, 영업양도신고의 수리 등.</div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 2 · 플래시카드 ══ -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📋</div><div class="fc-term">확공통수<br>준법률행위적 행정행위</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">확인·공증·통지·수리</div><ul><li>○○행위 + 법률로 효과부여 = ○○</li><li>효과의사 ✕, 법률이 정하는 효과 발생</li><li>본질상 기속적</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔗</div><div class="fc-term">준별의 실익<br>— 부관의 가부</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gd"><div class="fc-bt">법률행위적 ○ / 준법률행위적 ✕(원칙)</div><ul><li>효과의사 있는 법률행위적 행정행위: 부관 가능</li><li>효과의사 없는 준법률행위적 행정행위: 원칙적으로 부관 불가</li><li>비판: 부관 가부는 처분의 성질(기속·재량)로 판단해야</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">확인<br>(정의·성질)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">의문·다툼을 공권적으로 판단·확정</div><ul><li>특정 사실·법률관계의 존부에 의문·다툼이 있을 때</li><li>준사법적 행위 / 기속행위</li><li>불가변력 인정되는 경우 많음</li><li>예: 특허결정·당선인결정·합격자결정·재결</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🧾</div><div class="fc-term">공증<br>(정의·효력)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gd"><div class="fc-bt">의문·다툼 없는 사항을 공적으로 증명</div><ul><li>특정 사실·법관계의 존부를 공적으로 증명</li><li>효력: 공적 증거력</li><li>반증에 의해서만 번복 가능</li><li>예: 각종 공부 등재·등기·주민등록·증명서 발급</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🏠</div><div class="fc-term">공증의 처분성<br>판례 흐름</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">실체적 권리관계에 밀접 → 처분 ○</div><ul><li>지목변경신청 거부 → 처분 ○</li><li>건축물대장 용도변경신청 거부 → 처분 ○</li><li>건축물대장 작성신청 거부 → 처분 ○</li><li>무허가건물등재대장 삭제 → 처분 ✕(권리변동 없음)</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📢</div><div class="fc-term">통지<br>(관념의 통지)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b pp"><div class="fc-bt">효과 발생 통지 = 처분 / 사실 통지 = 사실행위</div><ul><li>특정·불특정 다수인에게 사실을 알리는 행위</li><li>법적 효과 발생 통지(관념의 통지) ↔ 단순 사실의 통지</li><li>예: 대집행 계고·납세 독촉·특허출원 공고·귀화 고시</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📥</div><div class="fc-term">수리<br>(정의·신고)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">사인의 행위를 유효한 것으로 받아들이는 인식표시</div><ul><li>단순 도달·접수(사실행위)와 구별</li><li>자기완결적 신고: 수리 불요</li><li>수리를 요하는 신고: 수리 거부 = 처분</li><li>예: 혼인신고·사직원·행정심판청구서의 수리</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🗣️</div><div class="fc-term">준별론<br>비판</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">민법 차용 분류 → 지양론</div><ul><li>민법상 분류 기초·일본 이론 차용</li><li>행정행위는 입법자의 객관화된 의사 실현</li><li>자유로운 의사에 의한 것이 아니므로 준별 지양해야 한다는 비판</li></ul></div>
+      </div>
+    </div>
+    </div></div>
+
+<!-- ══ TAB 3 · OX퀴즈 ══ -->
+<div id="panel-quiz" class="panel">
+  <div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+  <div id="qc"></div>
+</div>
+
+<!-- ══ TAB 4 · 필수암기문장 ══ -->
+<div id="panel-memory" class="panel">
+  <div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+  <div class="mem-progress">
+    <div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div>
+    <div class="mem-prog-label" id="prog-label">0 / 0 공개</div>
+    <button class="mem-reveal-all" onclick="revealAll()">전체 공개</button>
+  </div>
+
+<div class="mem-section-title">개관 · 준별의 실익</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">준법률행위적 행정행위의 구조</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">준법률행위적 행정행위는 확인행위·공증행위·통지행위·수리행위에 <span class="mem-blank" onclick="toggleBlank(this)">법률이 직접 행정행위의 효력을 부여</span>하는 것으로서, 그 효과는 행정청의 효과의사와 무관하게 <span class="mem-blank" onclick="toggleBlank(this)">법률이 정하는 바에 따라</span> 발생하므로 그 본질상 <span class="mem-blank" onclick="toggleBlank(this)">기속적</span>이다.</div><div class="mem-note mn-blue">확공통수</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">준별의 실익 — 부관의 가부</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">법률행위적 행정행위에는 효과의사가 있어 <span class="mem-blank" onclick="toggleBlank(this)">부관을 붙일 수 있으나</span>, 준법률행위적 행정행위에는 효과의사가 없으므로 원칙적으로 <span class="mem-blank" onclick="toggleBlank(this)">부관을 붙일 수 없다</span>.</div><div class="mem-note mn-blue">전통적 견해·통설</div></div></div></div>
+
+<div class="mem-section-title gn">확인 · 공증</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">확인행위의 정의</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">확인행위란 특정의 사실 또는 법률관계의 존재 여부에 관해 <span class="mem-blank" onclick="toggleBlank(this)">의문이 있거나 다툼이 있는 경우</span>에 <span class="mem-blank" onclick="toggleBlank(this)">공권적으로 판단하여 이것을 확정</span>하는 행위를 말한다.</div><div class="mem-note mn-green">준사법적 행위·기속행위</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">공증행위의 정의와 효력</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">공증행위란 특정의 사실 또는 법관계의 존재 여부를 <span class="mem-blank" onclick="toggleBlank(this)">공적으로 증명</span>하는 행위로서, 그 효력으로 <span class="mem-blank" onclick="toggleBlank(this)">공적 증거력</span>이 부여되며 이는 <span class="mem-blank" onclick="toggleBlank(this)">반증에 의해서만 번복</span>될 수 있다.</div></div></div></div>
+
+<div class="mem-section-title gd">공증의 처분성 판례</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">지목변경신청 거부 — 처분성 인정</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">지목은 <span class="mem-blank" onclick="toggleBlank(this)">공법상의 법률관계에 영향</span>을 미치고, 토지소유자는 지목을 토대로 토지의 사용·수익·처분에 일정한 제한을 받으며 <span class="mem-blank" onclick="toggleBlank(this)">실체적 권리관계에 밀접하게 관련</span>되어 있으므로, 지목변경신청 거부는 항고소송의 대상이 되는 거부처분이다.</div><div class="mem-note mn-gold">지목변경신청거부처분 취소소송</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">건축물대장 용도변경·작성 신청 거부 — 처분성 인정</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">건축물의 용도는 토지의 지목에 대응하는 것으로서 건축물의 <span class="mem-blank" onclick="toggleBlank(this)">소유권을 제대로 행사하기 위한 전제요건</span>이고 소유자의 실체적 권리관계에 밀접하게 관련되어 있으므로, 건축물대장의 용도변경신청 거부와 작성신청 거부는 모두 <span class="mem-blank" onclick="toggleBlank(this)">항고소송의 대상이 되는 처분</span>이다.</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">무허가건물등재대장 삭제 — 처분성 부정</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">무허가건물등재대장 삭제행위는 무허가 건물에 대한 <span class="mem-blank" onclick="toggleBlank(this)">실체상의 권리관계에 변동을 가져오는 것이 아니므로</span> 항고소송의 대상이 되는 <span class="mem-blank" onclick="toggleBlank(this)">처분이 아니다</span>.</div></div></div></div>
+
+<div class="mem-section-title">통지 · 수리</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">통지행위의 정의</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">통지행위란 특정인 또는 <span class="mem-blank" onclick="toggleBlank(this)">불특정 다수인</span>에게 어떠한 사실을 알리는 행위를 말하며, 이 행위에 법률로 법적 효과를 부여하면 통지가 된다.</div><div class="mem-note mn-blue">관념의 통지 ↔ 사실의 통지</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">수리행위의 정의</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">수리행위란 행정청이 사인의 행위를 <span class="mem-blank" onclick="toggleBlank(this)">유효한 행위로 받아들이는</span> <span class="mem-blank" onclick="toggleBlank(this)">인식의 표시행위</span>를 말하며, 이 행위에 법률로 법적 효과를 부여하면 수리가 된다.</div><div class="mem-note mn-red">단순 도달·접수와 구별</div></div></div></div>
+
+</div>
+
+<!-- ══ TAB 5 · 문제의 소재 ══ -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제26강은 ① 공증(공부 등재·변경·말소)의 처분성, ② 통지(계고·독촉 등)의 처분성, ③ 수리를 요하는 신고에서 수리 거부의 처분성이 핵심 출제 포인트이다. 모두 "준법률행위적 행정행위 → 처분성(대상적격) 판단"으로 연결된다.</div></div>
+
+<div class="ms-section"><div class="ms-section-title">① 공증(공부에의 등재·변경·말소)의 처분성이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">행정청이 지목변경·건축물대장 용도변경·대장 작성 등 공부 관련 신청을 거부하거나 대장 등재를 직권 말소·삭제한 경우, 그것이 항고소송의 대상이 되는 처분인지</div><div class="ms-example">예: "행정청이 甲의 토지에 대한 지목변경신청을 거부하였다. 甲은 그 거부에 대해 취소소송을 제기할 수 있는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">공증은 준법률행위적 행정행위이나, 공부 등재 전부가 처분인 것은 아니다. 판례는 그 행위가 <span class="g">토지·건축물 소유자의 실체적 권리관계에 밀접하게 관련</span>되어 권리행사의 전제요건이 되는 경우에 처분성을 인정한다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">해당 공증행위가 실체적 권리관계에 미치는 영향 검토 → 지목변경신청 거부·건축물대장 용도변경/작성신청 거부 = 처분 ○ / 무허가건물등재대장 삭제(권리변동 없음) = 처분 ✕ → 처분성 인정 시 대상적격 충족 → 본안 판단</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">공증</span><span class="ms-kw">처분성(대상적격)</span><span class="ms-kw">실체적 권리관계에 밀접</span><span class="ms-kw">지목변경·건축물대장</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gn">② 통지의 처분성이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">대집행의 계고, 납세의 독촉 등 행정청의 통지가 항고소송의 대상이 되는 처분인지, 단순한 사실의 통지(사실행위)에 불과한지</div><div class="ms-example">예: "행정청이 甲에게 대집행 계고를 하였다. 甲은 이 계고 자체를 다툴 수 있는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">통지에는 법적 효과를 발생시키는 <span class="g">관념의 통지</span>와 효과가 없는 <span class="r">단순 사실의 통지</span>가 있다. 전자(준법률행위적 행정행위)는 처분이고, 후자는 처분이 아니다. 대집행 계고·납세 독촉 등은 법적 효과를 발생시켜 처분에 해당한다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">해당 통지가 법적 효과를 발생시키는지 검토 → 효과 발생(관념의 통지)이면 처분 ○ → 대상적격 충족 → (반복된 계고는 1차 계고만 처분이라는 점 등 부수 논점 검토)</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">통지</span><span class="ms-kw">관념의 통지</span><span class="ms-kw">대집행 계고</span><span class="ms-kw">처분성</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gd">③ 수리를 요하는 신고에서 수리 거부의 처분성이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">사인이 신고를 하였으나 행정청이 수리를 거부한 경우, 그 수리 거부가 항고소송의 대상이 되는 처분인지</div><div class="ms-example">예: "甲이 영업양도에 따른 지위승계 신고를 하였으나 행정청이 수리를 거부하였다. 甲은 그 거부를 다툴 수 있는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">신고가 <span class="g">자기완결적 신고</span>인지 <span class="r">수리를 요하는 신고</span>인지 구별한다. 자기완결적 신고는 적법한 신고서 도달로 효과가 발생해 수리 거부가 원칙적으로 처분이 아니나, 수리를 요하는 신고는 수리가 있어야 효과가 발생하므로 수리 거부가 처분이 된다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">신고의 유형 결정(근거법령의 해석) → 수리를 요하는 신고이면 수리 거부 = 처분 ○ → 대상적격 충족 → 본안에서 수리 요건 충족 여부 판단</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">수리</span><span class="ms-kw">자기완결적 신고</span><span class="ms-kw">수리를 요하는 신고</span><span class="ms-kw">수리 거부의 처분성</span></div></div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 6 · 마인드맵 ══ -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- ══ TAB 7 · AI 대화창 ══ -->
+<div id="panel-chat" class="panel">
+  <div class="chat-wrap">
+    <div class="chat-intro">
+      <div class="chat-intro-title">💬 AI 강의 도우미</div>
+      <div class="chat-intro-text">제26강 준법률행위적 행정행위에 대해 무엇이든 질문하세요.<br>확인·공증·통지·수리, 공증의 처분성 판례, 준별의 실익(부관)까지 답변합니다.</div>
+    </div>
+    <div class="chat-preparing">🔧 더 나은 서비스를 위하여 준비중입니다.</div>
+    <div class="chat-notice">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+    <div class="chat-chips" id="chips">
+      <span class="chip" onclick="chipSend(this)">확공통수의 의미와 구조</span>
+      <span class="chip" onclick="chipSend(this)">공증의 처분성 판례 정리</span>
+      <span class="chip" onclick="chipSend(this)">관념의 통지와 사실의 통지 구별</span>
+      <span class="chip" onclick="chipSend(this)">수리를 요하는 신고와 수리 거부</span>
+      <span class="chip" onclick="chipSend(this)">준별의 실익과 부관의 가부</span>
+    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  var exp=document.getElementById('e'+i);exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q":"준법률행위적 행정행위는 행정청의 효과의사를 구성요소로 하며 그 의사의 내용에 따라 효과가 발생한다.", "a":false, "e":"준법률행위적 행정행위는 효과의사를 요소로 하지 않으며, 행정청의 의사와 무관하게 법률이 정하는 바에 따라 효과가 발생한다. 효과의사대로 효과가 발생하는 것은 법률행위적 행정행위이다."},
+{"q":"준법률행위적 행정행위는 「확공통수」, 즉 확인·공증·통지·수리로 분류된다.", "a":true, "e":"준법률행위적 행정행위는 확인·공증·통지·수리로 분류되며, '확공통수'로 암기한다. 각각 '○○행위 + 법률로 효과부여 = ○○'의 구조를 가진다."},
+{"q":"통설(전통적 견해)에 의하면 준법률행위적 행정행위에는 원칙적으로 부관을 붙일 수 없다.", "a":true, "e":"법률행위적 행정행위에는 효과의사가 있어 부관을 붙일 수 있으나, 효과의사가 없는 준법률행위적 행정행위에는 원칙적으로 부관을 붙일 수 없다는 것이 전통적 견해이다(다만 부관 가부는 처분의 성질로 판단해야 한다는 비판도 있다)."},
+{"q":"확인은 특정 사실·법률관계의 존부에 의문이나 다툼이 있을 때 공권적으로 판단·확정하는 행위로서 준사법적 행위의 성질을 가진다.", "a":true, "e":"확인행위는 특정의 사실 또는 법률관계의 존부에 의문·다툼이 있는 경우 공권적으로 판단하여 확정하는 행위로서, 다툼을 공권적으로 확정한다는 점에서 준사법적 행위의 성질을 가진다."},
+{"q":"확인은 행정청이 재량으로 그 내용을 자유롭게 정할 수 있는 재량행위이다.", "a":false, "e":"확인은 기존의 사실·법률관계를 공권적으로 판단·확정하는 것이어서 행정청의 효과의사가 개입할 여지가 없으므로 기속행위이다."},
+{"q":"공증은 의문·다툼이 없는 사항을 공적으로 증명하여 공적 증거력을 부여하는 행위이며, 그 증거력은 반증에 의해 번복될 수 있다.", "a":true, "e":"공증은 특정 사실·법관계의 존부를 공적으로 증명하는 행위로서 공적 증거력을 부여하며, 그 증거력은 반증에 의해서만 번복될 수 있다."},
+{"q":"판례는 지목변경신청 거부를 토지소유자의 실체적 권리관계에 밀접하게 관련된 것으로 보아 항고소송의 대상이 되는 거부처분으로 본다.", "a":true, "e":"판례는 지목이 공법상 법률관계에 영향을 미치고 토지소유자가 지목을 토대로 사용·수익·처분에 제한을 받아 실체적 권리관계에 밀접하게 관련되어 있다는 이유로, 지목변경신청 거부를 항고소송의 대상이 되는 거부처분으로 본다."},
+{"q":"판례는 건축물대장의 용도변경신청 거부와 작성신청 거부를 모두 항고소송의 대상이 되는 처분으로 본다.", "a":true, "e":"판례는 건축물의 용도가 토지의 지목에 대응하는 것으로서 소유권 행사의 전제요건이고 실체적 권리관계에 밀접하게 관련되어 있다는 이유로, 건축물대장 용도변경신청 거부와 작성신청 거부를 모두 항고소송의 대상이 되는 처분으로 본다."},
+{"q":"판례는 무허가건물등재대장 삭제행위도 항고소송의 대상이 되는 처분으로 본다.", "a":false, "e":"판례는 무허가건물등재대장 삭제행위가 무허가 건물에 대한 실체상의 권리관계에 변동을 가져오는 것이 아니라는 이유로 항고소송의 대상이 되는 처분이 아니라고 본다."},
+{"q":"준법률행위적 행정행위인 통지는 일정한 법적 효과를 발생시키는 '관념의 통지'이며, 효과가 없는 단순한 사실의 통지와 구별된다.", "a":true, "e":"통지에는 법적 효과를 발생시키는 관념의 통지(준법률행위적 행정행위)와 효과가 없는 단순한 사실의 통지(사실행위)가 있으며, 준법률행위적 행정행위인 통지는 전자에 해당한다."},
+{"q":"대집행의 계고나 납세의 독촉은 법적 효과를 발생시키는 통지로서 항고소송의 대상이 되는 처분에 해당한다.", "a":true, "e":"대집행의 계고, 납세의 독촉 등은 일정한 법적 효과(의무 이행 최고, 후속절차의 전제 등)를 발생시키는 통지이므로 항고소송의 대상이 되는 처분에 해당한다."},
+{"q":"수리는 사인의 행위를 유효한 행위로 받아들이는 인식의 표시행위이며, 단순한 도달·접수와 구별된다.", "a":true, "e":"수리행위는 행정청이 사인의 행위를 유효한 행위로 받아들이는 인식의 표시행위로서, 아무런 효과의사 없이 사실상 받아 두는 단순한 도달·접수(사실행위)와 구별된다."},
+{"q":"수리를 요하는 신고의 경우 수리가 있어야 신고의 효과가 발생하므로 수리 거부는 항고소송의 대상이 되는 처분이 될 수 있다.", "a":true, "e":"수리를 요하는 신고(행위요건적 신고)는 수리가 있어야 비로소 효과가 발생하므로, 그 수리 거부는 당사자의 법적 지위에 영향을 미쳐 항고소송의 대상이 되는 처분이 될 수 있다."},
+{"q":"자기완결적 신고의 경우에도 행정청의 수리가 있어야 비로소 신고의 효력이 발생한다.", "a":false, "e":"자기완결적 신고는 적법한 신고서가 행정청에 도달하면 그것으로 효과가 발생하며, 행정청의 수리를 요하지 않는다. 따라서 그 수리 거부는 원칙적으로 처분이 아니다."},
+{"q":"법률행위적 행정행위와 준법률행위적 행정행위의 준별에 대해서는, 행정행위가 입법자의 객관화된 의사를 실현하는 것이라는 점에서 준별을 지양해야 한다는 비판이 있다.", "a":true, "e":"준별론은 민법상 분류를 기초로 일본에서 발전된 이론을 차용한 것인데, 행정행위는 행정청의 자유로운 의사가 아니라 법에 기속되어 입법자의 객관화된 의사를 실현하는 것이므로 준별을 지양해야 한다는 비판이 있다."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "개관": ["행정행위=법 아래서 구체적 사실에 대한 법집행으로 행하는 권력적 단독행위(공법행위)", "준법률행위적 행정행위=○○행위 + 법률로 효력부여", "확공통수: 확인·공증·통지·수리", "효과의사 ✕ → 법률이 정하는 효과 발생 → 본질상 기속적"],
+    "준별론": ["준별의 실익: 부관의 가부(법률행위적 ○ / 준법률행위적 ✕·통설)", "비판: 부관 가부는 처분의 성질(기속·재량)로 판단해야", "준별론 자체 비판: 민법 분류 차용·일본 이론", "행정행위는 입법자의 객관화된 의사 실현 → 준별 지양론"],
+    "확인": ["정의: 사실·법률관계 존부에 의문·다툼 있을 때 공권적 판단·확정", "성질: 준사법적 행위 / 기속행위", "효력: 법률이 정하는 효과, 불가변력 인정되는 경우 많음", "예: 특허결정·당선인결정·합격자결정·재결·준공검사·교과서검정"],
+    "공증": ["정의: 사실·법관계 존부를 공적으로 증명", "효력: 공적 증거력(반증에 의해서만 번복)", "공부 등재 전부가 처분은 아님", "예: 등기·각종 대장 등재·주민등록·증명서 발급"],
+    "공증판례": ["지목변경신청 거부 → 처분 ○(공법상 법률관계·실체적 권리관계에 밀접)", "건축물대장 용도변경신청 거부 → 처분 ○(소유권 행사 전제요건)", "건축물대장 작성신청 거부 → 처분 ○", "무허가건물등재대장 삭제 → 처분 ✕(권리관계 변동 없음)"],
+    "통지": ["정의: 특정인·불특정 다수인에게 사실을 알리는 행위", "관념의 통지(효과 발생) ↔ 사실의 통지(사실행위)", "효과 발생 통지 = 처분", "예: 대집행 계고·납세 독촉·특허출원 공고·귀화 고시"],
+    "수리": ["정의: 사인의 행위를 유효한 행위로 받아들이는 인식의 표시행위", "단순 도달·접수(사실행위)와 구별", "자기완결적 신고: 수리 불요(수리 거부=처분 ✕ 원칙)", "수리를 요하는 신고: 수리 거부=처분 ○", "예: 혼인신고·사직원·행정심판청구서의 수리"]
+  };
+  var tree={"name":"준법률행위적 행정행위 — 확공통수","depth":0,"children":[
+    {"name":"개관·준별론","depth":1,"children":[
+      {"name":"개관",depth:3},{"name":"준별론",depth:3}
+    ]},
+    {"name":"확인","depth":1,"children":[
+      {"name":"확인",depth:3}
+    ]},
+    {"name":"공증","depth":1,"children":[
+      {"name":"공증",depth:3},{"name":"공증판례",depth:3}
+    ]},
+    {"name":"통지","depth":1,"children":[
+      {"name":"통지",depth:3}
+    ]},
+    {"name":"수리","depth":1,"children":[
+      {"name":"수리",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,145]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020','#5a2d8c'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+var CHAT_KEY='ch26_chat_history';
+var CHAT_TTL=7*24*60*60*1000;
+var chatHistory=[];
+var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제26강 준법률행위적 행정행위 — 확공통수」
+주요 내용: 준법률행위적 행정행위 개관(확공통수=확인·공증·통지·수리, ○○행위+법률로효과부여=○○, 효과의사✕·법률이정하는효과·본질상 기속적), 준별론(민법분류 차용·일본이론·지양론 비판)과 준별의 실익(부관의 가부: 법률행위적○/준법률행위적✕·통설, 부관가부는 처분성질로 판단해야 한다는 비판), 확인(의문·다툼을 공권적 판단·확정·준사법적행위·기속행위·불가변력), 공증(공적증명·공적증거력·반증으로 번복, 처분성 판례: 지목변경신청거부=처분○·건축물대장 용도변경/작성신청거부=처분○·무허가건물등재대장삭제=처분✕), 통지(관념의통지vs사실의통지·계고·독촉·공고·고시=처분), 수리(사인행위를 유효하게 받아들이는 인식표시·자기완결적신고vs수리를요하는신고·수리거부의 처분성).
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 두문자(확공통수)와 '○○행위+법률로효과부여=○○' 구조를 적극 활용하여 암기를 돕는다.
+4. 공증의 처분성 판례(지목변경·건축물대장·무허가건물등재대장)는 '실체적 권리관계에 밀접한지'를 기준으로 정리해 준다.
+5. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){try{localStorage.setItem(CHAT_KEY,JSON.stringify({ts:Date.now(),history:chatHistory}));}catch(e){}}
+function loadChat(){
+  try{
+    var raw=localStorage.getItem(CHAT_KEY);if(!raw)return false;
+    var data=JSON.parse(raw);
+    if(!data.ts||(Date.now()-data.ts)>CHAT_TTL){localStorage.removeItem(CHAT_KEY);return false;}
+    chatHistory=data.history||[];
+    var msgs=document.getElementById('chatMsgs');msgs.innerHTML='';
+    chatHistory.forEach(function(m){addMsg(m.role==='user'?'user':'ai',m.content);});
+    if(chatHistory.length>0)document.getElementById('chips').style.display='none';
+    return chatHistory.length>0;
+  }catch(e){return false;}
+}
+function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제26강 준법률행위적 행정행위(확공통수) AI 도우미입니다. 확인·공증·통지·수리, 공증의 처분성 판례, 준별의 실익(부관) 등 무엇이든 물어보세요.');}
+function addMsg(role,text){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg '+role;
+  var now=new Date();var t=now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML='<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent=text;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg ai chat-typing';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){var el=document.getElementById('typing-indicator');if(el)el.remove();}
+async function sendChat(){
+  var inp=document.getElementById('chatInput');var text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='';document.getElementById('chatSend').disabled=true;
+  addMsg('user',text);chatHistory.push({role:'user',content:text});saveChat();
+  document.getElementById('chips').style.display='none';showTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})});
+    var data=await res.json();hideTyping();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'답변을 가져오지 못했습니다.';
+    addMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});saveChat();
+  }catch(e){hideTyping();addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');}
+  document.getElementById('chatSend').disabled=false;
+}
+function chipSend(el){document.getElementById('chatInput').value=el.textContent;el.parentNode.style.display='none';sendChat();}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+</script>
+</body>
+</html>

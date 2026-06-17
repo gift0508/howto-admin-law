@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제25강 절차 — 대등한 무기 확보 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:200px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.mem-note{margin-top:8px;padding:7px 10px;border-radius:5px;font-size:11.5px;line-height:1.6}
+.mn-blue{background:var(--blue-l);color:var(--blue)}.mn-green{background:var(--green-l);color:var(--green)}.mn-gold{background:var(--gold-l);color:var(--gold)}.mn-red{background:var(--red-l);color:var(--red)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-preparing{background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;font-weight:700;color:var(--red);flex-shrink:0;text-align:center;letter-spacing:.3px}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제25강 절차 — 대등한 무기 확보</div>
+  <div class="hdr-sub">이유제시 · 사전통지 · 청문 · 절차상 하자의 독자성 · 하자의 치유 · 후속조치</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- ══ TAB 1 · 요약노트 ══ -->
+<div id="panel-summary" class="panel on">
+
+<div class="card"><div class="card-head ch-blue">📋 행정절차 개관 — 이협사청 · 처신확공계입예지</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 처분절차 하자의 4영역 — 이협사청</div>
+<span class="kw">이</span>유제시 결여 / <span class="kw">협</span>의 위반 / <span class="kw">사</span>전통지 결여 / <span class="kw">청</span>문 결여
+</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 행정절차법의 적용 범위 — <span style="color:var(--red);font-weight:900;">처신입예지</span></div>
+행정절차법이 적용되는 영역: <span class="r">처</span>분·<span class="r">신</span>고·확약·위반사실 등의 공표·행정계획·행정상 <span class="r">입</span>법예고·행정<span class="r">예</span>고·행정<span class="r">지</span>도
+</div>
+<div class="body-text" style="margin-top:10px">처분절차 학습의 5단계: ①처분절차의 내용 ②사전통지권·청문권 ③절차하자의 <span class="kw">독자성</span> ④절차하자의 <span class="kw">치유</span>(시간적 한계: 쟁송 이전) ⑤취소 후 <span class="kw">후속조치</span>(기속력 범위)</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">📄 처분의 이유제시 — 행정절차법 §23</div><div class="card-body">
+<div class="alert al-green"><div class="alert-label">📌 이유제시 생략 사유(3가지)</div>
+① 신청 내용을 <span class="hl">모두 그대로 인정</span>하는 처분인 경우<br>
+② <span class="hl">단순·반복적·경미</span>한 처분으로서 당사자가 이유를 명백히 알 수 있는 경우<br>
+③ <span class="hl">긴급히</span> 처분을 할 필요가 있는 경우<br>
+※ ②③의 경우 처분 후 당사자가 요청하면 이유를 제시해야 함
+</div>
+<table class="tbl" style="margin-top:10px"><thead><tr><th>항목</th><th>내용</th></tr></thead><tbody>
+<tr><td>성질</td><td>처분의 적법 요건 중 <span class="kw">절차 요건</span> (판례)</td></tr>
+<tr><td>이유제시의 정도</td><td>처분 사유를 이해할 수 있을 정도로 구체적. 침익적 처분: <span class="hl">법률적 근거+사실상 이유 구체적·명확하게</span> (대판 2000두8912)</td></tr>
+<tr><td>하자의 종류</td><td>①이유제시 자체가 없는 경우=<span class="kw">절차 하자</span> ②이유는 있으나 정당하지 않은 경우=<span class="kw">처분사유의 사후변경 문제</span></td></tr>
+<tr><td>결여의 효과</td><td>위법한 처분 → 취소 대상 (납세고지서 세액산출근거 누락 = 취소)</td></tr>
+<tr><td>하자의 치유 시한</td><td><span class="hl">행정쟁송 제기 이전까지</span> (판례)</td></tr>
+<tr><td>취소 후 재처분</td><td>절차 하자를 보완하여 동일 내용의 처분 가능 → 기속력에 반하지 않음</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">🔔 사전통지 — 행정절차법 §21</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">사전통지</span>: 행정청은 <span class="hl">의무를 부과하거나 권익을 제한하는 처분</span>을 하는 경우에 미리 통지해야 함.</div>
+<div class="alert al-red"><div class="alert-label">📌 사전통지의무 해제 사유 (3가지)</div>
+① 공공의 안전 또는 복리를 위하여 <span class="hl">긴급히</span> 처분을 할 필요가 있는 경우<br>
+② 법령상 자격이 없어지게 되면 <span class="hl">반드시 처분을 하여야</span> 하는 경우에 그 사실이 <span class="hl">법원의 재판 등으로 객관적으로 증명</span>된 경우<br>
+③ 처분의 성질상 <span class="hl">의견청취가 현저히 곤란하거나 명백히 불필요</span>하다고 인정될 만한 상당한 이유가 있는 경우
+</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 거부처분과 사전통지 — 판례</div>
+신청에 따른 처분이 이루어지지 않은 경우, 아직 당사자에게 권익이 부여되지 않았으므로 신청에 대한 거부처분이라도 <span class="hl">직접 당사자의 권익을 제한하는 것이 아니어서 사전통지의 대상이 되지 않는다</span>.
+</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">🎤 청문 — 행정절차법 §22 이하</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 청문 실시 사유 (행정절차법 §22①)</div>
+① 다른 법령에서 청문을 <span class="hl">하도록 규정</span>한 경우<br>
+② 행정청이 필요하다고 <span class="hl">인정</span>하는 경우<br>
+③ 의견제출기한 내에 당사자의 <span class="hl">신청</span>이 있는 경우: 가.인허가 등의 취소 / 나.신분·자격의 박탈 / 다.법인이나 조합 등의 설립허가의 취소
+</div>
+<table class="tbl" style="margin-top:10px"><thead><tr><th>항목</th><th>내용</th></tr></thead><tbody>
+<tr><td>청문의 구조</td><td>청문주재자와 청문참가자 간의 <span class="kw">3면 구조</span> (소송절차 유사)</td></tr>
+<tr><td>청문 진행</td><td>의견 진술 → 증거조사 → 청문조서 작성 → 청문결과 반영</td></tr>
+<tr><td>사전통지 시기</td><td>청문 시작일로부터 <span class="hl">10일 전까지</span> 당사자 등에게 통지</td></tr>
+<tr><td>문서 열람·복사</td><td>청문 통지일부터 청문 끝날 때까지 요청 가능. 거부 시 이유 소명 의무</td></tr>
+<tr><td>청문 결여의 효과</td><td>법령상 요구 청문 결여 → 위법(취소사유). 훈령상 청문 결여 → 위법 아님</td></tr>
+<tr><td>의견제출</td><td>청문 규정이 없어도 침익적 처분에는 <span class="hl">의견제출 기회</span>를 부여해야 함(§22③)</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">⚖️ 절차상 하자의 독자성 · 치유 · 후속조치</div><div class="card-body">
+<table class="tbl"><thead><tr><th>쟁점</th><th>결론</th></tr></thead><tbody>
+<tr><td><span class="kw">독자성(적극설)</span></td><td>법령상 요구 절차 결여 = <span class="hl">독자적 위법사유</span> (판례). 훈령상 청문 결여 = 위법 아님</td></tr>
+<tr><td><span class="kw">치유 인정 여부</span></td><td>원칙 불허, 예외적으로 <span class="hl">국민의 권리·이익 침해하지 않는 범위에서</span> 인정(제한적 긍정설·판례)</td></tr>
+<tr><td><span class="kw">치유의 시한</span></td><td><span class="hl">행정쟁송 제기 이전까지</span>만 가능 (판례). 쟁송 후 치유 인정 시 독자성 멸각</td></tr>
+<tr><td><span class="kw">치유의 효과</span></td><td>절차상 위법 제거 + <span class="hl">처음부터 적법한 행위로 간주</span>(소급효)</td></tr>
+<tr><td><span class="kw">후속조치(기속력)</span></td><td>절차 하자를 보완하여 <span class="hl">동일한 내용의 처분</span> 가능 → 기속력에 반하지 않음(대판 86누91)</td></tr>
+</tbody></table>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 2 · 플래시카드 ══ -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📋</div><div class="fc-term">이협사청 · 처신확공계입예지</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">절차 하자 4영역 / 행정절차법 적용 영역</div><ul><li>이협사청: 이유제시·협의위반·사전통지·청문 결여</li><li>처신확공계입예지: 처분·신고·확약·위반사실등공표·행정계획·입법예고·행정예고·행정지도</li><li>절차 요건 위반 → 처분 위법</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">📄</div><div class="fc-term">이유제시 생략사유<br>(3가지)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">신청 전부 인정 / 단순경미 / 긴급</div><ul><li>①신청내용 모두 그대로 인정하는 처분</li><li>②단순·반복·경미 처분으로 당사자가 이유를 명백히 알 수 있는 경우</li><li>③긴급히 처분할 필요가 있는 경우</li><li>②③: 처분 후 당사자 요청 시 제시해야</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔔</div><div class="fc-term">사전통지의무<br>해제 사유(3가지)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gd"><div class="fc-bt">긴급 / 재판으로 자격없음 증명 / 의견청취 곤란</div><ul><li>①긴급히 처분할 필요가 있는 경우</li><li>②자격없어지면 반드시 처분해야 하는 경우+법원 재판 등으로 객관적 증명</li><li>③의견청취가 현저히 곤란하거나 명백히 불필요한 상당한 이유</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🚫</div><div class="fc-term">거부처분과<br>사전통지 여부</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">거부처분=사전통지 대상 아님 (판례)</div><ul><li>아직 당사자에게 권익이 부여되지 않음</li><li>거부처분 = 직접 권익을 제한하는 것이 아님</li><li>→ 행정절차법§21①의 '권익을 제한하는 처분'에 해당 안 함</li><li>→ 사전통지의 대상이 아님</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🎤</div><div class="fc-term">청문 실시 사유<br>(§22①)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b pp"><div class="fc-bt">법령규정 / 행정청 필요 / 당사자 신청</div><ul><li>①다른 법령에서 청문하도록 규정</li><li>②행정청이 필요하다고 인정</li><li>③당사자 신청: 인허가 취소·신분자격 박탈·설립허가 취소</li><li>청문 10일 전까지 사전통지해야</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">절차상 하자의<br>독자성(적극설)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b"><div class="fc-bt">법령상 절차 결여=독자적 위법사유</div><ul><li>법령상 요구 청문 결여 → 위법(취소사유)</li><li>훈령상 청문 결여 → 위법 아님</li><li>기속행위라도 절차 하자는 독자적 위법사유</li><li>적극설이 판례·다수설</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔧</div><div class="fc-term">절차상 하자의<br>치유 — 시간적 한계</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b gn"><div class="fc-bt">쟁송 이전까지만 치유 가능 (판례)</div><ul><li>원칙: 치유 불허</li><li>예외: 국민의 권리·이익 침해하지 않는 범위에서 인정(제한적 긍정설)</li><li>시한: 행정쟁송 제기 이전까지만</li><li>쟁송 후 치유 인정 시 → 독자성 멸각</li><li>치유 효과: 소급적(처음부터 적법)</li></ul></div>
+      </div>
+    </div>
+
+    <div class="fc-wrap" onclick="this.classList.toggle('flip')">
+      <div class="fc-inner">
+        <div class="fc-f"><div class="fc-ico">🔄</div><div class="fc-term">취소 후 후속조치<br>— 기속력(86누91)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+        <div class="fc-b rd"><div class="fc-bt">절차 보완 후 동일 처분 가능 → 기속력 위반 아님</div><ul><li>절차 하자를 보완하여 동일 내용의 처분을 다시 할 수 있음</li><li>기속력은 판결에 적시된 절차상 위법사유에 한정</li><li>새 과세처분=종전과 별개의 처분=기판력에 저촉 안 됨</li><li>대판 1987.2.10. 86누91</li></ul></div>
+      </div>
+    </div>
+    </div></div>
+
+<!-- ══ TAB 3 · OX퀴즈 ══ -->
+<div id="panel-quiz" class="panel">
+  <div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+  <div id="qc"></div>
+</div>
+
+<!-- ══ TAB 4 · 필수암기문장 ══ -->
+<div id="panel-memory" class="panel">
+  <div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+  <div class="mem-progress">
+    <div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div>
+    <div class="mem-prog-label" id="prog-label">0 / 0 공개</div>
+    <button class="mem-reveal-all" onclick="revealAll()">전체 공개</button>
+  </div>
+
+<div class="mem-section-title">이유제시</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">이유제시의 정도 — 충분히 알 수 있으면 족 (2016두64975)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">처분을 하면서 당사자가 그 근거를 알 수 있을 정도로 이유를 제시한 경우에는 처분의 근거와 이유를 <span class="mem-blank" onclick="toggleBlank(this)">구체적으로 명시하지 않았더라도</span> 그로 말미암아 그 처분이 위법하다고 볼 수는 없다. 이때 '이유를 제시한 경우'는 처분 당시 당사자가 어떠한 근거와 이유로 처분이 이루어진 것인지를 <span class="mem-blank" onclick="toggleBlank(this)">충분히 알 수 있어서 그에 불복하여 행정구제절차로 나아가는 데 별다른 지장이 없었다고 인정</span>되는 경우를 뜻한다.</div><div class="mem-note mn-gold">대법원 2019.1.31. 2016두64975</div></div></div></div>
+
+<div class="mem-section-title gn">사전통지</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">거부처분과 사전통지 — 대상 아님</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">신청에 따른 처분이 이루어지지 아니한 경우에는 아직 당사자에게 <span class="mem-blank" onclick="toggleBlank(this)">권익이 부여되지 아니하였으므로</span> 특별한 사정이 없는 한 신청에 대한 거부처분이라고 하더라도 <span class="mem-blank" onclick="toggleBlank(this)">직접 당사자의 권익을 제한하는 것은 아니어서</span> 처분의 사전통지대상이 된다고 할 수 없다.</div></div></div></div>
+
+<div class="mem-section-title gd">절차상 하자의 독자성 · 치유 · 후속조치</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">절차상 하자의 치유 시한 — 쟁송 이전까지</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">하자 있는 행정행위의 치유는 원칙적으로 <span class="mem-blank" onclick="toggleBlank(this)">허용될 수 없는 것</span>이지만, 예외적으로 <span class="mem-blank" onclick="toggleBlank(this)">국민의 권리나 이익을 침해하지 않는 범위에서</span>만 인정된다. 치유는 <span class="mem-blank" onclick="toggleBlank(this)">행정쟁송 제기 이전까지만</span> 가능하다.</div><div class="mem-note mn-gold">제한적 긍정설·판례</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">취소 후 절차 보완하여 동일 처분 가능 (86누91)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">과세의 절차 내지 형식에 위법이 있어 과세처분을 취소한 판결이 확정되었을 때는 그 확정판결의 기판력은 <span class="mem-blank" onclick="toggleBlank(this)">거기에 적시된 절차 내지 형식의 위법사유에 한하여</span> 미치는 것이므로 과세관청은 <span class="mem-blank" onclick="toggleBlank(this)">그 위법사유를 보완하여 다시 새로운 과세처분을 할 수 있고</span> 그 새로운 과세처분은 확정판결에 의하여 취소된 종전의 과세처분과는 <span class="mem-blank" onclick="toggleBlank(this)">별개의 처분</span>이라 할 것이어서 확정판결의 기판력에 저촉되는 것이 아니다.</div><div class="mem-note mn-gold">대판 1987.2.10. 86누91</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">조문</span><span class="mem-item-label">행정절차법 §23① — 이유제시 생략 사유</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">이유를 제시하지 않아도 되는 경우: ①신청 내용을 <span class="mem-blank" onclick="toggleBlank(this)">모두 그대로 인정</span>하는 처분인 경우, ②<span class="mem-blank" onclick="toggleBlank(this)">단순·반복적인 처분 또는 경미한 처분</span>으로서 당사자가 그 이유를 명백히 알 수 있는 경우, ③<span class="mem-blank" onclick="toggleBlank(this)">긴급히</span> 처분을 할 필요가 있는 경우. ②③의 경우 처분 후 당사자가 요청하는 경우에는 이유를 제시해야 한다.</div><div class="mem-note mn-blue">행정절차법 §23①②</div></div></div></div>
+
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">절차상 하자의 치유 효과 — 소급효</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정행위의 절차상 하자의 치유를 인정하게 되면, 하자의 치유로 인해 절차상 위법은 제거되고, 행정행위는 <span class="mem-blank" onclick="toggleBlank(this)">처음부터 적법한 것으로 간주</span>된다. 치유의 효과는 <span class="mem-blank" onclick="toggleBlank(this)">소급적</span>이기 때문에 처음부터 적법한 행위를 한 것과 같은 효과를 가진다.</div></div></div></div>
+
+</div>
+
+<!-- ══ TAB 5 · 문제의 소재 ══ -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제25강은 ① 이유제시 결여의 위법성, ② 사전통지 결여(특히 거부처분)의 위법성, ③ 청문 결여의 위법성과 그 치유 및 후속조치가 핵심 출제 포인트이다.</div></div>
+
+<div class="ms-section"><div class="ms-section-title">① 처분의 이유제시 결여가 위법사유인지 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">행정청이 침익적 처분을 하면서 이유를 전혀 제시하지 않거나 불충분하게 제시한 경우</div><div class="ms-example">예: "행정청이 甲에 대한 면허취소처분을 하면서 처분서에 취소의 법적 근거와 사실상의 이유를 전혀 기재하지 않았다. 이 처분은 절차상 위법한가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">행정절차법 §23① — 처분 시 원칙적으로 근거와 이유를 제시해야 함(절차 요건). 이유제시 생략 사유(①신청 전부 인정 ②단순경미 ③긴급) 해당 여부 확인. 침익적 처분: 법률적 근거+사실상 이유 구체적·명확하게 요구(2000두8912)</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">이유제시 생략 사유 해당 여부 검토 → 해당 없으면 이유제시 결여=절차상 하자=위법 → 독자적 취소사유(적극설·판례) → 법원 취소 가능 → 하자의 치유(쟁송 이전까지) · 후속조치(절차 보완 후 동일 처분 가능) 검토</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">이유제시</span><span class="ms-kw">행정절차법§23</span><span class="ms-kw">절차상 하자의 독자성</span><span class="ms-kw">하자의 치유</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gn">② 사전통지 결여의 위법성이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">행정청이 침익적 처분 또는 거부처분을 하면서 사전통지를 하지 않은 경우</div><div class="ms-example">예: "행정청이 甲의 영업허가 취소처분을 하면서 사전통지를 전혀 하지 않았다. 위법한가?" / "행정청이 甲의 허가신청을 거부하면서 사전통지를 하지 않았다. 사전통지 위반인가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">사전통지=의무부과·권익제한 처분에 요구(§21①). 해제 사유(긴급·재판으로 자격없음 증명·의견청취 곤란) 없으면 위반. 거부처분=당사자의 권익을 직접 제한하지 않음→사전통지 대상 아님(판례)</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">처분의 성격(침익적 처분 vs 거부처분) 확인 → 침익적이면 사전통지 의무 → 해제 사유 검토 → 없으면 사전통지 결여=위법. 거부처분이면 사전통지 불요</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">사전통지</span><span class="ms-kw">행정절차법§21</span><span class="ms-kw">거부처분</span><span class="ms-kw">사전통지 해제 사유</span></div></div>
+</div></div>
+
+<div class="ms-section"><div class="ms-section-title gd">③ 청문 결여의 위법성·치유·후속조치가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">법령에서 청문을 실시하도록 규정한 처분에서 청문을 실시하지 않은 경우, 또는 절차 하자를 이유로 취소된 후 재처분 가능 여부</div><div class="ms-example">예: "甲에 대한 인허가 취소처분에서 법령상 청문을 실시해야 함에도 하지 않았다. 취소 후 다시 동일한 취소처분을 할 수 있는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">법령상 요구 청문 결여=위법(취소사유·적극설·판례). 치유=쟁송 이전까지 가능. 취소 확정 후 절차 하자 보완→동일 처분 가능(기속력은 절차상 위법사유에 한정)(86누91)</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">청문을 실시해야 하는 법적 근거 확인 → 청문 결여=절차상 하자=위법=취소사유 → 판결 확정 → 행정청은 청문 실시(절차 하자 보완) → 동일 내용의 처분 가능 → 기속력 위반 아님</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">청문 결여</span><span class="ms-kw">절차 하자의 독자성</span><span class="ms-kw">기속력</span><span class="ms-kw">대판 86누91</span></div></div>
+</div></div>
+
+</div>
+
+<!-- ══ TAB 6 · 마인드맵 ══ -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- ══ TAB 7 · AI 대화창 ══ -->
+<div id="panel-chat" class="panel">
+  <div class="chat-wrap">
+    <div class="chat-intro">
+      <div class="chat-intro-title">💬 AI 강의 도우미</div>
+      <div class="chat-intro-text">제25강 처분절차에 대해 무엇이든 질문하세요.<br>이유제시·사전통지·청문·절차 하자의 독자성·치유·후속조치 모두 답변합니다.</div>
+    </div>
+    <div class="chat-preparing">🔧 더 나은 서비스를 위하여 준비중입니다.</div>
+    <div class="chat-notice">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+    <div class="chat-chips" id="chips">
+      <span class="chip" onclick="chipSend(this)">이유제시 생략 사유 3가지</span>
+      <span class="chip" onclick="chipSend(this)">거부처분과 사전통지 판례</span>
+      <span class="chip" onclick="chipSend(this)">청문 실시 사유와 결여의 효과</span>
+      <span class="chip" onclick="chipSend(this)">절차 하자의 치유 시한과 후속조치</span>
+      <span class="chip" onclick="chipSend(this)">실로기스무스 답안 예시</span>
+    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  var exp=document.getElementById('e'+i);exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q":"이유제시는 침익적 처분에만 요구되고 수익적 처분이나 복효적 처분에는 요구되지 않는다.", "a":false, "e":"이유제시는 침익적 행위는 물론 수익적 행위와 복효적 행위의 경우에도 요구된다."},
+{"q":"이유제시 생략 사유 중 단순·반복적·경미한 처분의 경우에도 처분 후 당사자가 요청하면 이유를 제시해야 한다.", "a":true, "e":"행정절차법§23②에 의하면 단순·반복적인 처분 또는 경미한 처분(제1항 제2호) 및 긴급한 처분(제3호)의 경우에 처분 후 당사자가 요청하는 경우에는 그 근거와 이유를 제시하여야 한다."},
+{"q":"판례에 의하면 처분 당시 당사자가 처분의 근거와 이유를 충분히 알 수 있어 행정구제절차로 나아가는 데 지장이 없었다면, 구체적 조항까지 명시하지 않아도 이유제시 위반이 아니다.", "a":true, "e":"대법원 2016두64975에 따르면 처분을 하면서 당사자가 그 근거를 알 수 있을 정도로 이유를 제시한 경우에는 처분의 근거와 이유를 구체적으로 명시하지 않았더라도 그로 말미암아 그 처분이 위법하다고 볼 수는 없다."},
+{"q":"사전통지는 행정청이 당사자에게 의무를 부과하거나 권익을 제한하는 처분을 하는 경우에 요구된다.", "a":true, "e":"행정절차법§21①에 의하면 행정청은 당사자에게 의무를 부과하거나 권익을 제한하는 처분을 하는 경우에는 미리 사전통지를 하여야 한다."},
+{"q":"판례에 의하면 신청에 대한 거부처분도 당사자의 권익을 제한하는 처분이므로 사전통지의 대상이 된다.", "a":false, "e":"판례는 신청에 따른 처분이 이루어지지 아니한 경우에는 아직 당사자에게 권익이 부여되지 아니하였으므로 신청에 대한 거부처분이라고 하더라도 직접 당사자의 권익을 제한하는 것은 아니어서 처분의 사전통지대상이 된다고 할 수 없다고 본다."},
+{"q":"사전통지의무의 해제 사유 중 하나만 있어도 사전통지를 하지 않아도 된다.", "a":true, "e":"사전통지의무의 해제 사유(긴급한 처분, 법원 재판으로 자격없음 증명, 의견청취가 현저히 곤란하거나 명백히 불필요한 경우) 중 하나의 사유만 있어도 사전통지의무는 해제된다."},
+{"q":"법령상 청문을 실시하도록 규정한 처분에서 청문을 거치지 않은 경우에는 그 처분은 위법하여 취소사유에 해당한다.", "a":true, "e":"판례에 의하면 행정청이 침해적 행정처분을 할 때 처분의 근거법령 등에서 청문을 실시하도록 규정하고 있다면, 청문을 실시하지 않아도 되는 예외적인 경우에 해당하지 않는 한 반드시 청문을 실시하여야 하며, 그러한 절차를 결여한 처분은 위법한 처분으로서 취소사유에 해당한다."},
+{"q":"훈령에서만 청문절차가 요구될 때 청문을 실시하지 않으면 위법하다.", "a":false, "e":"판례에 의하면 훈령상으로만 청문절차가 요구될 때 이를 결여한 경우에는 위법하지 않다."},
+{"q":"청문을 실시하는 경우 청문이 시작되는 날부터 10일 전까지 당사자 등에게 사전통지를 하여야 한다.", "a":true, "e":"행정절차법§21②에 의하면 행정청은 청문을 하려면 청문이 시작되는 날부터 10일 전까지 제1항 각 호의 사항을 당사자등에게 통지하여야 한다."},
+{"q":"절차상 하자의 치유는 무효인 행위에도 인정될 수 있다.", "a":false, "e":"행정행위의 치유는 취소할 수 있는 행위에서 문제되며, 무효의 경우에는 문제되지 않는다. 무효인 행위는 언제나 무효이어서 종국적 성질을 가지므로 치유가 인정되지 않는다."},
+{"q":"판례는 절차상 하자의 치유는 행정쟁송 제기 이전까지만 가능하다고 본다.", "a":true, "e":"판례는 하자의 치유는 행정쟁송제기 이전까지만 가능하다는 입장이다. 쟁송제기 이후에 하자의 치유를 인정하면 절차상 하자의 독자성이 멸각되므로 쟁송제기 이후에는 치유가 가능하지 않다고 본다."},
+{"q":"행정청이 절차 하자를 이유로 한 취소판결 확정 후 절차를 보완하여 동일 내용의 처분을 하면 기속력에 위반된다.", "a":false, "e":"판례(대판 86누91)에 의하면 과세의 절차 내지 형식에 위법이 있어 과세처분을 취소한 판결이 확정된 후, 과세관청은 그 위법사유를 보완하여 다시 새로운 과세처분을 할 수 있고 그 새로운 과세처분은 확정판결에 의하여 취소된 종전의 과세처분과는 별개의 처분이라 할 것이어서 확정판결의 기판력에 저촉되는 것이 아니다."},
+{"q":"절차상 하자의 치유를 인정하면 행정행위는 처음부터 적법한 것으로 간주되는 소급효가 발생한다.", "a":true, "e":"행정행위의 절차상 하자의 치유를 인정하게 되면, 하자의 치유로 인해 절차상 위법은 제거되고, 행정행위는 처음부터 적법한 것으로 간주된다. 치유의 효과는 소급적이다."},
+{"q":"기속행위인 처분에서 절차상 하자가 있는 경우, 동일한 내용의 처분이 예상되더라도 절차 하자는 독자적 취소사유가 된다.", "a":true, "e":"행정의 법률적합성원칙에 따라 행정작용은 실체상 뿐만 아니라 절차상으로도 적법하여야 하므로, 기속행위라도 절차 하자는 독자적 위법사유가 된다(적극설·판례). 행정소송법§30③의 취지도 이를 뒷받침한다."},
+{"q":"청문 중 당사자는 해당 사안의 조사결과에 관한 문서의 열람 또는 복사를 요청할 수 있으며, 행정청은 다른 법령에 따라 공개가 제한되는 경우를 제외하고는 거부할 수 없다.", "a":true, "e":"행정절차법§37①에 의하면 당사자등은 청문의 통지가 있는 날부터 청문이 끝날 때까지 행정청에 해당 사안의 조사결과에 관한 문서와 그 밖에 해당 처분과 관련되는 문서의 열람 또는 복사를 요청할 수 있다. 이 경우 행정청은 다른 법령에 따라 공개가 제한되는 경우를 제외하고는 그 요청을 거부할 수 없다."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "행정절차개관": ["행정절차=행정의사결정에 관한 제1차적 결정과정", "이협사청: 처분절차 하자 4영역(이유제시·협의·사전통지·청문)", "처신확공계입예지: 처분·신고·확약·위반사실공표·행정계획·입법예고·행정예고·행정지도", "처분절차 학습 5단계: 내용→사전통지·청문→독자성→치유→후속조치"],
+    "이유제시": ["행정절차법§23: 원칙적으로 근거와 이유 제시 의무", "생략 사유: ①신청 전부 인정 ②단순경미 ③긴급", "②③: 처분 후 당사자 요청 시 제시해야", "성질: 절차 요건(판례)", "결여 효과: 위법 → 취소 대상"],
+    "이유제시판례": ["2016두64975: 충분히 알 수 있으면 구체적 명시 불요", "2000두8912: 침익적 처분은 법률적 근거+사실상 이유 구체적·명확하게", "치유 시한: 행정쟁송 제기 이전까지"],
+    "사전통지": ["행정절차법§21: 의무부과·권익제한 처분에 요구", "해제 사유: ①긴급 ②재판으로 자격없음 증명 ③의견청취 곤란", "거부처분: 사전통지 대상 아님(판례)", "청문 시: 청문 시작 10일 전까지 통지"],
+    "청문": ["§22①: 법령규정·행정청 필요·당사자 신청(인허가취소·신분박탈·설립허가취소)", "3면 구조: 청문주재자와 청문참가자", "청문 진행: 의견진술→증거조사→청문조서 작성→결과 반영", "문서 열람·복사: 청문 통지일부터 종결까지 가능"],
+    "청문결여효과": ["법령상 요구 청문 결여 → 위법(취소사유)", "훈령상 청문 결여 → 위법 아님", "침익적 처분에는 의견제출 기회 부여 필요(§22③)"],
+    "절차하자독자성": ["적극설(판례): 법령상 절차 결여=독자적 위법사유", "기속행위라도 절차 하자는 독자적 취소사유", "행정소송법§30③의 취지 뒷받침"],
+    "치유후속조치": ["치유: 원칙 불허, 예외적으로 쟁송 이전까지(제한적 긍정설·판례)", "치유 효과: 소급적(처음부터 적법)", "후속조치(86누91): 절차 보완 후 동일 처분 가능=기속력 위반 아님"]
+  };
+  var tree={"name":"절차 — 대등한 무기 확보","depth":0,"children":[
+    {"name":"행정절차 개관","depth":1,"children":[
+      {"name":"행정절차개관",depth:3}
+    ]},
+    {"name":"이유제시 §23","depth":1,"children":[
+      {"name":"이유제시",depth:3},{"name":"이유제시판례",depth:3}
+    ]},
+    {"name":"사전통지 §21","depth":1,"children":[
+      {"name":"사전통지",depth:3}
+    ]},
+    {"name":"청문 §22","depth":1,"children":[
+      {"name":"청문",depth:3},{"name":"청문결여효과",depth:3}
+    ]},
+    {"name":"독자성·치유·후속조치","depth":1,"children":[
+      {"name":"절차하자독자성",depth:3},{"name":"치유후속조치",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,145]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020','#5a2d8c'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+var CHAT_KEY='ch25_chat_history';
+var CHAT_TTL=7*24*60*60*1000;
+var chatHistory=[];
+var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제25강 절차 — 대등한 무기 확보」
+주요 내용: 행정절차 개관(이협사청=이유제시·협의·사전통지·청문 결여, 처신확공계입예지=처분·신고·확약·위반사실등공표·행정계획·입법예고·행정예고·행정지도), 이유제시(§23·생략사유3가지·침익적처분은 구체적명확하게·절차요건·2016두64975·2000두8912), 사전통지(§21·의무부과·권익제한 처분에 요구·해제사유3가지·거부처분=대상아님), 청문(§22·실시사유3가지=법령규정·행정청필요·당사자신청·10일전 통지·3면구조·문서열람복사·법령상청문결여=위법·훈령상결여=위법아님), 절차하자의 독자성(적극설·판례), 절차하자의 치유(제한적긍정설·쟁송이전까지·소급효), 후속조치(86누91=절차보완후동일처분가능·기속력위반아님).
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 법조문(행정절차법§21·22·23 등)과 판례(2016두64975·2000두8912·86누91 등)를 자연스럽게 활용한다.
+4. 두문자(이협사청·처신확공계입예지)를 적극 활용하여 암기를 돕는다.
+5. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){try{localStorage.setItem(CHAT_KEY,JSON.stringify({ts:Date.now(),history:chatHistory}));}catch(e){}}
+function loadChat(){
+  try{
+    var raw=localStorage.getItem(CHAT_KEY);if(!raw)return false;
+    var data=JSON.parse(raw);
+    if(!data.ts||(Date.now()-data.ts)>CHAT_TTL){localStorage.removeItem(CHAT_KEY);return false;}
+    chatHistory=data.history||[];
+    var msgs=document.getElementById('chatMsgs');msgs.innerHTML='';
+    chatHistory.forEach(function(m){addMsg(m.role==='user'?'user':'ai',m.content);});
+    if(chatHistory.length>0)document.getElementById('chips').style.display='none';
+    return chatHistory.length>0;
+  }catch(e){return false;}
+}
+function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제25강 처분절차 AI 도우미입니다. 이유제시·사전통지·청문·절차하자의 독자성·치유·후속조치 등 무엇이든 물어보세요.');}
+function addMsg(role,text){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg '+role;
+  var now=new Date();var t=now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML='<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent=text;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg ai chat-typing';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){var el=document.getElementById('typing-indicator');if(el)el.remove();}
+async function sendChat(){
+  var inp=document.getElementById('chatInput');var text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='';document.getElementById('chatSend').disabled=true;
+  addMsg('user',text);chatHistory.push({role:'user',content:text});saveChat();
+  document.getElementById('chips').style.display='none';showTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})});
+    var data=await res.json();hideTyping();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'답변을 가져오지 못했습니다.';
+    addMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});saveChat();
+  }catch(e){hideTyping();addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');}
+  document.getElementById('chatSend').disabled=false;
+}
+function chipSend(el){document.getElementById('chatInput').value=el.textContent;el.parentNode.style.display='none';sendChat();}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+</script>
+</body>
+</html>

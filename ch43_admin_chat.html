@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제43강 손해전보제도1 손해배상제도 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:230px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:10.5px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-preparing{background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;font-weight:700;color:var(--red);flex-shrink:0;text-align:center;letter-spacing:.3px}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제43강 손해전보제도1 — 손해배상제도</div>
+  <div class="hdr-sub">국가배상 §2(8요건) · 배상책임의 성질 · §5 영조물 하자</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- TAB 1 -->
+<div id="panel-summary" class="panel on">
+<div class="card"><div class="card-head ch-blue">📋 개관 — 손해전보·법적 성질</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">행정상 손해전보</span>는 위법한 직무집행으로 인한 손해(손해배상)와 적법한 직무집행으로 인한 특별한 손해(손실보상)를 전보하는 제도로, 근거 조항이 달라 완전히 다른 제도이다. 국가배상청구권은 청구권적 기본권으로 <span class="hl">헌법 §29①</span>에 근거한다(공무원 자신의 책임은 면제되지 않음).</div>
+<div class="alert al-blue"><div class="alert-label">📌 법적 성질 — 판례: 사법</div>판례는 국가배상법을 <span class="hl">민법의 특별법(사법)</span>으로 보아 <span class="hl">민사소송</span>으로 제기한다. 국가배상은 ① 공무원의 직무상 불법행위(§2)와 ② 영조물 설치·관리상의 하자(§5)의 두 경우가 있다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">2-①② §2 요건 — 공무원 · 직무 <span style="opacity:.7;font-weight:400">(공직집고법타손)</span></div><div class="card-body">
+<div class="alert al-green"><div class="alert-label">① 공무원 (최광의·기능적)</div>행정조직법상 공무원뿐 아니라 입법·사법부 공무원(국회의원·검사·판사·헌재 재판관)·기관 자체·국회 자체 포함. <span class="hl">공무수탁사인</span> 명시(집행관 ○·<span class="hl">의용소방대원 ✕</span>·차량견인업자 ○). 미군 등 준공무원.</div>
+<div class="alert al-blue" style="margin-top:10px"><div class="alert-label">② 직무 — 판례: 광의설</div>권력작용+비권력작용 포함하나 <span class="hl">단순 사경제 작용은 제외</span>(광의설). 입법·사법 모든 직무·<span class="hl">통치행위·공법상 계약 ✕</span>. 사익보호성: 판례는 사익 보호 직무를 요하며 <span class="hl">인과관계의 문제</span>로 처리. 재판작용: 법관도 공무원이나 위법·부당 목적 등 특별 사정 시에만 인정(제한적).</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">2-③④ §2 요건 — 집행하면서 · 고의·과실</div><div class="card-body">
+<div class="판례박스"><strong>③ 집행하면서 — 외형설</strong> — '집행하면서'는 직무집행행위뿐 아니라 <span class="hl">외형상 직무집행과 관련 있는 행위</span>를 포함한다(통설·판례). 외관상 직무행위로 보이면 실질이 직무가 아니거나 피해자가 그 사정을 알았더라도 직무집행으로 본다.<div class="출처">대판 1966.6.28. 66다781</div></div>
+<div class="alert al-blue" style="margin-top:10px"><div class="alert-label">④ 고의·과실</div><span class="hl">당해 공무원을 기준</span>으로 판단(국가 ✕). 과실 객관화·입증책임 완화(일응의 추정)·<span class="hl">가해공무원 특정 불요</span>. 법령 부지는 과실(견해 갈리는 해석은 무과실). 행정규칙에 따른 처분·항고소송 패소만으로는 과실 단정 ✕(<span class="hl">객관적 정당성 상실</span> 시 인정). 위헌 선언 시 과실 인정 어려움.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">2-⑤ §2 요건 — 법령 위반</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px">학설: 결과위법성설 / 상대적 위법성설 / <span class="hl">행위위법성설</span>(일원설·이원설). <span class="hl">판례 주류는 행위위법설</span>(화염병 약국화재 사건)이며, 상대적 위법성설로 평가되는 판결(개간허가취소)도 있다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 위반의 태양 · 작위의무</div>작위·부작위 위반(부작위는 작위의무 필요·기속행위는 통상·재량은 0 수축 시). 명문 근거가 없더라도 판례는 <span class="hl">국가의 존립목적(본래적 사명)으로부터 초법규적·일차적인 위험배제 작위의무를 도출</span>한다(에이즈 검사). 재량 일탈·남용에 이르지 않은 부당은 위반 ✕.</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 취소 전 손배 · 기판력</div>단순위법행위는 <span class="hl">취소 없이도 손해배상 청구 가능</span>(취지 다름). 배상법상 위법≑소송법상 위법(법질서 단일). <span class="hl">국가배상청구소송의 기판력은 취소소송에 미치지 않는다</span>(위법은 판결이유 중 판단). 판단 시점=행위 시.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">2-⑥⑦⑧ §2 요건 — 타인·손해·인과관계 · 배상금액 기준</div><div class="card-body">
+<table class="tbl"><thead><tr><th>요건</th><th>내용</th></tr></thead><tbody>
+<tr><td>⑥ 타인</td><td>위법행위자·가담자 제외 모든 피해자(가해자가 국가면 지자체도 타인). 군인·군무원 특례</td></tr>
+<tr><td>⑦ 손해</td><td>가해행위로 발생한 일체 손해·법익침해. <span class="hl">반사적 이익 침해는 ✕</span></td></tr>
+<tr><td>⑧ 인과관계</td><td><span class="hl">상당인과관계</span>(제반사정 종합). 판례: 유흥주점 화재 여종업원 사망 사건에서 시정명령 해태와 사망 사이 상당인과관계 ✕</td></tr>
+</tbody></table>
+<div class="alert al-blue" style="margin-top:10px"><div class="alert-label">📌 배상금액 기준의 성질</div>한정액설 vs <span class="hl">기준액설</span>. 판례·다수설은 기준액설(법원이 그 기준에 구애되지 않음).</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">4. 배상책임의 성질 · 선택적 청구 · 구상</div><div class="card-body">
+<div class="alert al-green"><div class="alert-label">📌 성질 — 판례: 절충설</div>자기책임설 / 대위책임설 / 중간설 / 절충설. 판례는 <span class="hl">고의·중과실은 대위·자기책임의 양면성, 경과실은 자기책임</span>(구상 부인)으로 보는 절충설을 취한 것으로 평가된다.</div>
+<div class="alert al-blue" style="margin-top:10px"><div class="alert-label">📌 선택적 청구 · 가해공무원 책임</div>판례: <span class="hl">고의·중과실은 선택적 청구 가능, 경과실은 불가</span>. 공무원 개인의 대외적 책임도 고의·중과실만 인정(경과실 ✕). 내부 구상도 고의·중과실만(경과실 구상 ✕·입법정책).</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">4-(4) 자동차손해배상 (§2① 단서)</div><div class="card-body">
+<div class="body-text"><span class="hl">운행자성</span>(운행이익+운행지배) 인정 시 국가가 자동차손해배상보장법상 책임(성립요건은 자배법, 범위·절차는 국가배상법). 관용차 공무 운행 → 국가 운행자(무단사용도 운행지배·이익 있으면). <span class="hl">자기 소유 차 직무수행 중 운행 → 국가 운행자성 부인</span>(공무원이 자배법 책임·경과실·중과실 불문). §2와 §5 경합 시 자동차는 <span class="hl">§2 우선</span>·이중배상금지 적용.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">5. 영조물 설치·관리상의 하자 (§5)</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px">학설: 주관설 / <span class="hl">객관설</span> / 절충설 / 안전의무위반설. 판례는 <span class="hl">객관설(통상 갖추어야 할 안전성 결여)·무과실책임</span>으로 보며 방호조치의무를 기준으로 삼아 '수정된 객관설'로 평가된다.</div>
+<table class="tbl"><thead><tr><th>쟁점</th><th>내용</th></tr></thead><tbody>
+<tr><td>입증책임</td><td>피해자가 <span class="hl">하자의 개연성만 주장</span>하면 하자 추정</td></tr>
+<tr><td>불가항력</td><td>객관적 안전성 갖추면 하자 ✕(예견·회피 가능성 없으면 ✕). <span class="hl">악화된 범위는 책임</span>·예산 부족은 참작 사유</td></tr>
+<tr><td>하천범람</td><td>파제형 vs 일제형·판례: 계획홍수량·계획홍수위 충족 시 통상 안전성 인정</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">6·7. 배상책임자 · 종국적 책임자 · 배상절차</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 배상책임자 (§6①)</div>사무귀속주체+비용부담자. 비용부담자 의미: 실질적/형식적/<span class="hl">병합설</span>(판례). 피해자는 양자 중 선택 청구. 도로법 §20②는 기관위임사무.</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 종국적 책임자 (§6②)</div>관리자부담설(사무귀속자설·통설) / 비용부담자설 / 기여도설. 판례는 혼재.</div>
+<div class="alert al-green" style="margin-top:10px"><div class="alert-label">📌 배상절차</div><span class="hl">배상심의회</span>(합의제행정청)가 결정하나 <span class="hl">법원을 기속하지 않음</span>. 본부심의회(법무부)·특별심의회(국방부)·지구심의회.</div>
+</div></div>
+</div>
+
+<!-- TAB 2 -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">손해전보·<br>헌법 근거</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">손해배상 / 손실보상</div><ul><li>위법 직무집행→손해배상·적법 직무집행 특별 손해→손실보상</li><li>근거 조항 다름→완전히 다른 제도</li><li>국가배상청구권=청구권적 기본권·헌법§29①</li><li>공무원 자신의 책임 면제 ✕</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📕</div><div class="fc-term">법적 성질</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">사법·민사소송</div><ul><li>판례: 국가배상법=민법의 특별법(사법)</li><li>민사소송으로 제기</li><li>§2 공무원 직무상 불법행위 / §5 영조물 하자</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🔑</div><div class="fc-term">§2 요건<br>(공직집고법타손)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">8요건</div><ul><li>공무원·직무·집행하면서·고의과실</li><li>법령위반·타인·손해·인과관계</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">👤</div><div class="fc-term">①공무원<br>(최광의)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">기능적 공무원</div><ul><li>입법·사법부 공무원·국회의원·검사·판사·헌재 재판관·기관 자체</li><li>공무수탁사인 명시</li><li>집행관 ○·의용소방대원 ✕·차량견인업자 ○</li><li>미군 등 준공무원</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📂</div><div class="fc-term">②직무<br>(광의설)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">권력+비권력 / 사경제 ✕</div><ul><li>판례 광의설: 권력+비권력 포함·단순 사경제 ✕</li><li>입법·사법 모든 직무·통치행위·공법상 계약 ✕</li><li>사익보호성: 판례 인과관계 문제로 처리</li><li>재판작용: 위법·부당 목적 등 특별 사정 시 제한적 인정</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">👁️</div><div class="fc-term">③집행하면서<br>(외형설)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">66다781</div><ul><li>외형상 직무집행 관련 행위 포함(통설·판례)</li><li>외관상 직무행위로 보이면 실질·주관 불문</li><li>피해자가 사정 알았어도 직무집행</li><li>실질적 직무관련성 불요→권리구제 확대</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🎯</div><div class="fc-term">④고의·과실</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">당해 공무원 기준 / 특정 불요</div><ul><li>당해 공무원 기준·과실 객관화·입증책임 완화(일응의 추정)</li><li>가해공무원 특정 불요</li><li>항고소송 패소만으로 과실 단정 ✕(객관적 정당성 상실 시)</li><li>위헌 선언 시 과실 인정 어려움(법령심사권 없음)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⚠️</div><div class="fc-term">⑤법령위반<br>학설</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">행위위법설(판례 주류)</div><ul><li>결과위법성설 / 상대적 위법성설 / 행위위법성설(일원·이원)</li><li>판례 주류 행위위법설(화염병 약국화재)</li><li>상대적 위법성설 평가 판결도(개간허가취소)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🔗</div><div class="fc-term">⑤법령위반<br>관련 쟁점</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">작위의무 / 취소 전 손배 / 기판력</div><ul><li>부작위는 작위의무(재량 0 수축·판례는 국가 존립목적에서 초법규적·일차적 위험배제 작위의무 도출·에이즈)</li><li>단순위법행위 취소 없이도 손배 가능</li><li>배상법상 위법≑소송법상 위법(법질서 단일)</li><li>국가배상 기판력은 취소소송에 미치지 ✕</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📦</div><div class="fc-term">⑥⑦⑧타인·<br>손해·인과관계</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">상당인과관계 / 반사적 이익 ✕</div><ul><li>타인: 위법행위자·가담자 제외 모든 피해자·군인 특례</li><li>손해: 일체 손해·법익침해·반사적 이익 ✕</li><li>인과관계: 상당인과관계</li><li>판례: 유흥주점 화재 여종업원 사망 인과관계 ✕</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">💵</div><div class="fc-term">배상금액 기준</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">기준액설</div><ul><li>한정액설 vs 기준액설</li><li>판례·다수설 기준액설</li><li>법원이 그 기준에 구애되지 않음</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🏛️</div><div class="fc-term">배상책임 성질·<br>선택적 청구</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">절충설 / 고의·중과실</div><ul><li>자기책임설·대위책임설·중간설·절충설</li><li>판례 절충설: 고의·중과실 양면성·경과실 자기책임</li><li>선택적 청구: 고의·중과실 가능·경과실 ✕</li><li>구상: 고의·중과실만(경과실 ✕)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🚗</div><div class="fc-term">자동차<br>손해배상</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">운행자성 / §2 우선</div><ul><li>운행자성=운행이익+운행지배</li><li>관용차 공무 운행→국가 운행자</li><li>자기 소유 차 직무 운행→국가 운행자성 부인·공무원 자배법 책임</li><li>§2·§5 경합 시 §2 우선·이중배상금지</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🌉</div><div class="fc-term">§5 영조물<br>하자</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">객관설·무과실책임</div><ul><li>주관설·객관설·절충설·안전의무위반설</li><li>판례 객관설(통상 안전성 결여)·무과실책임·수정된 객관설</li><li>입증책임 완화(개연성만 주장→추정)</li><li>불가항력 하자 ✕(악화 범위는 책임)·하천 계획홍수량</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">👥</div><div class="fc-term">배상책임자<br>(§6)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">병합설 / 사무귀속자설</div><ul><li>§6①: 사무귀속주체+비용부담자·판례 병합설·도로법§20② 기관위임사무</li><li>§6② 종국적: 관리자부담설(사무귀속자설 통설)·비용부담자설·기여도설</li><li>배상심의회=합의제행정청·법원 기속 ✕</li><li>본부심의회(법무부)·특별심의회(국방부)·지구심의회</li></ul></div>
+</div></div>
+</div></div>
+
+<!-- TAB 3 -->
+<div id="panel-quiz" class="panel">
+<div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+<div id="qc"></div>
+</div>
+
+<!-- TAB 4 -->
+<div id="panel-memory" class="panel">
+<div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+<div class="mem-progress"><div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div><div class="mem-prog-label" id="prog-label">0 / 0 공개</div><button class="mem-reveal-all" onclick="revealAll()">전체 공개</button></div>
+<div class="mem-section-title">총설 · §2 요건</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">손해전보와 헌법 근거</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정상 손해전보에는 위법한 직무집행에 대한 손해배상과 적법한 직무집행에 대한 손실보상이 있으며, 국가배상청구권은 청구권적 기본권으로 <span class="mem-blank" onclick="toggleBlank(this)">헌법 제29조 제1항</span>에 근거한다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">국가배상청구권의 법적 성질</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">판례는 국가배상법을 <span class="mem-blank" onclick="toggleBlank(this)">민법의 특별법인 사법</span>으로 보아 국가배상청구소송을 <span class="mem-blank" onclick="toggleBlank(this)">민사소송</span>으로 제기하여야 한다고 본다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">공무원과 직무의 범위</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">국가배상법상 공무원은 기능적 의미의 <span class="mem-blank" onclick="toggleBlank(this)">최광의의 공무원</span>(공무수탁사인 포함)이며, 판례는 직무에 권력작용과 비권력작용이 포함되나 <span class="mem-blank" onclick="toggleBlank(this)">단순한 사경제 작용은 포함되지 않는다</span>는 광의설을 취한다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">'집행하면서' — 외형설</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">'직무를 집행하면서'는 직무집행행위뿐만 아니라 <span class="mem-blank" onclick="toggleBlank(this)">외형상 직무집행과 관련 있는 행위</span>를 포함하며, 외관상 직무행위로 보이면 실질이 직무가 아니거나 피해자가 그 사정을 알았더라도 직무집행으로 본다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">고의·과실의 판단</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">고의·과실의 유무는 국가가 아니라 <span class="mem-blank" onclick="toggleBlank(this)">당해 공무원을 기준</span>으로 판단하나, 과실의 객관화 경향에 따라 가해공무원의 <span class="mem-blank" onclick="toggleBlank(this)">특정이 필수적인 것은 아니다</span>.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">법령위반 — 행위위법설과 기판력</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">국가배상법상 법령위반에 관해 판례의 주류적 입장은 <span class="mem-blank" onclick="toggleBlank(this)">행위위법설</span>이며, 단순위법행위는 취소 없이도 손해배상을 청구할 수 있고, <span class="mem-blank" onclick="toggleBlank(this)">국가배상청구소송의 기판력은 취소소송에 미치지 않는다</span>.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">인과관계 · 손해</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">가해행위와 손해 사이에는 <span class="mem-blank" onclick="toggleBlank(this)">상당인과관계</span>가 있어야 하며, 반사적 이익의 침해는 손해에 해당하지 않는다. 판례는 유흥주점 화재 여종업원 사망 사건에서 시정명령 해태와 사망 사이에 <span class="mem-blank" onclick="toggleBlank(this)">상당인과관계가 존재하지 않는다</span>고 보았다.</div></div></div></div>
+<div class="mem-section-title gn">배상책임 · 배상책임자</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">배상책임의 성질과 선택적 청구</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">판례는 배상책임의 성질에 관해 고의·중과실은 대위·자기책임의 양면성, 경과실은 자기책임으로 보는 <span class="mem-blank" onclick="toggleBlank(this)">절충설</span>을 취하며, 선택적 청구는 <span class="mem-blank" onclick="toggleBlank(this)">고의·중과실의 경우에만 가능하고 경과실의 경우에는 불가능</span>하다고 본다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">자동차손해배상 — 운행자성</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">공무원이 관용차를 공무를 위해 운행한 경우 국가가 운행자책임을 지나, <span class="mem-blank" onclick="toggleBlank(this)">자기 소유 자동차를 직무수행 중 운행하다 사고를 낸 경우 판례는 국가의 운행자성을 부인</span>한다.</div></div></div></div>
+<div class="mem-section-title gd">§5 영조물 하자 · 배상책임자</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">영조물 설치·관리상의 하자</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">판례는 영조물의 설치·관리상의 하자를 <span class="mem-blank" onclick="toggleBlank(this)">영조물이 통상 갖추어야 할 안전성을 갖추지 못한 상태</span>로 보아 객관설에 입각하면서 <span class="mem-blank" onclick="toggleBlank(this)">무과실책임</span>으로 보며, 방호조치의무를 다하였는지를 기준으로 삼는다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">불가항력과 입증책임</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">객관적 안전성을 갖춘 이상 <span class="mem-blank" onclick="toggleBlank(this)">불가항력에 의한 가해행위는 하자가 인정되지 않으나</span>, 불가항력으로 발생한 손해가 설치·관리의 하자로 악화된 범위에서는 국가가 책임을 지며, 예산 부족은 안전성 판단의 참작 사유에 그친다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">배상책임자와 배상절차</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">국가배상법 §6①상 피해자는 사무귀속주체와 비용부담자 중 선택하여 청구할 수 있고(판례 <span class="mem-blank" onclick="toggleBlank(this)">병합설</span>), 배상심의회는 합의제행정청으로 그 배상금 결정은 <span class="mem-blank" onclick="toggleBlank(this)">법원을 기속하지 않는다</span>.</div></div></div></div>
+</div>
+
+<!-- TAB 5 -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제43강은 ① 국가배상 §2의 요건(직무·집행하면서·법령위반), ② 배상책임의 성질과 선택적 청구·구상, ③ 영조물 설치·관리상의 하자(§5)가 핵심 출제 포인트이다.</div></div>
+<div class="ms-section"><div class="ms-section-title">① 국가배상 §2의 요건이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">공무원의 직무집행이 §2의 요건을 충족하여 국가배상책임이 성립하는지</div><div class="ms-example">예: "공무원의 위법한 처분으로 손해를 입은 자가 국가배상을 청구하려면 어떤 요건을 갖춰야 하는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">§2 요건은 <span class="g">공무원·직무·집행하면서·고의과실·법령위반·타인·손해·인과관계</span>('공직집고법타손')이다. 직무는 광의설(권력+비권력·사경제 ✕), '집행하면서'는 외형설, 고의·과실은 당해 공무원 기준이나 객관화·특정 불요, 법령위반은 행위위법설, 인과관계는 상당인과관계로 판단한다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">8요건 순차 검토 → 직무(광의설)·집행하면서(외형설)·법령위반(행위위법설)·인과관계(상당인과관계) 쟁점 부각</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">공직집고법타손</span><span class="ms-kw">광의설·외형설</span><span class="ms-kw">행위위법설</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gn">② 배상책임의 성질과 선택적 청구가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">피해자가 가해공무원 개인에게도 배상을 청구할 수 있는지, 국가가 공무원에게 구상할 수 있는지</div><div class="ms-example">예: "공무원의 경과실로 손해가 발생한 경우 피해자는 공무원 개인에게 배상을 청구할 수 있는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">배상책임의 성질은 자기책임설·대위책임설·중간설·절충설이 대립하며, 판례는 <span class="g">고의·중과실은 양면성, 경과실은 자기책임으로 보는 절충설</span>을 취한다. 그 결과 <span class="g">선택적 청구와 구상은 고의·중과실의 경우에만 가능</span>하고 경과실의 경우에는 불가능하다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">성질론(절충설) → 고의·중과실/경과실 구별 → 선택적 청구·대외 책임·구상 가부 결론</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">절충설</span><span class="ms-kw">고의·중과실/경과실</span><span class="ms-kw">선택적 청구·구상</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gd">③ 영조물 설치·관리상의 하자(§5)가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">영조물의 하자로 손해가 발생한 경우 국가의 배상책임이 성립하는지</div><div class="ms-example">예: "도로·하천 등 영조물의 결함으로 손해가 발생했을 때 관리상 과실이 없어도 국가가 책임을 지는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">하자의 의미에 주관설·객관설·절충설·안전의무위반설이 대립하나, 판례는 <span class="g">객관설(통상 갖추어야 할 안전성 결여)에 입각한 무과실책임</span>으로 보며 방호조치의무를 기준으로 삼는다(수정된 객관설). 객관적 안전성을 갖추면 불가항력은 하자가 아니며, 입증책임은 완화된다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">하자 의미(객관설·무과실책임) → 안전성·방호조치의무 판단 → 불가항력·예산 부족·하천범람(계획홍수량) 검토 → 배상책임자(§6)</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">객관설·무과실책임</span><span class="ms-kw">방호조치의무</span><span class="ms-kw">불가항력·계획홍수량</span></div></div>
+</div></div>
+</div>
+
+<!-- TAB 6 -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- TAB 7 -->
+<div id="panel-chat" class="panel">
+<div class="chat-wrap">
+<div class="chat-intro"><div class="chat-intro-title">💬 AI 강의 도우미</div><div class="chat-intro-text">제43강 손해전보제도1(손해배상제도)에 대해 무엇이든 질문하세요.<br>국가배상 §2 요건·배상책임·§5 영조물 하자 모두 답변합니다.</div></div>
+<div class="chat-preparing">🔧 더 나은 서비스를 위하여 준비중입니다.</div>
+<div class="chat-notice">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+<div class="chat-chips" id="chips">
+<span class="chip" onclick="chipSend(this)">국가배상 §2의 8가지 요건</span>
+<span class="chip" onclick="chipSend(this)">직무의 범위(광의설)와 집행하면서(외형설)</span>
+<span class="chip" onclick="chipSend(this)">국가배상법상 법령위반(행위위법설)</span>
+<span class="chip" onclick="chipSend(this)">배상책임의 성질과 선택적 청구</span>
+<span class="chip" onclick="chipSend(this)">영조물 설치·관리상의 하자(§5)</span>
+</div>
+<div class="chat-msgs" id="chatMsgs"></div>
+<div class="chat-input-row"><textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea><button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button></div>
+</div>
+</div>
+
+</div>
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  var exp=document.getElementById('e'+i);exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q":"국가배상청구권은 헌법 제29조 제1항에 근거한 청구권적 기본권이다.", "a":true, "e":"국가배상청구권은 청구권적 기본권 중의 하나로서 헌법 제29조 제1항에 근거한다."},
+{"q":"판례는 국가배상법을 공법으로 보아 국가배상청구소송을 당사자소송으로 제기해야 한다고 본다.", "a":false, "e":"판례는 국가배상법을 민법의 특별법인 사법으로 보아 국가배상청구소송을 민사소송으로 제기해야 한다고 본다."},
+{"q":"국가배상법상 공무원은 행정조직법상 공무원만을 의미한다.", "a":false, "e":"국가배상법상 공무원은 행정조직법상 공무원을 포함하는 기능적 의미의 공무원, 즉 최광의의 공무원을 의미한다."},
+{"q":"판례는 집행관을 공무원으로 보았으나 의용소방대원은 공무원으로 보지 않았다.", "a":true, "e":"판례는 집행관을 공무원으로 보았으나, 의용소방대원은 공무원으로 보지 않았다."},
+{"q":"경찰의 위탁으로 불법주차차량을 견인하는 차량견인업자는 국가배상법상 공무원에 해당한다.", "a":true, "e":"사인이 사법상 계약으로 공무를 수행하더라도 그 공무가 공법작용에 해당하면 공무원에 해당하므로, 경찰의 위탁으로 불법주차차량을 견인하는 차량견인업자는 국가배상법상 공무원에 해당한다."},
+{"q":"판례는 국가배상법 제2조의 직무에 권력작용과 비권력작용이 포함되나 단순한 사경제 작용은 포함되지 않는다고 본다(광의설).", "a":true, "e":"판례는 직무에 권력적 작용뿐만 아니라 비권력적 작용도 포함되지만 단순한 사경제의 주체로서 하는 작용은 포함되지 않는다고 하여 광의설을 취한다."},
+{"q":"통치행위와 공법상 계약도 국가배상법 제2조의 직무에 해당한다.", "a":false, "e":"통치행위는 당연무효가 아닌 한 사법통제 밖에 있어 해당하지 않으며, 공법상 계약도 직무에 해당하지 않는다(계약법 원리에 따른 책임)."},
+{"q":"판례는 직무의 사익보호성을 인과관계의 문제로 처리한다.", "a":true, "e":"판례는 직무란 사익 보호를 위한 직무를 뜻한다고 하면서 사익보호성을 인과관계의 문제로 처리한다."},
+{"q":"'직무를 집행하면서'는 외형상 직무집행과 관련 있는 행위를 포함하며, 판례는 외형설을 취한다.", "a":true, "e":"'직무를 집행하면서'는 직무집행행위뿐만 아니라 외형상 직무집행과 관련 있는 행위를 포함하며, 판례는 외형설을 취한다(66다781)."},
+{"q":"고의·과실의 유무는 국가가 아니라 당해 공무원을 기준으로 판단한다.", "a":true, "e":"고의·과실의 유무는 국가가 아니라 당해 공무원을 기준으로 판단한다."},
+{"q":"가해공무원이 특정되지 않으면 국가는 배상책임을 지지 않는다.", "a":false, "e":"공무원의 과실을 입증함에 있어서 가해공무원의 특정이 필수적인 것은 아니며, 손해 발생 상황으로 보아 공무원의 행위에 의한 것이 인정되면 국가는 배상책임을 진다."},
+{"q":"판례에 의하면 행정처분이 항고소송에서 취소되면 그 자체로 곧바로 공무원의 고의·과실에 의한 불법행위가 성립한다.", "a":false, "e":"행정처분이 항고소송에서 취소되었더라도 그 자체만으로 곧바로 공무원의 고의·과실에 의한 불법행위가 성립하는 것은 아니며, 객관적 정당성을 상실하였다고 인정될 정도에 이른 경우에 국가배상책임이 인정된다."},
+{"q":"국가배상법상 법령위반에 관해 판례의 주류적 입장은 행위위법설이다.", "a":true, "e":"국가배상법상 법령위반에 관해 판례의 주류적 입장은 행위위법설이며, 상대적 위법성설로 평가되는 판결도 있다."},
+{"q":"단순위법행위는 그 행위가 취소되기 전에는 손해배상을 청구할 수 없다.", "a":false, "e":"취소소송과 손해배상은 제도적 취지가 다르므로, 단순위법행위는 취소를 구하지 않고도 손해배상을 청구할 수 있다(판례도 적극적)."},
+{"q":"국가배상청구소송의 기판력은 취소소송에 미치지 않는다.", "a":true, "e":"국가배상청구소송은 국가배상청구권의 존부를 소송물로 하고 법령위반 판단은 판결이유 중의 판단이므로, 그 기판력은 취소소송에 미치지 않는다."},
+{"q":"반사적 이익의 침해도 국가배상법상 손해에 해당한다.", "a":false, "e":"손해는 법익침해로서의 불이익을 의미하며, 반사적 이익의 침해는 손해에 해당하지 않는다."},
+{"q":"배상금액 기준의 성질에 관해 판례는 기준액설을 취하여 법원이 그 기준에 구애되지 않는다고 본다.", "a":true, "e":"판례는 국가배상법상 손해배상의 기준이 하나의 기준을 정한 것에 지나지 않아 배상액의 상한을 제한한 것으로 볼 수 없다고 하여 기준액설의 입장에 서 있다."},
+{"q":"판례는 배상책임의 성질에 관해 고의·중과실은 대위·자기책임 양면성, 경과실은 자기책임으로 보는 절충설을 취한 것으로 평가된다.", "a":true, "e":"판례는 고의·중과실에 의한 경우 국가책임은 대위책임과 자기책임의 양면성을 갖고, 경과실의 경우 국가에 구상권이 부인된다는 점에서 자기책임으로 보는 절충설을 취한 것으로 평가된다."},
+{"q":"판례에 의하면 공무원의 경과실의 경우에도 피해자는 공무원 개인에게 선택적으로 손해배상을 청구할 수 있다.", "a":false, "e":"판례는 고의나 중대한 과실이 있는 경우에는 선택적 청구가 가능하지만, 경과실이 있는 경우에는 선택적 청구를 할 수 없다고 본다."},
+{"q":"판례는 국가배상법 제5조의 영조물 설치·관리상의 하자를 무과실책임으로 본다.", "a":true, "e":"판례는 영조물 설치·관리상의 하자를 영조물이 통상 갖추어야 할 안전성을 갖추지 못한 상태로 보아 객관설에 입각하면서 무과실책임으로 본다."},
+{"q":"영조물이 객관적 안전성을 갖추었더라도 불가항력에 의한 가해행위에 대해 국가는 배상책임을 진다.", "a":false, "e":"객관적 안전성을 갖춘 이상 불가항력에 의한 가해행위는 하자가 인정되지 않으므로 국가는 배상책임을 지지 않는다(다만 하자로 피해가 악화된 범위에서는 책임)."},
+{"q":"공무원이 자기 소유 자동차를 직무수행 중 운행하다 사고를 낸 경우, 판례는 국가의 운행자성을 부인한다.", "a":true, "e":"공무원이 직무수행을 위하여 자기 소유의 자동차를 운행하다가 사고가 난 경우, 판례는 국가 또는 지방자치단체의 운행자성을 부인한다(이 경우 공무원이 자동차손해배상보장법상 책임)."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "총설법적성질": ["손해전보=위법 직무집행(손해배상)+적법 직무집행 특별 손해(손실보상)", "국가배상청구권=청구권적 기본권·헌법§29①·공무원 책임 면제 ✕", "판례: 국가배상법=민법의 특별법(사법)→민사소송", "§2 공무원 직무상 불법행위 / §5 영조물 하자"],
+    "공무원직무": ["①공무원: 최광의·기능적·공무수탁사인 명시·집행관 ○·의용소방대원 ✕·차량견인업자 ○·미군 준공무원", "②직무: 판례 광의설(권력+비권력·사경제 ✕)·입법·사법 모든 직무·통치행위·공법상 계약 ✕", "사익보호성: 판례 사익 보호 직무 필요→인과관계 문제로 처리", "재판작용: 위법·부당 목적 등 특별 사정 시 제한적 인정"],
+    "집행고의과실": ["③집행하면서: 외형설(외형상 직무 관련 행위 포함·66다781)·실질·주관 불문·권리구제 확대", "④고의·과실: 당해 공무원 기준·과실 객관화·입증책임 완화(일응의 추정)", "가해공무원 특정 불요·법령 부지=과실(견해 갈리는 해석은 무과실)", "항고소송 패소만으로 과실 단정 ✕(객관적 정당성 상실 시)·위헌 선언 시 과실 인정 어려움"],
+    "법령위반": ["⑤법령위반: 결과위법성설·상대적 위법성설·행위위법성설(판례 주류 행위위법설·화염병 약국화재)", "작위·부작위(부작위는 작위의무·재량 0 수축·판례는 국가 존립목적에서 초법규적·일차적 위험배제 작위의무 도출·에이즈)", "단순위법행위 취소 없이도 손배 가능·배상법상 위법≑소송법상 위법(법질서 단일)", "국가배상 기판력은 취소소송에 미치지 ✕·판단 시점=행위 시"],
+    "타인손해인과": ["⑥타인: 위법행위자·가담자 제외 모든 피해자·군인 특례", "⑦손해: 일체 손해·법익침해·반사적 이익 ✕", "⑧인과관계: 상당인과관계·판례 유흥주점 화재 여종업원 사망 인과관계 ✕", "배상금액 기준: 한정액설 vs 기준액설·판례 기준액설"],
+    "배상책임성질": ["성질: 자기책임설·대위책임설·중간설·절충설·판례 절충설(고의중과실 양면성·경과실 자기책임)", "선택적 청구: 고의·중과실 가능·경과실 ✕", "대외 책임: 고의·중과실만·내부 구상: 고의·중과실만(경과실 ✕ 입법정책)", "헌법§29 공무원 책임 면제 ✕"],
+    "자동차배상": ["운행자성=운행이익+운행지배·자배법 성립요건+국가배상법 범위·절차", "관용차 공무 운행→국가 운행자(무단사용도 지배·이익 있으면)", "자기 소유 차 직무 운행→국가 운행자성 부인·공무원 자배법 책임(경과실·중과실 불문)", "§2·§5 경합 시 §2 우선·이중배상금지"],
+    "영조물하자": ["하자 의미: 주관설·객관설·절충설·안전의무위반설·판례 객관설(통상 안전성 결여)·무과실책임·수정된 객관설", "객관적 안전성 결여 시 관리 하자 없어도 배상·입증책임 완화(개연성만 주장→추정)", "불가항력 하자 ✕(예견·회피 가능성 없으면)·악화 범위는 책임·예산 부족 참작 사유", "하천범람: 파제형/일제형·판례 계획홍수량·계획홍수위 충족 시 통상 안전성"],
+    "배상책임자": ["§6①: 사무귀속주체+비용부담자·실질적/형식적/병합설(판례)·도로법§20② 기관위임사무·피해자 선택 청구", "§6② 종국적: 관리자부담설(사무귀속자설 통설)·비용부담자설·기여도설·판례 혼재", "배상심의회=합의제행정청·결정 법원 기속 ✕", "본부심의회(법무부)·특별심의회(국방부)·지구심의회"]
+  };
+  var tree={"name":"손해배상제도","depth":0,"children":[
+    {"name":"총설","depth":1,"children":[
+      {"name":"총설법적성질",depth:3}
+    ]},
+    {"name":"§2 요건","depth":1,"children":[
+      {"name":"공무원직무",depth:3},{"name":"집행고의과실",depth:3},{"name":"법령위반",depth:3},{"name":"타인손해인과",depth:3}
+    ]},
+    {"name":"배상책임·책임자","depth":1,"children":[
+      {"name":"배상책임성질",depth:3},{"name":"자동차배상",depth:3},{"name":"배상책임자",depth:3}
+    ]},
+    {"name":"§5 영조물","depth":1,"children":[
+      {"name":"영조물하자",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([30,165]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020','#5a2d8c'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+var CHAT_KEY='ch43_chat_history';
+var CHAT_TTL=7*24*60*60*1000;
+var chatHistory=[];
+var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제43강 손해전보제도1 — 손해배상제도」
+주요 내용: 총설(손해전보=위법 직무집행 손해배상+적법 직무집행 특별 손해 손실보상·근거 조항 다름·국가배상청구권=청구권적 기본권 헌법§29①·공무원 자신 책임 면제 ✕·법적 성질 판례 국가배상법=민법의 특별법 사법→민사소송·§2 공무원 직무상 불법행위 / §5 영조물 설치·관리 하자), §2 요건 '공직집고법타손'(①공무원: 최광의·기능적·입법·사법부 공무원·국회의원·검사·판사·헌재 재판관·기관 자체·국회 자체·공무수탁사인 명시·집행관 ○·의용소방대원 ✕·차량견인업자 ○·미군 준공무원 / ②직무: 협의설·광의설·최광의설·판례 광의설 권력+비권력 포함 단순 사경제 ✕·입법·사법 모든 직무·통치행위·공법상 계약 ✕·사익보호성 판례 사익 보호 직무 필요 인과관계 문제로 처리·재판작용 법관도 공무원이나 위법·부당 목적 등 특별 사정 시 제한적 인정 / ③집행하면서: 외형설 외형상 직무집행 관련 행위 포함 통설·판례 66다781·실질·주관 불문·실질적 직무관련성 불요·권리구제 확대 / ④고의·과실: 당해 공무원 기준·공무원 무과실이면 국가 배상책임 없음·과실 객관화·입증책임 완화 일응의 추정·가해공무원 특정 불요·법령 부지 과실 견해 갈리는 해석 무과실·행정규칙 따른 처분 과실 인정 어려움·항고소송 패소만으로 과실 단정 ✕ 객관적 정당성 상실 시 인정·위헌 선언 시 과실 인정 어려움 법령심사권 없음 / ⑤법령위반: 결과위법성설·상대적 위법성설·행위위법성설 일원설/이원설·판례 주류 행위위법설 화염병 약국화재·상대적 위법성설 평가 판결 개간허가취소·법령 범위 성문+불문+일반원칙·작위·부작위 부작위는 작위의무 기속행위 통상 재량 0 수축 명문 근거 없어도 판례는 국가의 존립목적(본래적 사명)으로부터 초법규적·일차적 위험배제 작위의무 도출 에이즈·재량 일탈·남용 아닌 부당 위반 ✕·단순위법행위 취소 없이도 손배 가능 취지 다름·배상법상 위법≑소송법상 위법 법질서 단일·국가배상청구소송 기판력 취소소송에 미치지 ✕·판단 시점 행위 시·원고 위법 입증 피고 적법 입증 / ⑥타인: 위법행위자·가담자 제외 모든 피해자·가해자 국가면 지자체도 타인·군인 특례 / ⑦손해: 일체 손해·법익침해·반사적 이익 ✕ / ⑧인과관계: 상당인과관계·판례 유흥주점 화재 여종업원 사망 시정명령 해태와 사망 사이 상당인과관계 ✕), 배상금액 기준(한정액설 vs 기준액설·판례 기준액설 법원 구애 ✕), 배상책임의 성질(자기책임설·대위책임설·중간설·절충설·판례 절충설 고의·중과실 양면성 경과실 자기책임 구상 부인·선택적 청구 고의·중과실 가능 경과실 ✕·헌법§29 공무원 책임 면제 ✕·대외 책임 고의·중과실만·내부 구상 고의·중과실만 경과실 ✕ 입법정책), 자동차손해배상(§2① 단서·운행자성=운행이익+운행지배·관용차 공무 운행→국가 운행자·무단사용도 지배·이익 있으면·자기 소유 차 직무 운행→국가 운행자성 부인 공무원 자배법 책임 경과실·중과실 불문·성립요건 자배법 범위·절차 국가배상법·이중배상금지·§2·§5 경합 시 §2 우선), §5 영조물 하자(하자 의미 주관설·객관설·절충설·안전의무위반설·판례 객관설 통상 갖추어야 할 안전성 결여·무과실책임·방호조치의무·수정된 객관설·관리 하자 없어도 객관적 안전성 결여 시 배상·입증책임 완화 하자 개연성만 주장 추정·불가항력 객관적 안전성 갖추면 하자 ✕ 예견·회피 가능성 없으면·악화 범위 책임·예산 부족 참작 사유·하천범람 파제형/일제형 판례 계획홍수량·계획홍수위 충족 시 통상 안전성), 배상책임자(§6① 사무귀속주체+비용부담자·실질적/형식적/병합설 판례·도로법§20② 기관위임사무·피해자 선택 청구·§6② 종국적 관리자부담설 사무귀속자설 통설·비용부담자설·기여도설 판례 혼재), 배상절차(배상심의회 합의제행정청 결정 법원 기속 ✕·본부심의회 법무부·특별심의회 국방부·지구심의회).
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. §2 요건은 '공직집고법타손'으로 체계를 잡고, 직무(광의설)·집행하면서(외형설)·법령위반(행위위법설)을 정확히 짚어 준다.
+4. 배상책임의 성질(절충설)→선택적 청구·구상(고의·중과실만), 자동차손해배상(자기 소유 차는 국가 운행자성 부인), 영조물 하자(객관설·무과실책임) 등 판례를 강조해 준다.
+5. 배상책임자(§6①·§6②)는 사무귀속주체·비용부담자·병합설로 정리해 준다.
+6. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){try{localStorage.setItem(CHAT_KEY,JSON.stringify({ts:Date.now(),history:chatHistory}));}catch(e){}}
+function loadChat(){
+  try{
+    var raw=localStorage.getItem(CHAT_KEY);if(!raw)return false;
+    var data=JSON.parse(raw);
+    if(!data.ts||(Date.now()-data.ts)>CHAT_TTL){localStorage.removeItem(CHAT_KEY);return false;}
+    chatHistory=data.history||[];
+    var msgs=document.getElementById('chatMsgs');msgs.innerHTML='';
+    chatHistory.forEach(function(m){addMsg(m.role==='user'?'user':'ai',m.content);});
+    if(chatHistory.length>0)document.getElementById('chips').style.display='none';
+    return chatHistory.length>0;
+  }catch(e){return false;}
+}
+function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제43강 손해전보제도1(손해배상제도) AI 도우미입니다. 국가배상 §2 요건·배상책임·§5 영조물 하자 등 무엇이든 물어보세요.');}
+function addMsg(role,text){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg '+role;
+  var now=new Date();var t=now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML='<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent=text;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg ai chat-typing';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){var el=document.getElementById('typing-indicator');if(el)el.remove();}
+async function sendChat(){
+  var inp=document.getElementById('chatInput');var text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='';document.getElementById('chatSend').disabled=true;
+  addMsg('user',text);chatHistory.push({role:'user',content:text});saveChat();
+  document.getElementById('chips').style.display='none';showTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})});
+    var data=await res.json();hideTyping();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'답변을 가져오지 못했습니다.';
+    addMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});saveChat();
+  }catch(e){hideTyping();addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');}
+  document.getElementById('chatSend').disabled=false;
+}
+function chipSend(el){document.getElementById('chatInput').value=el.textContent;el.parentNode.style.display='none';sendChat();}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+</script>
+</body>
+</html>

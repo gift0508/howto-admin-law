@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제39강 행정심판 고지 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:210px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-preparing{background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;font-weight:700;color:var(--red);flex-shrink:0;text-align:center;letter-spacing:.3px}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제39강 행정심판 — 고지 (39-2)</div>
+  <div class="hdr-sub">준사법절차 · 직권·신청 고지 · 고지의무 위반·오고지·불고지</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- TAB 1 -->
+<div id="panel-summary" class="panel on">
+<div class="card"><div class="card-head ch-blue">📋 개관 — 행정심판은 준사법절차</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px">행정심판절차는 <span class="kw">준사법절차</span>이다. '준'이란 사법절차와 거의 같으나 <span class="hl">판단의 주체가 판사가 아닌 공무원</span>이라는 의미로, 취소소송절차와 거의 같다. 다만 신분이 같은 자의 행위를 판단하므로 제3자인 판사의 판단과 차이가 있어 절차·내용 면에서 다른 점이 생긴다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 고지로부터 출발</div>행정심판은 서류상 <span class="hl">고지로부터 출발</span>한다. 처분서의 고지가 행정심판 가능 여부·기간·절차를 알려 주므로, 고지가 없거나 잘못 고지된 경우의 소송 효과를 알아야 한다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">1-1. 고지 — 의의 · 종류 · 취지</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">고지제도</span>란 행정청이 처분 시 상대방에게 <span class="hl">행정심판 청구 가능 여부·심판청구 절차·심판청구 기간</span>을 알리고, 이해관계인이 요구하면 심판 대상 여부·소관위원회·심판청구기간을 지체 없이 알려 주어야 하는 제도이다(불복고지).</div>
+<table class="tbl"><thead><tr><th>종류</th><th>내용</th></tr></thead><tbody>
+<tr><td>직권 고지(§58①)</td><td>행정청이 <span class="hl">반드시 하여야 하는 의무적 고지</span></td></tr>
+<tr><td>신청 고지(§58②)</td><td>이해관계인의 <span class="hl">신청에 의한 고지</span></td></tr>
+</tbody></table>
+<div class="alert al-green" style="margin-top:10px"><div class="alert-label">📌 취지</div>행정의 민주화·신중·적정·합리화, <span class="hl">개인의 권익 보호</span>. 행위 형식이 다양하고 행정조직·구제절차가 복잡한 점에서 의미가 있다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">1-2. 고지의 법적 성질 · 근거 법률</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 법적 성질</div>고지는 <span class="hl">사실행위</span>이며 준법률행위적 행정행위가 아니다. 규정의 성질은 훈시규정설·강행규정설이 나뉘나, 그릇된 고지가 행정행위 효력에 영향을 주지는 않아도 <span class="hl">절차상 제재적 효과</span>가 가해지므로 <span class="hl">강행규정</span>으로 본다.</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 근거 법률의 관계</div>행정심판법(1985)·행정절차법(1998)·정보공개법에 규정. <span class="hl">논리상 행정절차법이 일반법, 내용상 행정심판법이 일반법</span>. 행정절차법은 고지 대상을 포괄적으로 규정하나 <span class="hl">고지의무위반 제재 규정이 없고</span>, 행정심판법의 제재 규정이 행정절차법·정보공개법에 보충 적용된다.</div>
+<div class="판례박스" style="margin-top:10px">국세기본법 §56①이 '§55에 규정하는 처분에는 행정심판법을 적용하지 않는다'고 규정하므로, 국세청장이 §55의 처분(조세범처벌절차법 §16 보상금 미교부 처분)을 함에 있어 행정심판법 §42①에 따라 상대방에게 <span class="hl">불복방법을 고지할 의무는 없다</span>.<div class="출처">대판 1992.3.31. 91누6016</div></div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">1-3. 직권 고지 · 신청 고지</div><div class="card-body">
+<table class="tbl"><thead><tr><th>구분</th><th>직권 고지(§58①)</th><th>신청 고지(§58②)</th></tr></thead><tbody>
+<tr><td>상대방·신청권자</td><td>처분의 상대방(제3자는 신청 가능하나 <span class="hl">의무적 직권 고지 대상 ✕</span>)</td><td>이해관계인(처분 상대방+법률상 이익 침해 제3자; 상대방은 고지 못 받은 자)</td></tr>
+<tr><td>대상 처분</td><td>서면+<span class="hl">구두 처분</span>, 행정쟁송 대상 모든 처분·특별법상 쟁송 대상·재결처분(신청 인용 처분은 고지 불필요)</td><td>직권 고지와 동일</td></tr>
+<tr><td>내용</td><td>심판 청구 가능 여부(불필요 시 그 사실)·심판청구 절차(제출 위원회)·심판청구 기간</td><td>심판대상 여부·소관 위원회·심판청구 기간(균형상 절차도)</td></tr>
+<tr><td>방법·시기</td><td>규정 없으나 문서 바람직·<span class="hl">처분과 동시</span>(상당 기간 내 사후 고지 시 불고지 하자 치유)</td><td>적당한 방법(<span class="hl">서면 요구 시 서면</span>)·<span class="hl">지체 없이</span></td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">1-4. 고지의무 위반 · 오고지 · 불고지</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 고지의무 위반의 효과 (§23)</div>고지의무 위반은 처분의 효력에 영향을 주지 않으며, 불고지·오고지가 처분을 위법하게 만들지 않는다. 이는 행정심판법이 실효성 확보를 위해 특별히 부여하는 힘이다. 잘못 제출 시 <span class="hl">그 기관이 정당한 피청구인에게 송부(§23②)→청구인에게 통지(§23③)→제출되었을 때 청구된 것으로 봄(§23④)</span>.</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 오고지 · 불고지 (§27)</div>· <span class="kw">오고지</span>: 청구 기간을 법정 기간보다 <span class="hl">긴 기간으로 잘못 알린 경우</span>, 그 기간에 청구하면 법정 기간에 청구된 것으로 봄<br>· <span class="kw">불고지</span>: 청구 기간을 알리지 않은 경우 <span class="hl">처분이 있었던 날부터 180일 이내</span> 청구 가능</div>
+<div class="판례박스" style="margin-top:10px">개별 법률(지방자치법)의 이의제출기간이 행정심판법보다 짧더라도 고지의무에 관해 달리 정하지 않은 이상, 도로관리청이 이의제출기간 등을 알리지 않았다면 청구인은 지방자치법상 기간에 구애됨이 없이 <span class="hl">징수고지처분이 있은 날로부터 180일 이내</span> 이의를 제출할 수 있다. (오고지·불고지 규정은 행정심판 제기에 적용될 뿐 <span class="hl">행정소송 제기에 당연 적용되지 않는다</span>.)<div class="출처">대판 1990.7.10. 89누6839</div></div>
+</div></div>
+</div>
+
+<!-- TAB 2 -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">행정심판<br>준사법절차</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">판단 주체가 공무원</div><ul><li>사법절차와 거의 같음·취소소송절차와 유사</li><li>판단 주체가 판사 아닌 공무원</li><li>신분 같은 자 판단→제3자 판사와 차이</li><li>절차·내용 면 차이 발생</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📨</div><div class="fc-term">고지로부터<br>출발</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">처분서 고지가 권익 구제 시작점</div><ul><li>행정심판은 서류상 고지로부터 출발</li><li>고지가 심판 가능 여부·기간·절차 알려줌</li><li>고지 없거나 잘못 고지 시 소송 효과</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📋</div><div class="fc-term">고지<br>의의·종류</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">직권 / 신청 (불복고지)</div><ul><li>처분 시 심판 청구 가능 여부·절차·기간 알림</li><li>직권 고지(§58①): 의무적</li><li>신청 고지(§58②): 이해관계인 신청</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🎯</div><div class="fc-term">고지<br>취지</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">민주화·권익 보호</div><ul><li>행정 민주화·신중·적정·합리화</li><li>개인의 권익 보호에 기여</li><li>행위 형식 다양·조직·구제절차 복잡 고려</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🧾</div><div class="fc-term">고지<br>법적 성질</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">사실행위 / 강행규정</div><ul><li>사실행위(준법률행위적 행정행위 ✕)</li><li>규정 성질: 훈시규정설 vs 강행규정설</li><li>절차상 제재적 효과 고려→강행규정</li><li>그릇된 고지가 처분 효력에 영향 ✕</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📚</div><div class="fc-term">근거 법률<br>관계</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">논리상 행정절차법·내용상 행정심판법</div><ul><li>행정심판법(1985)·행정절차법(1998)·정보공개법</li><li>논리상 행정절차법 일반법·내용상 행정심판법 일반법</li><li>행정절차법: 고지 대상 포괄·제재 규정 ✕</li><li>행정심판법 제재 규정 보충 적용</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📕</div><div class="fc-term">법적 성질<br>판례(91누6016)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">국세기본법 §55 처분 고지의무 ✕</div><ul><li>국세기본법 §56①: §55 처분에 행정심판법 적용 ✕</li><li>조세범처벌절차법§16 보상금 미교부 처분</li><li>행정심판법§42① 불복방법 고지 의무 없음</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🅰️</div><div class="fc-term">직권 고지<br>(§58①)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">의무 / 처분 상대방 / 처분과 동시</div><ul><li>상대방=처분 상대방(제3자는 직권 대상 ✕)</li><li>대상=서면+구두·재결처분(신청 인용 처분은 불필요)</li><li>내용=청구 가능 여부·절차·기간</li><li>문서 바람직·처분과 동시·사후 고지 시 하자 치유</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🅱️</div><div class="fc-term">신청 고지<br>(§58②)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">이해관계인 / 지체 없이</div><ul><li>신청권자=이해관계인(상대방+법률상 이익 침해 제3자)</li><li>상대방은 고지 못 받은 자</li><li>내용=심판대상 여부·소관 위원회·청구 기간</li><li>적당한 방법(서면 요구 시 서면)·지체 없이</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⚠️</div><div class="fc-term">고지의무 위반<br>(§23)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">처분 효력 영향 ✕ / 송부·통지</div><ul><li>처분 효력에 영향 ✕·실효성 확보 위한 특별한 힘</li><li>잘못 제출→정당 피청구인에게 송부(§23②)</li><li>청구인에게 통지(§23③)</li><li>제출되었을 때 청구된 것으로 봄(§23④)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⏰</div><div class="fc-term">오고지·불고지<br>(§27·89누6839)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">오고지=긴 기간 / 불고지=180일</div><ul><li>오고지(긴 기간): 잘못 알린 기간에 청구하면 법정 기간 청구로 봄</li><li>불고지: 처분 있은 날부터 180일 이내 청구</li><li>89누6839: 개별법 짧아도 미고지 시 180일</li><li>오고지·불고지 규정은 행정소송 제기에 당연 적용 ✕</li></ul></div>
+</div></div>
+</div></div>
+
+<!-- TAB 3 -->
+<div id="panel-quiz" class="panel">
+<div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+<div id="qc"></div>
+</div>
+
+<!-- TAB 4 -->
+<div id="panel-memory" class="panel">
+<div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+<div class="mem-progress"><div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div><div class="mem-prog-label" id="prog-label">0 / 0 공개</div><button class="mem-reveal-all" onclick="revealAll()">전체 공개</button></div>
+<div class="mem-section-title">행정심판 · 고지 일반</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">행정심판은 준사법절차</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정심판절차는 <span class="mem-blank" onclick="toggleBlank(this)">준사법절차</span>로서, '준'이란 사법절차와 거의 같으나 <span class="mem-blank" onclick="toggleBlank(this)">판단의 주체가 판사가 아닌 공무원</span>이라는 의미이다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">고지제도의 의의와 종류</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">고지제도란 행정청이 처분 시 상대방에게 <span class="mem-blank" onclick="toggleBlank(this)">행정심판 청구 가능 여부·심판청구 절차·심판청구 기간</span>을 알려야 하는 제도로, 의무적인 <span class="mem-blank" onclick="toggleBlank(this)">직권 고지와 이해관계인의 신청에 의한 신청 고지</span>의 두 종류가 있다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">고지의 법적 성질</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">고지의 법적 성질은 <span class="mem-blank" onclick="toggleBlank(this)">사실행위</span>이며, 그릇된 고지가 행정행위의 효력에 영향을 미치지는 않으나 절차상 제재적 효과가 가해지는 점을 고려하여 그 규정을 <span class="mem-blank" onclick="toggleBlank(this)">강행규정</span>으로 본다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">근거 법률의 관계</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">고지 근거 법률의 관계에서 <span class="mem-blank" onclick="toggleBlank(this)">논리상으로는 행정절차법이 일반법이지만 내용상으로는 행정심판법이 일반법</span>이며, 행정심판법상 고지의무위반에 대한 제재 규정은 <span class="mem-blank" onclick="toggleBlank(this)">행정절차법·정보공개법에도 보충적으로 적용</span>된다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">고지의무 (91누6016)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">국세기본법 §56①이 §55에 규정하는 처분에는 행정심판법을 적용하지 아니한다고 규정하므로, 국세청장이 그 처분을 함에 있어 행정심판법 §42①에 따라 상대방에게 <span class="mem-blank" onclick="toggleBlank(this)">불복방법을 고지할 의무는 없다</span>.</div></div></div></div>
+<div class="mem-section-title gn">직권 고지 · 신청 고지</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">직권 고지의 대상과 상대방</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">직권 고지의 상대방은 처분의 상대방이며 제3자는 신청할 수 있으나 <span class="mem-blank" onclick="toggleBlank(this)">의무적 직권 고지의 대상자는 아니고</span>, 대상 처분은 서면뿐만 아니라 <span class="mem-blank" onclick="toggleBlank(this)">구두에 의한 처분</span>과 재결처분도 포함된다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">직권 고지의 시기와 치유</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">직권 고지는 <span class="mem-blank" onclick="toggleBlank(this)">처분과 동시에 이루어져야</span> 하나, 상당한 기간 내에 사후 고지가 있는 경우에는 <span class="mem-blank" onclick="toggleBlank(this)">불고지의 하자가 치유</span>된다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">신청 고지의 신청권자와 방법</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">신청 고지의 신청권자인 이해관계인에는 처분의 상대방뿐만 아니라 <span class="mem-blank" onclick="toggleBlank(this)">법률상 이익이 침해된 제3자</span>도 포함되며, 이해관계인이 서면으로 요구한 경우에는 <span class="mem-blank" onclick="toggleBlank(this)">서면으로 지체 없이</span> 알려야 한다.</div></div></div></div>
+<div class="mem-section-title gd">고지의무 위반 · 오고지 · 불고지</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">고지의무 위반의 효과 (§23)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">고지의무 위반은 처분의 효력에 영향을 미치지 않으며, 잘못 고지하여 청구인이 다른 행정기관에 제출한 경우 그 기관은 정당한 피청구인에게 송부하고, 심판청구기간 계산 시 <span class="mem-blank" onclick="toggleBlank(this)">그 행정기관에 심판청구서가 제출되었을 때 행정심판이 청구된 것</span>으로 본다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">오고지·불고지와 청구기간 (89누6839)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">심판청구 기간을 법정 기간보다 긴 기간으로 잘못 알린 경우 그 기간에 청구하면 법정 기간에 청구된 것으로 보고, 알리지 않은 경우에는 <span class="mem-blank" onclick="toggleBlank(this)">처분이 있었던 날부터 180일 이내</span>에 청구할 수 있으며, 이 오고지·불고지 규정은 <span class="mem-blank" onclick="toggleBlank(this)">행정소송 제기에는 당연히 적용되지 않는다</span>.</div></div></div></div>
+</div>
+
+<!-- TAB 5 -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제39강(39-2)은 ① 고지의 법적 성질과 그릇된 고지의 효과, ② 직권 고지와 신청 고지의 구별, ③ 오고지·불고지 시 심판청구 기간이 핵심 출제 포인트이다.</div></div>
+<div class="ms-section"><div class="ms-section-title">① 고지의 법적 성질과 그릇된 고지의 효과가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">고지를 하지 않거나 잘못 고지한 경우 처분의 효력에 영향이 있는지</div><div class="ms-example">예: "행정청이 처분 시 심판청구 기간을 고지하지 않았다면 그 처분은 위법한가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">고지는 <span class="g">사실행위</span>이고 그 규정은 강행규정이나, 그릇된 고지(불고지·오고지)가 <span class="g">처분을 위법하게 만들지는 않는다</span>. 다만 행정심판법이 실효성 확보를 위해 경유 절차·청구 기간 면에서 특별한 효과를 부여한다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">고지=사실행위·강행규정 → 그릇된 고지가 처분 효력에 영향 ✕ → §23·§27의 특별한 효과(송부·청구기간)로 청구인 보호</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">사실행위·강행규정</span><span class="ms-kw">처분 효력 무영향</span><span class="ms-kw">§23·§27</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gn">② 직권 고지와 신청 고지의 구별이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">누가 어떤 처분에 대해 어떤 내용·방법으로 고지를 받는지</div><div class="ms-example">예: "제3자효 있는 처분에서 제3자는 직권 고지의 대상인가, 신청해야 고지받는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text"><span class="g">직권 고지(§58①)</span>는 처분 상대방에 대한 의무적 고지로 제3자는 대상이 아니며 처분과 동시에 한다. <span class="g">신청 고지(§58②)</span>는 이해관계인(상대방+법률상 이익 침해 제3자)의 신청에 따라 지체 없이 하며, 서면 요구 시 서면으로 한다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">고지 주체·상대방·대상·내용·방법·시기를 직권/신청으로 나누어 검토 → 제3자는 직권 대상 ✕·신청 가능</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">직권 고지(§58①)</span><span class="ms-kw">신청 고지(§58②)</span><span class="ms-kw">이해관계인·제3자</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gd">③ 오고지·불고지 시 심판청구 기간이 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">청구 기간을 잘못 알리거나 알리지 않은 경우 언제까지 심판청구가 가능한지</div><div class="ms-example">예: "개별 법률이 정한 짧은 기간을 행정청이 고지하지 않았다면 청구인은 언제까지 다툴 수 있는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text"><span class="g">오고지</span>(긴 기간으로 잘못 알림)는 그 기간에 청구하면 법정 기간에 청구된 것으로 보고, <span class="g">불고지</span>는 처분이 있었던 날부터 180일 이내 청구할 수 있다. 판례는 개별 법률 기간이 더 짧아도 미고지 시 행정심판법 기간 내 청구가 가능하다고 보며, 이 규정은 행정소송 제기에 당연 적용되지 않는다(89누6839).</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">오고지/불고지 구별 → 오고지는 법정 기간으로 의제·불고지는 180일 → 개별법 짧아도 미고지 시 행정심판법 기간 / 행정소송에는 당연 적용 ✕</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">오고지·불고지</span><span class="ms-kw">180일</span><span class="ms-kw">89누6839</span></div></div>
+</div></div>
+</div>
+
+<!-- TAB 6 -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- TAB 7 -->
+<div id="panel-chat" class="panel">
+<div class="chat-wrap">
+<div class="chat-intro"><div class="chat-intro-title">💬 AI 강의 도우미</div><div class="chat-intro-text">제39강(39-2) 행정심판 고지에 대해 무엇이든 질문하세요.<br>준사법절차·직권/신청 고지·오고지·불고지 모두 답변합니다.</div></div>
+<div class="chat-preparing">🔧 더 나은 서비스를 위하여 준비중입니다.</div>
+<div class="chat-notice">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+<div class="chat-chips" id="chips">
+<span class="chip" onclick="chipSend(this)">행정심판이 준사법절차인 이유</span>
+<span class="chip" onclick="chipSend(this)">고지의 법적 성질(사실행위·강행규정)</span>
+<span class="chip" onclick="chipSend(this)">직권 고지와 신청 고지의 구별</span>
+<span class="chip" onclick="chipSend(this)">고지의무 위반의 효과</span>
+<span class="chip" onclick="chipSend(this)">오고지·불고지 시 심판청구 기간</span>
+</div>
+<div class="chat-msgs" id="chatMsgs"></div>
+<div class="chat-input-row"><textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea><button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button></div>
+</div>
+</div>
+
+</div>
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  var exp=document.getElementById('e'+i);exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q":"행정심판절차는 준사법절차로, 판단의 주체가 판사가 아닌 공무원이라는 점에서 사법절차와 다르다.", "a":true, "e":"행정심판절차는 준사법절차로, 사법절차와 거의 같으나 판단의 주체가 판사가 아닌 공무원이라는 점에서 차이가 있다."},
+{"q":"고지의 법적 성질은 준법률행위적 행정행위이다.", "a":false, "e":"고지의 법적 성질은 사실행위이며, 법적 효과의 발생을 목적으로 하는 준법률행위적 행정행위가 아니다."},
+{"q":"그릇된 고지가 행정행위의 효력에 영향을 미치는 것은 아니나, 절차상 제재적 효과가 가해지므로 고지 규정은 강행규정으로 본다.", "a":true, "e":"그릇된 고지가 행정행위의 효력에 영향을 미치지는 않으나, 절차상 제재적 효과가 가해지는 점을 고려할 때 고지 규정은 강행규정으로 본다."},
+{"q":"고지제도에는 의무적인 직권 고지와 이해관계인의 신청에 의한 신청 고지의 두 종류가 있다.", "a":true, "e":"고지제도에는 행정청이 반드시 하여야 하는 의무적인 직권 고지와 이해관계인의 신청에 의한 신청 고지의 두 종류가 있다(불복고지)."},
+{"q":"고지 근거 법률의 관계에서 논리상으로는 행정절차법이 일반법이지만, 내용상으로는 행정심판법이 일반법이다.", "a":true, "e":"고지 근거 법률의 관계를 보면 논리상으로는 행정절차법이 일반법이지만, 내용상으로는 행정심판법이 일반법이다."},
+{"q":"행정절차법은 행정심판법과 달리 고지의무위반에 대한 제재 수단을 규정하고 있다.", "a":false, "e":"행정절차법은 행정심판법과 달리 고지의무위반에 대한 제재 수단을 규정하지 않으며, 행정심판법상 제재 규정이 행정절차법·정보공개법에 보충적으로 적용된다."},
+{"q":"판례에 의하면 국세기본법 제55조에 규정하는 처분에는 행정심판법이 적용되지 않으므로 국세청장은 그 처분 시 불복방법을 고지할 의무가 없다.", "a":true, "e":"국세기본법 제56조 제1항이 제55조에 규정하는 처분에는 행정심판법을 적용하지 않는다고 규정하므로, 국세청장은 그 처분 시 행정심판법 제42조 제1항에 따른 불복방법 고지 의무가 없다(91누6016)."},
+{"q":"직권 고지의 상대방은 처분의 상대방이며, 제3자는 신청할 수 있으나 의무적 직권 고지의 대상자는 아니다.", "a":true, "e":"직권 고지의 상대방은 처분의 상대방이며, 제3자효 있는 행위는 제3자에게도 고지함이 바람직하나 제3자는 신청할 수 있을 뿐 의무적 직권 고지의 대상자는 아니다."},
+{"q":"직권 고지의 대상이 되는 처분은 서면에 의한 처분에 한하고 구두에 의한 처분은 포함되지 않는다.", "a":false, "e":"고지의 대상이 되는 처분은 서면에 의한 처분뿐만 아니라 구두에 의한 처분도 포함된다."},
+{"q":"재결처분도 고지의 대상이 되는 처분에 포함된다.", "a":true, "e":"행정심판 역시 넓은 의미에서 행정절차의 한 부분이므로 재결처분도 고지의 대상이 되는 처분에 포함된다."},
+{"q":"신청에 따른 처분이 있는 경우에도 행정청은 반드시 고지하여야 한다.", "a":false, "e":"신청에 따른 처분이 있는 경우에는 상대방이 다툴 이유가 없기 때문에 고지가 불필요하다."},
+{"q":"직권 고지는 처분과 동시에 이루어져야 하나, 상당한 기간 내에 사후 고지가 있는 경우에는 불고지의 하자가 치유된다.", "a":true, "e":"고지는 처분과 동시에 이루어져야 하나, 상당한 기간 내에 사후 고지가 있는 경우에는 불고지의 하자가 치유된다."},
+{"q":"신청 고지의 신청권자인 이해관계인에는 처분의 상대방뿐만 아니라 법률상 이익이 침해된 제3자도 포함된다.", "a":true, "e":"신청 고지의 신청권자인 이해관계인에는 처분의 상대방(고지를 받지 못한 상대방)뿐만 아니라 법률상 이익이 침해된 제3자도 포함된다."},
+{"q":"불고지나 오고지는 그 자체로 처분을 위법하게 만든다.", "a":false, "e":"불고지나 오고지는 그릇된 것이지만 그것이 처분을 위법하게 만드는 것은 아니다."},
+{"q":"행정청이 심판청구 기간을 법정 기간보다 긴 기간으로 잘못 알린 경우, 그 잘못 알린 기간에 청구가 있으면 법정 기간에 청구된 것으로 본다.", "a":true, "e":"행정청이 심판청구 기간을 법정 기간보다 긴 기간으로 잘못 알린 경우 그 잘못 알린 기간에 심판청구가 있으면 법정 기간에 청구된 것으로 본다(오고지)."},
+{"q":"행정청이 심판청구 기간을 알리지 않은 경우에는 처분이 있었던 날부터 180일 이내에 심판청구를 할 수 있다.", "a":true, "e":"행정청이 심판청구 기간을 알리지 아니한 경우에는 처분이 있었던 날부터 180일 이내에 심판청구를 할 수 있다(불고지)."},
+{"q":"판례에 의하면 행정심판법상 오고지·불고지에 관한 규정은 행정소송 제기에도 당연히 적용된다.", "a":false, "e":"행정심판법 제27조 제5항의 규정은 행정심판 제기에 적용되는 규정이지 행정소송 제기에도 당연히 적용되는 규정이라고 할 수 없다."},
+{"q":"판례에 의하면 개별 법률의 심판청구 기간이 행정심판법보다 짧은 경우에도 행정청이 그 기간을 알려주지 않았다면 행정심판법이 정한 기간 내에 심판청구가 가능하다.", "a":true, "e":"판례는 개별 법률에서 정한 심판청구 기간이 행정심판법보다 짧더라도 행정청이 그 개별 법률상 기간을 알려주지 않았다면 행정심판법이 정한 기간 내에 심판청구가 가능하다고 본다(89누6839)."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "개관": ["행정심판=준사법절차(판단 주체가 공무원)", "취소소송절차와 거의 같음·신분 같은 자 판단→차이", "고지로부터 출발", "처분서 고지가 심판 가능 여부·기간·절차 알려줌"],
+    "고지의의": ["처분 시 심판 청구 가능 여부·절차·기간 알림", "이해관계인 요구 시 심판 대상·소관위원회·기간 지체 없이", "직권 고지(의무)·신청 고지(이해관계인 신청)·불복고지", "취지: 행정 민주화·권익 보호·조직/구제절차 복잡 고려"],
+    "고지성질근거": ["법적 성질: 사실행위(준법률행위적 행정행위 ✕)", "규정 성질: 훈시규정설 vs 강행규정설→강행규정(절차상 제재)", "근거: 행정심판법(1985)·행정절차법(1998)·정보공개법", "논리상 행정절차법·내용상 행정심판법 일반법·제재 규정은 행정심판법(보충 적용)·91누6016 §55 처분 고지의무 ✕"],
+    "직권고지": ["§58①·의무적·상대방=처분 상대방(제3자는 직권 대상 ✕)", "대상=서면+구두·재결처분(신청 인용 처분은 불필요)", "내용=청구 가능 여부·절차(제출 위원회)·기간", "문서 바람직·처분과 동시·사후 고지 시 불고지 하자 치유"],
+    "신청고지": ["§58②·신청권자=이해관계인(상대방+법률상 이익 침해 제3자)", "상대방은 고지 못 받은 자", "내용=심판대상 여부·소관 위원회·청구 기간(균형상 절차도)", "적당한 방법(서면 요구 시 서면)·지체 없이"],
+    "위반효과": ["처분 효력에 영향 ✕·실효성 확보 위한 특별한 힘", "잘못 제출→정당 피청구인에게 송부(§23②)", "청구인에게 통지(§23③)", "제출되었을 때 청구된 것으로 봄(§23④)"],
+    "오고지불고지": ["오고지(긴 기간): 잘못 알린 기간에 청구하면 법정 기간 청구로 봄", "불고지: 처분 있은 날부터 180일 이내 청구", "89누6839: 개별법 짧아도 미고지 시 180일", "오고지·불고지 규정은 행정소송 제기에 당연 적용 ✕"]
+  };
+  var tree={"name":"행정심판 — 고지","depth":0,"children":[
+    {"name":"개관","depth":1,"children":[
+      {"name":"개관",depth:3}
+    ]},
+    {"name":"고지 일반","depth":1,"children":[
+      {"name":"고지의의",depth:3},{"name":"고지성질근거",depth:3}
+    ]},
+    {"name":"직권·신청 고지","depth":1,"children":[
+      {"name":"직권고지",depth:3},{"name":"신청고지",depth:3}
+    ]},
+    {"name":"고지의무 위반","depth":1,"children":[
+      {"name":"위반효과",depth:3},{"name":"오고지불고지",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,150]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020','#5a2d8c'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+var CHAT_KEY='ch39_2_chat_history';
+var CHAT_TTL=7*24*60*60*1000;
+var chatHistory=[];
+var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제39강(39-2) 행정심판 — 고지」
+주요 내용: 행정심판=준사법절차('준'은 판단 주체가 판사 아닌 공무원·취소소송절차와 거의 같음·신분 같은 자 판단→제3자 판사와 차이→절차·내용 면 차이), 고지로부터 출발(처분서 고지가 심판 가능 여부·기간·절차 알려줌), 고지제도(의의: 처분 시 상대방에게 심판 청구 가능 여부·심판청구 절차·심판청구 기간 알림+이해관계인 요구 시 심판 대상 여부·소관위원회·심판청구기간 지체 없이·불복고지 / 종류: 직권 고지(의무)·신청 고지(이해관계인 신청) / 취지: 행정 민주화·신중·적정·합리화·개인 권익 보호·행위 형식 다양·조직/구제절차 복잡 / 법적 성질: 사실행위(준법률행위적 행정행위 ✕)·규정 성질 훈시규정설 vs 강행규정설→강행규정(그릇된 고지가 처분 효력에 영향 ✕이나 절차상 제재적 효과) / 근거 법률: 행정심판법(1985)·행정절차법(1998)·정보공개법·논리상 행정절차법 일반법·내용상 행정심판법 일반법·행정절차법은 고지 대상 포괄·제재 규정 없음·행정심판법 제재 규정 보충 적용 / 판례 91누6016: 국세기본법§56① §55 처분에 행정심판법 적용 ✕→불복방법 고지 의무 없음), 직권 고지(§58①: 주체=행정청·상대방=처분 상대방·제3자는 신청 가능하나 의무적 직권 고지 대상 ✕·대상=서면+구두·행정쟁송 대상 모든 처분·특별법 쟁송 대상·재결처분·신청 인용 처분은 고지 불필요·내용=청구 가능 여부·심판청구 절차(제출 위원회)·기간·방법 규정 없으나 문서 바람직·처분과 동시·상당 기간 내 사후 고지 시 불고지 하자 치유), 신청 고지(§58②: 신청권자=이해관계인(상대방+법률상 이익 침해 제3자·상대방은 고지 못 받은 자)·대상=직권 고지와 동일·내용=심판대상 여부·소관 위원회·청구 기간(균형상 절차도)·적당한 방법(서면 요구 시 서면)·지체 없이), 고지의무 위반(처분 효력에 영향 ✕·실효성 확보 위한 특별한 힘·불고지·오고지가 처분 위법하게 만들지 ✕·§23② 잘못 제출 시 정당 피청구인에게 송부·§23③ 청구인에게 통지·§23④ 제출되었을 때 청구된 것으로 봄), 오고지·불고지(오고지=긴 기간으로 잘못 알린 경우 그 기간에 청구하면 법정 기간 청구로 봄·불고지=처분 있은 날부터 180일 이내 청구·판례 개별법 짧아도 미고지 시 행정심판법 기간 내 청구 가능·오고지·불고지 규정은 행정심판 제기에 적용·행정소송 제기에 당연 적용 ✕·89누6839).
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 고지는 '사실행위·강행규정·그릇된 고지가 처분 효력에 영향 ✕'로 핵심을 잡아 준다.
+4. 직권 고지(§58①·의무·처분 상대방·처분과 동시)와 신청 고지(§58②·이해관계인·지체 없이)를 명확히 대비해 준다.
+5. 오고지(법정 기간 의제)·불고지(180일)와 89누6839 판례(개별법 짧아도 미고지 시 행정심판법 기간·행정소송에 당연 적용 ✕)를 강조해 준다.
+6. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){try{localStorage.setItem(CHAT_KEY,JSON.stringify({ts:Date.now(),history:chatHistory}));}catch(e){}}
+function loadChat(){
+  try{
+    var raw=localStorage.getItem(CHAT_KEY);if(!raw)return false;
+    var data=JSON.parse(raw);
+    if(!data.ts||(Date.now()-data.ts)>CHAT_TTL){localStorage.removeItem(CHAT_KEY);return false;}
+    chatHistory=data.history||[];
+    var msgs=document.getElementById('chatMsgs');msgs.innerHTML='';
+    chatHistory.forEach(function(m){addMsg(m.role==='user'?'user':'ai',m.content);});
+    if(chatHistory.length>0)document.getElementById('chips').style.display='none';
+    return chatHistory.length>0;
+  }catch(e){return false;}
+}
+function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제39강(39-2) 행정심판 고지 AI 도우미입니다. 준사법절차·직권/신청 고지·오고지·불고지 등 무엇이든 물어보세요.');}
+function addMsg(role,text){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg '+role;
+  var now=new Date();var t=now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML='<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent=text;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg ai chat-typing';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){var el=document.getElementById('typing-indicator');if(el)el.remove();}
+async function sendChat(){
+  var inp=document.getElementById('chatInput');var text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='';document.getElementById('chatSend').disabled=true;
+  addMsg('user',text);chatHistory.push({role:'user',content:text});saveChat();
+  document.getElementById('chips').style.display='none';showTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})});
+    var data=await res.json();hideTyping();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'답변을 가져오지 못했습니다.';
+    addMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});saveChat();
+  }catch(e){hideTyping();addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');}
+  document.getElementById('chatSend').disabled=false;
+}
+function chipSend(el){document.getElementById('chatInput').value=el.textContent;el.parentNode.style.display='none';sendChat();}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+</script>
+</body>
+</html>
