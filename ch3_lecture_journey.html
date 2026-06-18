@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제3강 취소소송의 진입 : 취소소송개관 — 강의 여정</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--text2:#555;--line:#e0dcd4;
+  --blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;
+  --green:#1a6644;--green-l:#e6f2ec;
+  --red:#a02020;--red-l:#faeaea;
+  --gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;
+  --purple:#5a2d8c;--purple-l:#ede6f5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;display:flex;flex-direction:column}
+.lec-hdr{background:var(--blue);color:#fff;padding:14px 24px 12px;text-align:center;border-bottom:3px solid var(--accent);flex-shrink:0}
+.lec-eyebrow{font-size:9px;letter-spacing:3px;opacity:.5;margin-bottom:3px;text-transform:uppercase}
+.lec-title{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700}
+.progress-rail{background:#fff;border-bottom:1px solid var(--line);padding:10px 20px;display:flex;align-items:center;gap:6px;flex-shrink:0;overflow-x:auto}
+.progress-rail::-webkit-scrollbar{display:none}
+.prog-dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#bbb;cursor:pointer;transition:all .3s;flex-shrink:0;background:#fff}
+.prog-dot.active{border-color:var(--blue);background:var(--blue);color:#fff;transform:scale(1.15)}
+.prog-dot.done{border-color:var(--green);background:var(--green-l);color:var(--green)}
+.prog-line{flex:1;height:2px;background:var(--line);min-width:8px;transition:background .3s}
+.prog-line.done{background:var(--green)}
+.slide-area{flex:1;overflow:hidden;position:relative}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:28px 24px 20px;opacity:0;transform:translateX(60px);transition:all .45s cubic-bezier(.4,0,.2,1);pointer-events:none;overflow-y:auto}
+.slide.active{opacity:1;transform:translateX(0);pointer-events:auto}
+.slide-inner{max-width:680px;width:100%}
+.s-step-label{font-size:10px;letter-spacing:2px;color:var(--accent);font-weight:700;margin-bottom:6px}
+.s-heading{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700;color:var(--blue);line-height:1.45;margin-bottom:16px}
+.s-body{font-size:14.5px;line-height:2;color:#333;margin-bottom:18px}
+.s-body .kw{color:var(--blue);font-weight:700}
+.s-body .hl{background:#fff3c0;border-radius:3px;padding:0 4px;font-weight:700}
+.s-body .g{color:var(--green);font-weight:700}
+.s-body .r{color:var(--red);font-weight:700}
+.insight{border-left:4px solid var(--accent);background:var(--gold-l);border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0;font-size:13px;line-height:1.8;color:#444}
+.insight-label{font-weight:700;color:var(--gold);font-size:11px;margin-bottom:4px;letter-spacing:1px}
+.insight.blue{border-color:var(--blue-m);background:var(--blue-l)}
+.insight.blue .insight-label{color:var(--blue)}
+.insight.green{border-color:var(--green);background:var(--green-l)}
+.insight.green .insight-label{color:var(--green)}
+.insight.red{border-color:var(--red);background:var(--red-l)}
+.insight.red .insight-label{color:var(--red)}
+.insight.purple{border-color:var(--purple);background:var(--purple-l)}
+.insight.purple .insight-label{color:var(--purple)}
+.struct-map{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:16px 20px;margin:18px 0}
+.struct-map-title{font-size:10px;font-weight:700;color:var(--blue);letter-spacing:1.5px;margin-bottom:12px}
+.struct-node{display:flex;align-items:center;gap:10px;padding:7px 12px;border-radius:8px;margin-bottom:6px;font-size:12.5px;font-weight:500;transition:all .4s;opacity:.25}
+.struct-node.lit{opacity:1}
+.struct-node.current{opacity:1;background:var(--blue-l);border:1px solid var(--blue-m)}
+.struct-node .sn-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;background:var(--line);color:#999;transition:all .4s}
+.struct-node.lit .sn-icon{background:var(--green);color:#fff}
+.struct-node.current .sn-icon{background:var(--blue);color:#fff}
+.s-tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin:12px 0}
+.s-tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:9px 12px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.s-tbl td{padding:9px 12px;border:1px solid var(--line);vertical-align:top;line-height:1.7}
+.s-tbl tr:nth-child(even) td{background:#faf9f6}
+.big-q{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:var(--blue);line-height:1.6;text-align:center;padding:32px 16px;border:2px dashed var(--line);border-radius:16px;background:#fff;margin:16px 0}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-top:1px solid var(--line);background:#fff;flex-shrink:0}
+.nav-btn{padding:10px 24px;border-radius:24px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Noto Sans KR',sans-serif;transition:all .2s}
+.nav-prev{background:var(--bg);color:var(--text2);border:1px solid var(--line)}
+.nav-prev:hover{background:#eee}
+.nav-next{background:var(--blue);color:#fff}
+.nav-next:hover{background:#0f3570}
+.nav-btn:disabled{opacity:.3;cursor:default}
+.nav-counter{font-size:11px;color:#aaa;font-weight:500}
+@media(max-width:600px){
+  .lec-title{font-size:15px}
+  .s-heading{font-size:18px}
+  .s-body{font-size:13.5px}
+  .slide{padding:20px 16px 16px}
+  .big-q{font-size:17px;padding:24px 12px}
+}
+</style>
+</head>
+<body>
+
+<div class="lec-hdr">
+  <div class="lec-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="lec-title">제3강 취소소송의 진입 : 취소소송개관</div>
+</div>
+<div class="progress-rail" id="progRail"></div>
+<div class="slide-area" id="slideArea"></div>
+<div class="nav-bar">
+  <button class="nav-btn nav-prev" id="btnPrev" onclick="go(-1)">← 이전</button>
+  <span class="nav-counter" id="navCounter">1 / 8</span>
+  <button class="nav-btn nav-next" id="btnNext" onclick="go(1)">다음 →</button>
+</div>
+
+<script>
+var slides = [
+
+/* ── 0 · 도입 ── */
+{label:'도입', html:`
+<div class="s-step-label">STEP 01 · 도입</div>
+<div class="s-heading">취소소송,<br>실제로 어떻게 시작되는가?</div>
+<div class="big-q">제1강에서 행정소송의 전체 지도를 펼쳤다.<br>제2강에서 처분의 개념을 잡았다.<br><br>이제 원고가 법원에 <span style="color:var(--accent)">소장</span>을 제출한다.<br>그 순간부터 취소소송이 시작된다.</div>
+<div class="s-body">이 강에서는 취소소송이 어떤 절차로 진행되는지, 소장에 무엇을 써야 하는지, 판결은 어떤 종류가 있는지 — <span class="kw">취소소송의 전체 흐름</span>을 한 번에 조감한다.</div>
+`},
+
+/* ── 1 · 취소소송 정의 ── */
+{label:'정의', html:`
+<div class="s-step-label">STEP 02 · 취소소송의 정의</div>
+<div class="s-heading">행정소송법 §4① —<br>취소소송이란 무엇인가</div>
+<div class="s-body">취소소송이란 행정청의 <span class="kw">위법한 처분등</span>을 <span class="kw">취소 또는 변경</span>하는 소송이다.</div>
+<div class="insight blue">
+  <div class="insight-label">처분등 = 처분 + 재결</div>
+  「처분등」이란 처분과 재결을 합친 개념이다.<br>
+  취소소송은 행정소송법의 <span class="kw">중심</span>이다. §9~§34의 26개 조문이 취소소송 전용이고, 나머지 소송(무효확인·부작위위법확인·당사자소송 등)은 §38·§44·§46으로 이 규정을 준용한다.
+</div>
+`},
+
+/* ── 2 · 소송절차 3단계 ── */
+{label:'3단계', html:`
+<div class="s-step-label">STEP 03 · 소송절차 3단계</div>
+<div class="s-heading">취소소송은 3단계로 진행된다</div>
+<div class="struct-map">
+  <div class="struct-map-title">▼ 소송절차 3단계</div>
+  <div class="struct-node lit current"><div class="sn-icon">①</div>소송요건 심사 — 소장 공란 심사 (대원피협제관행)</div>
+  <div class="struct-node lit"><div class="sn-icon" style="background:var(--green);color:#fff">②</div>본안 심리 — 원·피고 주장·반박·증거 수집 → 심증형성 → 변론종결</div>
+  <div class="struct-node lit"><div class="sn-icon" style="background:var(--gold);color:#fff">③</div>본안 판결 — 위법 여부 판단 → 판결서(주문+이유)</div>
+</div>
+<div class="insight red">
+  <div class="insight-label">관문의 의미</div>
+  ①을 통과하지 못하면 법원은 본안에 들어가지 않는다.<br>
+  이때 내려지는 판결이 <span class="kw">부적법 소각하</span>다.<br>
+  ①을 통과해야 비로소 ②·③으로 넘어간다.
+</div>
+`},
+
+/* ── 3 · 소장 공란 → 소송요건 ── */
+{label:'소장 → 소송요건', html:`
+<div class="s-step-label">STEP 04 · 소장 공란과 소송요건</div>
+<div class="s-heading">소장의 빈칸 하나하나가<br>곧 소송요건이다</div>
+<div class="s-body">소장은 추상적 문서가 아니다. 원고가 실제로 채워 넣는 <span class="kw">공란</span>이 있고, 그 각 공란이 특정 소송요건과 1:1로 대응한다.</div>
+<table class="s-tbl"><thead><tr><th style="width:35%">소장 공란</th><th>관련 소송요건</th></tr></thead><tbody>
+<tr><td><span class="kw">원고란</span></td><td>원고적격 — 처분의 취소를 구할 법률상 이익이 있는 자</td></tr>
+<tr><td><span class="kw">피고란</span></td><td>피고적격 — 처분을 행한 행정청</td></tr>
+<tr><td><span class="kw">청구취지 1. 목적어</span></td><td>대상적격 — 취소소송의 대상이 되는 처분</td></tr>
+<tr><td><span class="kw">청구취지 1. 술어</span></td><td>「취소한다」 — 의무이행·예방적 부작위소송 불허</td></tr>
+<tr><td><span class="kw">소장 접수 날짜</span></td><td>제소기간 — 처분일로부터 90일 / 1년</td></tr>
+<tr><td><span class="kw">OO법원 귀중</span></td><td>관할법원</td></tr>
+<tr><td><span class="kw">별도 검토</span></td><td>협의의 소익 · 기판력 있는 판결 부존재</td></tr>
+</tbody></table>
+<div class="insight">
+  <div class="insight-label">암기 포인트</div>
+  소장을 머릿속에 그리면 소송요건이 자동으로 정렬된다.<br>
+  추상적 나열이 아니라 <span class="hl">문서의 물리적 구조</span>로 외우는 것이 핵심이다.
+</div>
+`},
+
+/* ── 4 · 판결의 종류 ── */
+{label:'판결 종류', html:`
+<div class="s-step-label">STEP 05 · 본안 판결의 종류</div>
+<div class="s-heading">소송요건을 통과한 뒤,<br>판결은 3가지 중 하나다</div>
+<table class="s-tbl"><thead><tr><th style="width:28%">판결</th><th style="width:20%">결과</th><th>의미</th></tr></thead><tbody>
+<tr><td><span class="kw">취소인용판결</span></td><td><span class="g">원고 승소</span></td><td>처분이 위법하므로 취소한다</td></tr>
+<tr><td><span class="kw">단순기각판결</span></td><td><span class="r">원고 패소</span></td><td>처분의 위법성이 입증되지 않았다</td></tr>
+<tr><td><span class="kw">사정판결</span></td><td><span class="r">원고 패소</span></td><td>위법은 인정되나, 공공복리상 취소가 현저히 부당하다</td></tr>
+</tbody></table>
+<div class="insight">
+  <div class="insight-label">기각판결의 두 갈래</div>
+  기각판결에는 <span class="kw">단순기각</span>과 <span class="kw">사정판결</span>이 있다.<br>
+  둘 다 원고가 패소하지만, 사정판결은 처분의 <span class="hl">위법성은 인정</span>한다는 점에서 결정적으로 다르다.
+</div>
+`},
+
+/* ── 5 · 사정판결 ── */
+{label:'사정판결', html:`
+<div class="s-step-label">STEP 06 · 사정판결의 특수성</div>
+<div class="s-heading">위법한데 기각한다 —<br>사정판결은 무엇이 다른가?</div>
+<div class="s-body">사정판결(§28)은 처분의 <span class="kw">위법성이 입증</span>되었음에도 불구하고, <span class="kw">공공복리</span>를 위하여 취소가 현저히 부당한 경우에 원고의 청구를 기각하는 판결이다.</div>
+<div class="insight blue">
+  <div class="insight-label">사정판결의 핵심 특징</div>
+  ① 판결 <span class="kw">주문</span>에 처분이 <span class="hl">위법</span>함을 반드시 명시한다<br>
+  ② 원고에게 손해배상 등 구제 방안을 강구한다<br>
+  ③ 단순기각과 구별: 단순기각은 위법성 자체가 미입증
+</div>
+<div class="insight red">
+  <div class="insight-label">시험에서의 출제 포인트</div>
+  「사정판결의 가부를 검토하시오」 → 위법 입증 여부 + 공공복리상 취소의 현저한 부당성 검토<br>
+  주문에 위법 명시 필수라는 점이 반드시 현출되어야 한다.
+</div>
+`},
+
+/* ── 6 · 학습 변화 3가지 ── */
+{label:'학습 변화', html:`
+<div class="s-step-label">STEP 07 · 학습의 3가지 변화</div>
+<div class="s-heading">이 강부터 학습 방식이 바뀐다</div>
+<div class="s-body">제1~2강까지는 큰 그림과 기본 개념이었다. 제3강부터는 실제 소송 절차에 들어가면서 학습의 성격이 달라진다.</div>
+<div class="insight blue">
+  <div class="insight-label">첫째 — 유일한 판단기준은 판례</div>
+  행정소송법의 조문만으로는 소송요건을 판단할 수 없다. 처분성, 원고적격, 제소기간 등 모든 요건의 실질적 기준은 <span class="kw">판례</span>가 정한다.
+</div>
+<div class="insight green">
+  <div class="insight-label">둘째 — 행정소송법 구성방식의 파악</div>
+  취소소송(§9~§34) 중심으로 세워진 법 구조를 이해해야 한다. 기타 소송은 §38·§44·§46으로 <span class="kw">준용</span>하는 구조다.
+</div>
+<div class="insight">
+  <div class="insight-label">셋째 — 처분문서와 소장 중심</div>
+  이후 모든 논의는 <span class="hl">처분문서</span>(행정청이 발급)와 <span class="hl">소장</span>(원고가 작성)이라는 두 문서를 중심으로 전개된다.
+</div>
+`},
+
+/* ── 7 · 전체 정리 ── */
+{label:'전체 정리', html:`
+<div class="s-step-label">STEP 08 · 전체 정리</div>
+<div class="s-heading">취소소송의 뼈대가 세워졌다</div>
+<div class="struct-map">
+  <div class="struct-map-title">▼ 제3강 핵심 구조 — 완성</div>
+  <div class="struct-node lit" style="opacity:1"><div class="sn-icon" style="background:var(--blue);color:#fff">1</div>취소소송 = 위법한 처분등의 취소·변경 소송 (§4①)</div>
+  <div class="struct-node lit" style="opacity:1"><div class="sn-icon" style="background:var(--blue);color:#fff">2</div>절차 3단계: 소송요건 심사 → 본안심리 → 본안판결</div>
+  <div class="struct-node lit" style="opacity:1"><div class="sn-icon" style="background:var(--green);color:#fff">3</div>소장 공란 = 소송요건과 1:1 대응</div>
+  <div class="struct-node lit" style="opacity:1"><div class="sn-icon" style="background:var(--gold);color:#fff">4</div>판결: 인용 / 단순기각 / 사정판결(위법 인정+기각)</div>
+  <div class="struct-node current" style="opacity:1"><div class="sn-icon" style="background:var(--accent);color:#fff">★</div>다음 — 제4강~제12강: 소송요건 7가지를 하나씩 전개</div>
+</div>
+<div class="insight">
+  <div class="insight-label">기억할 것</div>
+  소장을 머릿속에 그려라. 그 공란이 곧 소송요건이다.<br>
+  소송요건을 통과하면 본안, 본안에서 위법이 인정되면 인용판결.<br>
+  위법인데도 취소가 부당하면 사정판결 — 주문에 위법 명시.<br><br>
+  이 뼈대 위에 <span class="hl">제4강(처분개념1)</span>부터 살을 붙여간다.
+</div>
+`}
+
+];
+
+var cur=0,total=slides.length;
+function buildProgress(){var r=document.getElementById('progRail');r.innerHTML='';for(var i=0;i<total;i++){var d=document.createElement('div');d.className='prog-dot';d.textContent=i+1;d.dataset.idx=i;d.onclick=function(){goTo(+this.dataset.idx)};r.appendChild(d);if(i<total-1){var l=document.createElement('div');l.className='prog-line';l.dataset.after=i;r.appendChild(l);}}}
+function buildSlides(){var a=document.getElementById('slideArea');a.innerHTML='';slides.forEach(function(s,i){var d=document.createElement('div');d.className='slide'+(i===0?' active':'');d.id='slide-'+i;d.innerHTML='<div class="slide-inner">'+s.html+'</div>';a.appendChild(d);});}
+function updateUI(){document.querySelectorAll('.prog-dot').forEach(function(d,i){d.className='prog-dot'+(i===cur?' active':'')+(i<cur?' done':'');});document.querySelectorAll('.prog-line').forEach(function(l){l.className='prog-line'+(+l.dataset.after<cur?' done':'');});document.getElementById('navCounter').textContent=(cur+1)+' / '+total;document.getElementById('btnPrev').disabled=cur===0;document.getElementById('btnNext').textContent=cur===total-1?'완료 ✓':'다음 →';var ad=document.querySelector('.prog-dot.active');if(ad)ad.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+function goTo(idx){if(idx<0||idx>=total||idx===cur)return;var dir=idx>cur?1:-1;document.querySelectorAll('.slide').forEach(function(s){s.classList.remove('active');s.style.transform='';s.style.opacity='';});var o=document.getElementById('slide-'+cur);o.style.transition='none';o.style.opacity='1';o.style.transform='translateX(0)';o.offsetHeight;o.style.transition='';o.style.opacity='0';o.style.transform='translateX('+(dir>0?'-60':'60')+'px)';cur=idx;var n=document.getElementById('slide-'+cur);n.style.transition='none';n.style.opacity='0';n.style.transform='translateX('+(dir>0?'60':'-60')+'px)';n.offsetHeight;n.style.transition='';n.classList.add('active');n.style.transform='translateX(0)';n.style.opacity='1';n.scrollTop=0;updateUI();}
+function go(dir){if(cur===total-1&&dir===1)return;goTo(cur+dir);}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown')go(1);if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1);});
+var tx=0,ty=0;document.getElementById('slideArea').addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});document.getElementById('slideArea').addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){if(dx<0)go(1);else go(-1);}},{passive:true});
+buildProgress();buildSlides();updateUI();
+</script>
+</body>
+</html>

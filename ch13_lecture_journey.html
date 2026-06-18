@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제13강 본안의 개관 — 강의 여정</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--text2:#555;--line:#e0dcd4;
+  --blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;
+  --green:#1a6644;--green-l:#e6f2ec;
+  --red:#a02020;--red-l:#faeaea;
+  --gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;
+  --purple:#5a2d8c;--purple-l:#ede6f5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;display:flex;flex-direction:column}
+
+/* ── HEADER ── */
+.lec-hdr{background:var(--blue);color:#fff;padding:14px 24px 12px;text-align:center;border-bottom:3px solid var(--accent);flex-shrink:0}
+.lec-eyebrow{font-size:9px;letter-spacing:3px;opacity:.5;margin-bottom:3px;text-transform:uppercase}
+.lec-title{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700}
+
+/* ── PROGRESS BAR ── */
+.progress-rail{background:#fff;border-bottom:1px solid var(--line);padding:10px 20px;display:flex;align-items:center;gap:6px;flex-shrink:0;overflow-x:auto}
+.progress-rail::-webkit-scrollbar{display:none}
+.prog-dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#bbb;cursor:pointer;transition:all .3s;flex-shrink:0;background:#fff}
+.prog-dot.active{border-color:var(--blue);background:var(--blue);color:#fff;transform:scale(1.15)}
+.prog-dot.done{border-color:var(--green);background:var(--green-l);color:var(--green)}
+.prog-line{flex:1;height:2px;background:var(--line);min-width:8px;transition:background .3s}
+.prog-line.done{background:var(--green)}
+
+/* ── SLIDE AREA ── */
+.slide-area{flex:1;overflow:hidden;position:relative}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:28px 24px 20px;opacity:0;transform:translateX(60px);transition:all .45s cubic-bezier(.4,0,.2,1);pointer-events:none;overflow-y:auto}
+.slide.active{opacity:1;transform:translateX(0);pointer-events:auto}
+.slide.exit-left{opacity:0;transform:translateX(-60px)}
+
+.slide-inner{max-width:680px;width:100%}
+
+/* ── SLIDE TYPOGRAPHY ── */
+.s-step-label{font-size:10px;letter-spacing:2px;color:var(--accent);font-weight:700;margin-bottom:6px}
+.s-heading{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700;color:var(--blue);line-height:1.45;margin-bottom:16px}
+.s-body{font-size:14.5px;line-height:2;color:#333;margin-bottom:18px}
+.s-body .kw{color:var(--blue);font-weight:700}
+.s-body .hl{background:#fff3c0;border-radius:3px;padding:0 4px;font-weight:700}
+.s-body .g{color:var(--green);font-weight:700}
+.s-body .r{color:var(--red);font-weight:700}
+
+/* ── INSIGHT BOX ── */
+.insight{border-left:4px solid var(--accent);background:var(--gold-l);border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0;font-size:13px;line-height:1.8;color:#444}
+.insight-label{font-weight:700;color:var(--gold);font-size:11px;margin-bottom:4px;letter-spacing:1px}
+.insight.blue{border-color:var(--blue-m);background:var(--blue-l)}
+.insight.blue .insight-label{color:var(--blue)}
+.insight.green{border-color:var(--green);background:var(--green-l)}
+.insight.green .insight-label{color:var(--green)}
+.insight.red{border-color:var(--red);background:var(--red-l)}
+.insight.red .insight-label{color:var(--red)}
+
+/* ── STRUCTURE MINI-MAP (builds up) ── */
+.struct-map{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:16px 20px;margin:18px 0}
+.struct-map-title{font-size:10px;font-weight:700;color:var(--blue);letter-spacing:1.5px;margin-bottom:12px}
+.struct-node{display:flex;align-items:center;gap:10px;padding:7px 12px;border-radius:8px;margin-bottom:6px;font-size:12.5px;font-weight:500;transition:all .4s;opacity:.25}
+.struct-node.lit{opacity:1}
+.struct-node.current{opacity:1;background:var(--blue-l);border:1px solid var(--blue-m)}
+.struct-node .sn-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;background:var(--line);color:#999;transition:all .4s}
+.struct-node.lit .sn-icon{background:var(--green);color:#fff}
+.struct-node.current .sn-icon{background:var(--blue);color:#fff}
+.struct-sub{margin-left:44px;font-size:11.5px;color:var(--text2);line-height:1.6;padding:4px 0 8px;opacity:0;max-height:0;overflow:hidden;transition:all .4s}
+.struct-sub.show{opacity:1;max-height:200px}
+
+/* ── TABLE in slides ── */
+.s-tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin:12px 0}
+.s-tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:9px 12px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.s-tbl td{padding:9px 12px;border:1px solid var(--line);vertical-align:top;line-height:1.7}
+.s-tbl tr:nth-child(even) td{background:#faf9f6}
+
+/* ── 판례 ── */
+.case-box{background:#fafafa;border:1.5px solid #bbb;border-radius:8px;padding:14px 16px;font-size:12.5px;line-height:1.8;margin:14px 0;font-family:'Noto Serif KR',serif;color:#333}
+
+/* ── BIG QUESTION ── */
+.big-q{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:var(--blue);line-height:1.6;text-align:center;padding:32px 16px;border:2px dashed var(--line);border-radius:16px;background:#fff;margin:16px 0}
+
+/* ── NAVIGATION ── */
+.nav-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-top:1px solid var(--line);background:#fff;flex-shrink:0}
+.nav-btn{padding:10px 24px;border-radius:24px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Noto Sans KR',sans-serif;transition:all .2s}
+.nav-prev{background:var(--bg);color:var(--text2);border:1px solid var(--line)}
+.nav-prev:hover{background:#eee}
+.nav-next{background:var(--blue);color:#fff}
+.nav-next:hover{background:#0f3570}
+.nav-btn:disabled{opacity:.3;cursor:default}
+.nav-counter{font-size:11px;color:#aaa;font-weight:500}
+
+/* ── FLOW DIAGRAM (SVG) ── */
+.flow-svg-wrap{margin:16px 0;text-align:center}
+.flow-svg-wrap svg{max-width:100%}
+
+/* ── MOBILE ── */
+@media(max-width:600px){
+  .lec-title{font-size:15px}
+  .s-heading{font-size:18px}
+  .s-body{font-size:13.5px}
+  .slide{padding:20px 16px 16px}
+  .big-q{font-size:17px;padding:24px 12px}
+}
+</style>
+</head>
+<body>
+
+<div class="lec-hdr">
+  <div class="lec-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="lec-title">제13강 본안의 개관</div>
+</div>
+
+<div class="progress-rail" id="progRail"></div>
+
+<div class="slide-area" id="slideArea"></div>
+
+<div class="nav-bar">
+  <button class="nav-btn nav-prev" id="btnPrev" onclick="go(-1)">← 이전</button>
+  <span class="nav-counter" id="navCounter">1 / 10</span>
+  <button class="nav-btn nav-next" id="btnNext" onclick="go(1)">다음 →</button>
+</div>
+
+<script>
+var slides = [
+
+/* ── 0 · 도입 ── */
+{label:'도입', html:`
+<div class="s-step-label">STEP 01 · 도입</div>
+<div class="s-heading">소송요건을 통과했다.<br>이제 무엇을 해야 하는가?</div>
+<div class="big-q">취소소송의 원고가 소송요건을 모두 갖추었다.<br>법원은 이제 <strong>처분이 정말 위법한지</strong>를 판단해야 한다.<br>그 단계가 바로 — <span style="color:var(--accent)">본안</span>이다.</div>
+<div class="s-body">앞서 배운 소송요건(대상적격·원고적격·제소기간 등)은 <span class="kw">"문 앞의 관문"</span>이었다.<br>그 관문을 통과한 뒤 비로소 열리는 방이 <span class="kw">본안</span>이다.<br>본안에서는 오직 하나의 질문만 다룬다 — <span class="hl">이 처분은 위법한가?</span></div>
+`},
+
+/* ── 1 · 본안 = 위법성 판단 ── */
+{label:'본안의 의의', html:`
+<div class="s-step-label">STEP 02 · 본안의 의의</div>
+<div class="s-heading">본안 = 위법성을 판단하는 단계</div>
+<div class="s-body">본안(본안심판)은 <span class="kw">판결을 내리기 위하여 필요한 모든 소송행위를 하는 절차</span>이자 <span class="kw">위법성을 판단하는 단계</span>이다.</div>
+<div class="s-body">원고의 주장을 받아들이면 → <span class="kw">청구인용</span><br>원고의 주장을 배척하면 → <span class="kw">청구기각</span></div>
+<div class="insight blue">
+  <div class="insight-label">핵심 개념 — 심리 = 소송자료의 수집</div>
+  판결 전, 원고의 주장에 대한 바른 판단을 위해 <span class="kw">소송자료</span>를 수집하는 과정을 <span class="kw">심리</span>라 한다.<br>
+  소송자료는 두 종류다.<br>
+  ① <span class="kw">사실자료</span> — 어떤 사실이 현실로 있었음을 진술<br>
+  ② <span class="kw">증거자료</span> — 그 사실이 실제로 존재하였음을 추정케 함
+</div>
+<div class="insight">
+  <div class="insight-label">심리의 동태 — 논박의 구조</div>
+  원고의 <span class="kw">주요사실</span>(위법사유 요건에 해당하는 소송사실) ↔ 피고의 <span class="kw">탄핵자료</span>(원고 자료의 존재·주장력을 떨어뜨리는 자료)가 논박하며 쌓인다.<br>
+  판사는 미흡한 자료를 <span class="hl">쟁점 사항의 정리</span>로 미리 추출하고, 논박은 쟁점 사항 중심으로 진행된다.
+</div>
+`},
+
+/* ── 2 · §8② ── */
+{label:'§8②', html:`
+<div class="s-step-label">STEP 03 · 본안 절차의 기초</div>
+<div class="s-heading">행정소송법 §8② — 민사소송법에 숟가락을 얹다</div>
+<div class="s-body">본안 절차를 어떻게 규정할 것인가는 주로 <span class="kw">민사소송법 학자</span>들의 연구 영역이다.<br>행정소송법 §8②은 그 연구 성과에 <span class="hl">"숟가락을 얹어"</span> 본안 심리의 기초를 민사소송법 규정의 준용으로 처리한다.</div>
+<div class="s-body">그 기초가 되는 원칙이 바로 <span class="kw">변론주의</span>다.</div>
+<div class="insight blue">
+  <div class="insight-label">§8②을 기초로 본안에서 학습할 4가지 주제</div>
+  ① 취소소송 절차 규정 방식의 확인<br>
+  ② 취소소송 과정의 동태성(피고변경·소변경·병합 등)<br>
+  ③ 처분의 위법성 판단 기준(법원·기속/재량·하자의 4영역)<br>
+  ④ 위법성 확인 후 취소 vs 무효 선언의 기준(중대·명백설)
+</div>
+`},
+
+/* ── 3 · 판결 확보 제도 ── */
+{label:'판결확보제도', html:`
+<div class="s-step-label">STEP 04 · 정당한 판결의 확보</div>
+<div class="s-heading">본안판결의 정당성을 어떻게 확보하는가?</div>
+<table class="s-tbl"><thead><tr><th style="width:28%">제도</th><th>역할</th></tr></thead><tbody>
+<tr><td><span class="kw">집행정지제도</span></td><td>인용판결이 나오기 전에 처분의 효과가 소멸되는 사태를 방지하는 <span class="hl">예외적</span> 제도</td></tr>
+<tr><td><span class="kw">직권심리주의</span></td><td>변론주의를 기초로 하되, 법원이 직권으로 심리에 관여하여 판결의 정당성 확보</td></tr>
+<tr><td><span class="kw">행정심판기록<br>제출명령</span></td><td>본안판결의 정당성 확보를 위한 명문 제도</td></tr>
+</tbody></table>
+<div class="insight red">
+  <div class="insight-label">시각 차이가 발생하는 3가지 쟁점</div>
+  ① <span class="kw">주장책임·입증책임</span> — 취소소송과 민사소송의 성질 차이로 시각차 존재<br>
+  ② <span class="kw">위법성 판단시(時)</span> — 소송 중 심사 기준이 변동되면 어느 시점 기준?<br>
+  ③ <span class="kw">처분사유의 추가·변경</span> — 민사소송에 없는 취소소송 특유 제도 (명문 규정 없음)
+</div>
+`},
+
+/* ── 4 · 동태성 ── */
+{label:'동태성', html:`
+<div class="s-step-label">STEP 05 · 취소소송의 동태성</div>
+<div class="s-heading">소송은 살아 움직인다 — 7가지 동태적 변화</div>
+<div class="s-body">취소소송은 정지된 절차가 아니다. 진행 중에 <span class="kw">피고가 바뀌고, 소가 변경되고, 제3자가 참가</span>한다. 이를 해소하는 제도들이 이미 전(前) 단원에서 학습되었다.</div>
+<table class="s-tbl"><thead><tr><th style="width:38%">동태적 변화</th><th>해소 방식</th></tr></thead><tbody>
+<tr><td>피고의 변동</td><td>피고경정</td></tr>
+<tr><td>관련청구소송의 이송</td><td>관련청구소송의 이송·병합</td></tr>
+<tr><td>제3자·다른 행정청의 참가</td><td>소송참가제도</td></tr>
+<tr><td>청구취지의 변화</td><td>소변경제도</td></tr>
+<tr><td>전(前) 소송 자료의 활용</td><td>병합제도</td></tr>
+<tr><td>원고의 처분자료 획득</td><td>정보공개법</td></tr>
+<tr><td>피고의 처분자료 수집</td><td>행정조사</td></tr>
+</tbody></table>
+`},
+
+/* ── 5 · 위법성 판단 개관 ── */
+{label:'위법성판단 개관', html:`
+<div class="s-step-label">STEP 06 · 위법성 판단의 구조</div>
+<div class="s-heading">처분의 위법성을 판단하는 3가지 작업</div>
+<div class="s-body">이제 본안의 핵심이다. 판사가 처분의 위법성을 판단하기 위해 거치는 <span class="kw">3가지 순차적 작업</span>이 있다. 이 3가지가 본안 개관의 골격이다.</div>
+<div class="struct-map">
+  <div class="struct-map-title">▼ 위법성 판단 — 3가지 작업 로드맵</div>
+  <div class="struct-node lit current"><div class="sn-icon">1</div>법원(法源)의 확정 — 무엇을 기준으로 판단할 것인가?</div>
+  <div class="struct-node lit"><div class="sn-icon" style="background:var(--green);color:#fff">2</div>기속행위·재량행위의 분류 — 법원을 어떻게 적용할 것인가?</div>
+  <div class="struct-node lit"><div class="sn-icon" style="background:var(--gold);color:#fff">3</div>하자의 4영역 — 어느 영역에서 위법한가?</div>
+</div>
+<div class="insight">
+  <div class="insight-label">이후의 흐름</div>
+  3가지 작업으로 위법성을 판명한 뒤 → <span class="kw">취소</span>할 것인가 <span class="kw">무효</span>를 선언할 것인가?<br>
+  그 기준이 <span class="hl">중대·명백설</span>이다.
+</div>
+`},
+
+/* ── 6 · 작업① 법원 ── */
+{label:'작업① 법원', html:`
+<div class="s-step-label">STEP 07 · 작업① 법원(法源)의 확정</div>
+<div class="s-heading">처분이 "법에 위반"했다면,<br>그 "법"은 무엇인가?</div>
+<div class="s-body">처분의 위법성을 판단하려면 먼저 <span class="kw">기준</span>이 있어야 한다.<br>그 기준 = <span class="kw">법원(法源)</span></div>
+<div class="s-body">여기서 관련되는 행정소송법적 논점이 <span class="hl">명령·규칙의 위헌·위법심사</span>다.</div>
+<div class="insight blue">
+  <div class="insight-label">명령·규칙 위헌·위법심사의 메커니즘</div>
+  처분 자체는 외형상 법령에 근거한 적법한 처분이었더라도 →<br>
+  그 <span class="kw">근거 법령</span>이 <span class="r">헌법·법률에 위반</span>되면 →<br>
+  그 법령의 <span class="kw">법원으로서의 성격을 박탈</span> →<br>
+  처분의 근거가 사라져 → <span class="r">처분이 위법</span>하게 된다.
+</div>
+`},
+
+/* ── 7 · 작업② 기속/재량 ── */
+{label:'작업② 기속·재량', html:`
+<div class="s-step-label">STEP 08 · 작업② 기속행위·재량행위의 분류</div>
+<div class="s-heading">법원이 확정되면,<br>그 법원을 어떻게 적용하는가?</div>
+<div class="s-body">법원(法源)이 밝혀지면 그 법원을 적용하기 위해 처분을 <span class="kw">기속행위</span> 또는 <span class="kw">재량행위</span>로 분류해야 한다. 왜냐하면 둘의 위법성 판단기준이 다르기 때문이다.</div>
+<div class="case-box">
+어떤 처분이 기속행위인지 재량행위인지는 당해 처분의 <span class="kw">근거가 된 법규의 체제·형식·그 문언</span>, 당해 처분이 행해진 <span class="kw">행정 분야의 주된 목적과 특성</span>, 그 처분의 <span class="kw">개별적 성질과 유형</span> 등을 모두 고려하여 판단하여야 한다.
+</div>
+<div class="insight green">
+  <div class="insight-label">적용 순서</div>
+  ⓐ 위 분류기준으로 6개 법률행위적 행정행위 + 4개 준법률행위적 행정행위가 기속/재량 중 어디에 속하는지 결정<br>
+  ⓑ 기속/재량별 위법성 판단기준 적용
+</div>
+`},
+
+/* ── 8 · 작업③ 하자 4영역 ── */
+{label:'작업③ 하자4영역', html:`
+<div class="s-step-label">STEP 09 · 작업③ 하자의 4영역</div>
+<div class="s-heading">하자가 존재하는 4가지 영역과<br>각 영역의 위법성 판단기준</div>
+<table class="s-tbl"><thead><tr><th style="width:18%">하자 영역</th><th>위법성 판단기준(법원)</th></tr></thead><tbody>
+<tr><td><span class="kw">주체</span></td><td>행정조직법 + 처분의 근거 법률상 권한 규정</td></tr>
+<tr><td><span class="kw">절차</span></td><td>행정절차법 + 처분의 근거 법률상 절차 규정</td></tr>
+<tr><td><span class="kw">형식</span></td><td>행정절차법 + 처분의 근거 법률상 형식 규정</td></tr>
+<tr><td><span class="kw">내용</span><br><span style="font-size:11px;color:#888">(기속행위)</span></td><td>근거 법률</td></tr>
+<tr><td><span class="kw">내용</span><br><span style="font-size:11px;color:#888">(재량행위)</span></td><td>근거 법률 <span class="hl">+ 행정기본법 + 행정법의 일반원칙</span></td></tr>
+</tbody></table>
+<div class="insight">
+  <div class="insight-label">핵심 포인트</div>
+  <span class="kw">내용 영역</span>만 기속/재량에 따라 판단기준이 달라진다.<br>
+  나머지 3영역(주체·절차·형식)은 기속/재량 구분 없이 동일 기준이 적용된다.
+</div>
+`},
+
+/* ── 9 · 취소 vs 무효 ── */
+{label:'취소 vs 무효', html:`
+<div class="s-step-label">STEP 10 · 최종 — 취소인가 무효인가</div>
+<div class="s-heading">위법하다. 그런데 —<br>취소해야 하는가, 무효를 선언해야 하는가?</div>
+<div class="s-body">위법성 판단이 끝나 처분에 하자가 존재한다고 판명되더라도, 행정소송법 §4(항고소송의 종류)는 <span class="kw">취소와 무효를 엄격히 구별</span>한다.</div>
+<div class="s-body">어떤 기준으로 취소할지 또는 당연무효를 선언할지는 학설·판례로 해결하며, 그 기준이 <span class="hl">중대·명백설</span>이다.</div>
+<div class="struct-map">
+  <div class="struct-map-title">▼ 본안 전체 흐름 — 완성</div>
+  <div class="struct-node lit" style="opacity:1"><div class="sn-icon" style="background:var(--blue);color:#fff">1</div>본안의 의의 — 위법성 판단 단계, 심리 = 소송자료 수집</div>
+  <div class="struct-node lit" style="opacity:1"><div class="sn-icon" style="background:var(--blue);color:#fff">2</div>§8② — 민사소송법 준용, 변론주의</div>
+  <div class="struct-node lit" style="opacity:1"><div class="sn-icon" style="background:var(--blue);color:#fff">3</div>판결확보제도 — 집행정지·직권심리·기록제출명령</div>
+  <div class="struct-node lit" style="opacity:1"><div class="sn-icon" style="background:var(--blue);color:#fff">4</div>동태성 — 7가지 동태적 변화</div>
+  <div class="struct-node lit" style="opacity:1"><div class="sn-icon" style="background:var(--green);color:#fff">5</div>작업① 법원(法源) 확정 → 명령·규칙 위헌·위법심사</div>
+  <div class="struct-node lit" style="opacity:1"><div class="sn-icon" style="background:var(--green);color:#fff">6</div>작업② 기속행위·재량행위 분류 → 분류기준(판례)</div>
+  <div class="struct-node lit" style="opacity:1"><div class="sn-icon" style="background:var(--green);color:#fff">7</div>작업③ 하자의 4영역 → 영역별 판단기준</div>
+  <div class="struct-node current" style="opacity:1"><div class="sn-icon" style="background:var(--accent);color:#fff">★</div>최종 — 취소 vs 무효 = 중대·명백설</div>
+</div>
+<div class="insight">
+  <div class="insight-label">다음 강(제14강~)에서 전개될 내용</div>
+  이 10단계의 로드맵이 이후 강의의 뼈대가 된다.<br>
+  각 작업의 구체적 내용을 하나씩 깊이 들어간다.
+</div>
+`}
+
+];
+
+var cur = 0;
+var total = slides.length;
+
+function buildProgress(){
+  var rail = document.getElementById('progRail');
+  rail.innerHTML = '';
+  for(var i=0;i<total;i++){
+    var dot = document.createElement('div');
+    dot.className = 'prog-dot';
+    dot.textContent = i+1;
+    dot.dataset.idx = i;
+    dot.onclick = function(){ goTo(+this.dataset.idx); };
+    rail.appendChild(dot);
+    if(i < total-1){
+      var line = document.createElement('div');
+      line.className = 'prog-line';
+      line.dataset.after = i;
+      rail.appendChild(line);
+    }
+  }
+}
+
+function buildSlides(){
+  var area = document.getElementById('slideArea');
+  area.innerHTML = '';
+  slides.forEach(function(s,i){
+    var div = document.createElement('div');
+    div.className = 'slide' + (i===0?' active':'');
+    div.id = 'slide-'+i;
+    div.innerHTML = '<div class="slide-inner">' + s.html + '</div>';
+    area.appendChild(div);
+  });
+}
+
+function updateUI(){
+  document.querySelectorAll('.prog-dot').forEach(function(d,i){
+    d.className = 'prog-dot' + (i===cur?' active':'') + (i<cur?' done':'');
+  });
+  document.querySelectorAll('.prog-line').forEach(function(l){
+    var after = +l.dataset.after;
+    l.className = 'prog-line' + (after<cur?' done':'');
+  });
+  document.getElementById('navCounter').textContent = (cur+1) + ' / ' + total;
+  document.getElementById('btnPrev').disabled = cur===0;
+  document.getElementById('btnNext').textContent = cur===total-1 ? '완료 ✓' : '다음 →';
+
+  /* scroll active dot into view */
+  var activeDot = document.querySelector('.prog-dot.active');
+  if(activeDot) activeDot.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+
+function goTo(idx){
+  if(idx<0||idx>=total||idx===cur) return;
+  var dir = idx > cur ? 1 : -1;
+  /* reset ALL slides first */
+  document.querySelectorAll('.slide').forEach(function(s){
+    s.classList.remove('active','exit-left');
+    s.style.transform='';s.style.opacity='';
+  });
+  /* hide old slide in exit direction */
+  var oldSlide = document.getElementById('slide-'+cur);
+  oldSlide.style.transition='none';
+  oldSlide.style.opacity='1';oldSlide.style.transform='translateX(0)';
+  oldSlide.offsetHeight; /* force reflow */
+  oldSlide.style.transition='';
+  oldSlide.style.opacity='0';
+  oldSlide.style.transform='translateX('+(dir>0?'-60':'60')+'px)';
+
+  cur = idx;
+  /* bring new slide from opposite side */
+  var newSlide = document.getElementById('slide-'+cur);
+  newSlide.style.transition='none';
+  newSlide.style.opacity='0';
+  newSlide.style.transform='translateX('+(dir>0?'60':'-60')+'px)';
+  newSlide.offsetHeight; /* force reflow */
+  newSlide.style.transition='';
+  newSlide.classList.add('active');
+  newSlide.style.transform='translateX(0)';
+  newSlide.style.opacity='1';
+  newSlide.scrollTop=0;
+  updateUI();
+}
+
+function go(dir){
+  if(cur===total-1 && dir===1) return;
+  goTo(cur+dir);
+}
+
+/* keyboard nav */
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'||e.key==='ArrowDown') go(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp') go(-1);
+});
+
+/* swipe support */
+var tx=0,ty=0;
+document.getElementById('slideArea').addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+document.getElementById('slideArea').addEventListener('touchend',function(e){
+  var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){
+    if(dx<0) go(1); else go(-1);
+  }
+},{passive:true});
+
+buildProgress();
+buildSlides();
+updateUI();
+</script>
+</body>
+</html>
