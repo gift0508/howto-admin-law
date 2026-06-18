@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제40강 행정의 실효성확보수단 들어가기 | How to 행정법 강의</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--text:#1a1a1a;--line:#e0dcd4;--blue:#1a4b8c;--blue-l:#e8eef8;--blue-m:#3a6db5;--green:#1a6644;--green-l:#e6f2ec;--red:#a02020;--red-l:#faeaea;--gold:#7a5c00;--gold-l:#fdf5dc;--accent:#c8a84b;--purple:#5a2d8c;--purple-l:#ede6f5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+.hdr{background:var(--blue);color:#fff;padding:20px 24px 16px;text-align:center;border-bottom:3px solid var(--accent)}
+.hdr-eyebrow{font-size:10px;letter-spacing:3px;opacity:.6;margin-bottom:5px}
+.hdr-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;margin-bottom:3px}
+.hdr-sub{font-size:11px;opacity:.7}
+.tabs{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;text-align:center}
+.tabs::-webkit-scrollbar{display:none}
+.tab-inner{display:inline-flex}
+.tab{padding:12px 17px;font-size:12px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}.tab:hover{color:var(--blue)}
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff}
+.ch-blue{background:var(--blue)}.ch-green{background:var(--green)}.ch-gold{background:var(--gold)}.ch-red{background:var(--red)}.ch-purple{background:var(--purple)}
+.card-body{padding:16px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:var(--blue-l);color:var(--blue);font-weight:700;padding:8px 10px;text-align:left;border:1px solid #d0dbee;font-size:11.5px}
+.tbl td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;line-height:1.65}
+.tbl tr:nth-child(even) td{background:#faf9f6}
+.kw{color:var(--blue);font-weight:700}.g{color:var(--green);font-weight:700}.r{color:var(--red);font-weight:700}
+.hl{background:#fff3c0;border-radius:3px;padding:0 3px;font-weight:700}
+.alert{border-left:4px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.65}
+.al-blue{background:var(--blue-l);border-color:var(--blue-m)}.al-gold{background:var(--gold-l);border-color:var(--accent)}
+.al-green{background:var(--green-l);border-color:var(--green)}.al-red{background:var(--red-l);border-color:var(--red)}
+.alert-label{font-weight:700;font-size:11.5px;margin-bottom:3px}
+.al-blue .alert-label{color:var(--blue)}.al-gold .alert-label{color:var(--gold)}.al-green .alert-label{color:var(--green)}.al-red .alert-label{color:var(--red)}
+.body-text{font-size:12.5px;line-height:1.8;color:#333}
+.판례박스{background:#fafafa;border:1.5px solid #bbb;border-radius:6px;padding:12px 15px;font-size:12px;line-height:1.75;margin:10px 0;font-family:'Noto Serif KR',serif}
+.판례박스 .출처{font-size:10.5px;color:#888;margin-top:6px;font-family:'Noto Sans KR',sans-serif}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc-wrap{perspective:1000px;height:210px;cursor:pointer}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-wrap.flip .fc-inner{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.fc-f{background:var(--card);border:2px solid var(--line)}
+.fc-b{background:var(--blue);color:#fff;transform:rotateY(180deg);align-items:flex-start;text-align:left;overflow:hidden}
+.fc-b.gn{background:var(--green)}.fc-b.gd{background:var(--gold)}.fc-b.rd{background:var(--red)}.fc-b.pp{background:var(--purple)}
+.fc-f .fc-ico{font-size:26px;margin-bottom:8px}.fc-f .fc-term{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:5px;font-family:'Noto Serif KR',serif}.fc-f .fc-hint{font-size:10px;color:#aaa}
+.fc-b .fc-bt{font-size:11px;font-weight:700;margin-bottom:6px;opacity:.8}.fc-b ul{list-style:none;width:100%}
+.fc-b ul li{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.15);line-height:1.5;display:flex;gap:5px}
+.fc-b ul li:last-child{border-bottom:none}.fc-b ul li::before{content:'▸';opacity:.7;flex-shrink:0;font-size:9px;margin-top:2px}
+.score-bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.score-label{font-weight:700;color:var(--blue);font-size:12.5px}.score-num{font-size:20px;font-weight:900}
+.reset-btn{margin-left:auto;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{background:#0f3570}
+.qi{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:11px;overflow:hidden;transition:border-color .2s}
+.qi.correct{border-color:var(--green)}.qi.wrong{border-color:var(--red)}
+.qi-q{padding:13px 15px;font-size:12.5px;line-height:1.65;font-weight:500}
+.qi-qn{font-size:10px;color:var(--blue-m);font-weight:700;margin-bottom:4px}
+.qi-btns{display:flex;gap:8px;padding:0 15px 11px}
+.ox{flex:1;padding:8px;border-radius:8px;border:2px solid var(--line);background:#fff;font-size:16px;cursor:pointer;font-weight:700;transition:all .15s}
+.ox:hover:not(:disabled){background:#eef4ff;border-color:var(--blue-m)}.ox:disabled{cursor:default}
+.ox.sc{background:#e6f2ec;border-color:var(--green)}.ox.sw{background:#faeaea;border-color:var(--red)}
+.qi-exp{display:none;font-size:12px;line-height:1.65;padding:9px 15px 12px;border-top:1px solid var(--line)}
+.qi-exp.cok{background:#f0fbf4}.qi-exp.cng{background:#fff5f5}
+.qi-v{font-weight:900;font-size:12.5px;margin-bottom:3px}.qi-v.ok{color:var(--green)}.qi-v.ng{color:var(--red)}
+.mem-intro{background:var(--blue-l);border:1px solid #c5d5ee;border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:var(--blue)}
+.mem-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mem-bar-wrap{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.mem-bar{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
+.mem-prog-label{font-size:11.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.mem-reveal-all{background:var(--blue);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.mem-section-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--blue);border-left:4px solid var(--blue);padding-left:9px;margin-bottom:10px;margin-top:16px}
+.mem-section-title.gn{color:var(--green);border-color:var(--green)}.mem-section-title.gd{color:var(--gold);border-color:var(--gold)}
+.mem-item{background:var(--card);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mem-item-head{display:flex;align-items:center;gap:9px;padding:10px 14px;user-select:none}
+.mem-badge{font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.mb-def{background:var(--blue-l);color:var(--blue)}.mb-sent{background:var(--green-l);color:var(--green)}.mb-case{background:var(--gold-l);color:var(--gold)}
+.mem-item-label{font-size:12.5px;font-weight:700;flex:1}
+.mem-toggle-btn{font-size:10.5px;color:#aaa;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:#f7f5f0;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.mem-toggle-btn:hover{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}.mem-toggle-btn.revealed{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.mem-body{border-top:1px solid var(--line);display:none}
+.mem-sentence-wrap{padding:12px 15px}
+.mem-sentence{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2;color:var(--text)}
+.mem-blank{display:inline-block;background:#2d2d2d;color:#2d2d2d;border-radius:3px;padding:0 4px;min-width:50px;cursor:pointer;transition:all .25s;user-select:none;font-family:'Noto Serif KR',serif;font-size:13px}
+.mem-blank.show{background:#fff3c0;color:var(--text)}
+.ms-intro{background:linear-gradient(135deg,#1a2a4a,#1a4b8c);border-radius:12px;padding:16px 18px;margin-bottom:18px;color:#fff}
+.ms-intro-title{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ms-intro-text{font-size:12px;line-height:1.7;opacity:.85}
+.ms-section{margin-bottom:20px}
+.ms-section-title{font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:8px 14px;border-radius:8px 8px 0 0}
+.ms-section-title.gn{background:var(--green)}.ms-section-title.gd{background:var(--gold)}.ms-section-title.rd{background:var(--red)}
+.ms-body{background:var(--card);border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px}
+.ms-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.ms-step:last-child{margin-bottom:0}
+.ms-step-num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ms-step-num.gn{background:var(--green)}.ms-step-num.gd{background:var(--gold)}
+.ms-step-content{flex:1}
+.ms-step-label{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.ms-step-label.gn{color:var(--green)}.ms-step-label.gd{color:var(--gold)}
+.ms-step-text{font-size:12.5px;line-height:1.7;color:#333}
+.ms-example{background:var(--gold-l);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
+.ms-keyword-box{background:var(--blue-l);border-radius:8px;padding:10px 13px;margin-top:10px}
+.ms-keyword-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.ms-keywords{display:flex;flex-wrap:wrap;gap:6px}
+.ms-kw{padding:4px 10px;border-radius:15px;font-size:11.5px;font-weight:500;background:#fff;border:1px solid #c5d5ee;color:var(--blue)}
+.mm-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mm-wrap iframe{width:100%;height:580px;border:none;display:block}
+@media(max-width:600px){.hdr-title{font-size:15px}.tab{padding:10px 11px;font-size:11px}.fc-grid{grid-template-columns:1fr}.main{padding:14px 11px 40px}}
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:480px}
+.chat-intro{background:var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;color:#fff;flex-shrink:0}
+.chat-intro-title{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:5px}
+.chat-intro-text{font-size:11.5px;line-height:1.7;opacity:.85}
+.chat-preparing{background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;font-weight:700;color:var(--red);flex-shrink:0;text-align:center;letter-spacing:.3px}
+.chat-notice{background:var(--gold-l);border:1px solid var(--accent);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;color:var(--gold);flex-shrink:0}
+.chat-msgs{flex:1;overflow-y:auto;padding:4px 0 10px;display:flex;flex-direction:column;gap:10px}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.ai{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 13px;border-radius:14px;font-size:12.5px;line-height:1.75;word-break:keep-all}
+.msg.user .msg-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.msg.ai .msg-bubble{background:#fff;border:1px solid var(--line);color:#1a1a1a;border-bottom-left-radius:4px;white-space:pre-wrap}
+.msg-time{font-size:10px;color:#aaa;padding:0 4px}
+.chat-typing{align-self:flex-start}
+.chat-typing .msg-bubble{background:#fff;border:1px solid var(--line)}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:2px 4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chat-input-row{display:flex;gap:8px;margin-top:10px;flex-shrink:0}
+.chat-input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:22px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;resize:none;line-height:1.5;background:#fff;transition:border-color .2s;max-height:90px;overflow-y:auto}
+.chat-input:focus{border-color:var(--blue-m)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;align-self:flex-end}
+.chat-send:hover{background:#0f3570}
+.chat-send:disabled{background:#aaa;cursor:default}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;flex-shrink:0}
+.chip{padding:5px 11px;border-radius:15px;font-size:11px;font-weight:700;background:var(--blue-l);color:var(--blue);border:1px solid #c5d5ee;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
+.chip:hover{background:var(--blue);color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">HOW TO 행정법 강의 · 기본서</div>
+  <div class="hdr-title">제40강 행정의 실효성확보수단 들어가기</div>
+  <div class="hdr-sub">강제력(집행력·제재력) · 행정벌·과태료 불복 · 강제집행 개괄</div>
+</div>
+<nav class="tabs">
+  <div class="tab-inner">
+    <button class="tab on" onclick="switchTab('summary')">📋 요약노트</button>
+    <button class="tab"    onclick="switchTab('flash')">🃏 플래시카드</button>
+    <button class="tab"    onclick="switchTab('quiz')">✅ OX퀴즈</button>
+    <button class="tab"    onclick="switchTab('memory')">📝 필수암기문장</button>
+    <button class="tab"    onclick="switchTab('source')">✍️ 문제의 소재</button>
+    <button class="tab"    onclick="switchTab('map')">🗺️ 마인드맵</button>
+    <button class="tab"    onclick="switchTab('chat')">💬 AI 대화창</button>
+  </div>
+</nav>
+<div class="main">
+
+<!-- TAB 1 -->
+<div id="panel-summary" class="panel on">
+<div class="card"><div class="card-head ch-blue">📋 개관 — 행정행위의 효력과 강제력</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px">공정력과 집행력으로 행정은 상대방의 협조 없이 스스로 자신의 행위 결과를 실현할 수 있다. 행정행위의 효력에는 내용상 구속력·공정력·존속력·<span class="hl">강제력</span> 등이 있고, 강제력을 확보하는 것이 <span class="kw">실효성확보수단</span>이다.</div>
+<div class="alert al-blue"><div class="alert-label">📌 강제력 = 집행력 + 제재력</div>
+· <span class="kw">집행력</span>: 작위·급부의무 불이행 시 행정청이 소정 절차를 밟아 <span class="hl">스스로 직접 의무 내용을 실현하는 힘</span><br>
+· <span class="kw">제재력</span>: 의무 불이행 시 <span class="hl">행정벌을 부과</span>하는 것</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 실효성확보수단의 종류 · 손해전보</div>
+행정벌·행정상 강제집행·행정상 즉시강제·행정조사·과징금·공급거부 등으로 확보된다. 최후적 권리구제는 <span class="hl">금전에 의한 손해전보</span>(위법 처분→<span class="hl">손해배상</span> / 적법 처분→<span class="hl">손실보상</span>)이다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-green">Ⅰ-1. 행정벌 — 의의와 종류</div><div class="card-body">
+<div class="body-text" style="margin-bottom:8px"><span class="kw">행정벌</span>이란 행정의 상대방이 행정법상 의무를 위반한 경우 국가·지방자치단체가 과하는 행정법상 제재로서의 처벌로, <span class="hl">간접적으로 의무이행을 확보</span>하여 행정법규의 실효성을 확보한다.</div>
+<table class="tbl"><thead><tr><th>구분</th><th>내용</th></tr></thead><tbody>
+<tr><td>행정형벌</td><td>형법에 규정된 <span class="hl">형벌</span>이 가해지는 행정벌. 원칙적으로 <span class="hl">형법총칙·형사소송법 적용</span></td></tr>
+<tr><td>행정질서벌</td><td>일반 사회 법익에 직접 영향은 없으나 행정상 질서에 장해 우려가 있는 의무 위반에 <span class="hl">과태료</span>가 가해지는 제재</td></tr>
+</tbody></table>
+<div class="alert al-green" style="margin-top:10px"><div class="alert-label">📌 헌법재판소</div>행정형벌과 행정질서벌의 구별을 <span class="hl">입법 재량</span>으로 본다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-gold">Ⅰ-2. 과태료 불복수단 (질서위반행위규제법)</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">① 이의제기와 법원 통보</div>
+과태료부과통지를 받은 날부터 <span class="hl">60일 이내</span> 행정청에 서면 이의제기(§20①). 이의제기가 있으면 <span class="hl">과태료부과처분은 효력 상실</span>(§20②). 통지받기 전까지 서면 철회 가능(§20③). 이의제기를 받은 행정청은 <span class="hl">14일 이내</span> 의견·증빙서류 첨부하여 관할법원 통보(§21①).</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">② 재판 및 집행</div>
+당사자 주소지 지방법원·지원 관할(§25). 이유를 붙인 결정(§36①)·당사자와 검사에게 고지로 효력(§37①). 당사자·검사는 <span class="hl">즉시항고 가능, 집행정지 효력</span>(§38①). 검사의 명령으로 집행(집행력 있는 집행권원과 동일 효력·§42①), 집행절차는 민사집행법 또는 국세·지방세 체납처분의 예(§42②).</div>
+<div class="alert al-green" style="margin-top:10px"><div class="alert-label">③ 약식재판</div>
+법원이 상당하다고 인정하면 심문 없이 과태료 재판 가능(§44). 당사자·검사는 고지받은 날부터 <span class="hl">7일 이내 이의신청</span>(§45①), 이의신청이 적법하면 약식재판은 효력 상실(§50①)되고 심문을 거쳐 다시 재판한다(§50②).</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-purple">Ⅰ-3. 행정벌의 병과 — 일사부재리</div><div class="card-body">
+<div class="판례박스" style="margin-bottom:0">행정형벌과 행정질서벌은 모두 행정벌이나 그 <span class="hl">목적·성질이 다르므로</span>, 행정질서벌인 과태료부과처분 후에 행정형벌을 부과하여도 <span class="hl">일사부재리 원칙에 반하지 않는다</span>(대법원·헌법재판소). 따라서 징계벌과 행정질서벌도 목적·성질이 다르므로 <span class="hl">징계벌 부과 후 행정질서벌 부과가 가능</span>하다.</div>
+</div></div>
+
+<div class="card"><div class="card-head ch-red">Ⅱ. 행정상 강제집행 개괄</div><div class="card-body">
+<div class="alert al-blue"><div class="alert-label">📌 '대리직강' — 강제집행의 종류</div>
+행정상 강제집행 = <span class="hl">대집행·이행강제·직접강제·행정상 강제징수</span>('대리직강'). 그 밖에 행정상 즉시강제·행정조사·과징금·공급거부가 연구 대상이다.</div>
+<div class="alert al-gold" style="margin-top:10px"><div class="alert-label">📌 학습의 관점</div>각 영역마다 합당한 수단이 있으므로 <span class="hl">① 어느 분야 수단인지 ② 어떻게 써야 바른지 ③ 바르지 않으면 어떻게 구제받는지</span>를 알아야 한다.</div>
+<table class="tbl" style="margin-top:10px"><thead><tr><th>의무의 종류</th><th>실효성확보 수단</th></tr></thead><tbody>
+<tr><td>금전급부의무</td><td><span class="hl">강제징수</span></td></tr>
+<tr><td>대체적 작위의무</td><td><span class="hl">대집행</span>(행정청이 의무자 대신 실현)</td></tr>
+<tr><td>비대체적 작위의무</td><td><span class="hl">이행강제금</span>(돈을 물려 강제적으로 행위로 나서게)</td></tr>
+<tr><td>특수한 상황</td><td><span class="hl">직접강제</span></td></tr>
+</tbody></table>
+</div></div>
+</div>
+
+<!-- TAB 2 -->
+<div id="panel-flash" class="panel"><div class="fc-grid">
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🏛️</div><div class="fc-term">행정행위 효력·<br>실효성확보수단</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">강제력 확보</div><ul><li>공정력·집행력→상대방 협조 없이 결과 실현</li><li>효력: 내용상 구속력·공정력·존속력·강제력</li><li>강제력 확보=실효성확보수단</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">💪</div><div class="fc-term">강제력<br>(집행력·제재력)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">스스로 실현 / 행정벌</div><ul><li>집행력: 작위·급부의무 불이행 시 스스로 직접 실현하는 힘</li><li>제재력: 의무 불이행 시 행정벌 부과</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🧰</div><div class="fc-term">실효성확보수단<br>종류</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">집행력·제재력 확보</div><ul><li>행정벌·행정상 강제집행</li><li>행정상 즉시강제·행정조사</li><li>과징금·공급거부 등</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">💰</div><div class="fc-term">손해전보</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">최후적 권리구제</div><ul><li>금전에 의한 손해전보</li><li>위법한 처분→손해배상</li><li>적법한 처분→손실보상</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">⚖️</div><div class="fc-term">행정벌<br>의의</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">간접적 의무이행 확보</div><ul><li>의무 위반 시 국가·지자체가 과하는 제재로서 처벌</li><li>간접적으로 의무이행 확보</li><li>행정법규 실효성 확보</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">📕</div><div class="fc-term">행정형벌·<br>행정질서벌</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b"><div class="fc-bt">형벌 / 과태료</div><ul><li>행정형벌: 형법상 형벌·형법총칙·형사소송법 적용</li><li>행정질서벌: 행정상 질서 장해 우려 위반에 과태료</li><li>헌재: 구별은 입법 재량</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">①</div><div class="fc-term">과태료 불복<br>이의제기</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">60일 / 효력 상실 / 14일 통보</div><ul><li>통지 받은 날부터 60일 이내 서면 이의제기(§20①)</li><li>이의제기 시 과태료부과처분 효력 상실(§20②)</li><li>통지 받기 전까지 서면 철회(§20③)</li><li>행정청 14일 이내 관할법원 통보(§21①)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">②</div><div class="fc-term">과태료 불복<br>재판·집행</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gd"><div class="fc-bt">즉시항고·집행정지</div><ul><li>당사자 주소지 지방법원·지원 관할(§25)</li><li>이유 붙인 결정·당사자와 검사 고지로 효력(§36①·§37①)</li><li>즉시항고 가능·집행정지 효력(§38①)</li><li>검사 명령으로 집행·민사집행법 또는 체납처분 예(§42)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">③</div><div class="fc-term">과태료 불복<br>약식재판</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b pp"><div class="fc-bt">심문 없이 / 7일 이의신청</div><ul><li>법원 상당 인정 시 심문 없이 과태료 재판(§44)</li><li>고지 받은 날부터 7일 이내 이의신청(§45①)</li><li>이의신청 적법 시 약식재판 효력 상실(§50①)</li><li>심문 거쳐 다시 재판(§50②)</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🔁</div><div class="fc-term">일사부재리<br>(병과)</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b rd"><div class="fc-bt">목적·성질 다름→병과 가능</div><ul><li>행정형벌·행정질서벌 모두 행정벌이나 목적·성질 다름</li><li>과태료 후 행정형벌 부과해도 일사부재리 ✕</li><li>징계벌 후 행정질서벌 부과도 가능</li></ul></div>
+</div></div>
+<div class="fc-wrap" onclick="this.classList.toggle('flip')"><div class="fc-inner">
+<div class="fc-f"><div class="fc-ico">🧭</div><div class="fc-term">강제집행<br>('대리직강')</div><div class="fc-hint">탭하여 뒤집기</div></div>
+<div class="fc-b gn"><div class="fc-bt">의무 종류별 수단</div><ul><li>강제집행=대집행·이행강제·직접강제·강제징수</li><li>금전급부의무→강제징수</li><li>대체적 작위의무→대집행</li><li>비대체적 작위의무→이행강제금 / 특수→직접강제</li></ul></div>
+</div></div>
+</div></div>
+
+<!-- TAB 3 -->
+<div id="panel-quiz" class="panel">
+<div class="score-bar"><span class="score-label">현재 점수</span><span class="score-num" id="snum">0 / 0</span><button class="reset-btn" onclick="resetQ()">↺ 다시 풀기</button></div>
+<div id="qc"></div>
+</div>
+
+<!-- TAB 4 -->
+<div id="panel-memory" class="panel">
+<div class="mem-intro"><strong>📝 사용법</strong> — 검은 빈칸을 클릭하면 정답이 나타납니다.</div>
+<div class="mem-progress"><div class="mem-bar-wrap"><div class="mem-bar" id="prog-bar" style="width:0%"></div></div><div class="mem-prog-label" id="prog-label">0 / 0 공개</div><button class="mem-reveal-all" onclick="revealAll()">전체 공개</button></div>
+<div class="mem-section-title">강제력 · 실효성확보수단</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">강제력의 구성</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정행위의 효력인 강제력은 <span class="mem-blank" onclick="toggleBlank(this)">집행력과 제재력</span>으로 구성되며, 그 강제력을 확보하는 수단이 <span class="mem-blank" onclick="toggleBlank(this)">실효성확보수단</span>이다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">집행력과 제재력</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">집행력이란 작위·급부의무 불이행 시 행정청이 소정 절차를 밟아 <span class="mem-blank" onclick="toggleBlank(this)">스스로 직접 그 의무의 내용을 실현하는 힘</span>이고, 제재력이란 의무 불이행 시 <span class="mem-blank" onclick="toggleBlank(this)">행정벌을 부과</span>하는 것이다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">손해전보</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">최후적 권리구제인 금전에 의한 손해전보에는 위법한 처분에 대한 <span class="mem-blank" onclick="toggleBlank(this)">손해배상</span>과 적법한 처분에 대한 <span class="mem-blank" onclick="toggleBlank(this)">손실보상</span>이 있다.</div></div></div></div>
+<div class="mem-section-title gn">행정벌</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">행정벌의 의의</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정벌은 행정의 상대방이 행정법상 의무를 위반한 경우 국가·지방자치단체가 과하는 행정법상 제재로서의 처벌로서, <span class="mem-blank" onclick="toggleBlank(this)">간접적으로 의무이행을 확보</span>하는 수단이다.</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">행정형벌과 행정질서벌</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정형벌은 형법에 규정된 형벌이 가해지는 행정벌로 원칙적으로 <span class="mem-blank" onclick="toggleBlank(this)">형법총칙·형사소송법이 적용</span>되고, 행정질서벌은 행정상 질서에 장해 우려가 있는 의무 위반에 <span class="mem-blank" onclick="toggleBlank(this)">과태료</span>가 가해지는 제재이다.</div></div></div></div>
+<div class="mem-section-title gd">과태료 불복 · 병과</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">과태료 이의제기</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">과태료부과에 불복하는 당사자는 부과통지를 받은 날부터 <span class="mem-blank" onclick="toggleBlank(this)">60일 이내</span>에 행정청에 서면으로 이의제기할 수 있고, 이의제기가 있으면 <span class="mem-blank" onclick="toggleBlank(this)">과태료부과처분은 효력을 상실</span>한다(§20).</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">과태료 재판과 약식재판</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">당사자와 검사는 과태료재판에 대하여 <span class="mem-blank" onclick="toggleBlank(this)">즉시항고를 할 수 있고 이 경우 집행정지의 효력</span>이 있으며(§38①), 약식재판에 대해서는 고지받은 날부터 <span class="mem-blank" onclick="toggleBlank(this)">7일 이내에 이의신청</span>을 할 수 있다(§45①).</div></div></div></div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-case">판례</span><span class="mem-item-label">행정벌의 병과 (일사부재리)</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">행정형벌과 행정질서벌은 모두 행정벌이나 목적·성질이 다르므로, 과태료부과처분 후 행정형벌을 부과하여도 <span class="mem-blank" onclick="toggleBlank(this)">일사부재리 원칙에 반하지 않는다</span>(대법원·헌법재판소).</div></div></div></div>
+<div class="mem-section-title">강제집행 개괄</div>
+<div class="mem-item"><div class="mem-item-head"><span class="mem-badge mb-def">개념</span><span class="mem-item-label">의무 종류별 실효성확보 수단</span><button class="mem-toggle-btn" onclick="revealItem(this)">문장 보기</button></div>
+<div class="mem-body"><div class="mem-sentence-wrap"><div class="mem-sentence">금전급부의무는 강제징수, 대체적 작위의무는 <span class="mem-blank" onclick="toggleBlank(this)">대집행</span>, 비대체적 작위의무는 <span class="mem-blank" onclick="toggleBlank(this)">이행강제금</span>을 통해 실효성을 확보하며, 행정상 강제집행은 대집행·이행강제·직접강제·강제징수('대리직강')로 구성된다.</div></div></div></div>
+</div>
+
+<!-- TAB 5 -->
+<div id="panel-source" class="panel">
+<div class="ms-intro"><div class="ms-intro-title">✍️ 문제의 소재</div><div class="ms-intro-text">제40강은 ① 강제력(집행력·제재력)의 구조와 의무 종류별 수단 체계, ② 과태료의 불복절차, ③ 행정벌의 병과(일사부재리)가 핵심 출제 포인트이다.</div></div>
+<div class="ms-section"><div class="ms-section-title">① 강제력의 구조와 실효성확보수단의 체계가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">국민이 부과된 의무를 이행하지 않을 때 어떤 수단으로 실효성을 확보하는지</div><div class="ms-example">예: "건물 철거 의무(대체적 작위의무)와 영업 중단 의무(비대체적 작위의무)는 각각 어떤 수단으로 강제하는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">강제력은 <span class="g">집행력(스스로 실현)과 제재력(행정벌)</span>으로 구성된다. 의무의 종류에 따라 금전급부의무는 강제징수, 대체적 작위의무는 대집행, 비대체적 작위의무는 이행강제금, 특수한 상황은 직접강제로 실효성을 확보한다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">의무 종류(작위·부작위·급부·수인)·대체성 판단 → 합당한 수단 선택 → 어느 분야·어떻게·구제 순으로 검토</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">집행력·제재력</span><span class="ms-kw">대체적/비대체적 작위의무</span><span class="ms-kw">대리직강</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gn">② 과태료의 불복절차가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">행정청의 과태료부과에 불복하는 방법과 그 효과</div><div class="ms-example">예: "과태료부과통지를 받은 자가 불복하려면 어떤 절차를 거쳐야 하며, 이의제기의 효과는 무엇인가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">질서위반행위규제법상 통지받은 날부터 <span class="g">60일 이내 서면 이의제기</span>(이의제기 시 과태료부과처분 효력 상실)→행정청 14일 이내 관할법원 통보→법원의 결정(즉시항고·집행정지)→상당 시 심문 없이 약식재판(7일 이내 이의신청).</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">이의제기(60일·효력 상실) → 법원 통보(14일) → 재판(즉시항고·집행정지) → 약식재판(7일 이의신청) 순으로 정리</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">질서위반행위규제법</span><span class="ms-kw">이의제기 60일</span><span class="ms-kw">즉시항고·약식재판</span></div></div>
+</div></div>
+<div class="ms-section"><div class="ms-section-title gd">③ 행정벌의 병과(일사부재리)가 문제되는 경우</div><div class="ms-body">
+<div class="ms-step"><div class="ms-step-num">1</div><div class="ms-step-content"><div class="ms-step-label">문제되는 상황</div><div class="ms-step-text">과태료(행정질서벌)와 형벌(행정형벌)을 함께 부과할 수 있는지</div><div class="ms-example">예: "행정질서벌인 과태료를 부과한 후 다시 행정형벌을 부과하면 일사부재리 원칙에 반하는가?"</div></div></div>
+<div class="ms-step"><div class="ms-step-num gn">2</div><div class="ms-step-content"><div class="ms-step-label gn">사고의 전제 (대전제)</div><div class="ms-step-text">대법원·헌법재판소는 행정형벌과 행정질서벌이 모두 행정벌이나 <span class="g">목적·성질이 다르므로</span> 과태료부과처분 후 행정형벌을 부과해도 일사부재리에 반하지 않는다고 본다. 같은 논리로 징계벌 부과 후 행정질서벌 부과도 가능하다.</div></div></div>
+<div class="ms-step"><div class="ms-step-num gd">3</div><div class="ms-step-content"><div class="ms-step-label gd">현출 포인트</div><div class="ms-step-text">두 제재의 목적·성질 비교 → 다르면 병과 가능(일사부재리 ✕) → 과태료+형벌·징계벌+행정질서벌 모두 가능</div></div></div>
+<div class="ms-keyword-box"><div class="ms-keyword-title">관련 키워드</div><div class="ms-keywords"><span class="ms-kw">일사부재리</span><span class="ms-kw">목적·성질 상이</span><span class="ms-kw">병과 가능</span></div></div>
+</div></div>
+</div>
+
+<!-- TAB 6 -->
+<div id="panel-map" class="panel"><div class="mm-wrap"><iframe id="mm-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe></div></div>
+
+<!-- TAB 7 -->
+<div id="panel-chat" class="panel">
+<div class="chat-wrap">
+<div class="chat-intro"><div class="chat-intro-title">💬 AI 강의 도우미</div><div class="chat-intro-text">제40강 행정의 실효성확보수단 들어가기에 대해 무엇이든 질문하세요.<br>강제력·행정벌·과태료 불복·강제집행 개괄 모두 답변합니다.</div></div>
+<div class="chat-preparing">🔧 더 나은 서비스를 위하여 준비중입니다.</div>
+<div class="chat-notice">⚠️ 대화 기록은 최대 7일간 이 기기에 보관되며, 이후 자동 삭제됩니다. 중요한 내용은 별도로 복사해 두시기 바랍니다.</div>
+<div class="chat-chips" id="chips">
+<span class="chip" onclick="chipSend(this)">강제력(집행력·제재력)의 구조</span>
+<span class="chip" onclick="chipSend(this)">행정형벌과 행정질서벌의 구별</span>
+<span class="chip" onclick="chipSend(this)">과태료 불복절차(질서위반행위규제법)</span>
+<span class="chip" onclick="chipSend(this)">행정벌 병과와 일사부재리</span>
+<span class="chip" onclick="chipSend(this)">의무 종류별 강제집행 수단</span>
+</div>
+<div class="chat-msgs" id="chatMsgs"></div>
+<div class="chat-input-row"><textarea class="chat-input" id="chatInput" rows="1" placeholder="질문을 입력하세요… (Shift+Enter: 줄바꿈)" onkeydown="chatKey(event)" oninput="autoResize(this)"></textarea><button class="chat-send" id="chatSend" onclick="sendChat()" title="전송">➤</button></div>
+</div>
+</div>
+
+</div>
+<script>
+function switchTab(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  var map={summary:0,flash:1,quiz:2,memory:3,source:4,map:5,chat:6};
+  document.getElementById('panel-'+name).classList.add('on');
+  document.querySelectorAll('.tab')[map[name]].classList.add('on');
+  if(name==='map') initMap();
+  if(name==='memory') updateProgress();
+  if(name==='chat' && document.getElementById('chatMsgs').children.length===0) chatWelcome();
+}
+function toggleBlank(el){el.classList.toggle('show');updateProgress();}
+function revealItem(btn){
+  var item=btn.closest('.mem-item'),body=item.querySelector('.mem-body'),blanks=item.querySelectorAll('.mem-blank'),isRev=btn.classList.contains('revealed');
+  if(!isRev){body.style.display='block';blanks.forEach(b=>b.classList.add('show'));btn.textContent='다시 가리기';btn.classList.add('revealed');}
+  else{blanks.forEach(b=>b.classList.remove('show'));btn.textContent='문장 보기';btn.classList.remove('revealed');}
+  updateProgress();
+}
+function revealAll(){
+  document.querySelectorAll('#panel-memory .mem-blank').forEach(b=>b.classList.add('show'));
+  document.querySelectorAll('#panel-memory .mem-body').forEach(b=>b.style.display='block');
+  document.querySelectorAll('#panel-memory .mem-toggle-btn').forEach(btn=>{btn.textContent='다시 가리기';btn.classList.add('revealed');});
+  updateProgress();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#panel-memory .mem-blank').length;
+  var shown=document.querySelectorAll('#panel-memory .mem-blank.show').length;
+  document.getElementById('prog-label').textContent=shown+' / '+all+' 공개';
+  document.getElementById('prog-bar').style.width=(all?shown/all*100:0)+'%';
+}
+var qState=[],qAns=0,qCor=0;
+function buildQ(){
+  qState=qData.map(()=>null);qAns=0;qCor=0;updateS();
+  var c=document.getElementById('qc');c.innerHTML='';
+  qData.forEach(function(item,i){
+    var d=document.createElement('div');d.className='qi';d.id='qi'+i;
+    d.innerHTML='<div class="qi-q"><div class="qi-qn">Q'+(i+1)+' / '+qData.length+'</div>'+item.q+'</div>'
+      +'<div class="qi-btns"><button class="ox" id="o'+i+'" onclick="ansQ('+i+',true)">⭕</button>'
+      +'<button class="ox" id="x'+i+'" onclick="ansQ('+i+',false)">❌</button></div>'
+      +'<div class="qi-exp" id="e'+i+'"><div class="qi-v" id="v'+i+'"></div><div id="t'+i+'"></div></div>';
+    c.appendChild(d);
+  });
+}
+function ansQ(i,ua){
+  if(qState[i]!==null)return;qState[i]=ua;qAns++;
+  var ok=ua===qData[i].a;if(ok)qCor++;updateS();
+  document.getElementById('qi'+i).classList.add(ok?'correct':'wrong');
+  document.getElementById('o'+i).disabled=true;document.getElementById('x'+i).disabled=true;
+  (ua?document.getElementById('o'+i):document.getElementById('x'+i)).classList.add(ok?'sc':'sw');
+  document.getElementById('v'+i).textContent=ok?'✅ 정답':'❌ 오답';
+  document.getElementById('v'+i).className='qi-v '+(ok?'ok':'ng');
+  document.getElementById('t'+i).textContent=qData[i].e;
+  var exp=document.getElementById('e'+i);exp.style.display='block';exp.className='qi-exp '+(ok?'cok':'cng');
+}
+function updateS(){document.getElementById('snum').textContent=qCor+' / '+qAns;}
+function resetQ(){buildQ();}
+
+var qData=[
+{"q":"행정행위의 공정력과 집행력으로 행정은 상대방의 협조 없이 자신의 행위 결과를 실현할 수 있다.", "a":true, "e":"행정행위의 공정력과 집행력으로 행정은 그 자신 스스로 자신의 행위의 결과를 상대방의 협조 없이 실현할 수 있다."},
+{"q":"행정행위의 강제력은 집행력과 제재력으로 구성된다.", "a":true, "e":"행정행위의 효력인 강제력은 집행력과 제재력으로 구성된다."},
+{"q":"작위의무·급부의무 불이행 시 행정청이 스스로 직접 의무 내용을 실현하는 힘을 제재력이라 한다.", "a":false, "e":"작위·급부의무 불이행 시 행정청이 소정 절차를 밟아 스스로 직접 의무 내용을 실현하는 힘은 집행력이다. 제재력은 의무 불이행 시 행정벌을 부과하는 것이다."},
+{"q":"하명이 부과한 의무의 불이행 시 행정벌을 부과하는 것을 제재력이라 한다.", "a":true, "e":"하명이 부과한 의무의 불이행 시 행정벌을 부과하는 것을 제재력이라 한다."},
+{"q":"최후적인 국민의 권리구제는 금전에 의한 손해전보이며, 위법한 처분에 대한 손해배상과 적법한 처분에 대한 손실보상이 있다.", "a":true, "e":"최후적으로 이루어지는 국민의 권리구제는 금전에 의한 손해전보이며, 위법한 처분에 대한 손해배상과 적법한 처분에 대한 손실보상이 있다."},
+{"q":"행정벌은 직접적으로 의무이행을 확보하는 수단이다.", "a":false, "e":"행정벌은 간접적으로 의무이행을 확보하는 수단으로서 행정법규의 실효성 확보에 의미가 있다."},
+{"q":"행정형벌은 형법에 규정된 형벌이 가해지는 행정벌로 원칙적으로 형법총칙과 형사소송법이 적용된다.", "a":true, "e":"행정형벌이란 형법에 규정되어 있는 형벌이 가해지는 행정벌로, 원칙적으로 형법총칙과 형사소송법이 적용된다."},
+{"q":"행정질서벌은 행정상 질서에 장해를 야기할 우려가 있는 의무 위반에 대해 과태료가 가해지는 제재이다.", "a":true, "e":"행정질서벌이란 일반 사회 법익에 직접 영향을 미치지 않으나 행정상 질서에 장해를 야기할 우려가 있는 의무 위반에 대해 과태료가 가해지는 제재이다."},
+{"q":"헌법재판소는 행정형벌과 행정질서벌의 구별을 입법 재량으로 본다.", "a":true, "e":"헌법재판소는 행정형벌과 행정질서벌의 구별을 입법 재량으로 본다."},
+{"q":"과태료 부과에 불복하는 당사자는 과태료부과통지를 받은 날부터 60일 이내에 해당 행정청에 서면으로 이의제기를 할 수 있다.", "a":true, "e":"질서위반행위규제법 제20조 제1항에 따라 당사자는 과태료부과통지를 받은 날부터 60일 이내에 해당 행정청에 서면으로 이의제기를 할 수 있다."},
+{"q":"질서위반행위규제법상 이의제기가 있는 경우에도 행정청의 과태료부과처분은 효력을 유지한다.", "a":false, "e":"이의제기가 있는 경우에는 행정청의 과태료부과처분은 그 효력을 상실한다(질서위반행위규제법 제20조 제2항)."},
+{"q":"이의제기를 받은 행정청은 원칙적으로 이의제기를 받은 날부터 14일 이내에 의견·증빙서류를 첨부하여 관할법원에 통보하여야 한다.", "a":true, "e":"이의제기를 받은 행정청은 원칙적으로 이의제기를 받은 날부터 14일 이내에 의견 및 증빙서류를 첨부하여 관할법원에 통보하여야 한다(질서위반행위규제법 제21조 제1항)."},
+{"q":"당사자와 검사는 과태료재판에 대하여 즉시항고를 할 수 있으며, 이 경우 항고는 집행정지의 효력이 있다.", "a":true, "e":"당사자와 검사는 과태료재판에 대하여 즉시항고를 할 수 있고, 이 경우 항고는 집행정지의 효력이 있다(질서위반행위규제법 제38조 제1항)."},
+{"q":"약식재판에 대해 당사자와 검사는 고지를 받은 날부터 7일 이내에 이의신청을 할 수 있다.", "a":true, "e":"당사자와 검사는 약식재판의 고지를 받은 날부터 7일 이내에 이의신청을 할 수 있다(질서위반행위규제법 제45조 제1항)."},
+{"q":"판례에 의하면 행정질서벌인 과태료부과처분 후에 행정형벌을 부과하면 일사부재리 원칙에 반한다.", "a":false, "e":"대법원과 헌법재판소는 행정형벌과 행정질서벌이 모두 행정벌이나 목적·성질이 다르므로, 과태료부과처분 후 행정형벌을 부과하여도 일사부재리 원칙에 반하지 않는다고 본다."},
+{"q":"행정상 강제집행에는 대집행·이행강제·직접강제·행정상 강제징수가 있다('대리직강').", "a":true, "e":"행정상 강제집행은 대집행·이행강제·직접강제·행정상 강제징수로 구성되며 '대리직강'으로 암기한다."},
+{"q":"대체적 작위의무는 이행강제금을 통해, 비대체적 작위의무는 대집행을 통해 실효성을 확보한다.", "a":false, "e":"대체적 작위의무는 대집행을 통해, 비대체적 작위의무는 이행강제금을 통해 실효성을 확보한다."},
+{"q":"금전급부의무는 강제징수의 대상이 된다.", "a":true, "e":"금전급부의무는 당연히 강제징수의 대상이 된다."}
+];
+buildQ();
+var mmInit=false;
+function initMap(){
+  if(mmInit)return;mmInit=true;
+  var info={
+    "개관": ["공정력·집행력→상대방 협조 없이 결과 실현", "효력: 내용상 구속력·공정력·존속력·강제력", "강제력 확보=실효성확보수단", "최후 구제=손해전보(위법→손해배상·적법→손실보상)"],
+    "강제력": ["강제력=집행력+제재력", "집행력: 작위·급부의무 불이행 시 스스로 직접 실현하는 힘", "제재력: 의무 불이행 시 행정벌 부과", "확보수단: 행정벌·강제집행·즉시강제·행정조사·과징금·공급거부"],
+    "행정벌의의": ["의무 위반 시 국가·지자체가 과하는 제재로서 처벌", "간접적으로 의무이행 확보·행정법규 실효성 확보", "행정형벌: 형법상 형벌·형법총칙·형사소송법 적용", "행정질서벌: 행정상 질서 장해 우려 위반에 과태료·헌재 구별 입법 재량"],
+    "과태료불복": ["①이의제기: 통지 받은 날부터 60일·서면·과태료부과처분 효력 상실·행정청 14일 내 관할법원 통보", "②재판: 당사자 주소지 지방법원·이유 붙인 결정·즉시항고 가능·집행정지 효력", "②집행: 검사 명령·집행력 있는 집행권원과 동일·민사집행법 또는 체납처분 예", "③약식재판: 심문 없이 가능·고지 받은 날부터 7일 이내 이의신청·적법 시 효력 상실·심문 거쳐 다시 재판"],
+    "일사부재리": ["행정형벌·행정질서벌 모두 행정벌이나 목적·성질 다름", "과태료 후 행정형벌 부과해도 일사부재리 ✕", "징계벌 후 행정질서벌 부과도 가능", "대법원·헌법재판소"],
+    "강제집행의무": ["강제집행=대집행·이행강제·직접강제·강제징수('대리직강')", "금전급부의무→강제징수", "대체적 작위의무→대집행 / 비대체적 작위의무→이행강제금", "특수한 상황→직접강제·학습 순서: 대집행→강제징수→이행강제금→직접강제→즉시강제→우회 수단→행정조사"]
+  };
+  var tree={"name":"실효성확보수단","depth":0,"children":[
+    {"name":"개관","depth":1,"children":[
+      {"name":"개관",depth:3},{"name":"강제력",depth:3}
+    ]},
+    {"name":"행정벌","depth":1,"children":[
+      {"name":"행정벌의의",depth:3},{"name":"과태료불복",depth:3}
+    ]},
+    {"name":"병과","depth":1,"children":[
+      {"name":"일사부재리",depth:3}
+    ]},
+    {"name":"강제집행 개괄","depth":1,"children":[
+      {"name":"강제집행의무",depth:3}
+    ]}
+  ]};
+  var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;position:relative;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:18px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
+<div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
+<script>
+var info=${JSON.stringify(info)};
+var tree=${JSON.stringify(tree)};
+var w=document.getElementById('area').clientWidth||480,h=580;
+var svg=d3.select('#svg').attr('width',w).attr('height',h);
+var g=svg.append('g');
+svg.call(d3.zoom().scaleExtent([.3,2]).on('zoom',e=>g.attr('transform',e.transform)));
+var fn=d3.tree().nodeSize([32,150]);
+var root=d3.hierarchy(tree);fn(root);
+g.selectAll('.lk').data(root.links()).join('path').attr('fill','none').attr('stroke','#c8d8ee').attr('stroke-width',1.5).attr('d',d3.linkHorizontal().x(d=>d.y).y(d=>d.x));
+var node=g.selectAll('.nd').data(root.descendants()).join('g').attr('transform',d=>'translate('+d.y+','+d.x+')');
+function mkNode(el,label,opt){var tmp=el.append('text').attr('dy','.35em').style('font-size',opt.fs).style('visibility','hidden').text(label);var bb={width:55,height:12};try{bb=tmp.node().getBBox();}catch(e){}tmp.remove();var ph=opt.ph||8,pv=opt.pv||5,rw=bb.width+ph*2,rh=bb.height+pv*2;el.insert('rect','text').attr('x',-rw/2).attr('y',-rh/2).attr('width',rw).attr('height',rh).attr('rx',opt.rx||5).style('fill',opt.fill).style('stroke',opt.stroke||'none').style('stroke-width',opt.sw||'1.5');el.append('text').attr('dy','.35em').attr('text-anchor','middle').style('font-size',opt.fs).style('font-weight',opt.fw||'400').style('font-family','Noto Sans KR,sans-serif').style('fill',opt.color).text(label);}
+node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,{fs:'12px',fw:'700',fill:'#1a4b8c',color:'#fff',ph:12,pv:7,rx:8});});
+node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#7a5c00','#a02020','#5a2d8c'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
+node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'10px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
+var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
+<\/script></body></html>`;
+  document.getElementById('mm-frame').srcdoc=src;
+}
+var chatHistory=[];
+var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
+학습 대상: 「제40강 행정의 실효성확보수단 들어가기」
+주요 내용: 개관(공정력·집행력으로 상대방 협조 없이 결과 실현·행정행위 효력=내용상 구속력·공정력·존속력·강제력·강제력 확보=실효성확보수단·최후 권리구제=금전에 의한 손해전보=위법 처분 손해배상/적법 처분 손실보상), 강제력(집행력+제재력·집행력=작위·급부의무 불이행 시 행정청이 소정 절차 밟아 스스로 직접 의무 내용 실현하는 힘·제재력=의무 불이행 시 행정벌 부과·확보수단=행정벌·행정상 강제집행·행정상 즉시강제·행정조사·과징금·공급거부), 행정벌(행정 상대방이 행정법상 의무 위반 시 국가·지자체가 과하는 제재로서 처벌·간접적 의무이행 확보·행정형벌=형법상 형벌·형법총칙·형사소송법 적용·행정질서벌=행정상 질서 장해 우려 위반에 과태료·헌재 구별 입법 재량), 과태료 불복(질서위반행위규제법: ①이의제기=부과통지 받은 날부터 60일 이내 서면·이의제기 시 과태료부과처분 효력 상실·통지 받기 전 서면 철회·행정청 14일 이내 관할법원 통보 / ②재판=당사자 주소지 지방법원 관할·이유 붙인 결정·당사자와 검사 고지로 효력·즉시항고 가능·집행정지 효력·검사 명령으로 집행·집행력 있는 집행권원과 동일·민사집행법 또는 국세·지방세 체납처분 예 / ③약식재판=심문 없이 가능·고지 받은 날부터 7일 이내 이의신청·적법 시 효력 상실·심문 거쳐 다시 재판), 병과(대법원·헌재: 행정형벌·행정질서벌 모두 행정벌이나 목적·성질 다름→과태료부과처분 후 행정형벌 부과해도 일사부재리 ✕·징계벌 후 행정질서벌 부과도 가능), 강제집행 개괄(대집행·이행강제·직접강제·행정상 강제징수='대리직강'·행정상 즉시강제·행정조사·과징금·공급거부도 연구 영역·학습 관점: 어느 분야 수단인지·어떻게 써야 바른지·바르지 않으면 어떻게 구제·의무 종류별: 금전급부의무→강제징수·대체적 작위의무→대집행·비대체적 작위의무→이행강제금·특수 상황→직접강제·학습 순서: 대집행→강제징수→이행강제금→직접강제→즉시강제→우회 수단→행정조사).
+
+답변 규칙:
+1. 한국어로 답변한다.
+2. 수험생의 눈높이에 맞게 명확하고 간결하게 설명한다.
+3. 실효성확보수단은 '강제력=집행력+제재력'과 의무 종류별 수단(금전급부→강제징수·대체적 작위→대집행·비대체적 작위→이행강제금)으로 체계를 잡아 준다.
+4. 과태료 불복은 '이의제기(60일·효력 상실·14일 통보)→재판(즉시항고·집행정지)→약식재판(7일 이의신청)' 순으로 정리해 준다.
+5. 행정벌의 병과는 '목적·성질이 다르므로 일사부재리에 반하지 않는다'로 강조해 준다.
+6. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
+
+function saveChat(){}
+function loadChat(){return false;}
+function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제40강 행정의 실효성확보수단 들어가기 AI 도우미입니다. 강제력·행정벌·과태료 불복·강제집행 개괄 등 무엇이든 물어보세요.');}
+function addMsg(role,text){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg '+role;
+  var now=new Date();var t=now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  div.innerHTML='<div class="msg-bubble"></div><div class="msg-time">'+t+'</div>';
+  div.querySelector('.msg-bubble').textContent=text;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');div.className='msg ai chat-typing';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){var el=document.getElementById('typing-indicator');if(el)el.remove();}
+async function sendChat(){
+  var inp=document.getElementById('chatInput');var text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='';document.getElementById('chatSend').disabled=true;
+  addMsg('user',text);chatHistory.push({role:'user',content:text});saveChat();
+  document.getElementById('chips').style.display='none';showTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})});
+    var data=await res.json();hideTyping();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'답변을 가져오지 못했습니다.';
+    addMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});saveChat();
+  }catch(e){hideTyping();addMsg('ai','오류가 발생했습니다. 잠시 후 다시 시도해주세요.');}
+  document.getElementById('chatSend').disabled=false;
+}
+function chipSend(el){document.getElementById('chatInput').value=el.textContent;el.parentNode.style.display='none';sendChat();}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+</script>
+<div style="background:#1a4b8c;color:#fff;text-align:center;padding:28px 20px 24px;margin-top:32px;border-top:3px solid #c8a84b">
+  <div style="font-family:'Noto Serif KR',serif;font-size:15px;font-weight:700;margin-bottom:6px;color:#c8a84b">📖 HOW TO 행정법 강의</div>
+  <div style="font-size:13px;line-height:1.9;opacity:.92">
+    지금 보신 건 <strong style="color:#c8a84b">44챕터 중 1챕터</strong>입니다.<br>
+    나머지 43챕터가 궁금하시면 →
+  </div>
+  <div style="margin-top:14px">
+    <a href="https://product.kyobobook.co.kr/detail/S000220274014" target="_blank"
+       style="display:inline-block;background:#c8a84b;color:#1a1a1a;font-weight:700;font-size:13px;padding:10px 24px;border-radius:24px;text-decoration:none;font-family:'Noto Sans KR',sans-serif">
+      교보문고 POD 구매 →
+    </a>
+  </div>
+  <div style="margin-top:16px">
+    <img src="data:image/png;base64,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" alt="교보문고 QR코드"
+         style="width:120px;height:120px;border-radius:8px;border:3px solid #c8a84b" />
+  </div>
+  <div style="margin-top:8px;font-size:11px;opacity:.6">QR코드로 바로 구매 | 구매 후 전체 44챕터 학습엔진 이용 가능</div>
+</div>
+</body>
+</html>
