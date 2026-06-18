@@ -460,8 +460,6 @@ var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/
 <\/script></body></html>`;
   document.getElementById('mm-frame').srcdoc=src;
 }
-var CHAT_KEY='ch40_chat_history';
-var CHAT_TTL=7*24*60*60*1000;
 var chatHistory=[];
 var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입니다.
 학습 대상: 「제40강 행정의 실효성확보수단 들어가기」
@@ -475,19 +473,8 @@ var SYSTEM_PROMPT=`당신은 행정법 전문 강사의 AI 강의 도우미입�
 5. 행정벌의 병과는 '목적·성질이 다르므로 일사부재리에 반하지 않는다'로 강조해 준다.
 6. 지나치게 긴 답변은 피하고, 핵심을 먼저 말한 뒤 보충 설명을 덧붙인다.`;
 
-function saveChat(){try{localStorage.setItem(CHAT_KEY,JSON.stringify({ts:Date.now(),history:chatHistory}));}catch(e){}}
-function loadChat(){
-  try{
-    var raw=localStorage.getItem(CHAT_KEY);if(!raw)return false;
-    var data=JSON.parse(raw);
-    if(!data.ts||(Date.now()-data.ts)>CHAT_TTL){localStorage.removeItem(CHAT_KEY);return false;}
-    chatHistory=data.history||[];
-    var msgs=document.getElementById('chatMsgs');msgs.innerHTML='';
-    chatHistory.forEach(function(m){addMsg(m.role==='user'?'user':'ai',m.content);});
-    if(chatHistory.length>0)document.getElementById('chips').style.display='none';
-    return chatHistory.length>0;
-  }catch(e){return false;}
-}
+function saveChat(){}
+function loadChat(){return false;}
 function chatWelcome(){if(loadChat())return;addMsg('ai','안녕하세요! 제40강 행정의 실효성확보수단 들어가기 AI 도우미입니다. 강제력·행정벌·과태료 불복·강제집행 개괄 등 무엇이든 물어보세요.');}
 function addMsg(role,text){
   var msgs=document.getElementById('chatMsgs');
@@ -521,5 +508,23 @@ function chipSend(el){document.getElementById('chatInput').value=el.textContent;
 function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}}
 function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
 </script>
+<div style="background:#1a4b8c;color:#fff;text-align:center;padding:28px 20px 24px;margin-top:32px;border-top:3px solid #c8a84b">
+  <div style="font-family:'Noto Serif KR',serif;font-size:15px;font-weight:700;margin-bottom:6px;color:#c8a84b">📖 HOW TO 행정법 강의</div>
+  <div style="font-size:13px;line-height:1.9;opacity:.92">
+    지금 보신 건 <strong style="color:#c8a84b">44챕터 중 1챕터</strong>입니다.<br>
+    나머지 43챕터가 궁금하시면 →
+  </div>
+  <div style="margin-top:14px">
+    <a href="https://product.kyobobook.co.kr/detail/S000220274014" target="_blank"
+       style="display:inline-block;background:#c8a84b;color:#1a1a1a;font-weight:700;font-size:13px;padding:10px 24px;border-radius:24px;text-decoration:none;font-family:'Noto Sans KR',sans-serif">
+      교보문고 POD 구매 →
+    </a>
+  </div>
+  <div style="margin-top:16px">
+    <img src="data:image/png;base64,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" alt="교보문고 QR코드"
+         style="width:120px;height:120px;border-radius:8px;border:3px solid #c8a84b" />
+  </div>
+  <div style="margin-top:8px;font-size:11px;opacity:.6">QR코드로 바로 구매 | 구매 후 전체 44챕터 학습엔진 이용 가능</div>
+</div>
 </body>
 </html>
