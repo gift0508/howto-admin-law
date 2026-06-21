@@ -161,6 +161,14 @@
   .toast.show{opacity:1}
   .wc{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--s5);border-radius:6px;padding:1px 6px;margin-left:4px;vertical-align:middle}
   .nw{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:#0d9488;border-radius:6px;padding:1px 6px;margin-left:4px;vertical-align:middle}
+  .fx-banner{position:fixed;left:50%;top:21%;z-index:100000;padding:12px 20px;border-radius:14px;font-weight:800;font-size:16px;color:#fff;box-shadow:0 12px 34px rgba(0,0,0,.28);pointer-events:none;max-width:86%;text-align:center;transform:translate(-50%,0);animation:fxin .25s ease forwards}
+  .fx-banner.fx-good{background:linear-gradient(135deg,#16a34a,#0d9488)}
+  .fx-banner.fx-clear{background:linear-gradient(135deg,#f59e0b,#ef4444);font-size:18px}
+  .fx-banner.fx-soft{background:linear-gradient(135deg,#3b82f6,#6366f1)}
+  .fx-banner.out{animation:fxout .4s ease forwards}
+  @keyframes fxin{from{opacity:0;transform:translate(-50%,14px) scale(.9)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+  @keyframes fxout{from{opacity:1}to{opacity:0;transform:translate(-50%,-16px) scale(.96)}}
+  @media (prefers-reduced-motion: reduce){.fx-banner{animation:none}}
   .stage-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
   @media(min-width:560px){.stage-stats{grid-template-columns:repeat(6,1fr)}}
   .sstat{border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center;background:var(--card)}
@@ -427,6 +435,7 @@
       <div class="kv"><span>4단계 통과 → 6단계 클리어</span><span style="color:var(--muted);font-size:13px">즉시 (순삭독서)</span></div>
       <div class="kv"><span>하루 신규 유입 <span style="color:var(--muted);font-size:12px">(1단계 신규 문항/일)</span></span><span><input id="dailyNew" type="number" min="1"> 문/일</span></div>
       <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn pri sm" id="saveInt">간격·신규 저장</button><button class="btn sm" id="requeueBtn">1단계 30문/일로 재배치</button></div>
+      <div class="kv" style="margin-top:14px;border-top:1px solid #e5e7eb;padding-top:12px"><span>효과음 <span style="color:var(--muted);font-size:12px">(승급·클리어·오답 / 기본 꺼짐)</span></span><span><label style="cursor:pointer;user-select:none"><input id="sndToggle" type="checkbox" onchange="toggleSound(this.checked)"> 켜기</label></span></div>
     </div>
     <div class="card">
       <h2>데이터 백업</h2>
@@ -493,7 +502,7 @@ const mondayOf=s=>{const d=new Date(s+"T00:00:00");const off=(d.getDay()+6)%7;d.
 /* ============ State ============ */
 const DEF_SUBJ=["행정작용","행정구제","행정쟁송","취소소송","행정심판","국가배상","손실보상","정보공개"];
 const DEF_SLOTS=["08:30","09:30","10:30","11:30","13:30","14:30","15:30","16:30","18:30","19:30","20:30"];
-const DEF_SET={examDate:"",i1:2,i2:4,i3:8,dailyNew:30,track:"변시",name:"",subjects:DEF_SUBJ.slice(),slots:DEF_SLOTS.slice()};
+const DEF_SET={examDate:"",i1:2,i2:4,i3:8,dailyNew:30,sound:false,track:"변시",name:"",subjects:DEF_SUBJ.slice(),slots:DEF_SLOTS.slice()};
 const SEED_VERSION=2;   /* 새 문제 재내장할 때마다 +1 올리면 모든 기기가 다음 접속 때 자동 수신 */
 function readSeed(){try{var el=document.getElementById("seedData");if(el){var a=JSON.parse(el.textContent);if(a&&a.length)return a;}}catch(e){}return null;}
 function loadSeed(){var a=readSeed();var base={problems:a||[],weeks:{},settings:Object.assign({},DEF_SET),seedVersion:SEED_VERSION};return base;}
@@ -713,10 +722,72 @@ document.getElementById("bulkAddBtn").onclick=()=>{
   document.getElementById("bulkText").value="";document.getElementById("bulkResult").textContent="";
   toast(list.length+"문항 일괄 등록 완료");
 };
+/* ===== 동기부여 효과: 승급 꽃가루 / 격려 배너 (라이브러리 無, 오프라인 OK) ===== */
+function fxConfetti(power){
+  power=power||1;
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const cv=document.createElement("canvas");
+  cv.style.cssText="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:99999";
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  cv.width=Math.floor(innerWidth*dpr); cv.height=Math.floor(innerHeight*dpr);
+  document.body.appendChild(cv);
+  const ctx=cv.getContext("2d"); ctx.scale(dpr,dpr);
+  const cols=["#16a34a","#0d9488","#f59e0b","#3b82f6","#ef4444","#a855f7","#fde047"];
+  const N=Math.round(90*power), ps=[];
+  for(let i=0;i<N;i++)ps.push({x:Math.random()*innerWidth,y:-20-Math.random()*innerHeight*0.3,r:5+Math.random()*6,c:cols[i%cols.length],vx:(Math.random()-0.5)*3,vy:2+Math.random()*3.5,rot:Math.random()*6.28,vr:(Math.random()-0.5)*0.3,sw:Math.random()*6.28});
+  const t0=performance.now(), dur=1700+400*power;
+  (function frame(t){
+    const el=t-t0; ctx.clearRect(0,0,innerWidth,innerHeight); let alive=false;
+    for(const p of ps){p.sw+=0.05;p.x+=p.vx+Math.sin(p.sw)*0.8;p.y+=p.vy;p.vy+=0.03;p.rot+=p.vr;
+      const a=Math.max(0,1-el/dur); if(p.y<innerHeight+20&&a>0)alive=true;
+      ctx.save();ctx.globalAlpha=a;ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.fillStyle=p.c;ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.62);ctx.restore();}
+    if(el<dur&&alive)requestAnimationFrame(frame); else cv.remove();
+  })(t0);
+}
+let fxT1,fxT2;
+function fxBanner(msg,kind){
+  const old=document.querySelector(".fx-banner"); if(old)old.remove();
+  const b=document.createElement("div"); b.className="fx-banner "+(kind||"fx-good"); b.textContent=msg;
+  document.body.appendChild(b);
+  clearTimeout(fxT1);clearTimeout(fxT2);
+  fxT1=setTimeout(()=>b.classList.add("out"),1300);
+  fxT2=setTimeout(()=>{if(b.parentNode)b.remove();},1750);
+}
+const FX_PRAISE=["좋아요, 한 단계 올라갔어요! 👏","척척 올라가네요!","이 기세 그대로 🔥","잘하고 있어요!","오, 깔끔하게 통과 ✨"];
+const FX_ENC=["괜찮아요, 한 번 더 보면 됩니다 💪","틀린 게 곧 실력이 됩니다","지금 틀려두는 게 시험장에서 안 틀리는 길","약점을 하나 찾았네요. 잡고 가요 👍"];
+const FX_DEMO=["좌절 금지! 다시 만나면 더 단단해집니다","한 칸 내려가도 괜찮아요 — 반복이 곧 합격","이 문제가 약점을 알려줬어요. 내 걸로 만들면 끝","천천히, 꾸준히. 페이스 잃지 마세요 🙂"];
+const fxPick=a=>a[Math.floor(Math.random()*a.length)];
+/* ===== 효과음 (Web Audio 합성, 음원파일 無 · 기본 OFF) ===== */
+let _actx=null;
+function ensureAudio(){
+  if(!data.settings||!data.settings.sound) return null;
+  try{ if(!_actx){_actx=new (window.AudioContext||window.webkitAudioContext)();} if(_actx.state==="suspended")_actx.resume(); return _actx; }catch(e){ return null; }
+}
+function _blip(freq,start,dur,type,gain){
+  const ac=ensureAudio(); if(!ac) return;
+  const t=ac.currentTime+start, o=ac.createOscillator(), g=ac.createGain();
+  o.type=type||"sine"; o.frequency.value=freq;
+  g.gain.setValueAtTime(0.0001,t);
+  g.gain.exponentialRampToValueAtTime(gain||0.16,t+0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+  o.connect(g).connect(ac.destination); o.start(t); o.stop(t+dur+0.03);
+}
+function sndPromote(){ _blip(523.25,0,0.18,"triangle",0.15);_blip(659.25,0.10,0.18,"triangle",0.15);_blip(783.99,0.20,0.22,"triangle",0.15); }
+function sndClear(){ [523.25,659.25,783.99,1046.5].forEach((f,i)=>_blip(f,i*0.10,0.24,"triangle",0.16)); _blip(1318.5,0.42,0.30,"triangle",0.13); }
+function sndSoft(){ _blip(300,0,0.16,"sine",0.11);_blip(220,0.10,0.20,"sine",0.11); }
+function toggleSound(on){ data.settings.sound=!!on; save(); if(on){ ensureAudio(); sndPromote(); toast("효과음 켜짐 🔊"); } else { toast("효과음 꺼짐 🔇"); } }
+/* 모바일 자동재생 정책: 첫 사용자 입력에서 오디오 컨텍스트 깨우기 */
+document.addEventListener("pointerdown",function _once(){ if(data.settings&&data.settings.sound) ensureAudio(); document.removeEventListener("pointerdown",_once); });
+
+function fxClear(){fxConfetti(1.8);fxBanner("🎉 클리어! 완전히 내 것이 됐어요","fx-clear");sndClear();}
+function fxPromote(st){fxConfetti(1);fxBanner(st+"단계 승급! "+fxPick(FX_PRAISE),"fx-good");sndPromote();}
+function fxDemote(){fxBanner(fxPick(FX_DEMO),"fx-soft");sndSoft();}
+function fxEncourage(){fxBanner(fxPick(FX_ENC),"fx-soft");sndSoft();}
 function grade(id,ok){
   const p=data.problems.find(x=>x.id===id);if(!p)return;
   if(p.stage===6)return;                 // 6단계(클리어)는 순삭독서 전용 — 채점하지 않음
   const s=data.settings,today=todayStr(),five=is5(p);  // five=오늘 재학습(5단계) 풀 여부
+  const wasStage=p.stage;
   if(ok){                                // 맞으면 승급
     p.correct++;
     if(five){p.stage=2;p.reDate="";p.due=addDays(today,s.i1);}        // 5단계 → 2단계
@@ -731,6 +802,7 @@ function grade(id,ok){
     else{p.due=today;}                                                // 1단계 틀림 → 1단계 유지(재시도)
   }
   save();renderDash();renderSRS();
+  try{ if(ok){ if(p.stage===6) fxClear(); else fxPromote(p.stage); } else { if(wasStage>=2&&!five) fxDemote(); else fxEncourage(); } }catch(e){}
 }
 /* ===== 풀이 모달 ===== */
 let solveId=null,solveRO=false,solvePick=null,solveCorrect=null;
@@ -1130,6 +1202,7 @@ function loadSettings(){
   document.getElementById("dailyNew").value=data.settings.dailyNew||30;
   document.getElementById("trackSel").value=data.settings.track||"변시";
   document.getElementById("subjEdit").value=(data.settings.subjects||[]).join(", ");
+  var _snd=document.getElementById("sndToggle"); if(_snd)_snd.checked=!!data.settings.sound;
 }
 document.getElementById("trackSel").addEventListener("change",e=>{data.settings.track=e.target.value;save();renderDash();});
 document.getElementById("saveSubj").onclick=()=>{
