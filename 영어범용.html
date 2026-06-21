@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>영어 퍼펙트스코어 | 1행2필 How to 영어</title>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  --glass-bg: rgba(255,255,255,0.05);
+  --glass-border: rgba(255,255,255,0.1);
+  --text-primary:#fff; --text-secondary:#a8b2d1;
+  --correct-btn: linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);
+  --wrong-btn: linear-gradient(135deg,#ff0844 0%,#ffb199 100%);
+  --color-q:#00f2fe; --color-a:#20bf6b; --gold-primary:#d4af37;
+  --gold-gradient: linear-gradient(to right,#bf953f,#fcf6ba,#b38728,#fbf5b7,#aa771c);
+}
+*{box-sizing:border-box;font-family:'Pretendard',sans-serif;-webkit-tap-highlight-color:transparent}
+body{margin:0;padding:2vh 2vw;min-height:100vh;background-color:#070b0e;color:var(--text-primary);overflow-x:hidden;overflow-y:auto;display:flex;flex-direction:column;-webkit-text-size-adjust:100%}
+button{-webkit-appearance:none;-webkit-user-select:none;user-select:none}
+.container{flex:1;display:flex;flex-direction:column;padding:20px 30px;position:relative;background:var(--bg-gradient);border:2px solid var(--gold-primary);border-radius:16px;box-shadow:0 0 20px rgba(212,175,55,0.15),inset 0 0 15px rgba(212,175,55,0.05)}
+.header{display:flex;justify-content:space-between;align-items:center;padding-bottom:15px;margin-bottom:12px;flex-wrap:wrap;gap:15px}
+.header-left{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
+.system-title{font-size:1.8rem;font-weight:800;margin:0;background:var(--gold-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0px 2px 10px rgba(212,175,55,0.2)}
+.data-counter{font-size:0.95rem;background:var(--glass-bg);padding:6px 14px;border-radius:20px;color:var(--gold-primary);border:1px solid rgba(212,175,55,0.3);backdrop-filter:blur(10px);white-space:nowrap;font-weight:600}
+.admin-trigger-btn{background:var(--glass-bg);color:#fff;border:1px solid var(--glass-border);padding:8px 16px;font-size:0.9rem;font-weight:600;border-radius:20px;cursor:pointer;transition:all 0.3s ease;backdrop-filter:blur(10px);white-space:nowrap}
+.admin-trigger-btn:hover{background:rgba(255,255,255,0.15);box-shadow:0 0 10px rgba(255,255,255,0.2)}
+
+/* 과목 탭 */
+.subject-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.subject-label{font-size:0.85rem;color:var(--text-secondary);font-weight:700}
+.subject-tab{padding:7px 16px;background:rgba(0,0,0,0.3);border:1px solid var(--glass-border);color:var(--text-secondary);border-radius:20px;cursor:pointer;font-weight:700;font-size:0.9rem;transition:all 0.25s;display:flex;align-items:center;gap:6px}
+.subject-tab.active{background:var(--gold-gradient);color:#1a1a1a;border-color:transparent;box-shadow:0 4px 12px rgba(212,175,55,0.3)}
+.subject-tab .scount{font-size:0.78rem;opacity:0.85}
+
+.main-layout{display:flex;flex:1;gap:25px;min-height:0}
+.content-area{flex:3;display:flex;flex-direction:column;gap:12px;position:relative}
+.stage-tabs{display:flex;gap:8px;margin-bottom:5px;flex-wrap:wrap}
+.stage-tab{padding:8px 16px;background:rgba(0,0,0,0.3);border:1px solid var(--glass-border);color:var(--text-secondary);border-radius:20px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:6px;transition:all 0.3s;font-size:0.9rem}
+.stage-tab.active{background:var(--correct-btn);color:#fff;border-color:transparent;box-shadow:0 4px 10px rgba(0,242,254,0.3);transform:translateY(-1px)}
+.stage-tab.locked{opacity:0.3;cursor:not-allowed}
+
+.card{background:var(--glass-bg);border-radius:12px;padding:20px;box-shadow:0 4px 15px rgba(0,0,0,0.2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;flex-direction:column;justify-content:center;font-size:1.2rem;transition:transform 0.2s;word-break:keep-all;line-height:1.5}
+.card-label{font-size:0.85rem;font-weight:800;margin-bottom:8px;letter-spacing:1px}
+.label-q{color:var(--color-q)}.label-a{color:var(--color-a)}.label-e{color:var(--gold-primary)}
+.label-p{color:#a18cd1}
+.passage-card{border:2px solid #a18cd1;box-shadow:inset 0 0 15px rgba(161,140,209,0.1),0 4px 15px rgba(0,0,0,0.2);max-height:300px;overflow-y:auto;line-height:1.8;font-size:1.02rem}
+.passage-card #p-content{white-space:pre-wrap;word-break:keep-all}
+.question-card{flex:2;font-weight:600;border:2px solid var(--color-q);box-shadow:inset 0 0 15px rgba(0,242,254,0.1),0 4px 15px rgba(0,0,0,0.2)}
+
+/* 객관식 선지 */
+.choices-wrap{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.choice-btn{text-align:left;background:rgba(0,0,0,0.25);border:1.5px solid var(--glass-border);color:#e8eef5;border-radius:10px;padding:12px 15px;font-size:1.05rem;cursor:pointer;transition:all 0.15s;font-weight:600;line-height:1.4;display:flex;gap:10px;align-items:flex-start}
+.choice-btn:hover{background:rgba(0,242,254,0.1);border-color:var(--color-q)}
+.choice-btn .cnum{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:800}
+.choice-btn.correct{background:rgba(32,191,107,0.18);border-color:var(--color-a);color:#7fffb0}
+.choice-btn.correct .cnum{background:var(--color-a);color:#fff}
+.choice-btn.wrong{background:rgba(255,8,68,0.18);border-color:#ff0844;color:#ffb199}
+.choice-btn.wrong .cnum{background:#ff0844;color:#fff}
+.choice-btn:disabled{cursor:default}
+
+.answer-card{flex:1;cursor:pointer;position:relative;font-weight:800}
+.answer-card.blind{background:repeating-linear-gradient(45deg,rgba(255,255,255,0.02),rgba(255,255,255,0.02) 10px,rgba(0,0,0,0.1) 10px,rgba(0,0,0,0.1) 20px);color:rgba(255,255,255,0.3);border:2px solid rgba(32,191,107,0.5);align-items:center;text-align:center;font-weight:600}
+.answer-card.unblind{background:rgba(32,191,107,0.08);border:2px solid var(--color-a);color:var(--color-a);box-shadow:inset 0 0 20px rgba(32,191,107,0.15)}
+.explanation-card{flex:1.5;cursor:pointer;position:relative;font-size:1.1rem;color:#dcdde1}
+.explanation-card.blind{background:repeating-linear-gradient(45deg,rgba(255,255,255,0.02),rgba(255,255,255,0.02) 10px,rgba(0,0,0,0.1) 10px,rgba(0,0,0,0.1) 20px);color:rgba(255,255,255,0.3);border:2px solid rgba(212,175,55,0.5);align-items:center;text-align:center;font-weight:600}
+.explanation-card.unblind{background:rgba(212,175,55,0.08);border:2px solid var(--gold-primary);color:#fff;box-shadow:inset 0 0 20px rgba(212,175,55,0.15)}
+
+.control-panel{display:flex;gap:20px;height:60px;margin-top:5px}
+.btn-action{flex:1;border:none;border-radius:30px;font-size:1.4rem;font-weight:800;color:#fff;cursor:pointer;transition:all 0.2s cubic-bezier(0.175,0.885,0.32,1.275);box-shadow:0 6px 15px rgba(0,0,0,0.2)}
+.btn-action:hover{transform:translateY(-3px) scale(1.01)}
+.btn-action:active{transform:translateY(2px) scale(0.98)}
+.btn-correct{background:var(--correct-btn)}.btn-wrong{background:var(--wrong-btn)}
+
+.sidebar{flex:1.2;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:16px;padding:25px;display:flex;flex-direction:column;gap:15px;box-shadow:0 8px 25px rgba(0,0,0,0.25);backdrop-filter:blur(10px);position:relative}
+.sidebar h3{margin:0 0 5px 0;font-size:1.2rem;color:#00f2fe;text-align:center;font-weight:800;letter-spacing:1px}
+.gauge-row{display:flex;flex-direction:column;gap:6px}
+.gauge-labels{display:flex;justify-content:space-between;font-size:0.9rem;font-weight:600;color:var(--text-secondary)}
+.gauge-container{width:100%;height:18px;background:rgba(0,0,0,0.4);border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.05);position:relative}
+.gauge-fill{height:100%;width:0%;transition:width 0.5s cubic-bezier(0.4,0,0.2,1);border-radius:10px;box-shadow:0 0 8px rgba(255,255,255,0.4)}
+.gauge-fill.infinite{background:linear-gradient(90deg,#ff0844,#ffb199);width:100%}
+.brand-logo{margin-top:auto;text-align:center;font-size:2.2rem;font-weight:900;background:var(--gold-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:5px;text-shadow:0 2px 10px rgba(212,175,55,0.2);padding-top:15px;opacity:0.95}
+
+.animation-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:5rem;font-weight:900;pointer-events:none;z-index:100;opacity:0;text-align:center;width:100%;text-shadow:0 8px 25px rgba(0,0,0,0.8)}
+@keyframes popInBounce{0%{transform:translate(-50%,-50%) scale(0.3);opacity:0}40%{transform:translate(-50%,-50%) scale(1.1);opacity:1}60%{transform:translate(-50%,-50%) scale(0.95);opacity:1}80%{transform:translate(-50%,-50%) scale(1.02);opacity:1}100%{transform:translate(-50%,-50%) scale(0.8);opacity:0}}
+.animate-trigger{animation:popInBounce 1s cubic-bezier(0.25,0.46,0.45,0.94) forwards}
+
+/* 관리자 모달 */
+/* .admin-modal 구버전 제거됨 — modal-backdrop.on 으로 통합 */
+
+@media(max-width:900px){
+  .main-layout{flex-direction:column;gap:16px}
+  .content-area,.sidebar{flex:none;width:100%}
+  .sidebar{order:-1;padding:16px 18px}
+  .sidebar h3{margin-bottom:10px}
+  .sidebar .gauge-wrap-mobile{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px 14px}
+  .sidebar .brand-logo{display:none}
+  .admin-grid{grid-template-columns:1fr}
+  .share-grid{grid-template-columns:1fr 1fr}
+  .card{padding:15px;font-size:1.1rem}
+  .container{padding:16px 16px}
+  .system-title{font-size:1.4rem}
+  .animation-overlay{font-size:3rem}
+  .btn-action{font-size:1.1rem}
+  .gauge-labels{font-size:0.78rem}
+}
+.modal-backdrop{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.88);z-index:1200;backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:0.28s ease;padding:16px}
+.modal-backdrop.on{visibility:visible;opacity:1}
+.modal-box{background:#1e2529;border:1px solid #34495e;width:100%;max-width:960px;padding:28px;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,0.6);max-height:92vh;overflow-y:auto;color:#fff}
+.modal-box h2{margin-top:0;color:#00f2fe;border-bottom:1px solid #34495e;padding-bottom:14px;font-size:1.35rem}
+.sec{background:rgba(255,255,255,0.04);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);margin-bottom:16px}
+.sec h4{margin:0 0 11px 0;color:#fff;font-size:0.97rem;font-weight:800}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:11px}
+.fg label{font-size:0.82rem;color:#a8b2d1;font-weight:700}
+.fg input,.fg textarea,.fg select{background:rgba(0,0,0,0.22);border:1px solid #4b5563;color:#fff;padding:10px 11px;border-radius:6px;font-family:inherit;width:100%;font-size:15px;outline:none;transition:border-color 0.2s}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:#00f2fe}
+.fg textarea{resize:vertical;min-height:70px}
+.mc-row{display:flex;gap:7px;align-items:center;margin-bottom:6px}
+.mc-row .cn{width:24px;height:24px;border-radius:50%;background:rgba(0,242,254,0.14);color:#00f2fe;font-size:0.78rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mc-row input[type=text]{flex:1;background:rgba(0,0,0,0.2);border:1px solid #4b5563;color:#fff;padding:9px;border-radius:6px;font-size:15px}
+.mc-row .radio-wrap{flex-shrink:0;display:flex;align-items:center;gap:3px;font-size:0.77rem;color:#a8b2d1;white-space:nowrap}
+.subj-pill{background:rgba(0,0,0,0.3);border:1px solid #4b5563;border-radius:14px;padding:4px 8px 4px 12px;font-size:0.82rem;display:inline-flex;align-items:center;gap:6px;margin-right:6px;margin-bottom:6px}
+.subj-pill .del-x{background:none;border:none;color:#ff0844;cursor:pointer;font-size:1rem;line-height:1;padding:0}
+.btn-primary{background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:800;cursor:pointer;width:100%;transition:0.18s;font-size:0.95rem;font-family:inherit}
+.btn-primary:hover{opacity:0.88}
+.btn-ghost{background:rgba(255,255,255,0.07);color:#fff;border:1px solid #4b5563;padding:7px 12px;border-radius:6px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit;transition:0.18s}
+.btn-ghost:hover{background:rgba(255,255,255,0.13)}
+.mitem{background:rgba(0,0,0,0.22);border:1px solid #34495e;border-radius:8px;padding:10px 12px;margin-bottom:6px;display:flex;align-items:flex-start;gap:9px}
+.mnum{flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(0,242,254,0.13);color:#00f2fe;font-size:0.78rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.mbody{flex:1;min-width:0}
+.mq{font-size:0.88rem;color:#fff;font-weight:600;line-height:1.4;word-break:break-all}
+.mmeta{font-size:0.73rem;color:#a8b2d1;margin-top:3px}
+.mtag{display:inline-block;background:rgba(255,255,255,0.07);border-radius:8px;padding:1px 7px;margin-right:4px;font-weight:700}
+.mactions{display:flex;gap:5px;flex-shrink:0}
+.mbtn-edit{background:rgba(0,242,254,0.12);border:1px solid rgba(0,242,254,0.35);color:#00f2fe;border-radius:6px;padding:5px 9px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit}
+.mbtn-del{background:rgba(255,8,68,0.12);border:1px solid rgba(255,8,68,0.35);color:#ff8095;border-radius:6px;padding:5px 9px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit}
+.mbtn-edit:hover{background:rgba(0,242,254,0.22)}.mbtn-del:hover{background:rgba(255,8,68,0.26)}
+.mlist-empty{text-align:center;color:#a8b2d1;font-size:0.85rem;padding:18px}
+.modal-footer{display:flex;gap:10px;justify-content:flex-end;border-top:1px solid #34495e;padding-top:18px;margin-top:14px;flex-wrap:wrap}
+.btn-footer2{padding:9px 18px;border:none;border-radius:6px;font-weight:800;cursor:pointer;flex:1;min-width:120px;text-align:center;font-family:inherit}
+.edit-modal-box{max-width:680px}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px}
+.share-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:7px;margin-top:11px}
+.share-btn{padding:9px 7px;font-weight:800;border-radius:6px;border:none;cursor:pointer;transition:0.18s;color:#fff;font-size:0.83rem;font-family:inherit}
+.share-btn:hover{opacity:0.8;transform:translateY(-1px)}
+@media(max-width:700px){.share-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="header-left">
+      <h1 class="system-title">영어 퍼펙트스코어</h1>
+      <input class="learner-input" id="learner-name" type="text" placeholder="이름 입력" maxlength="10" style="background:rgba(0,0,0,0.25);border:1px solid rgba(212,175,55,0.35);color:var(--gold-primary);padding:6px 12px;border-radius:20px;font-size:0.9rem;font-weight:700;width:110px;text-align:center;outline:none;">
+      <div class="data-counter">🚀 누적 퀘스트: <span id="total-count">0</span>개</div>
+    </div>
+    <div>
+      <button class="admin-trigger-btn" id="admin-mode-btn">⚙️ 강사 전용</button>
+    </div>
+  </div>
+
+  <div class="subject-bar" id="subject-bar"></div>
+
+  <div class="main-layout">
+    <div class="content-area">
+      <div class="stage-tabs" id="stage-tabs-container"></div>
+
+      <div class="card passage-card" id="passage-box" style="display:none">
+        <div class="card-label label-p">📖 PASSAGE</div>
+        <div id="p-content"></div>
+      </div>
+
+      <div class="card question-card" id="question-box">
+        <div class="card-label label-q">Q. QUESTION</div>
+        <div id="q-content">등록된 문제가 없습니다.</div>
+        <div class="choices-wrap" id="choices-wrap" style="display:none"></div>
+      </div>
+
+      <div class="card answer-card blind" id="answer-box" onclick="toggleAnswerBlind()">
+        <div class="card-label label-a" style="display:none;" id="a-label">A. 정답</div>
+        <div id="a-content">✨ 탭하여 정답 확인하기</div>
+      </div>
+
+      <div class="card explanation-card blind" id="explanation-box" onclick="toggleAnswerBlind()">
+        <div class="card-label label-e" style="display:none;" id="e-label">💡 해설 혹은 암기포인트</div>
+        <div id="e-content"></div>
+      </div>
+
+      <div class="control-panel" id="control-panel">
+        <button class="btn-action btn-correct" onclick="processEngine(true)">🔥 정답 (Level Up!)</button>
+        <button class="btn-action btn-wrong" onclick="processEngine(false)">💀 오답 (포승줄 회귀)</button>
+      </div>
+      <div id="giant-feedback" class="animation-overlay"></div>
+    </div>
+
+    <div class="sidebar" id="sidebar-gauge-zone">
+      <h3>📈 STAGE GAUGE</h3>
+      <div class="brand-logo">1행2필</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 비밀번호 모달 ════════ -->
+<div class="modal-backdrop" id="pw-modal">
+  <div class="modal-box" style="max-width:370px;text-align:center">
+    <h2 style="border:none;text-align:center">🔒 교수자 인증</h2>
+    <p style="color:#a8b2d1;font-size:0.9rem;margin:0 0 14px 0">관리 콘솔 접근 비밀번호를 입력하세요.</p>
+    <input type="password" id="pw-input" placeholder="비밀번호" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid #4b5563;color:#fff;padding:13px;border-radius:8px;font-size:16px;text-align:center;letter-spacing:2px;margin-bottom:10px;outline:none" onkeydown="if(event.key==='Enter')submitPw()">
+    <div id="pw-err" style="color:#ff0844;font-size:0.83rem;font-weight:700;min-height:16px;margin-bottom:11px"></div>
+    <div style="display:flex;gap:9px">
+      <button class="btn-primary" onclick="submitPw()">확인</button>
+      <button class="btn-ghost" style="padding:10px 16px" onclick="closePwModal()">취소</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 관리자 콘솔 ════════ -->
+<div class="modal-backdrop" id="admin-modal">
+  <div class="modal-box">
+    <h2>🛠️ 교수자 전용 마스터 관리 콘솔</h2>
+
+    <!-- ① 과목 관리 -->
+    <div class="sec">
+      <h4>📚 과목 관리</h4>
+      <div style="display:flex;gap:8px">
+        <input type="text" id="new-subj-input" placeholder="새 과목명 (예: 국가직 9급 영어)" style="flex:1;background:rgba(0,0,0,0.2);border:1px solid #4b5563;color:#fff;padding:9px;border-radius:6px;font-size:15px;outline:none">
+        <button class="btn-ghost" onclick="addSubj()">+ 추가</button>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px" id="subj-pills"></div>
+    </div>
+
+    <div class="admin-grid">
+      <!-- ② 일괄 등록 -->
+      <div class="sec">
+        <h4>📥 일괄 등록 (txt)</h4>
+        <p style="font-size:0.79rem;color:#a8b2d1;margin:0 0 11px 0">각 문항은 <b>===</b> 줄로 구분합니다. 선택 과목의 <b>1단계(POOL)</b>에 등록됩니다.</p>
+        <div class="fg"><label>과목 선택</label><select id="bulk-subj"></select></div>
+        <div class="fg"><input type="file" id="bulk-file" accept=".txt"></div>
+        <button class="btn-primary" onclick="bulkUpload()">파일 업로드 및 일괄 등록</button>
+        <button class="btn-ghost" style="margin-top:7px;width:100%" onclick="downloadTemplate()">📄 양식 파일 다운로드</button>
+        <div id="bulk-result" style="font-size:0.79rem;color:#a8b2d1;margin-top:9px;line-height:1.6"></div>
+      </div>
+
+      <!-- ③ 단일 등록 -->
+      <div class="sec">
+        <h4>➕ 단일 문항 직접 등록</h4>
+        <div class="fg"><label>과목 선택</label><select id="single-subj"></select></div>
+        <div class="fg"><label>지문(Passage) <span style="font-size:0.73rem;color:#a8b2d1">(선택 — 없으면 비워두세요)</span></label><textarea id="single-passage" rows="3" placeholder="예) A : Did we finish packing all the orders? ..."></textarea></div>
+        <div class="fg"><label>문제 <span style="color:#ff8095">*필수</span></label><textarea id="single-q" rows="3" placeholder="예) 다음 대화의 흐름으로 보아 밑줄 친 곳에 들어갈 가장 적절한 것을 고르시오."></textarea></div>
+        <div class="fg">
+          <label>선지 <span style="font-size:0.75rem;color:#a8b2d1">(정답 ● 선택)</span></label>
+          <div id="mc-choices"></div>
+          <button class="btn-ghost" style="margin-top:5px;width:100%" onclick="addSingleChoice()">+ 선지 추가</button>
+        </div>
+        <div class="fg"><label>해설 / 암기포인트 (선택)</label><input type="text" id="single-exp" placeholder="예) 📖 2007 국가직9급 문1  💡 call it a day = 하루 일을 끝내다"></div>
+        <button class="btn-primary" onclick="submitSingle()">문항 등록</button>
+      </div>
+    </div>
+
+    <!-- ④ 문제 목록 관리 -->
+    <div class="sec">
+      <h4>🗂️ 등록 문제 관리 (수정 · 삭제)</h4>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        <select id="mng-subj" style="flex:1;background:rgba(0,0,0,0.2);border:1px solid #4b5563;color:#fff;padding:8px;border-radius:6px;font-size:15px;min-width:140px" onchange="renderMngList()"></select>
+        <select id="mng-stage" style="flex:1;background:rgba(0,0,0,0.2);border:1px solid #4b5563;color:#fff;padding:8px;border-radius:6px;font-size:15px;min-width:100px" onchange="renderMngList()">
+          <option value="all">전체 단계</option>
+          <option value="1">1단계</option><option value="2">2단계</option><option value="3">3단계</option>
+          <option value="4">4단계</option><option value="5">5단계</option><option value="6">6단계</option>
+        </select>
+      </div>
+      <div id="mng-list" style="max-height:280px;overflow-y:auto"></div>
+    </div>
+
+    <!-- ⑤ 리포트 -->
+    <div class="sec" style="background:rgba(255,8,68,0.08);border-color:rgba(255,8,68,0.25)">
+      <h4 style="color:#ffb199">🎯 단계별 리포트 센터</h4>
+      <p style="font-size:0.82rem;color:#a8b2d1;margin:0 0 10px 0">과목 「<span id="report-subject-name">-</span>」의 문항을 리포팅합니다.</p>
+      <div class="fg" style="margin-bottom:10px">
+        <select id="report-stage">
+          <option value="1">1단계 (포승줄 · 오답 잔류 = 약점)</option>
+          <option value="2">2단계</option><option value="3">3단계</option>
+          <option value="4">4단계</option><option value="5">5단계</option>
+          <option value="6">6단계 (마스터 직전)</option>
+          <option value="all">전체 단계 (1~6 모두)</option>
+        </select>
+      </div>
+      <div class="share-grid">
+        <button class="share-btn" style="background:#fa8231" onclick="printStageData()">🖨 인쇄 출력</button>
+        <button class="share-btn" style="background:#34495e" onclick="downloadStageText()">💾 텍스트 다운로드</button>
+        <button class="share-btn" style="background:#6c5ce7" onclick="shareViaEmail()">📋 클립보드 복사</button>
+        <button class="share-btn" style="background:#00b894" onclick="shareViaMobile()">📝 txt 미리보기</button>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-footer2" style="background:#20bf6b;color:#fff" onclick="showProgress()">📊 진도 현황</button>
+      <button class="btn-footer2" style="background:#4b7bec;color:#fff" onclick="exportBackupFile()">💾 진도 백업(.json)</button>
+      <button class="btn-footer2" style="background:#8854d0;color:#fff" onclick="importBackupFile()">📂 백업 불러오기</button>
+      <button class="btn-footer2" style="background:#ff0844;color:#fff" onclick="resetProgress()">🚨 전체 초기화</button>
+      <button class="btn-footer2" style="background:#a5b1c2;color:#000" onclick="closeAdminConsole()">🔒 닫기</button>
+    </div>
+  </div>
+</div>
+
+<!-- 수정 모달 -->
+<div class="modal-backdrop" id="edit-modal">
+  <div class="modal-box edit-modal-box">
+    <h2>✏️ 문항 수정</h2>
+    <input type="hidden" id="edit-subj">
+    <input type="hidden" id="edit-stage">
+    <input type="hidden" id="edit-idx">
+    <div class="fg"><label>지문(Passage) <span style="font-size:0.73rem;color:#a8b2d1">(없으면 비워두세요)</span></label><textarea id="edit-passage" rows="3"></textarea></div>
+    <div class="fg"><label>문제</label><textarea id="edit-q" rows="3"></textarea></div>
+    <div class="fg">
+      <label>선지 <span style="font-size:0.75rem;color:#a8b2d1">(정답 ● 선택)</span></label>
+      <div id="edit-mc-choices"></div>
+      <button class="btn-ghost" style="margin-top:5px;width:100%" onclick="addEditChoice()">+ 선지 추가</button>
+    </div>
+    <div class="fg"><label>정답 표기 (선지 선택 시 자동 반영)</label><input type="text" id="edit-a" placeholder="예: 2번"></div>
+    <div class="fg"><label>해설 / 암기포인트</label><input type="text" id="edit-exp"></div>
+    <div style="display:flex;gap:9px;margin-top:10px">
+      <button class="btn-primary" onclick="saveEdit()">저장</button>
+      <button class="btn-ghost" style="padding:10px 18px" onclick="closeEditModal()">취소</button>
+    </div>
+  </div>
+</div>
+
+<!-- 숨겨진 백업 파일 인풋 -->
+<input type="file" id="backup-file-input" accept=".json" style="display:none">
+
+<!-- 진도 현황 모달 -->
+<div class="modal-backdrop" id="progress-modal" style="z-index:1300">
+  <div class="modal-box" style="max-width:480px">
+    <h2>📊 진도 현황</h2>
+    <pre id="progress-text" style="background:rgba(0,0,0,0.3);border:1px solid #34495e;border-radius:8px;padding:16px;color:#e8eef5;font-size:0.82rem;line-height:1.7;white-space:pre-wrap;word-break:keep-all;max-height:60vh;overflow-y:auto;font-family:'Pretendard',monospace;margin:0 0 14px 0"></pre>
+    <div style="display:flex;gap:10px">
+      <button class="btn-primary" onclick="copyProgress()">📋 복사</button>
+      <button class="btn-ghost" style="padding:11px 18px" onclick="closeProgress()">닫기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════ 내장 문제 데이터 (제작자 영역) ════════
+var EMBED = {"국가직 9급 영어": [{"passage": "A : Did we finish packing all the orders?\nB : No, we still have to do about ten more.\nA : I'm tired of packing this stuff.\nB : Maybe we could finish it later.\nA : Sure, we could do it tomorrow morning.\nB : O.K. ______", "q": "다음 대화의 흐름으로 보아 밑줄 친 곳에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "Those were the days.", "correct": false}, {"t": "Let's call it a day.", "correct": true}, {"t": "Why don't we call it off now?", "correct": false}, {"t": "You know we don't have all day.", "correct": false}], "a": "2번", "exp": "📖 2007 국가직9급 문1"}, {"passage": "A : I looked for a parking place over and over again. I couldn't find one anywhere.\nB : So what did you do?\nA : I had no choice but to park in a loading zone.\nB : ______", "q": "다음 대화의 흐름으로 보아 밑줄 친 곳에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "Oh, no! You could be fined for that.", "correct": true}, {"t": "Well! I certainly don't know where it is.", "correct": false}, {"t": "O.K! Just follow the directions on the sign.", "correct": false}, {"t": "Great! It is not easy to find a parking place here.", "correct": false}], "a": "1번", "exp": "📖 2007 국가직9급 문2"}, {"passage": "", "q": "다음 밑줄 친 부분과 의미가 가장 가까운 것을 고르시오.\n\nAir temperatures of over 130 degrees in summer are common in this <u>desolate</u> island.", "type": "mc", "choices": [{"t": "sultry", "correct": false}, {"t": "temperate", "correct": false}, {"t": "deserted", "correct": true}, {"t": "wet and humid", "correct": false}], "a": "3번", "exp": "📖 2007 국가직9급 문3"}, {"passage": "", "q": "다음 밑줄 친 부분과 의미가 가장 가까운 것을 고르시오.\n\nHe <u>collaborated</u> with his son on the English translation of a text on food production.", "type": "mc", "choices": [{"t": "put together", "correct": false}, {"t": "went together", "correct": false}, {"t": "started together", "correct": false}, {"t": "worked together", "correct": true}], "a": "4번", "exp": "📖 2007 국가직9급 문4"}, {"passage": "", "q": "다음 밑줄 친 부분과 의미가 가장 가까운 것을 고르시오.\n\nAt my last school, they <u>called me names</u> because I was so slow.", "type": "mc", "choices": [{"t": "abused me", "correct": true}, {"t": "deceived me", "correct": false}, {"t": "called the roll", "correct": false}, {"t": "finished with me", "correct": false}], "a": "1번", "exp": "📖 2007 국가직9급 문5"}, {"passage": "", "q": "다음 밑줄 친 곳에 들어갈 가장 적절한 것을 고르시오.\n\nAll ______ is a continuous supply of food and water.", "type": "mc", "choices": [{"t": "what is needed", "correct": false}, {"t": "which is needed", "correct": false}, {"t": "the things needed", "correct": false}, {"t": "that is needed", "correct": true}], "a": "4번", "exp": "📖 2007 국가직9급 문6"}, {"passage": "Reviews on caffeine and conception ______. One study of 2,817 women found no effect of caffeine on their chances of conceiving, while another of 1,909 women linked more than 300 milligrams of caffeine daily to a delay in conception.", "q": "다음 밑줄 친 곳에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "conflict", "correct": true}, {"t": "coincide", "correct": false}, {"t": "make sense", "correct": false}, {"t": "manifest themselves", "correct": false}], "a": "1번", "exp": "📖 2007 국가직9급 문7"}, {"passage": "", "q": "다음 우리말을 영어로 가장 잘 옮긴 것을 고르시오.\n\n우리 비행기는 예정보다 10분 늦게 도착했다.", "type": "mc", "choices": [{"t": "Our plane would land in about ten minutes.", "correct": false}, {"t": "Our plane arrived ten minutes behind schedule.", "correct": true}, {"t": "Our plane was scheduled to arrive in ten minutes.", "correct": false}, {"t": "Our plane was delayed to land in ten minutes.", "correct": false}], "a": "2번", "exp": "📖 2007 국가직9급 문8"}, {"passage": "", "q": "다음 우리말을 영어로 가장 잘 옮긴 것을 고르시오.\n\n미국 우주비행사들을 대상으로 실험한 결과 강하고 튼튼한 뼈를 유지하기 위해서는 신체활동이 매우 중요하다는 것이 입증되었다.", "type": "mc", "choices": [{"t": "With an experiment conducted on American astronauts, it has been proven how important is body movement in maintaining strong, healthy bones.", "correct": false}, {"t": "An experiment done on American astronauts made clear that physical activity is important to retain strong, healthy bones.", "correct": false}, {"t": "An experiment done with American astronauts made it clear how important physical activity is in maintaining strong, healthy bones.", "correct": true}, {"t": "With an experiment conducted on American astronauts proved that body movement is important to retain strong, healthy bones.", "correct": false}], "a": "3번", "exp": "📖 2007 국가직9급 문9"}, {"passage": "", "q": "다음 중 문장의 뜻풀이가 잘못된 것은?", "type": "mc", "choices": [{"t": "John is as hard as nails. ⇒ John has no sympathy for others.", "correct": false}, {"t": "Her ideas are off the wall. ⇒ Her ideas are informal or eccentric.", "correct": false}, {"t": "She has a heart of gold. ⇒ She is very mean and greedy.", "correct": true}, {"t": "He's a really top-notch administrator. ⇒ He is the very best administrator.", "correct": false}], "a": "3번", "exp": "📖 2007 국가직9급 문10"}, {"passage": "In Rome, Italy, a store burglary suspect, when ① caught in a store after closing hours, ② explained the police that he suffered from a desire to sleep constantly and had fallen asleep inside the store. ③ To prove his point, he ④ kept falling asleep during police questioning.", "q": "밑줄 친 부분 중 어법상 옳지 않은 것은?", "type": "mc", "choices": [{"t": "① caught", "correct": false}, {"t": "② explained the police", "correct": true}, {"t": "③ To prove his point", "correct": false}, {"t": "④ kept falling asleep", "correct": false}], "a": "2번", "exp": "📖 2007 국가직9급 문11"}, {"passage": "Although industrial countries have made great advances in health care, today their health care systems are experiencing some serious problems.\n\n가. In the United States, for example, nearly $2 billion is spent every day for health care, and this amount is increasing at an annual rate of 12 percent.\n나. As a result of these increasing costs, access to good health care is being reduced rather than expanded.\n다. By far the most urgent of these problems is financial: medical costs are rising faster than prices in most other areas of the economy.", "q": "다음 주어진 문장에 이어질 글의 순서로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "가 － 나 － 다", "correct": false}, {"t": "가 － 다 － 나", "correct": false}, {"t": "다 － 가 － 나", "correct": true}, {"t": "다 － 나 － 가", "correct": false}], "a": "3번", "exp": "📖 2007 국가직9급 문12"}, {"passage": "Suddenly finding yourself in a strange country can be rather frightening. You lose all of the props that generally support you, and all of the familiar cues that provide information about what to do. Without familiar props and cues to orient you in unfamiliar situations, it becomes difficult to ______ life in a new setting. Everything can seem different. You don't even know how much to tip a cab driver or a waiter in a restaurant. In this situation, you can lose a sense of logic, developing irrational fear of the local people.", "q": "다음 밑줄 친 곳에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "give in", "correct": false}, {"t": "make up for", "correct": false}, {"t": "cope with", "correct": true}, {"t": "get away from", "correct": false}], "a": "3번", "exp": "📖 2007 국가직9급 문13"}, {"passage": "People who are happy don't get everything they want, but they want most of what they can get. In other words, they rig the game in their favor by choosing to value things that are within their grasp. People who find themselves dissatisfied in life often set unreachable goals for themselves, setting themselves up to fail. Yet people who set high goals for themselves and try to reach them are no happier than people who set and reach more modest goals. ______", "q": "다음 밑줄 친 곳에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "Aim high and try to reach it.", "correct": false}, {"t": "Take whatever comes your way.", "correct": false}, {"t": "Don't get frustrated when you fail.", "correct": false}, {"t": "Stay within reality and strive to make things better.", "correct": true}], "a": "4번", "exp": "📖 2007 국가직9급 문14"}, {"passage": "In the field of intercultural communication, I learned that the position of the bodies of people in conversation varies with the culture. It used to puzzle me that a special Arab friend seemed unable to walk and talk at the same time. After years in the US, he could not bring himself to stroll along, facing forward while talking. Our progress would be arrested while he edged ahead, cutting slightly in front of me and turning sideways so we could see each other. Once in this position, he would stop. His behavior was explained when I learned that for the Arabs to view the other person ______ is regarded as impolite.", "q": "다음 밑줄 친 곳에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "angrily", "correct": false}, {"t": "closely", "correct": false}, {"t": "straightly", "correct": false}, {"t": "peripherally", "correct": true}], "a": "4번", "exp": "📖 2007 국가직9급 문15"}, {"passage": "According to some experts, we are leaving our children and grandchildren a frightening inheritance: an increased accumulation of so-called greenhouse gases in the atmosphere and the potentially disastrous climate changes that this increase may bring about. However, the scientific community ______. Other scientists claim that the evidence for global warming is inconclusive and argue that predictions based on it are questionable. The scientific debate has been intense. It has also fueled a political controversy about what measures, if any, should be taken to address the possible problem of climate changes.", "q": "다음 밑줄 친 곳에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "is not speaking with one voice", "correct": true}, {"t": "has suggested many practical ideas", "correct": false}, {"t": "is concerned about the climate change", "correct": false}, {"t": "worries about the misuse of scientific discovery", "correct": false}], "a": "1번", "exp": "📖 2007 국가직9급 문16"}, {"passage": "\"They say best men are molded out of faults,\" wrote Shakespeare in Measure for Measure, \"and, for the most, become much more the better for being a little bad.\" Thus, each goof-up can be seen as a prime opportunity for self-improvement. Indeed, the bigger the blooper, the better its chance of helping you become a better person ― if you know how to make amends.", "q": "다음 글의 주제로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "Everyone makes mistakes.", "correct": false}, {"t": "Try not to commit a fault.", "correct": false}, {"t": "Knowing how to make amends is not a big deal.", "correct": false}, {"t": "People may learn through what they've done wrong.", "correct": true}], "a": "4번", "exp": "📖 2007 국가직9급 문17"}, {"passage": "Among the many physical risks facing astronauts sent to the Moon or Mars, the biggest danger will be the least visible: radiation. This is nuclear particles that arrive at almost light speed from beyond the Solar System. The particles slice through strands of DNA, boosting the risk of cancer and other ailments. A 2001 NASA study found that at least 39 former astronauts suffered cataracts after flying in space, 36 of whom took part in high-radiation missions such as the Apollo landings.", "q": "다음 글의 주제로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "many types of space missions", "correct": false}, {"t": "the danger of radiation to astronauts", "correct": true}, {"t": "diverse medical problems of astronauts", "correct": false}, {"t": "the effect of nuclear particles on spaceships", "correct": false}], "a": "2번", "exp": "📖 2007 국가직9급 문18"}, {"passage": "Humans have always been fascinated by dreams. The vivid dreams people remember and talk about are REM dreams ― the type that occurs almost continuously during periods of rapid eye movement (REM) during sleep. But people also have NREM dreams ― dreams that occur during periods without rapid eye movement ― although they are typically less frequent and less memorable than REM dreams. REM dreams have a story-like or dream-like quality and are more visual, vivid, and emotional than NREM dreams. Interestingly, blind people who lose their sight before age five usually do not have visual dreams, but they have vivid dreams involving the other senses. A popular belief about dreams is that an entire dream takes place in an instant, but in fact, it is not true. Sleep researchers have discovered that it takes about as long to dream a dream as it would to experience the same thing in real life.", "q": "다음 글의 내용과 일치하지 않는 것은?", "type": "mc", "choices": [{"t": "REM dreams are usually easy to remember.", "correct": false}, {"t": "Human dreams usually occur in an instant.", "correct": true}, {"t": "Even a 4-year-old blind boy can have vivid dreams.", "correct": false}, {"t": "REM dreams take place more often than NREM dreams.", "correct": false}], "a": "2번", "exp": "📖 2007 국가직9급 문19"}, {"passage": "Everyone worries at one time or another. It is a part of our every day lives. We worry about deadlines, about financial problems, and about our relationships with others. Surprisingly, the fact is that worrying is not always a bad thing. Some amount of worry is necessary because it gives us time to concentrate on a problem and find possible solutions or ways to deal with it. Some worry is stimulating. It can propel you to do better work or to complete work on time. In other cases, however, our worries can interfere with our problem-solving abilities. We worry so much that it stops us from taking the steps needed to solve the problem. If it continues, worrying can take away our energy and lead to physical problems such as fatigue, headaches, muscle pain, and insomnia.", "q": "다음 글을 가장 잘 요약한 것은?", "type": "mc", "choices": [{"t": "Some amount of worry can be useful.", "correct": false}, {"t": "Worry has both positive and negative effects on us.", "correct": true}, {"t": "Worry can bring about a variety of problems to our body.", "correct": false}, {"t": "Too much worry may keep us from concentrating on our problems.", "correct": false}], "a": "2번", "exp": "📖 2007 국가직9급 문20"}, {"passage": "", "q": "다음 문장 중 어법상 옳지 않은 것은?", "type": "mc", "choices": [{"t": "Columbus proved that the earth was round.", "correct": true}, {"t": "My parents kept on encouraging me to study.", "correct": false}, {"t": "Please remember to put out the cat before you go to bed.", "correct": false}, {"t": "The hotel has been closed for many years.", "correct": false}], "a": "1번", "exp": "📖 2008 국가직9급 문1"}, {"passage": "", "q": "다음 우리말을 영어로 가장 잘 옮긴 것은?\n\n사람의 키는 자신의 가운데 손가락 길이의 약 20배 정도 된다고 한다.", "type": "mc", "choices": [{"t": "A human body is said to have twenty times as length to his or her middle finger.", "correct": false}, {"t": "A human body is said to be twenty times high than his or her middle finger.", "correct": false}, {"t": "The height of a human body is said to be about twenty times as long as the length of his or her middle finger.", "correct": true}, {"t": "The height of a human body is said to be as longer about twenty times as the length of his or her middle finger.", "correct": false}], "a": "3번", "exp": "📖 2008 국가직9급 문2"}, {"passage": "", "q": "다음 우리말을 영어로 잘못 옮긴 것은?", "type": "mc", "choices": [{"t": "난 그 파티에 가지 말았어야 했다. → I should not have gone to the party.", "correct": false}, {"t": "그는 그 사실을 미리 알고 있었음에 틀림없다. → He must have known the truth in advance.", "correct": false}, {"t": "그가 그렇게 어리석은 짓을 했을 리가 없다. → He could have done such a stupid thing.", "correct": true}, {"t": "아프면 운전을 하지 말아야 한다. → You ought not to drive if you're sick.", "correct": false}], "a": "3번", "exp": "📖 2008 국가직9급 문3"}, {"passage": "", "q": "다음 두 사람의 대화 내용이 어색한 것은?", "type": "mc", "choices": [{"t": "A: What do you do for a living? B: I fly commercial jets for a large airline.", "correct": false}, {"t": "A: How would you like your coffee? B: I'd like it strong.", "correct": false}, {"t": "A: I'm afraid her phone is busy. Would you like to hold? B: I'd prefer to leave her a message.", "correct": false}, {"t": "A: These books are so heavy. Can you give me a hand? B: Sure, I'd be glad to keep my hands off.", "correct": true}], "a": "4번", "exp": "📖 2008 국가직9급 문4"}, {"passage": "A: Have you been served?\nB: ______", "q": "다음 대화의 빈칸에 들어갈 말로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "Yes, I'm on my way.", "correct": false}, {"t": "It was a close call.", "correct": false}, {"t": "Yes, I'm being waited on.", "correct": true}, {"t": "Please let go of my hand.", "correct": false}], "a": "3번", "exp": "📖 2008 국가직9급 문5"}, {"passage": "There are two excellent television programs scheduled tonight, but I can see only one of them because they are ______.", "q": "다음 글의 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "indisputable", "correct": false}, {"t": "concurrent", "correct": true}, {"t": "matchless", "correct": false}, {"t": "indispensable", "correct": false}], "a": "2번", "exp": "📖 2008 국가직9급 문6"}, {"passage": "Icelanders are individualists like Americans. The difference seems to be in a sense of community. Iceland, known as the land of \"fire and ice,\" is about living with opposing forces. It is one of the most active volcanic countries on earth, but has 4,536 square miles of ______ ― heat and cold, co-existing. No surprise then that its society can reconcile another set of opposing forces: individualism and the needs of the community.", "q": "다음 글의 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "glacier", "correct": true}, {"t": "prairie", "correct": false}, {"t": "desert", "correct": false}, {"t": "swamp", "correct": false}], "a": "1번", "exp": "📖 2008 국가직9급 문7"}, {"passage": "", "q": "다음 글의 밑줄 친 부분의 의미로 가장 적절한 것을 고르시오.\n\nIn retrospect, I was <u>taken in</u> by the real estate agent who had a fancy manner of talking.", "type": "mc", "choices": [{"t": "inspected", "correct": false}, {"t": "deceived", "correct": true}, {"t": "revered", "correct": false}, {"t": "amused", "correct": false}], "a": "2번", "exp": "📖 2008 국가직9급 문8"}, {"passage": "", "q": "다음 글의 밑줄 친 부분의 의미로 가장 적절한 것을 고르시오.\n\nThe substantial rise in the number of working mothers, whose costs for childcare were not <u>factored into</u> the administration's policymaking, was one of the main reasons that led to the unexpected result at the polls.", "type": "mc", "choices": [{"t": "considered in", "correct": true}, {"t": "diminished in", "correct": false}, {"t": "substituted for", "correct": false}, {"t": "excluded by", "correct": false}], "a": "1번", "exp": "📖 2008 국가직9급 문9"}, {"passage": "Younger students ① who participated in the survey ② sponsored by a weekly magazine turned out ③ to be less concerned about the serious problems of homeless people ④ as the older students were.", "q": "다음 글의 밑줄 친 부분 중 어법상 옳지 않은 것은?", "type": "mc", "choices": [{"t": "① who", "correct": false}, {"t": "② sponsored", "correct": false}, {"t": "③ to be", "correct": false}, {"t": "④ as", "correct": true}], "a": "4번", "exp": "📖 2008 국가직9급 문10"}, {"passage": "When Jesse and Rachel got married, they knew they wanted to live in a traditional nuclear family ― mother, father, and biological children. Each of them had come from other family arrangements, and they had decided that a more traditional arrangement was what they wanted. Rachel had been born <u>out of wedlock</u>. Because her parents had never married, she had never met her biological father. Jesse's mother had been widowed. His father's early death made Jesse want to have a large family.", "q": "다음 글의 밑줄 친 부분의 뜻으로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "rich", "correct": false}, {"t": "illegitimate", "correct": true}, {"t": "divorced", "correct": false}, {"t": "handicapped", "correct": false}], "a": "2번", "exp": "📖 2008 국가직9급 문11"}, {"passage": "Broom jumping is most famous in the United States as an African-American wedding custom. The broom holds spiritual significance for many African people, representing the beginning of homemaking for a couple. The ritual itself in America was created during slavery. Because slaves could not legally marry, they created their own ways to honor their unions. Broom jumping is a ritual in which the bride and the groom, either at the ceremony or at the reception, signify their entrance into a new life and their creation of a new family by symbolically sweeping away of their former single lives, and jumping over the broom to enter upon a new adventure as wife and husband.", "q": "다음 글의 Broom jumping에 관한 내용과 일치하지 않는 것은?", "type": "mc", "choices": [{"t": "It is a well-known African-American wedding custom.", "correct": false}, {"t": "Its origin traces back to the period of slavery in America.", "correct": false}, {"t": "It was performed by the slaves who got legally married.", "correct": true}, {"t": "It signifies the union of the bride and the groom and their entrance into a new life.", "correct": false}], "a": "3번", "exp": "📖 2008 국가직9급 문12"}, {"passage": "Upstate New York florist Patricia Woysher has been in the business for forty years. She's sold flowers to tens of thousands of folks in the area and even received one of the best assignments a florist could hope for, decorating the White House for the Christmas season. \"I had to take a deep breath. I mean, you see pictures of the place all your life, then one day you're in the Oval Office.\" Despite the excitement, Patricia's focus remained on her day-to-day concerns. \"Doing the White House was exciting and rewarding, but my job is to run my business. I want to have something here that will last forever, that I can pass on to my children.\"", "q": "다음 글의 내용과 일치하는 것은?", "type": "mc", "choices": [{"t": "Patricia runs a flower shop in the White House.", "correct": false}, {"t": "Patricia was invited to the White House for a party.", "correct": false}, {"t": "Patricia worked for the White House and forgot her daily routines.", "correct": false}, {"t": "Patricia hopes to turn her business over to her offspring.", "correct": true}], "a": "4번", "exp": "📖 2008 국가직9급 문13"}, {"passage": "It is a great nuisance that knowledge cannot be acquired without trouble. It can only be acquired by hard work. It would be fine if we could swallow the powder of profitable information made palatable by the jam of fiction. But the truth is that, so made palatable, we cannot be sure that the powder will be profitable. I suggest to you that the knowledge the novelist imparts is ( ㉠ ) and thus ( ㉡ ) and it is better not to know a thing at all than to know it in a distorted fashion. If readers wish to inform themselves of the pressing problems of the day, they will do better to read, not novels but the books that specifically deal with them. I suggest to you that it is enough for a novelist to be a good novelist. It is unnecessary for him to be a prophet, a politician or a leader of thought. Fiction is an art and the purpose of art is to please.", "q": "다음 글의 빈칸 ( ㉠ ), ( ㉡ )에 들어갈 말로 적절한 것은?", "type": "mc", "choices": [{"t": "㉠ reasonable ㉡ believable", "correct": false}, {"t": "㉠ naive ㉡ wholesome", "correct": false}, {"t": "㉠ biased ㉡ unreliable", "correct": true}, {"t": "㉠ impartial ㉡ realistic", "correct": false}], "a": "3번", "exp": "📖 2008 국가직9급 문14"}, {"passage": "Two men were dining together in a restaurant. The first man ordered the food. The second man, who was unaccustomed to eating out, said nothing. When the food arrived, the second man ______ everything his friend did. When the first man took rice, so did the second. The first man ate a shrimp, and so did the second man. Finally, the first man took a toothpick, and his friend did the same. Later the first man asked his friend how he had enjoyed the meal. The second man answered, \"Everything was perfect, except for the last bit. It tasted like bamboo.\"", "q": "다음 글의 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "copied", "correct": true}, {"t": "cursed", "correct": false}, {"t": "ignored", "correct": false}, {"t": "opposed", "correct": false}], "a": "1번", "exp": "📖 2008 국가직9급 문15"}, {"passage": "A Western-style conversation between two people is like a game of tennis. If I introduce a topic, a conversational ball, I expect you to hit it back. If you agree with me, I don't expect you simply to agree and do nothing more. I expect you to add something ― a reason for agreeing, another example, or an elaboration to carry the idea further. But I don't expect you always to agree. I am just as happy if you question me, or challenge me, or completely disagree with me. Whether you agree or disagree, ______.", "q": "다음 글의 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "you'll be playing the wrong game", "correct": false}, {"t": "your response will return the ball to me", "correct": true}, {"t": "you'll learn a new lesson from your experience", "correct": false}, {"t": "your conversation style will differ from the Western style", "correct": false}], "a": "2번", "exp": "📖 2008 국가직9급 문16"}, {"passage": "A cause always has an effect, and an effect has a cause. Often, however, in searching for the cause or effect of an act, we jump to conclusions. If John Wilkins, who is big and strong, doesn't go out for the football team, some pupils say, \"Wilkins has no courage.\" Perhaps the real reason is that his parents object, he is behind in his school work and can't afford the time, or he believes that football is not worth playing.", "q": "다음 글의 요지로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "Easy come, easy go.", "correct": false}, {"t": "Don't be dejected, take courage.", "correct": false}, {"t": "Everybody has his own talent.", "correct": false}, {"t": "Don't make a hasty judgment.", "correct": true}], "a": "4번", "exp": "📖 2008 국가직9급 문17"}, {"passage": "The saying for which I had to find the meaning was: \"People who live in glass houses shouldn't throw stones.\"\n\n(A) My first guess was that it was about a situation in which those who want to fight should first think about defending themselves from attack. Obviously, a person whose house is made of glass, which is easily broken, should be careful. If you throw a stone, the person at whom you threw the stone could throw it back and smash your house.\n(B) I think this is good advice for anyone who is critical of other people.\n(C) However, this saying, whose meaning I looked up in a dictionary of English idioms is not really about fighting. It means that you should not criticize others for faults similar to those you have.", "q": "주어진 문장으로 시작하여, 다음 글들을 문맥에 맞게 올바른 순서로 연결한 것은?", "type": "mc", "choices": [{"t": "A － C － B", "correct": true}, {"t": "A － B － C", "correct": false}, {"t": "B － C － A", "correct": false}, {"t": "C － A － B", "correct": false}], "a": "1번", "exp": "📖 2008 국가직9급 문18"}, {"passage": "William Shakespeare is rightly regarded as one of the world's great writers; yet it would seem that he couldn't spell his own name! ( ㉠ ) Samples of his signature that have survived show his name spelled in several different ways. ( ㉡ ) Not until the eighteenth century when dictionaries came into use was a single spelling for each word accepted as correct. ( ㉢ ) A few words, however, escaped being standardized in this way; 'instill' (which can also be spelled 'instil') is one of them. ( ㉣ ) When a dictionary gives two different spellings of a word, the one given first is preferred.\n\n[주어진 문장] Such variation, however, was common then with the spelling of many words, not just names.", "q": "다음 주어진 문장이 들어갈 곳으로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "㉠", "correct": false}, {"t": "㉡", "correct": true}, {"t": "㉢", "correct": false}, {"t": "㉣", "correct": false}], "a": "2번", "exp": "📖 2008 국가직9급 문19"}, {"passage": "The term home schooling or home tuition, as it is called in England, means educating children at home or in places other than a mainstream setting such as a public or private school. There are many reasons why parents choose home schooling for their children. Some parents are dissatisfied with the quality of education in the public schools. Others do not want their children to have to worry about \"peer pressure,\" or social pressure from friends. They say it may interfere with the child's studies. These parents fear this type of pressure will lead to negative behavior such as smoking, drinking alcohol, and taking drugs.", "q": "다음 글의 제목으로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "Types of Pressure in Schools", "correct": false}, {"t": "Pros and Cons of Home Schooling", "correct": false}, {"t": "Side Effects of Home Schooling", "correct": false}, {"t": "Reasons for Home Schooling", "correct": true}], "a": "4번", "exp": "📖 2008 국가직9급 문20"}, {"passage": "One bacterium that survives keeps replicating because it is not ______ to the drug treatment.", "q": "빈칸에 들어갈 말로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "curable", "correct": false}, {"t": "susceptible", "correct": true}, {"t": "prosperous", "correct": false}, {"t": "reproductive", "correct": false}], "a": "2번", "exp": "📖 2009 국가직9급 문1"}, {"passage": "", "q": "밑줄 친 부분의 의미로 가장 적절한 것을 고르시오.\n\nThe function of the historian is neither to love the past nor to <u>emancipate</u> himself from the past, but to master and understand it as the key to the understanding of the present.", "type": "mc", "choices": [{"t": "free", "correct": true}, {"t": "please", "correct": false}, {"t": "invoke", "correct": false}, {"t": "emulate", "correct": false}], "a": "1번", "exp": "📖 2009 국가직9급 문2"}, {"passage": "A : Why do you have to be so stubborn?\nB : I don't know. That's just the way I am. I guess <u>I'm just a chip off the old block</u>.", "q": "밑줄 친 부분의 의미로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "I'm just like my father", "correct": true}, {"t": "I'm just in a bad mood", "correct": false}, {"t": "I just have confidence in my intuition", "correct": false}, {"t": "I just like to have fun with old friends", "correct": false}], "a": "1번", "exp": "📖 2009 국가직9급 문3"}, {"passage": "In the mid 1990s, ① it was estimated that 9 million Americans ② were planning a summer vacation alone. ③ Since then, the number of solo travelers ④ have increased.", "q": "밑줄 친 부분 중 어법상 옳지 않은 것은?", "type": "mc", "choices": [{"t": "① In the mid 1990s", "correct": false}, {"t": "② it was estimated", "correct": false}, {"t": "③ were planning", "correct": false}, {"t": "④ have increased", "correct": true}], "a": "4번", "exp": "📖 2009 국가직9급 문4"}, {"passage": "", "q": "다음 문장 중 어법상 옳지 않은 것은?", "type": "mc", "choices": [{"t": "He is leaving for China next Friday.", "correct": false}, {"t": "The weather has been nasty for half a month.", "correct": false}, {"t": "I have not walked a mile before it began to rain.", "correct": true}, {"t": "I will have read this book four times if I read it once again.", "correct": false}], "a": "3번", "exp": "📖 2009 국가직9급 문5"}, {"passage": "", "q": "우리말을 영어로 옮긴 것 중 가장 어색한 것을 고르시오.", "type": "mc", "choices": [{"t": "그에게서는 악취가 난다. → He smells badly.", "correct": true}, {"t": "그녀는 혼자 사는 데 익숙하다. → She is used to living alone.", "correct": false}, {"t": "그녀는 밤에 외출하는 것을 겁낸다. → She is afraid of going out at night.", "correct": false}, {"t": "중요한 것은 사람됨이지 재산이 아니다. → The important thing is not what you have but what you are.", "correct": false}], "a": "1번", "exp": "📖 2009 국가직9급 문6"}, {"passage": "", "q": "우리말을 영어로 옮긴 것 중 가장 어색한 것을 고르시오.", "type": "mc", "choices": [{"t": "그가 조만간 승진할 것이란 소문이 있다. → The rumor says he will be promoted sooner or later.", "correct": false}, {"t": "음주 운전하는 것은 어리석은 짓이라는 것을 알았다. → I found it stupid to drive under the influence.", "correct": false}, {"t": "우리는 폭풍우 때문에 야구를 하지 못했다. → The heavy rain prevented us from playing baseball.", "correct": false}, {"t": "내 기억에는 그가 나에게 그런 뻔뻔스러운 거짓말을 한 적이 없다. → I don't remember for him to tell me such a direct lie.", "correct": true}], "a": "4번", "exp": "📖 2009 국가직9급 문7"}, {"passage": "A : Would you like to get some coffee?\nB : That's a good idea.\nA : Should we buy Americano or Cafe-Latte?\nB : It doesn't matter to me. ______\nA : I think I'll get Americano.\nB : Sounds great to me.", "q": "대화의 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "Not really.", "correct": false}, {"t": "Suit yourself.", "correct": true}, {"t": "Come see for yourself.", "correct": false}, {"t": "Maybe just a handful or so.", "correct": false}], "a": "2번", "exp": "📖 2009 국가직9급 문8"}, {"passage": "A : ______\nB : Today is Monday, so you can have it until next Monday.\nA : Can I have the book for a few more days?\nB : No. Books borrowed should be returned within one week.\nA : Is there any way to keep this book for around 10 days?\nB : Well, I'm afraid there isn't. You'll just have to renew the book for another week.", "q": "대화의 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "What date is it?", "correct": false}, {"t": "When is this book due?", "correct": true}, {"t": "I'd like to return this book.", "correct": false}, {"t": "This book can be checked out in due form, right?", "correct": false}], "a": "2번", "exp": "📖 2009 국가직9급 문9"}, {"passage": "A : Are you ready to go to the party, Amy?\nB : I don't know whether I can go. I'm feeling a little sick, and my dress is really not that nice. Maybe you should just go without me.\nA : Come on, Amy. Stop ______. I know you too well. You're not sick. What is the real root of the problem?", "q": "대화의 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "shaking a leg", "correct": false}, {"t": "hitting the ceiling", "correct": false}, {"t": "holding your horses", "correct": false}, {"t": "beating around the bush", "correct": true}], "a": "4번", "exp": "📖 2009 국가직9급 문10"}, {"passage": "Illegible handwriting does not indicate weakness of character, as even a quick glance at the penmanship of George Washington, Franklin D. Roosevelt, or John F. Kennedy reveals.", "q": "다음 문장에서 추론할 수 있는 것으로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "A person's handwriting reveals a lot about that person.", "correct": false}, {"t": "The weakness of character is evident in illegible handwriting.", "correct": false}, {"t": "Washington, Roosevelt, and Kennedy all had weak characters.", "correct": false}, {"t": "Washington, Roosevelt, and Kennedy all had handwriting that was difficult to read.", "correct": true}], "a": "4번", "exp": "📖 2009 국가직9급 문11"}, {"passage": "For the Greeks, beauty was a virtue: a kind of excellence. If it occurred to the Greeks to distinguish between a person's \"inside\" and \"outside,\" they still expected that inner beauty would be matched by beauty of the other kind. The well-born young Athenians who gathered around Socrates found it quite ______ that their hero was so intelligent, so brave, so honorable, so seductive ― and so ugly.", "q": "빈칸에 들어갈 말로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "natural", "correct": false}, {"t": "essential", "correct": false}, {"t": "paradoxical", "correct": true}, {"t": "self-evident", "correct": false}], "a": "3번", "exp": "📖 2009 국가직9급 문12"}, {"passage": "We should behave towards our country as women behave towards the men they love. A loving wife will do anything for her husband except to stop criticizing and trying to improve him. That is the right attitude for a citizen. We should cast the same affectionate but sharp glance at our country. We should love it, but also insist upon telling it all its faults. The dangerous man is not the (A)______, but the noisy empty (B)______ who encourages us to indulge in orgies of self-congratulation.", "q": "빈칸 (A), (B)에 들어갈 말로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "(A) critic (B) patriot", "correct": true}, {"t": "(A) citizen (B) leader", "correct": false}, {"t": "(A) extrovert (B) introvert", "correct": false}, {"t": "(A) Democrat (B) Republican", "correct": false}], "a": "1번", "exp": "📖 2009 국가직9급 문13"}, {"passage": "Thank you for inviting me to speak to you today. I'd like to take this opportunity to tell you about our Silver Service activities and why we believe it is important for everyone to be involved in helping the elderly in our community. Did you know that one in every six people over the age of 60 in this community needs some kind of help in his or her home? Those of us who have experience in this kind of work know that our small \"investments\" in time and effort are nothing compared to the kind of satisfaction and fulfillment we get in return.\n\nThe speech is delivered by a ______.", "q": "빈칸에 들어갈 말로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "salesperson", "correct": false}, {"t": "fund-raiser", "correct": false}, {"t": "pediatrician", "correct": false}, {"t": "social worker", "correct": true}], "a": "4번", "exp": "📖 2009 국가직9급 문14"}, {"passage": "Fortunately, psychologists believe that books can serve as therapeutic tools ― or at least as effective adjuncts to professional therapy ― to help children come to terms with their parents' divorce. According to educator-counselor Joanne Bernstein, stories that confront life's problems with candor and credibility may provide insights, promote self-examination, and lead to changes in attitude and behavior. One way stories accomplish this is through identification. Reading about the grief and anxiety of others, she explains, can arouse sudden awareness as problems that have not been consciously or completely recognized are allowed to surface. Introduced to characters who share their difficulties, children may feel less alienated and thus freer to discuss and resolve their own plight.", "q": "글의 내용과 일치하지 않는 것을 고르시오.", "type": "mc", "choices": [{"t": "Children come to terms with their plight by reading.", "correct": false}, {"t": "Stories are likely to alienate children from their parents.", "correct": true}, {"t": "Books are helpful for children whose parents are divorced.", "correct": false}, {"t": "Children identify themselves with characters while reading.", "correct": false}], "a": "2번", "exp": "📖 2009 국가직9급 문15"}, {"passage": "International Import Company\n100 East Houston St. New York, NY 10053 U.S.A.\n\nFarmers Fruit Ltd. Aghia Paraskevi 19081 Athens, Greece\n\nDear Sirs,\nIn reply to your letter dated May 3rd, we thank you for allowing us a special discount. This makes it possible for us to place an order and to expect quite good sales. We have pleasure of enclosing our Order No. 813/BS, and would ask you to return the duplicate to us, duly signed, as an acknowledgement.\nYours faithfully, Paul Hogan\nEnc. Order No. 813/BS", "q": "글의 내용과 일치하지 않는 것을 고르시오.", "type": "mc", "choices": [{"t": "Order No. 813/BS is being enclosed.", "correct": false}, {"t": "Paul Hogan is turning the order down.", "correct": true}, {"t": "Paul Hogan works for a company in New York.", "correct": false}, {"t": "The special discount makes possible an order for products.", "correct": false}], "a": "2번", "exp": "📖 2009 국가직9급 문16"}, {"passage": "Various fogs are essentially clouds that form at the earth's surface, produced by temperature differences and moisture in the air. As warm, moisture-laden air cools, the amount of moisture that air can contain decreases. Warm air can hold more water vapor than cold air. So if the air is cooled sufficiently it will reach the dew point, at which the moisture begins to gather together out of the air and form water drops, creating fog.", "q": "글의 목적으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "To explain how fog is formed", "correct": true}, {"t": "To describe various types of fog", "correct": false}, {"t": "To show when warm air affects the fog", "correct": false}, {"t": "To point out why moisture works in the air", "correct": false}], "a": "1번", "exp": "📖 2009 국가직9급 문17"}, {"passage": "Job-related stress can lead to symptoms of poor physical health such as weight gain, fatigue and illness. Both diet and exercise can contribute to the alleviation of these negative effects of stress. The first step is to eliminate junk food from the diet. Instead of soda or a candy bar, try a piece of fresh fruit. The next step is to make a habit of exercising every day. And you should aim for twenty to thirty minutes of exercise a day. The key is to find a form of exercise that you enjoy. That way, you are more likely to do it every day and will receive the maximum benefit. Both diet and exercise can help you maintain a healthy weight, keep you feeling energized, and protect you from sickness. Then you will be better equipped to deal with the sources of stress at your job.", "q": "글의 목적으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "To prevent weight gain", "correct": false}, {"t": "To explain the causes of stress", "correct": false}, {"t": "To announce why junk food is bad for the health", "correct": false}, {"t": "To explain how to ease the negative effects of stress", "correct": true}], "a": "4번", "exp": "📖 2009 국가직9급 문18"}, {"passage": "Dogs have long had special standing in the medical world. Trained to see for the blind, hear for the deaf and move for the immobilized, dogs have become indispensable companions for people with disabilities. However, dogs appear to be far more than four-legged health care workers. One Japanese study found pet owners made 30 percent fewer visits to doctors. A Melbourne study of 6,000 people showed that owners of dogs and other pets had lower cholesterol, blood pressure and heart attack risk compared with people who didn't have pets. Obviously, the better health of pet owners could be explained by a variety of factors, but many experts believe companion animals improve health at least in part by lowering stress.", "q": "글의 제목으로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "The friendliness of dogs", "correct": false}, {"t": "The healing power of dogs", "correct": true}, {"t": "Dogs as health care workers", "correct": false}, {"t": "Japanese dogs for the disabled", "correct": false}], "a": "2번", "exp": "📖 2009 국가직9급 문19"}, {"passage": "More and more people are turning away from their doctors and, instead, going to individuals who have no medical training and who sell unproven treatments. They go to quacks to get everything from treatments for colds to cures for cancer. And they are putting themselves in dangerous situations. Many people don't realize how unsafe it is to use unproven treatments. First of all, the treatments usually don't work. They may be harmless, but, if someone uses these products instead of proven treatments, he or she may be harmed. Why? Because during the time the person is using the product, his or her illness may be getting worse. This can even cause the person to die.", "q": "글의 요지로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "Better train should be given to medical students.", "correct": false}, {"t": "Alternative medical treatments can be a great help.", "correct": false}, {"t": "Don't let yourself become a victim of health fraud.", "correct": true}, {"t": "In any case, it is alright to hold off going to a doctor for several days.", "correct": false}], "a": "3번", "exp": "📖 2009 국가직9급 문20"}, {"passage": "", "q": "다음 우리말을 영어로 옮긴 것으로 가장 옳은 것은?\n\n우리가 작년에 그 아파트를 구입했었더라면 얼마나 좋을까.", "type": "mc", "choices": [{"t": "I wish we purchased the apartment last year.", "correct": false}, {"t": "I wished we purchased the apartment last year.", "correct": false}, {"t": "I wish we had purchased the apartment last year.", "correct": true}, {"t": "I wished we had purchased the apartment last year.", "correct": false}], "a": "3번", "exp": "📖 2010 국가직9급 문1"}, {"passage": "Some students make the mistake of thinking that mathematics consists solely of solving problems by means of formulas and rules. ① To become successful problem solvers, however, they have to appreciate the theory, recognizing the logical structure and reasoning behind the mathematical methods. ② To do so requires a precision of understanding the exact meaning of a mathematical statement and of expressing thoughts with accuracy and clarity. ③ However, this precision cannot be achieved without real appreciation of the subtleties of language. ④ In fact, anyone can advance much beyond mere problem solving tasks without manipulating mathematical formulas and rules. That is, superior ability in the use of language is a prerequisite to become successful problem solvers.", "q": "다음 글에서 전체적인 흐름과 관계없는 문장은?", "type": "mc", "choices": [{"t": "①", "correct": false}, {"t": "②", "correct": false}, {"t": "③", "correct": false}, {"t": "④", "correct": true}], "a": "4번", "exp": "📖 2010 국가직9급 문2"}, {"passage": "An old woman came into her doctor's office and confessed to an embarrassing problem. \"I fart all the time, Doctor Johnson, but they're soundless, and they have no odor. In fact, since I've been here, I've farted no less than twenty times. What can I do?\" \"Here's a prescription, Mrs. Harris. Take these pills three times a day for seven days and come back and see me in a week.\" Next week an upset Mrs. Harris marched into Dr. Johnson's office. \"Doctor, I don't know what was in those pills, but the problem is worse! I'm farting just as much, but now they smell terrible! What do you have to say for yourself?\" \"Calm down, Mrs. Harris,\" said the doctor soothingly. \"Now that we've fixed your sinuses, we'll work on your <u>other</u> sense!\"", "q": "다음 글의 밑줄 친 부분의 의미로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "oral", "correct": false}, {"t": "sixth", "correct": false}, {"t": "visual", "correct": false}, {"t": "auditory", "correct": true}], "a": "4번", "exp": "📖 2010 국가직9급 문3"}, {"passage": "The sales talk of the old-fashioned businessman was essentially rational. He knew his merchandise, he knew the needs of the customer, and on the basis of this knowledge he tried to sell. To be sure his sales talk was not entirely objective and he used persuasion as much as he could; yet, in order to be efficient, it had to be a rather rational and sensible kind of talk. A vast sector of modern advertising is different; it does not appeal to reason but to emotion; like any other kind of hypnoid suggestion, it tries to impress its customers emotionally and then make them submit intellectually. This type of advertising impresses the customers by all sorts of means such as the repetition of the same formula again and again. All these methods are essentially irrational; they have nothing to do with the qualities of the merchandise, and they suppress and kill the critical capacities of the customers.", "q": "다음 글의 제목으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "Significance of the Sales Talk", "correct": false}, {"t": "Change in Advertising Methods", "correct": true}, {"t": "Critical Capacities of the Customers", "correct": false}, {"t": "Importance of Emotional Advertising Slogans", "correct": false}], "a": "2번", "exp": "📖 2010 국가직9급 문4"}, {"passage": "Many of the greatest economic evils of our time are the fruits of risk, uncertainty, and ignorance. It is because particular individuals, fortunate in situation or in abilities, are able to take advantage of uncertainty and ignorance, and also because for the same reason big business is often a lottery, that great inequalities of wealth come about. And these same factors are also the cause of the unemployment of labor, or the disappointment of reasonable business expectations, and of the impairment of efficiency and production. Yet the cure lies outside of the operations of individuals. I believe that the cure for these things is partly to be sought in the deliberate control of the currency and of credit by a central institution, and partly in the collection and dissemination of data relating to the business situation including the full publicity, by law if necessary, of all business facts which it is useful to know. Even if these measures prove insufficient, they will furnish us with better knowledge than we have now for taking the next step.", "q": "다음 글의 제목으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "Economic Evils and Money-oriented Society", "correct": false}, {"t": "Economic Evils and Solutions to Them", "correct": true}, {"t": "Role of the Central Institution", "correct": false}, {"t": "Origins of Economic Evils", "correct": false}], "a": "2번", "exp": "📖 2010 국가직9급 문5"}, {"passage": "", "q": "다음 밑줄 친 부분과 의미가 가장 가까운 것을 고르시오.\n\nSarah frequently hurts others when she criticizes their work because she is so <u>outspoken</u>.", "type": "mc", "choices": [{"t": "reserved", "correct": false}, {"t": "wordy", "correct": false}, {"t": "retrospective", "correct": false}, {"t": "candid", "correct": true}], "a": "4번", "exp": "📖 2010 국가직9급 문6"}, {"passage": "", "q": "다음 밑줄 친 부분과 의미가 가장 가까운 것을 고르시오.\n\nMary and I have been friends over 10 years but I sometimes have a strange feeling to her. She is <u>as deep as a well</u>.", "type": "mc", "choices": [{"t": "easy to persuade", "correct": false}, {"t": "simple to satisfy", "correct": false}, {"t": "impatient to deal with", "correct": false}, {"t": "difficult to understand", "correct": true}], "a": "4번", "exp": "📖 2010 국가직9급 문7"}, {"passage": "", "q": "다음 밑줄 친 부분과 의미가 가장 가까운 것을 고르시오.\n\nQuite often, the simple life feels out of reach because of all the problems and challenges that <u>crop up</u>.", "type": "mc", "choices": [{"t": "dominate", "correct": false}, {"t": "finish", "correct": false}, {"t": "happen", "correct": true}, {"t": "increase", "correct": false}], "a": "3번", "exp": "📖 2010 국가직9급 문8"}, {"passage": "The executives should estimate their debt-to-income ratios to see whether they run the risk of becoming ______.", "q": "다음 문장의 빈칸에 들어갈 가장 적절한 것은?", "type": "mc", "choices": [{"t": "insolvent", "correct": true}, {"t": "inverted", "correct": false}, {"t": "distracted", "correct": false}, {"t": "decoded", "correct": false}], "a": "1번", "exp": "📖 2010 국가직9급 문9"}, {"passage": "I ① looked forward to this visit more than one ② would think, ③ considered I was flying seven hundred miles to sit alongside a ④ dying man. But I seemed to slip into a time warp when I visited Morrie, and I liked myself better when I was there.", "q": "다음 밑줄 친 부분 중 어법상 옳지 않은 것을 고르시오.", "type": "mc", "choices": [{"t": "① looked forward to", "correct": false}, {"t": "② would think", "correct": false}, {"t": "③ considered", "correct": true}, {"t": "④ dying", "correct": false}], "a": "3번", "exp": "📖 2010 국가직9급 문10"}, {"passage": "New York's Christmas is featured in many movies ① while this time of year, ② which means that this holiday is the most romantic and special in the Big Apple. ③ The colder it gets, the brighter the city becomes ④ with colorful lights and decorations.", "q": "다음 밑줄 친 부분 중 어법상 옳지 않은 것을 고르시오.", "type": "mc", "choices": [{"t": "① while", "correct": true}, {"t": "② which", "correct": false}, {"t": "③ The colder", "correct": false}, {"t": "④ with", "correct": false}], "a": "1번", "exp": "📖 2010 국가직9급 문11"}, {"passage": "", "q": "다음 우리말을 영어로 옮긴 것으로 옳지 않은 것은?", "type": "mc", "choices": [{"t": "영어를 배우는 것은 결코 쉬운 일은 아니다. → It is by no means easy to learn English.", "correct": false}, {"t": "비록 가난하지만 그녀는 정직하고 부지런하다. → Poor as she is, she is honest and diligent.", "correct": false}, {"t": "사업에서 신용만큼 중요한 것은 없다. → Everything in business is so important as credit.", "correct": true}, {"t": "그 남자뿐만 아니라 너도 그 실패에 책임이 있다. → You as well as he are responsible for the failure.", "correct": false}], "a": "3번", "exp": "📖 2010 국가직9급 문12"}, {"passage": "One custom that is common at weddings in the United States is throwing rice at the bride and groom as they leave the place where the wedding ceremony has just been held. No one knows exactly why people throw rice. One explanation is that the rice assures that the couple will have many children. If this is true, then the custom is not always a good one now because ______.", "q": "다음 글의 빈칸에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "a lot of couples do not want many children", "correct": true}, {"t": "many people are pleased about it", "correct": false}, {"t": "many couples go on honeymoon the next day", "correct": false}, {"t": "it is unreasonable to clear away rice after the ceremony", "correct": false}], "a": "1번", "exp": "📖 2010 국가직9급 문13"}, {"passage": "\"There is a huge drive to deep right,\" the announcer cries. His voice shrills with excitement, \"It's high, it's far, it's going, going ..., gone.\" As the batter triumphantly circles the bases, the crowd cheers politely. However, their suspicion is nearly as audible as their pleasure. Where did the muscles come from? Was the homer legitimate? Should it count in this particular game? And what about the sport's records? Due to the widespread use in sports of anabolic steroids, the lords of the game must accept that the very integrity of the game is ______. These steroids were developed originally to help cancer patients. They promote weight gain and increase muscle mass. In recent years, athletes have taken them hoping to improve their performance on the playing field. The problem with this is two-fold. First, steroid use gives one group of athletes an unfair advantage. Second, steroid users incur a great risk of psychological and physical side effects.", "q": "다음 글의 빈칸에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "under a ban", "correct": false}, {"t": "in abundance", "correct": false}, {"t": "at stake", "correct": true}, {"t": "in control", "correct": false}], "a": "3번", "exp": "📖 2010 국가직9급 문14"}, {"passage": "A : You know, I'm getting transferred to Seoul.\nB : Seoul? Is that good or bad?\nA : Oh, I was hoping for it.\nB : ______.", "q": "다음 대화의 흐름으로 보아 빈칸에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "I really wanted to go to Seoul", "correct": false}, {"t": "Oh, it's not easy for me", "correct": false}, {"t": "In that case, I'm happy for you", "correct": true}, {"t": "I appreciate your patience", "correct": false}], "a": "3번", "exp": "📖 2010 국가직9급 문15"}, {"passage": "A : It doesn't make sense. Why should the power go off all of a sudden and the phone line?\nB : Maybe some kind of an electrical storm or something.\nA : ______ Sky's just as blue as anything. Not a cloud. No lightening. No thunder. Nothing. How could it be a storm?", "q": "다음 대화의 흐름으로 보아 빈칸에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "That doesn't seem likely.", "correct": true}, {"t": "You got the point.", "correct": false}, {"t": "Guess what?", "correct": false}, {"t": "I think so.", "correct": false}], "a": "1번", "exp": "📖 2010 국가직9급 문16"}, {"passage": "In the late 20th century, the northern hemisphere experienced its most widespread warmth for 1,200 years, according to the journal Science. The findings support evidence pointing to unprecedented recent warming of the climate linked to greenhouse emissions. University of East Anglia(UEA) researchers measured changes in fossil shells, tree rings, ice cores and other past temperature records. They also looked at people's diaries from the last 750 years. Timothy Osborn and Keith Briffa of UEA analysed instrument measurements of temperatures from 1856 onwards to establish the geographic extent of recent warming. Then, they compared this data with evidence dating back as far as AD 800. The analysis confirmed periods of significant warmth in the northern hemisphere from AD 890 to 1170 (the so-called \"Medieval Warm Period\") and for much colder periods from AD 1580 to 1850 (the \"Little Ice Age\").", "q": "다음 글의 내용과 일치하지 않는 것을 고르시오.", "type": "mc", "choices": [{"t": "Researchers at UEA examined a variety of materials to check temperature changes.", "correct": false}, {"t": "The Medieval Warm Period was shorter than the Little Ice Age.", "correct": true}, {"t": "The late 20th century is not the first in history that witnessed a temperature change.", "correct": false}, {"t": "Greenhouse emissions are considered to be the cause of the recent warming.", "correct": false}], "a": "2번", "exp": "📖 2010 국가직9급 문17"}, {"passage": "Ice wines are becoming increasingly popular across North America. While ice wines have always been fashionable in Western Europe, they were hard to find in North America and often ridiculously expensive. Ice wines are more expensive than other types of wine on account of the temperature requirements to make them. The grapes must be left on the vines until the first frost, after which they are harvested. If the first frost comes too late, the grapes will turn rotten, and the harvest will be lost. Add to that the cost of shipping the wines, and they become rather expensive. However, good quality North American ice wines, produced in California and British Columbia, have recently come onto the market, making ice wines more affordable.", "q": "다음 글의 내용과 일치하지 않는 것을 고르시오.", "type": "mc", "choices": [{"t": "Specific temperature conditions are required to make ice wines.", "correct": false}, {"t": "Ice wines used to be difficult to come by in North America.", "correct": false}, {"t": "The shipping costs contribute to the high prices of ice wines.", "correct": false}, {"t": "North America was well-known for its high quality ice wines.", "correct": true}], "a": "4번", "exp": "📖 2010 국가직9급 문18"}, {"passage": "The umbrella is so old that no one knows where it came from － it was invented before man learned how to write. But for thousands of years, the umbrella was used only for protection from the sun, rather than from the rain. The word 'umbrella', in fact, comes from the Latin word 'umbra', which means 'shade', and ancient slaves held umbrellas over their masters to give them shade. At the beginning, umbrellas were carried only by women, for they weren't considered 'manly' enough to be used by men. It wasn't until about 300 years ago that people began to use waterproof umbrellas in the rain.", "q": "다음 글의 내용과 일치하는 것은?", "type": "mc", "choices": [{"t": "The umbrella was invented after man learned how to write.", "correct": false}, {"t": "The umbrella was used mainly for protection from the rain.", "correct": false}, {"t": "At the beginning, umbrellas were carried only by men.", "correct": false}, {"t": "People began to use waterproof umbrellas about 300 years ago.", "correct": true}], "a": "4번", "exp": "📖 2010 국가직9급 문19"}, {"passage": "Euthanasia generally refers to mercy killing, the voluntary ending of the life of someone who is terminally or hopelessly ill. Euthanasia has become a legal, medical and ethical issue over which opinion is divided. Euthanasia can be either active or passive. Active euthanasia means that a physician or other medical personnel takes a deliberate action that will induce death. Passive euthanasia means letting a patient die for lack of treatment or suspending treatment that has begun. A good deal of the controversy about mercy killing stems from the decision-making process. Who decides if a patient is to die? This issue had not been established legally in the United States. The matter is left to state law, which usually allows the physician in charge to suggest the option of death to a patient's relatives, especially if the patient is brain-dead.\n\nThe article suggests that euthanasia should be ______.", "q": "다음 글을 읽고 아래 문장의 빈칸에 들어갈 가장 적절한 것은?", "type": "mc", "choices": [{"t": "primarily an ethical issue", "correct": false}, {"t": "decided by physicians", "correct": false}, {"t": "determined by the federal government", "correct": false}, {"t": "a controversial issue not to be easily resolved", "correct": true}], "a": "4번", "exp": "📖 2010 국가직9급 문20"}, {"passage": "", "q": "밑줄 친 부분과 의미가 가장 가까운 것은?\n\nIt is <u>debatable</u> whether nuclear weapons actually prevent war.", "type": "mc", "choices": [{"t": "contradictory", "correct": false}, {"t": "reconcilable", "correct": false}, {"t": "augmentative", "correct": false}, {"t": "controversial", "correct": true}], "a": "4번", "exp": "📖 2011 국가직9급 문1"}, {"passage": "To avoid death duty, the man ______ the greater part of his property to his only son as soon as he retired.", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "made up", "correct": false}, {"t": "made over", "correct": true}, {"t": "made out", "correct": false}, {"t": "made up for", "correct": false}], "a": "2번", "exp": "📖 2011 국가직9급 문2"}, {"passage": "The viability of reclaimed water for indirect potable reuse should be assessed ______ quantity and reliability of raw water supplies, the quality of reclaimed water, and cost effectiveness.", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "regardless of", "correct": false}, {"t": "with regard to", "correct": true}, {"t": "to the detriment of", "correct": false}, {"t": "on behalf of", "correct": false}], "a": "2번", "exp": "📖 2011 국가직9급 문3"}, {"passage": "In general terms, tablet PC refers to a slate-shaped mobile computer device, equipped with a touchscreen or stylus to operate the computer. Tablet PCs are often used where normal notebooks are impractical or ______, or do not provide the needed functionality.", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "unwieldy", "correct": true}, {"t": "inconclusive", "correct": false}, {"t": "exclusive", "correct": false}, {"t": "unprecedented", "correct": false}], "a": "1번", "exp": "📖 2011 국가직9급 문4"}, {"passage": "The Aztecs believed that chocolate ① made people intelligent. Today, we do not believe this. But chocolate has a special chemical ② calling phenylethylamine. This is the same chemical ③ the body makes when a person is in love. Which do you prefer ― ④ eating chocolate or being in love?", "q": "밑줄 친 부분 중 어법상 옳지 않은 것은?", "type": "mc", "choices": [{"t": "① made people", "correct": false}, {"t": "② calling phenylethylamine", "correct": true}, {"t": "③ the body makes", "correct": false}, {"t": "④ eating chocolate", "correct": false}], "a": "2번", "exp": "📖 2011 국가직9급 문5"}, {"passage": "", "q": "다음 중 어법상 옳은 것은?", "type": "mc", "choices": [{"t": "She objects to be asked out by people at work.", "correct": false}, {"t": "I have no idea where is the nearest bank around here.", "correct": false}, {"t": "Tom, one of my best friends, were born in April 4th, 1985.", "correct": false}, {"t": "Had they followed my order, they would not have been punished.", "correct": true}], "a": "4번", "exp": "📖 2011 국가직9급 문6"}, {"passage": "", "q": "다음 중 우리말을 영어로 잘못 옮긴 것은?", "type": "mc", "choices": [{"t": "그는 결코 당신을 속일 사람이 아니다. → He is the last person to deceive you.", "correct": false}, {"t": "그는 주먹다짐을 할 바에야 타협하는 것이 낫다고 생각한다. → He would much rather make a compromise than fight with his fists.", "correct": false}, {"t": "프레스코는 이태리 교회의 익숙한 요소이기 때문에 이것을 당연하게 생각하기 쉽다. → Frescoes are so familiar a feature of Italian churches that they are easy to take it for granted.", "correct": true}, {"t": "그는 대학에 다니지 않았지만 아는 것이 아주 많은 사람이다. → Even though he didn't go to college, he is a very knowledgeable man.", "correct": false}], "a": "3번", "exp": "📖 2011 국가직9급 문7"}, {"passage": "", "q": "다음 중 우리말을 영어로 잘못 옮긴 것은?", "type": "mc", "choices": [{"t": "시간이 부족해서 시험을 끝낼 수 없었다. → I couldn't finish the exam because I ran out of time.", "correct": false}, {"t": "습관을 깨기란 예상보다 훨씬 어렵다. → It is much more difficult than you'd expect to break a habit.", "correct": false}, {"t": "대부분의 사람들은 TV에서 지나친 폭력을 매우 싫어한다. → Most people have a strong dislike to excessive violence on TV.", "correct": false}, {"t": "낮에는 너무 바빠 걱정할 틈도 없고, 밤에는 너무 피곤해서 깨어있을 수 없는 사람은 복 받은 사람이다. → Blessed is the man who is too busy to worry in the day and too tired of lying awake at night.", "correct": true}], "a": "4번", "exp": "📖 2011 국가직9급 문8"}, {"passage": "① A : Are we still going on a picnic tomorrow? It might rain. B : Let's wait and see.\n② A : Would you like to have a dinner with me this weekend? B : I'm sorry I can't make it. Can you give me a rain check?\n③ A : Can you hand in the report as soon as possible? B : Be my guest.\n④ A : Is it true that Mr. Smith is out of town? B : Not that I know of.", "q": "다음 대화 내용 중 가장 어색한 것은?", "type": "mc", "choices": [{"t": "①", "correct": false}, {"t": "②", "correct": false}, {"t": "③", "correct": true}, {"t": "④", "correct": false}], "a": "3번", "exp": "📖 2011 국가직9급 문9"}, {"passage": "A : What are you doing?\nB : I'm looking at my calendar. I have a dental appointment tomorrow.\nA : Tomorrow? But we're going to Jim's wedding tomorrow.\nB : Yes, I know. ______.\nA : Is it for a regular checkup?\nB : No. It's just for the cleaning.", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "You must cancel the appointment", "correct": false}, {"t": "You have to mark it on the calendar", "correct": false}, {"t": "I don't want to see my doctor", "correct": false}, {"t": "I need to reschedule it", "correct": true}], "a": "4번", "exp": "📖 2011 국가직9급 문10"}, {"passage": "As the weather changes, joggers, like some exotic species of bird, begin to molt. On frigid winter days, when the wind and snow sweep down from Canada, the joggers wear heavy layers of clothes. Ski masks cover their faces, woolen caps hide their hair, and heavy scarves are wrapped snugly around their necks. Gradually, however, the weather warms, and the bulky layers of clothes are peeled away. First, lightweight jogging suits in terry cloth, velour, and even plastic dot the paths in parks and along streets. As spring changes to summer, winter-pale legs and arms begin to appear, covered only partially by shorts and T-shirts.", "q": "다음 글의 제목으로 가장 적합한 것은?", "type": "mc", "choices": [{"t": "Fashionable clothes in Canada", "correct": false}, {"t": "The latest fashion in jogging suits", "correct": false}, {"t": "How to choose a proper jogging suit", "correct": false}, {"t": "The effect of weather on joggers' fashion", "correct": true}], "a": "4번", "exp": "📖 2011 국가직9급 문11"}, {"passage": "Fundamental happiness depends more than anything else upon what may be called a friendly interest in persons and things. The kind [of interest in persons] that makes for happiness is the kind that likes to observe people and finds pleasure in their individual traits, that wishes to afford scope for the interests and pleasures of those with whom it is brought into contact without desiring to acquire power over them or to secure their enthusiastic admiration. The person whose attitude towards ______ is genuinely of this kind will be a source of happiness and a recipient of reciprocal kindness. To like many people spontaneously and without effort is perhaps the greatest of all sources of personal happiness.", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "others", "correct": true}, {"t": "things", "correct": false}, {"t": "pleasure", "correct": false}, {"t": "happiness", "correct": false}], "a": "1번", "exp": "📖 2011 국가직9급 문12"}, {"passage": "The white-tailed deer was one of the first animals to be protected by federal legislation. But as it turns out, unlike the passenger pigeon, white-tailed deer were not in much need of ______. They have proven to be highly adaptable creatures, and their population has not diminished despite the loss of wooded areas. Like squirrels and robins, white-tailed deer have adapted quite nicely to life on the edge of suburbia. In fact, they are happy to supplement their regular diets with fruits and vegetables from gardens. In addition, many homeowners are fond of these gentle creatures and put out blocks of deer food that help the animals make it through harsh winters.", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "evolution", "correct": false}, {"t": "extinction", "correct": false}, {"t": "protection", "correct": true}, {"t": "habitat", "correct": false}], "a": "3번", "exp": "📖 2011 국가직9급 문13"}, {"passage": "One way to accelerate the flow of new ideas is to be put in difficult situations where you're likely to fail. When we fail to do something, we feel frustrated and we begin trying out other behaviors. Many ideas compete vigorously, greatly enhancing the creative process. Say you start to turn a doorknob that has always turned easily. It won't move. You turn the knob harder. Then you pull it up or push it down. Maybe you wiggle it. Eventually, you may shove or kick the door. These efforts from established behaviors will probably lead to new solutions. Creativity is an extension of ______.", "q": "다음 글의 빈칸에 들어갈 적절한 것은?", "type": "mc", "choices": [{"t": "how long you think", "correct": false}, {"t": "how you operate tools", "correct": false}, {"t": "what you already know", "correct": true}, {"t": "what your personality is", "correct": false}], "a": "3번", "exp": "📖 2011 국가직9급 문14"}, {"passage": "If you are at the seaside, and you take an old, dull, brown penny and rub it hard for a minute or two with handfuls of wet sand, the penny will come out a bright gold colour, looking as clean and new as the day it was made. Now poetry has the same effect on words as wet sand on pennies. In what seems almost a miraculous way, it brightens up words that looked dull and ordinary. Thus, poetry is perpetually ______.", "q": "다음 글의 빈칸에 들어갈 적절한 것은?", "type": "mc", "choices": [{"t": "cultivating your mind", "correct": false}, {"t": "recreating language", "correct": true}, {"t": "beautifying the nature", "correct": false}, {"t": "discovering the unknown universe", "correct": false}], "a": "2번", "exp": "📖 2011 국가직9급 문15"}, {"passage": "Some people give up the moment an obstacle is placed in front of them. Some people doggedly continue to pursue a goal even after years of frustration and failure. What is the difference between these two people? Those who feel they are not responsible for choosing their goals and pursing them tend to believe that results are arbitrary. To them, it does not matter how hard you try or how talented you are. Being successful is all a matter of luck. Those who persevere, ______, recognize that they are ultimately responsible not just for pursuing their goals, but for setting them. To them, what you do matters, and giving up for no reasons does not seem very attractive.", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "however", "correct": true}, {"t": "moreover", "correct": false}, {"t": "likewise", "correct": false}, {"t": "therefore", "correct": false}], "a": "1번", "exp": "📖 2011 국가직9급 문16"}, {"passage": "Many sports help to ( A ) one's reactions and dexterity. Sports can also improve one's process of thought. Be sure to judge whether or not the level of exercise activity is appropriate as you are participating in the sport. Being wise about the health benefits of sports will ensure a healthy lifestyle. Regular exercise will help one's personality to be positive. If you ( B ) what has been suggested, you will have favorable results.", "q": "다음 글의 빈칸에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "(A) control (B) complement", "correct": false}, {"t": "(A) enhance (B) complement", "correct": false}, {"t": "(A) control (B) implement", "correct": false}, {"t": "(A) enhance (B) implement", "correct": true}], "a": "4번", "exp": "📖 2011 국가직9급 문17"}, {"passage": "When I was growing up, my father used to count out loud to ten when he was angry with my sisters and me. ( A ) It was a strategy he used to cool down before deciding what to do next. ( B ) I've improved this strategy by incorporating the use of the breath. ( C ) Then, relax your entire body as you breathe out. ( D ) What you are doing here is clearing your mind with a mini version of a meditation exercise. The combination of counting and breathing is so relaxing that it's almost impossible to remain angry once you are finished.\n\n[주어진 문장] All you have to do is this: When you feel yourself getting angry, take a long, deep breath, and as you do, say the number one to yourself.", "q": "다음 문장이 들어갈 위치로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "A", "correct": false}, {"t": "B", "correct": false}, {"t": "C", "correct": true}, {"t": "D", "correct": false}], "a": "3번", "exp": "📖 2011 국가직9급 문18"}, {"passage": "According to government figures, the preponderance of jobs in the next century will be in service-related fields, such as health and business. ① Jobs will also be plentiful in technical fields and in retail establishments, such as stores and restaurants. ② The expansion in these fields is due to several factors: an aging population, numerous technical breakthroughs, and our changing lifestyles. ③ However, people still prefer the traditional types of jobs which will be highly-paid in the future. ④ So the highest-paying jobs will go to people with degrees in science, computers, engineering, and health care.", "q": "다음 글에서 전체적인 흐름과 관계없는 문장은?", "type": "mc", "choices": [{"t": "①", "correct": false}, {"t": "②", "correct": false}, {"t": "③", "correct": true}, {"t": "④", "correct": false}], "a": "3번", "exp": "📖 2011 국가직9급 문19"}, {"passage": "Character is a respect for human beings and the right to interpret experience differently. Character admits self-interest as a natural trait, but pins its faith on man's hesitant but heartening instinct to understand and support others. Character is allergic to tyranny, irritable with ignorance and always open to improvement. Character implies the ability to laugh wholeheartedly and weep unashamedly. Character is, above all, a tremendous humility before the facts ― an automatic alliance with truth even when that truth is bitter medicine.\n\nA quality of character not mentioned by the author is ______.", "q": "다음 글의 빈칸에 들어갈 가장 적절한 것은?", "type": "mc", "choices": [{"t": "freedom", "correct": false}, {"t": "patience", "correct": true}, {"t": "sympathy", "correct": false}, {"t": "humbleness", "correct": false}], "a": "2번", "exp": "📖 2011 국가직9급 문20"}, {"passage": "", "q": "밑줄 친 부분과 의미가 가장 가까운 것은?\n\nThe winner's <u>complacent</u> smile annoyed some of the members of the audience.", "type": "mc", "choices": [{"t": "scornful", "correct": false}, {"t": "simulated", "correct": false}, {"t": "self-satisfied", "correct": true}, {"t": "condescending", "correct": false}], "a": "3번", "exp": "📖 2012 국가직9급 문1"}, {"passage": "The usual way of coping with taboo words and notions is to develop euphemisms and circumlocutions. Hundreds of words and phrases have emerged to express basic biological functions, and talk about ______ has its own linguistics world. English examples include \"to pass on,\" \"to snuff the candle,\" and \"to go aloft.\"", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "death", "correct": true}, {"t": "defeat", "correct": false}, {"t": "anxiety", "correct": false}, {"t": "frustration", "correct": false}], "a": "1번", "exp": "📖 2012 국가직9급 문2"}, {"passage": "The enjoyment of life, pleasure, is the natural object of all human efforts. Nature, however, also wants us to help one another to enjoy life. She's equally anxious for the welfare of every member of the species. So she tells us to make quite sure that we don't pursue our own interests ______ other people's.", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "at the discretion of", "correct": false}, {"t": "at the mercy of", "correct": false}, {"t": "at loose ends of", "correct": false}, {"t": "at the expense of", "correct": true}], "a": "4번", "exp": "📖 2012 국가직9급 문3"}, {"passage": "A : Have you written your term paper yet?\nB : No, but I'll have plenty of time to do it next week.\nA : That's what you said last week and the week before. You can't put it off forever. You should use your free time and do some work.\nB : The truth is, I've ㉠ ______ in all my classes and I don't know if I can ever ㉡ ______.\nA : I'm sorry. But talking about it won't help at this point.\nB : You're right. I'll start on it tomorrow.\nA : Not tomorrow! Today!", "q": "㉠, ㉡에 들어갈 표현으로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "㉠ gone ahead ㉡ make up", "correct": false}, {"t": "㉠ kept leading ㉡ cover up", "correct": false}, {"t": "㉠ lagged behind ㉡ catch up", "correct": true}, {"t": "㉠ been enthusiastic ㉡ follow up", "correct": false}], "a": "3번", "exp": "📖 2012 국가직9급 문4"}, {"passage": "A man who ① shoplifted from the Woolworth's store in Shanton in 1952 recently sent the shop an anonymous letter of apology. In it, he said, \"I ② have been guilt-ridden all these days.\" The item he ③ stole was a two dollar toy. He enclosed a money order ④ paid back the two dollars with interest.", "q": "밑줄 친 부분 중 어법상 옳지 않은 것은?", "type": "mc", "choices": [{"t": "① shoplifted", "correct": false}, {"t": "② have been guilt-ridden", "correct": false}, {"t": "③ stole", "correct": false}, {"t": "④ paid back", "correct": true}], "a": "4번", "exp": "📖 2012 국가직9급 문5"}, {"passage": "", "q": "다음 중 어법상 옳은 것은?", "type": "mc", "choices": [{"t": "She felt that she was good swimmer as he was, if not better.", "correct": false}, {"t": "This phenomenon has described so often as to need no further clichés on the subject.", "correct": false}, {"t": "What surprised us most was the fact that he said that he had hardly never arrived at work late.", "correct": false}, {"t": "Even before Mr. Kay announced his movement to another company, the manager insisted that we begin advertising for a new accountant.", "correct": true}], "a": "4번", "exp": "📖 2012 국가직9급 문6"}, {"passage": "", "q": "다음 중 우리말을 영어로 잘못 옮긴 것을 고르시오.", "type": "mc", "choices": [{"t": "어제 눈이 많이 와서 많은 사람들이 길에서 미끄러졌다. → We had much snow yesterday, which caused lots of people slip on the road.", "correct": true}, {"t": "그 협정들은 작년 회의에서 합의된 것이다. → The arrangements were agreed on at the meeting last year.", "correct": false}, {"t": "나는 트럭이 가까이 다가오는 것을 보고 겁에 질렸다. → I got scared when I saw the truck closing up on me.", "correct": false}, {"t": "나는 뒤돌아보지 않고 앞문으로 걸어 나갔다. → I walked out of the front door without looking back.", "correct": false}], "a": "1번", "exp": "📖 2012 국가직9급 문7"}, {"passage": "", "q": "다음 중 우리말을 영어로 잘못 옮긴 것을 고르시오.", "type": "mc", "choices": [{"t": "예산이 빡빡해서 나는 15달러밖에 쓸 수가 없다. → I am on a tight budget so that I have only fifteen dollars to spend.", "correct": false}, {"t": "그의 최근 영화는 이전 작품들보다 훨씬 더 지루하다. → His latest film is far more boring than his previous ones.", "correct": false}, {"t": "우리 회사 모든 구성원의 이름을 기억하다니 그는 생각이 깊군요. → It's thoughtful of him to remember the names of every member in our firm.", "correct": false}, {"t": "현관 열쇠를 잃어버려서 안으로 들어가기 위해 나는 벽돌로 유리창을 깼다. → I'd lost my front door key, and I had to smash a window by a brick to get in.", "correct": true}], "a": "4번", "exp": "📖 2012 국가직9급 문8"}, {"passage": "A : Oh, that was a wonderful dinner. That's the best meal I've had in a long time.\nB : Thank you.\nA : Can I give you a hand with the dishes?\nB : Uh-uh, ______. I'll do them myself later. Hey, would you like me to fix some coffee?\nA : Thanks a lot. I'd love some. Would you mind if I smoke?\nB : Why, not at all. Here, let me get you an ashtray.", "q": "대화의 흐름으로 보아 밑줄 친 부분에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "help yourself", "correct": false}, {"t": "don't bother", "correct": true}, {"t": "if you insist", "correct": false}, {"t": "here they are", "correct": false}], "a": "2번", "exp": "📖 2012 국가직9급 문9"}, {"passage": "A : Hey, my poor buddy! What's the problem?\nB : You know I took over this presentation all of a sudden. And tomorrow is the due date for the presentation. I couldn't even start it yet.\nA : Look! I'm here for you. ______", "q": "대화의 흐름으로 보아 밑줄 친 부분에 들어갈 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "What are friends for?", "correct": true}, {"t": "Everything's up in the air.", "correct": false}, {"t": "What does it have to do with me?", "correct": false}, {"t": "You'd better call a spade a spade.", "correct": false}], "a": "1번", "exp": "📖 2012 국가직9급 문10"}, {"passage": "Taking time to clear your mind through meditation can boost your spirits and your immunity. Psychologist, Richard Davidson, gave 40 people a flu vaccine. Half of them followed a regular meditation schedule for an hour a day, six days a week. The others just got the vaccine. After eight weeks, the meditators had higher levels of flu-fighting antibodies than those who didn't meditate. They were also better able to deal with stress and had increased activity in the area of the brain linked to good moods. \"Meditation produces measurable biological changes in the brain and body,\" says Davidson. \"It is safe and can be of great benefit.\"", "q": "다음 글의 제목으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "Relationship between Flu Vaccine and Antibody", "correct": false}, {"t": "Process of Forming Immune System", "correct": false}, {"t": "Length of Meditation and Stress", "correct": false}, {"t": "Positive Effects of Meditation", "correct": true}], "a": "4번", "exp": "📖 2012 국가직9급 문11"}, {"passage": "Active listeners listen with their ears, their eyes, and their mind. They take in the objective information by listening to the literal words that are spoken. But every spoken message contains more than words. Speakers also communicate subjective information ― their feelings and emotions ― through other vocal sounds and nonverbal signals. These include verbal intonations such as loudness, emphasis, hesitations, voice movements, facial expressions, body posture, and hand gestures. By listening for feelings and emotions as well as for literal words, you can grasp the total meaning behind the speaker's message. Yet, no matter how good you become at listening for total meaning, there still remains the potential for misunderstanding. That's why the active listener verifies completeness by asking questions. The use of questions can uncover distortions and clarify misunderstandings.", "q": "다음 글의 제목으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "Methods of Good Listening", "correct": true}, {"t": "Verbal Skills for Effective Listening", "correct": false}, {"t": "Importance of Asking Questions in Listening", "correct": false}, {"t": "Relationship between Listening and Emotions", "correct": false}], "a": "1번", "exp": "📖 2012 국가직9급 문12"}, {"passage": "No matter how satisfying our work is, it is a mistake to rely on work as our only source of satisfaction. Just as humans need a varied diet to supply a variety of needed vitamins and minerals to maintain health, so we need a varied diet of activities that can supply a sense of enjoyment and satisfaction. Some experts suggest that one can start by making an inventory ― a list of the things you enjoy doing, your talents and interests, and even new things that you think you might enjoy if you tried them. It may be gardening, cooking, a sport, learning a new language, or volunteer work. If you shift your interest and attention to other activities for a while, eventually the cycle will swing again, and you can return to your work with renewed interest and enthusiasm.", "q": "다음 글의 요지로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "다양한 비타민 섭취를 통해 건강한 삶을 유지할 수 있다.", "correct": false}, {"t": "성공적인 직장 생활은 일 자체를 즐김으로써 이루어진다.", "correct": false}, {"t": "만족스러운 삶을 위해서는 일 외의 다양한 활동이 필요하다.", "correct": true}, {"t": "직장과 가정 생활의 조화가 업무 효율성을 높이는 지름길이다.", "correct": false}], "a": "3번", "exp": "📖 2012 국가직9급 문13"}, {"passage": "Oscar Wilde once wrote, \"In this world there are only two tragedies. One is not getting what one wants, and the other is getting it.\" He was trying to warn us that no matter how hard we work at being successful, success won't satisfy us. By the time we get there, having sacrificed so much on the altar of being successful, we will realize that success was not what we wanted. People who have money and power know something that you and I do not know and might not believe even when we are told. Money and power do not satisfy that unnameable hunger in the soul. Even the rich and powerful find themselves yearning for something more. We read about the family problems of the rich and famous, we see fictionalized conflicts on television, but we never get the message. Instead, we keep thinking that ______.", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "if we had what they have, we would be happy", "correct": true}, {"t": "the lives of the rich and powerful entirely depend on luck", "correct": false}, {"t": "though we have worked hard, we are not successful in life", "correct": false}, {"t": "money and power cannot replace valuable things in our life", "correct": false}], "a": "1번", "exp": "📖 2012 국가직9급 문14"}, {"passage": "Farmland provides more than just crops for human and animal consumption. It provides raw materials used to make building materials, paper, and fuels. The lives of many people also revolve around farming, which gives them the driving force that keeps them alive. Farmland, however, has slowly been eliminated by urban sprawl, in which people in urban areas spread into and take over rural areas. In the near future, urban sprawl is going to leave us with a shortage of natural resources. We need to be aware of the potential risks in future years and ______.", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "move from urban areas to rural areas for living in farmland", "correct": false}, {"t": "start to restrict urban sprawl and unnecessary development", "correct": true}, {"t": "limit farming in rural areas and development in urban areas", "correct": false}, {"t": "accelerate the development of natural resources in a short period", "correct": false}], "a": "2번", "exp": "📖 2012 국가직9급 문15"}, {"passage": "There's a company based in London, Great Britain, that offers a unique service: You can hire people to wait in line for you. Of course there's a fee. The \"waiters\" will queue up for anything from concert tickets, to passports, to a line for a driver's license. The company says it has done some research showing that people in Britain spent about a year of their entire lives waiting in lines. Some people just don't want to spend time doing that. How much does the waiting service cost? Twenty nine dollars an hour. The company so far has eighty employees, most of them recruited from the long-term unemployed because \"It's a job that doesn't require a lot of skill or experience.\" The one thing it does require is ______.", "q": "밑줄 친 부분에 들어갈 표현으로 가장 적절한 것을 고르시오.", "type": "mc", "choices": [{"t": "creativity", "correct": false}, {"t": "patience", "correct": true}, {"t": "practice", "correct": false}, {"t": "license", "correct": false}], "a": "2번", "exp": "📖 2012 국가직9급 문16"}, {"passage": "Britain, the biggest single beneficiary of the first age of globalization, was unlikely to gain much from its end. In the 1920s the old and tested policies no longer seemed to work. Paying for World War Ⅰ had let to a tenfold increase in the national debt. Just paying the interest on that debt consumed close to half of total central government spending by the mid-1920s. The assumption that the budget should nevertheless be balanced meant that public finance was dominated by transfers from income tax-payers to bondholders. The increased power of the trade unions during and after the war not only intensified industrial strife but also meant that wage cuts were slower than price cuts. Rising real wages led to unemployment: during the Depression year of 1932 nearly three million people, close to a quarter of all insured workers, were out of work.", "q": "다음 글의 내용과 일치하지 않는 것은?", "type": "mc", "choices": [{"t": "영국은 세계화 초기에 가장 큰 수혜를 입은 나라였으나, 1920년대에 과거 정책들은 효과를 발휘하지 못했던 듯하다.", "correct": false}, {"t": "제1차 세계대전 당시 진 빚에 대한 영국의 이자지출은 1920년대 중반까지 중앙정부 예산지출의 약 10%를 잠식했다.", "correct": true}, {"t": "전쟁 중 그리고 전쟁 후 노동조합의 커진 힘은 영국에서의 노동쟁의를 격렬하게 만들었다.", "correct": false}, {"t": "대공황 해인 1932년에 영국의 실업자 수는 보험가입 노동자의 25%에 육박했다.", "correct": false}], "a": "2번", "exp": "📖 2012 국가직9급 문17"}, {"passage": "Professor Taylor, who wrote \"What are Children for?,\" believes that the status of fatherhood has been affected by modern life. \"Fathers have moved farther away from their children than ever before,\" he says. \"In the past, sons looked to their father, emulating his job and wisdom. Now, however, fathers have nothing for their children to inherit. The world is changing too quickly, and instead of sitting at their father's feet listening to stories about the world, children are closed up in their own rooms on the Internet, finding out about it first. It is difficult to redefine the role of father. There is nothing obvious for him to do or be.\"", "q": "다음 글에서 언급되고 있지 않은 것은?", "type": "mc", "choices": [{"t": "Modern life has influenced the role and the position of fathers.", "correct": false}, {"t": "In the past, sons imitated their fathers' job, depending on their fathers.", "correct": false}, {"t": "Now fathers serve as a sole source of providing information for their sons.", "correct": true}, {"t": "These days fathers are not certain of what role to assume for their sons.", "correct": false}], "a": "3번", "exp": "📖 2012 국가직9급 문18"}, {"passage": "The growing individualism showed itself in a desire for privacy. ( A ) In the seventeenth century middle-class and wealthier families were served by servants, who listened to their conversation as they ate. ( B ) They lived in rooms that led one to another, usually through wide double doors. ( C ) But in the eighteenth century families began to eat alone, preferring to serve themselves than to have servants listening to everything they had to say. ( D ) They also rebuilt the insides of their homes, putting in corridors, so that every person in the family had their own private bedroom.\n\n[주어진 문장] Not even the bedrooms were private.", "q": "다음 문장이 들어갈 위치로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "A", "correct": false}, {"t": "B", "correct": false}, {"t": "C", "correct": true}, {"t": "D", "correct": false}], "a": "3번", "exp": "📖 2012 국가직9급 문19"}, {"passage": "Once, there was a little boy who had a bad temper. His father gave him a bag of nails and told him that every time he lost his temper, he must hammer a nail into the back of the fence.\n\n(A) The father took his son by the hand and led him to the fence. He said, \"You have done well, my son, but look at the holes in the fence. The fence will never be the same. When you say things in anger, they leave a scar just like this one.\"\n(B) He told his father about it and the father suggested that the boy now pull out one nail for each day that he was able to hold his temper. The days passed and the young boy was finally able to tell his father that all the nails were gone.\n(C) The first day the boy had driven six nails into the fence. Over the next few weeks, as he learned to control his anger, the number of nails hammered daily gradually dwindled. Finally the day came when the boy didn't lose his temper at all.", "q": "다음 문장 뒤에 들어갈 글의 순서로 가장 적절한 것은?", "type": "mc", "choices": [{"t": "(B) － (A) － (C)", "correct": false}, {"t": "(B) － (C) － (A)", "correct": false}, {"t": "(C) － (A) － (B)", "correct": false}, {"t": "(C) － (B) － (A)", "correct": true}], "a": "4번", "exp": "📖 2012 국가직9급 문20"}]};
+
+// ════════ 설정 ════════
+var STAGE_CAPACITIES={1:"무제한",2:20,3:30,4:40,5:60,6:80};
+var STAGE_COLORS={1:'#ff0844',2:'#ffb199',3:'#f6d365',4:'#4facfe',5:'#00f2fe',6:'#a18cd1'};
+var STAGE_LEAVE={1:0,2:5,3:8,4:10,5:15,6:0};
+var REPORT_PASS="1행2필"; // 강사 전용 비밀번호 — 본인만 알 수 있게 변경하세요
+var REPORT_FILE_PREFIX='영어_';
+var LS_DB='ps_eng_db', LS_META='ps_eng_meta';
+
+var DB={}, SUBJECTS=[], activeSubject=null, activeStage=1, currentItem=null;
+
+function contentSig(){ var n=0; for(var k in EMBED){ n+=EMBED[k].length; } return Object.keys(EMBED).join('|')+'_'+n; }
+
+// ════════ 저장 ════════
+function saveLS(){
+  try{
+    localStorage.setItem(LS_DB, JSON.stringify(DB));
+    localStorage.setItem(LS_META, JSON.stringify({subjects:SUBJECTS,active:activeSubject,stage:activeStage,sig:contentSig()}));
+  }catch(e){}
+}
+function saveAll(){
+  saveLS();
+  try{ if(window.storage&&window.storage.set){ window.storage.set(LS_DB,JSON.stringify(DB)); window.storage.set(LS_META,JSON.stringify({subjects:SUBJECTS,active:activeSubject,stage:activeStage,sig:contentSig()})); } }catch(e){}
+}
+function loadLS(){ try{ var d=localStorage.getItem(LS_DB), m=localStorage.getItem(LS_META); if(d&&m) return {db:JSON.parse(d),meta:JSON.parse(m)}; }catch(e){} return null; }
+async function bootSystem(){
+  var loaded=loadLS();
+  if(!loaded){ try{ var r1=await window.storage.get(LS_DB), r2=await window.storage.get(LS_META); if(r1&&r1.value&&r2&&r2.value) loaded={db:JSON.parse(r1.value),meta:JSON.parse(r2.value)}; }catch(e){} }
+  var sig=contentSig();
+  if(loaded && loaded.meta && loaded.meta.sig===sig){ DB=loaded.db; SUBJECTS=loaded.meta.subjects; activeSubject=loaded.meta.active; activeStage=loaded.meta.stage||1; }
+  else{ initFromEmbed(); }
+  if(!activeSubject||SUBJECTS.indexOf(activeSubject)<0) activeSubject=SUBJECTS[0]||null;
+  window.addEventListener('pagehide',saveLS);
+  var adminBtn=document.getElementById('admin-mode-btn');
+  if(adminBtn) adminBtn.addEventListener('click', openAdminConsole);
+  var bfi=document.getElementById('backup-file-input');
+  if(bfi) bfi.addEventListener('change', handleBackupFile);
+  window.addEventListener('beforeunload',saveLS);
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')saveLS();});
+  renderSubjectBar(); buildStageTabs(); refreshDashboard(); renderActiveQuestion();
+}
+function initFromEmbed(){
+  DB={}; SUBJECTS=[];
+  for(var subj in EMBED){
+    SUBJECTS.push(subj);
+    DB[subj]={1:[],2:[],3:[],4:[],5:[],6:[],clear:[],ever:{2:false,3:false,4:false,5:false,6:false}};
+    EMBED[subj].forEach(function(it){ DB[subj][1].push(JSON.parse(JSON.stringify(it))); });
+  }
+  activeSubject=SUBJECTS[0]||null; activeStage=1; saveAll();
+}
+function curDB(){ if(!DB[activeSubject]) return {1:[],2:[],3:[],4:[],5:[],6:[],clear:[],ever:{}}; var d=DB[activeSubject]; if(!d.ever) d.ever={2:false,3:false,4:false,5:false,6:false}; if(!d.clear) d.clear=[]; return d; }
+
+// ════════ 과목 ════════
+function renderSubjectBar(){
+  var bar=document.getElementById('subject-bar');
+  if(SUBJECTS.length<=1){ bar.style.display='none'; return; }
+  var html='<span class="subject-label">과목</span>';
+  SUBJECTS.forEach(function(s){
+    var db=DB[s]||{}; var n=0; for(var i=1;i<=6;i++){ if(db[i]) n+=db[i].length; }
+    html+='<button class="subject-tab'+(s===activeSubject?' active':'')+'" onclick="switchSubject(\''+escAttr(s)+'\')">'+escHtml(s)+'<span class="scount">'+n+'</span></button>';
+  });
+  bar.innerHTML=html;
+}
+function switchSubject(s){ activeSubject=s; activeStage=1; saveAll(); renderSubjectBar(); buildStageTabs(); refreshDashboard(); renderActiveQuestion(); }
+
+// ════════ 단계 ════════
+function checkStageLockState(n){ if(n===1) return false; var db=curDB(); return !(db.ever[n]===true && db[n].length>0); }
+function updateEver(){ var db=curDB(); for(var i=2;i<=6;i++){ if(db[i].length>=STAGE_CAPACITIES[i]) db.ever[i]=true; } }
+function buildStageTabs(){
+  updateEver(); var db=curDB(); var c=document.getElementById('stage-tabs-container'); var html='';
+  for(var i=1;i<=6;i++){
+    var locked=checkStageLockState(i); var cnt=db[i].length; var capTxt=STAGE_CAPACITIES[i]==="무제한"?"∞":STAGE_CAPACITIES[i];
+    html+='<div class="stage-tab'+(i===activeStage?' active':'')+(locked?' locked':'')+'" onclick="switchStage('+i+')">'+i+'단계 <b>'+cnt+(STAGE_CAPACITIES[i]==="무제한"?'':'/'+capTxt)+'</b></div>';
+  }
+  c.innerHTML=html; buildGauges();
+}
+function buildGauges(){
+  var db=curDB();
+  var zone=document.getElementById('sidebar-gauge-zone');
+  var html='<h3>📈 STAGE GAUGE</h3><div class="gauge-wrap-mobile">';
+  for(var i=1;i<=6;i++){
+    var cnt=(db[i]?db[i].length:0), cap=STAGE_CAPACITIES[i], pct,lbl;
+    if(i===1){ pct=cnt>0?100:0; lbl=cnt+' (∞)'; } else { pct=Math.min(100,Math.round(cnt/cap*100)); lbl=cnt+'/'+cap; }
+    html+='<div class="gauge-row"><div class="gauge-labels"><span>'+i+'단계</span><span style="color:'+STAGE_COLORS[i]+'">'+lbl+'</span></div><div class="gauge-container"><div class="gauge-fill'+(i===1?' infinite':'')+'" style="width:'+pct+'%;background-color:'+STAGE_COLORS[i]+';"></div></div></div>';
+  }
+  // CLEAR STACK
+  var cleared = (db.clear||[]);
+  html+='</div>';
+  html+='<div style="margin-top:8px">';
+  html+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">';
+  html+='<span style="font-size:0.95rem;font-weight:800;color:var(--gold-primary)">🏆 CLEAR STACK</span>';
+  html+='<div style="display:flex;align-items:center;gap:6px">';
+  html+='<span id="clear-count" style="font-size:1.1rem;font-weight:900;color:var(--gold-primary)">'+cleared.length+'</span>';
+  html+='<button id="clear-list-btn" style="background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.35);color:var(--gold-primary);padding:3px 9px;border-radius:12px;font-size:0.78rem;font-weight:700;cursor:pointer">목록 ▾</button>';
+  html+='</div></div>';
+  html+='<div id="clear-list" style="display:none;max-height:140px;overflow-y:auto;background:rgba(0,0,0,0.25);border-radius:8px;border:1px solid rgba(212,175,55,0.2)">';
+  if(!cleared.length){
+    html+='<div style="text-align:center;color:var(--text-secondary);font-size:0.8rem;padding:10px">아직 마스터한 문제가 없습니다.</div>';
+  } else {
+    cleared.slice().reverse().forEach(function(item,i){
+      var d=new Date(item.ts);
+      var ds=(d.getMonth()+1)+'/'+(d.getDate());
+      html+='<div style="padding:7px 10px;border-bottom:1px solid rgba(212,175,55,0.1)">';
+      html+='<div style="font-size:0.8rem;color:#fff;font-weight:600">'+(item.round?'<span style="color:var(--gold-primary);font-weight:800">['+escHtml(item.round)+'] </span>':'')+escHtml((item.q||'').slice(0,40))+'</div>';
+      html+='<div style="font-size:0.72rem;color:var(--gold-primary)">정답: '+escHtml(item.a||'')+'·'+ds+'</div>';
+      html+='</div>';
+    });
+  }
+  html+='</div></div>';
+  html+='<button id="export-result-btn" style="background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.4);color:var(--gold-primary);padding:8px 12px;border-radius:8px;font-size:0.82rem;font-weight:700;cursor:pointer;width:100%;margin-top:8px">📤 학습결과 내보내기</button>';
+  html+='<div class="brand-logo">1행2필</div>';
+  zone.innerHTML=html;
+  // 이벤트 바인딩
+  var clBtn=document.getElementById('clear-list-btn');
+  if(clBtn) clBtn.addEventListener('click',function(){
+    var listEl=document.getElementById('clear-list');
+    var open=listEl.style.display!=='none';
+    listEl.style.display=open?'none':'block';
+    this.textContent=open?'목록 ▾':'목록 ▴';
+  });
+  var expBtn=document.getElementById('export-result-btn');
+  if(expBtn) expBtn.addEventListener('click', exportResult);
+}
+function switchStage(n){ if(checkStageLockState(n)){ triggerGiantFeedback("🔒 아직 잠긴 단계","#a8b2d1"); return; } activeStage=n; saveAll(); buildStageTabs(); renderActiveQuestion(); }
+function refreshDashboard(){ var total=0; SUBJECTS.forEach(function(s){ var db=DB[s]||{}; for(var i=1;i<=6;i++){ if(db[i]) total+=db[i].length; } }); document.getElementById('total-count').innerText=total; buildGauges(); }
+
+// ════════ 문제 렌더 ════════
+function safeQ(s){
+  var esc=escHtml(s||'');
+  esc=esc.replace(/&lt;u&gt;/g,'<u>').replace(/&lt;\/u&gt;/g,'</u>').replace(/&lt;b&gt;/g,'<b>').replace(/&lt;\/b&gt;/g,'</b>').replace(/&lt;i&gt;/g,'<i>').replace(/&lt;\/i&gt;/g,'</i>');
+  esc=esc.replace(/\n/g,'<br>');
+  return esc;
+}
+// 회차 추출: exp(예 "📖 2007 국가직9급 문1") 또는 일괄등록 번호(예 "180407-01")에서 회차명만 뽑음
+function roundOf(item){
+  if(!item) return '';
+  var ex=item.exp||'';
+  // "📖 2007 국가직9급 문1" → "2007 국가직9급"
+  var m=ex.replace(/^📖\s*/,'').match(/^(.*?)\s*문\s*\d+\s*$/);
+  if(m && m[1]) return m[1].trim();
+  // "180407-01" 또는 "171021-09" 같은 번호코드 → 앞 회차코드
+  var nm=(item.no||item.num||item.id||'')+'';
+  var m2=nm.match(/^([0-9A-Za-z]+)[-_]/);
+  if(m2 && m2[1]) return m2[1];
+  // exp 전체가 회차코드 패턴일 때만 (예: "2018 국가직", "180407")
+  if(/^\d{4}\s*\S*(직|급|공채|시|9급|7급)/.test(ex) || /^\d{6}$/.test(ex.trim())) return ex.replace(/^📖\s*/,'').trim();
+  return '';
+}
+function roundBadge(item){
+  var r=roundOf(item);
+  if(!r) return '';
+  return '<span style="display:inline-block;background:rgba(212,175,55,0.15);border:1px solid rgba(212,175,55,0.4);color:var(--gold-primary);border-radius:8px;padding:1px 8px;font-size:0.72rem;font-weight:800;margin-right:6px;vertical-align:middle">'+escHtml(r)+'</span>';
+}
+function wrongBadge(item){
+  var w=(item&&item.wrongCount)||0;
+  if(!w) return '';
+  return '<span style="display:inline-block;background:rgba(255,8,68,0.18);border:1px solid rgba(255,8,68,0.5);color:#ff6b8a;border-radius:8px;padding:1px 8px;font-size:0.72rem;font-weight:800;margin-right:6px;vertical-align:middle">✕'+w+'</span>';
+}
+function renderActiveQuestion(){
+  var db=curDB();
+  var qContent=document.getElementById('q-content'), choicesWrap=document.getElementById('choices-wrap');
+  var aBox=document.getElementById('answer-box'), aContent=document.getElementById('a-content');
+  var eBox=document.getElementById('explanation-box'), eContent=document.getElementById('e-content');
+  var ctrl=document.getElementById('control-panel');
+  var passageBox=document.getElementById('passage-box'), pContent=document.getElementById('p-content');
+  ctrl.innerHTML='<button class="btn-action btn-correct" onclick="processEngine(true)">🔥 정답 (Level Up!)</button><button class="btn-action btn-wrong" onclick="processEngine(false)">💀 오답 (포승줄 회귀)</button>';
+  document.getElementById('a-label').style.display='none'; document.getElementById('e-label').style.display='none';
+  choicesWrap.style.display='none'; choicesWrap.innerHTML='';
+  if(db[activeStage] && db[activeStage].length>0){
+    currentItem=db[activeStage][0];
+    if(currentItem.passage && currentItem.passage.trim()!==''){
+      passageBox.style.display='block'; pContent.innerHTML=safeQ(currentItem.passage); passageBox.scrollTop=0;
+    }else{ passageBox.style.display='none'; }
+    qContent.innerHTML=roundBadge(currentItem)+wrongBadge(currentItem)+safeQ(currentItem.q);
+    if(currentItem.type==='mc' && currentItem.choices){
+      choicesWrap.style.display='flex';
+      choicesWrap.innerHTML=currentItem.choices.map(function(ch,idx){ return '<button class="choice-btn" data-i="'+idx+'" onclick="pickChoice(this,'+(ch.correct?1:0)+')"><span class="cnum">'+(idx+1)+'</span><span>'+safeQ(ch.t)+'</span></button>'; }).join('');
+      ctrl.style.display='none'; aBox.style.display='none';
+      eBox.className="card explanation-card blind"; eContent.innerText="💡 정답 선택 후 해설이 표시됩니다.";
+    }else{
+      ctrl.style.display='flex'; aBox.style.display='flex';
+      aBox.className="card answer-card blind"; aContent.innerText="✨ 탭하여 정답 확인하기";
+      eBox.className="card explanation-card blind"; eContent.innerText="💡 탭하여 해설/암기포인트 확인하기";
+    }
+  }else{
+    currentItem=null; document.getElementById('passage-box').style.display='none'; qContent.innerText="현재 "+activeStage+"단계 퀘스트가 비어있습니다.";
+    ctrl.style.display='flex'; aBox.style.display='flex';
+    aBox.className="card answer-card blind"; aContent.innerText="ㅡ"; eBox.className="card explanation-card blind"; eContent.innerText="ㅡ";
+  }
+}
+function toggleAnswerBlind(){
+  if(!currentItem || currentItem.type==='mc') return;
+  var aBox=document.getElementById('answer-box'), eBox=document.getElementById('explanation-box');
+  if(aBox.classList.contains('blind')){
+    aBox.className="card answer-card unblind"; document.getElementById('a-content').innerText=currentItem.a; document.getElementById('a-label').style.display='block';
+    eBox.className="card explanation-card unblind"; document.getElementById('e-content').innerText=currentItem.exp||"별도의 해설이 없습니다."; document.getElementById('e-label').style.display='block';
+  }else{ renderActiveQuestion(); }
+}
+function pickChoice(el,isCorrect){
+  if(!currentItem) return;
+  var wrap=document.getElementById('choices-wrap');
+  if(wrap.querySelector('.choice-btn.correct, .choice-btn.wrong')) return;
+  wrap.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled=true; var i=+b.dataset.i; if(currentItem.choices[i].correct) b.classList.add('correct'); });
+  if(!isCorrect) el.classList.add('wrong');
+  var eBox=document.getElementById('explanation-box'); eBox.className="card explanation-card unblind";
+  document.getElementById('e-label').style.display='block'; document.getElementById('e-content').innerText=currentItem.exp||"별도의 해설이 없습니다.";
+  // 자동 진행 대신 "다음 문제" 버튼 표시 (각자 속도로 학습)
+  showNextButton(isCorrect);
+}
+function showNextButton(isCorrect){
+  var ctrl=document.getElementById('control-panel');
+  ctrl.style.display='flex';
+  var label = isCorrect ? '✅ 정답!  다음 문제 →' : '💀 오답 (1단계로)  다음 문제 →';
+  var color = isCorrect ? 'var(--correct-btn)' : 'var(--wrong-btn)';
+  ctrl.innerHTML='<button class="btn-action" style="background:'+color+';flex:1" onclick="goNext('+(isCorrect?'true':'false')+')">'+label+'</button>';
+}
+function goNext(isCorrect){ processEngine(!!isCorrect); }
+function processEngine(isCorrect){
+  if(!currentItem) return;
+  var db=curDB(); var popped=db[activeStage].shift();
+  if(isCorrect){
+    if(activeStage===6){
+      if(!db.clear) db.clear=[];
+      db.clear.push({q:popped.q, a:popped.a, round:roundOf(popped), ts:Date.now()});
+      triggerGiantFeedback("🎉 마스터!","#00f2fe");
+    } else if(!canPromote(activeStage)){
+      db[1].push(popped);
+      triggerGiantFeedback("🔒 "+(activeStage+1)+"단계 FULL! 비워주세요","#f6d365");
+    } else {
+      db[activeStage+1].push(popped);
+      triggerGiantFeedback("✨ Level Up!","#00f2fe");
+    }
+  } else {
+    popped.wrongCount=(popped.wrongCount||0)+1;
+    db[1].push(popped);
+    triggerGiantFeedback("💀 포승줄 발동! 1단계로","#ff0844");
+  }
+  updateEver(); saveAll(); renderSubjectBar(); buildStageTabs(); refreshDashboard();
+  setTimeout(function(){
+    if(db[activeStage].length===0){ for(var i=1;i<=6;i++){ if(db[i].length>0 && !checkStageLockState(i)){ activeStage=i; buildStageTabs(); break; } } }
+    renderActiveQuestion(); refreshDashboard();
+  },1150);
+}
+function triggerGiantFeedback(text,color){ var t=document.getElementById('giant-feedback'); t.innerText=text; t.style.color=color; t.classList.remove('animate-trigger'); void t.offsetWidth; t.classList.add('animate-trigger'); }
+
+// ════════ 비밀번호 / 관리자 콘솔 열기·닫기 ════════
+function openAdminConsole(){
+  document.getElementById('pw-modal').classList.add('on');
+  setTimeout(function(){ var el=document.getElementById('pw-input'); if(el){el.value='';el.focus();} },100);
+  document.getElementById('pw-err').textContent='';
+}
+function submitPw(){
+  var pw=document.getElementById('pw-input').value;
+  if(pw===REPORT_PASS){
+    document.getElementById('pw-modal').classList.remove('on');
+    document.getElementById('admin-modal').classList.add('on');
+    refreshAdminUI();
+    if(document.getElementById('mc-choices').children.length===0) resetSingleChoices();
+  } else { document.getElementById('pw-err').textContent='비밀번호가 일치하지 않습니다.'; }
+}
+function closePwModal(){ document.getElementById('pw-modal').classList.remove('on'); }
+function closeAdminConsole(){ document.getElementById('admin-modal').classList.remove('on'); }
+function closeEditModal(){ document.getElementById('edit-modal').classList.remove('on'); }
+
+// ════════ 관리자 UI 새로고침 ════════
+function refreshAdminUI(){
+  var opts=SUBJECTS.map(function(s){return '<option value="'+escAttr(s)+'">'+escHtml(s)+'</option>';}).join('');
+  ['bulk-subj','single-subj','mng-subj'].forEach(function(id){
+    var el=document.getElementById(id); if(el){ el.innerHTML=opts; if(activeSubject) el.value=activeSubject; }
+  });
+  var rsn=document.getElementById('report-subject-name'); if(rsn) rsn.textContent=activeSubject||'-';
+  renderSubjPills();
+  renderMngList();
+}
+
+// ════════ 과목 관리 ════════
+function renderSubjPills(){
+  var box=document.getElementById('subj-pills');
+  box.innerHTML=SUBJECTS.map(function(s){
+    var n=totalInSubj(s);
+    return '<div class="subj-pill">'+escHtml(s)+' <span style="color:#a8b2d1">('+n+')</span>'
+      +'<button class="del-x" onclick="delSubj(\''+escAttr(s)+'\')">×</button></div>';
+  }).join('');
+}
+function totalInSubj(s){ var db=DB[s]||{}; var n=0; for(var i=1;i<=6;i++) if(db[i]) n+=db[i].length; return n; }
+function addSubj(){
+  var inp=document.getElementById('new-subj-input'); var name=inp.value.trim();
+  if(!name) return alert('과목명을 입력하세요.');
+  if(SUBJECTS.indexOf(name)>=0) return alert('이미 있는 과목입니다.');
+  SUBJECTS.push(name);
+  DB[name]={1:[],2:[],3:[],4:[],5:[],6:[],clear:[],ever:{2:false,3:false,4:false,5:false,6:false}};
+  if(!activeSubject) activeSubject=name;
+  inp.value=''; saveAll(); renderSubjectBar(); refreshAdminUI();
+}
+function delSubj(name){
+  if(!confirm('"'+name+'" 과목과 모든 문제를 삭제합니다. 계속하시겠습니까?')) return;
+  SUBJECTS=SUBJECTS.filter(function(s){return s!==name;}); delete DB[name];
+  if(activeSubject===name) activeSubject=SUBJECTS[0]||null;
+  saveAll(); renderSubjectBar(); buildStageTabs(); refreshDashboard(); renderActiveQuestion(); refreshAdminUI();
+}
+
+// ════════ 단일 등록 ════════
+var singleMcCnt=0;
+function addSingleChoice(txt, isCorrect){
+  if(singleMcCnt>=8){ alert('선지는 최대 8개입니다.'); return; }
+  singleMcCnt++;
+  var n=singleMcCnt;
+  var row=document.createElement('div'); row.className='mc-row';
+  row.innerHTML='<div class="cn">'+n+'</div>'
+    +'<input type="text" class="mc-text" placeholder="선지 '+n+'" value="'+(txt?escAttr(txt):'')+'">'
+    +'<label class="radio-wrap"><input type="radio" name="sc-correct" '+(isCorrect?'checked':'')+'>정답</label>';
+  document.getElementById('mc-choices').appendChild(row);
+}
+function resetSingleChoices(){
+  document.getElementById('mc-choices').innerHTML=''; singleMcCnt=0;
+  addSingleChoice();addSingleChoice();addSingleChoice();addSingleChoice();
+}
+function submitSingle(){
+  var subj=document.getElementById('single-subj').value;
+  if(!subj) return alert('과목을 먼저 선택하세요.');
+  var passage=document.getElementById('single-passage').value.trim();
+  var q=document.getElementById('single-q').value.trim();
+  var exp=document.getElementById('single-exp').value.trim();
+  if(!q) return alert('문제를 입력하세요.');
+  var rows=document.querySelectorAll('#mc-choices .mc-row');
+  var choices=[]; var hasC=false;
+  rows.forEach(function(r){
+    var t=r.querySelector('.mc-text').value.trim();
+    var c=r.querySelector('input[type=radio]').checked;
+    if(t){ choices.push({t:t,correct:c}); if(c) hasC=true; }
+  });
+  if(choices.length<2) return alert('선지를 2개 이상 입력하세요.');
+  if(!hasC) return alert('정답 선지를 선택하세요.');
+  var ansNum=0; choices.forEach(function(c,i){ if(c.correct) ansNum=i+1; });
+  if(!DB[subj]) DB[subj]={1:[],2:[],3:[],4:[],5:[],6:[],clear:[],ever:{2:false,3:false,4:false,5:false,6:false}};
+  DB[subj][1].push({passage:passage,q:q,type:'mc',choices:choices,a:ansNum+'번',exp:exp||''});
+  document.getElementById('single-q').value='';
+  document.getElementById('single-passage').value='';
+  document.getElementById('single-exp').value='';
+  resetSingleChoices();
+  saveAll(); renderSubjectBar(); buildStageTabs(); refreshDashboard(); renderActiveQuestion(); refreshAdminUI();
+  alert('「'+subj+'」 1단계에 문항이 등록되었습니다.');
+}
+
+// ════════ 일괄 등록 ════════
+function bulkUpload(){
+  var subj=document.getElementById('bulk-subj').value;
+  var resEl=document.getElementById('bulk-result');
+  if(!subj){ resEl.textContent='먼저 과목을 선택하세요.'; return; }
+  var fi=document.getElementById('bulk-file');
+  if(!fi.files.length){ resEl.textContent='먼저 txt 파일을 선택하세요.'; return; }
+  var reader=new FileReader();
+  reader.onload=function(e){
+    var parsed=parseBulk(e.target.result);
+    if(parsed.items.length===0){
+      resEl.innerHTML='⚠ 등록 가능한 문항이 없습니다. 양식을 확인해주세요.';
+      if(parsed.errors.length) resEl.innerHTML+='<br>'+parsed.errors.join('<br>');
+      return;
+    }
+    if(!DB[subj]) DB[subj]={1:[],2:[],3:[],4:[],5:[],6:[],clear:[],ever:{2:false,3:false,4:false,5:false,6:false}};
+    parsed.items.forEach(function(it){ DB[subj][1].push(it); });
+    var html='✅ '+parsed.items.length+'개 문항이 「'+escHtml(subj)+'」 1단계에 등록되었습니다.';
+    if(parsed.errors.length) html+='<br>⚠ '+parsed.errors.length+'개 블록 형식 오류로 제외:<br>'+parsed.errors.map(escHtml).join('<br>');
+    resEl.innerHTML=html;
+    saveAll(); renderSubjectBar(); buildStageTabs(); refreshDashboard(); renderActiveQuestion(); refreshAdminUI();
+    fi.value='';
+  };
+  reader.readAsText(fi.files[0],'UTF-8');
+}
+function parseBulk(text){
+  var blocks=text.split(/\n\s*={3,}\s*\n|\n{3,}/).map(function(b){return b.trim();}).filter(Boolean);
+  var items=[], errors=[];
+  blocks.forEach(function(block,idx){
+    function get(label){
+      var re=new RegExp(label+'\\s*[:：]\\s*([\\s\\S]*?)(?=\\n(?:지문|문제|선지|정답|해설)\\s*[:：]|$)');
+      var m=block.match(re); return m?m[1].trim():'';
+    }
+    var passage=get('지문'), q=get('문제'), choicesRaw=get('선지'), answerRaw=get('정답'), exp=get('해설');
+    if(!q||!choicesRaw){ errors.push('#'+(idx+1)+': 문제/선지 누락'); return; }
+    var lines=choicesRaw.split('\n').map(function(l){return l.trim();}).filter(Boolean);
+    var choices=[]; var hasC=false; var correctIdx=-1;
+    lines.forEach(function(line,li){
+      var isC=false; var t=line;
+      if(t.charAt(0)==='*'){ isC=true; t=t.substring(1).trim(); }
+      t=t.replace(/^[①②③④⑤][).]?\s*/,'');
+      t=t.replace(/^\d+[.)]\s*/,'');
+      choices.push({t:t,correct:isC}); if(isC){hasC=true;correctIdx=li;}
+    });
+    if(!hasC && answerRaw){
+      var num=parseInt(answerRaw.replace(/[^0-9]/g,''));
+      if(num>=1&&num<=choices.length){ choices[num-1].correct=true; hasC=true; correctIdx=num-1; }
+    }
+    if(choices.length<2){ errors.push('#'+(idx+1)+': 선지 2개 이상 필요'); return; }
+    if(!hasC){ errors.push('#'+(idx+1)+': 정답 표시 없음 (* 또는 "정답: N")'); return; }
+    items.push({passage:passage||'',q:q,type:'mc',choices:choices,a:(correctIdx+1)+'번',exp:exp||''});
+  });
+  return {items:items, errors:errors};
+}
+function downloadTemplate(){
+  var s='※ 영어 범용 일괄등록 양식\n'
+    +'각 문항은 === 줄로 구분합니다.\n'
+    +'정답 선지 앞에 * 표시 또는 하단에 정답: N 입력.\n\n'
+    +'지문: A : Did we finish packing all the orders?\nB : No, we still have to do about ten more.\nA : I\'m tired of packing this stuff.\nB : Maybe we could finish it later.\nA : Sure, we could do it tomorrow morning.\nB : O.K. ______\n'
+    +'문제: 다음 대화의 흐름으로 보아 밑줄 친 곳에 들어갈 가장 적절한 것을 고르시오.\n'
+    +'선지:\n1) Those were the days.\n*2) Let\'s call it a day.\n3) Why don\'t we call it off now?\n4) You know we don\'t have all day.\n'
+    +'해설: 📖 2007 국가직9급 문1  💡 call it a day = 하루 일을 끝내다\n정답: 2\n\n===\n\n'
+    +'지문: \n'
+    +'문제: 다음 밑줄 친 부분과 의미가 가장 가까운 것을 고르시오.\n\nAir temperatures of over 130 degrees in summer are common in this desolate island.\n'
+    +'선지:\n1) sultry\n2) temperate\n*3) deserted\n4) wet and humid\n'
+    +'해설: 📖 2007 국가직9급 문3\n정답: 3\n';
+  downloadBlob('영어_일괄등록_양식.txt', s, 'text/plain;charset=utf-8');
+}
+
+// ════════ 문제 목록 · 수정 · 삭제 ════════
+function renderMngList(){
+  var box=document.getElementById('mng-list'); if(!box) return;
+  var subj=document.getElementById('mng-subj').value||activeSubject;
+  var stF=document.getElementById('mng-stage').value;
+  if(!subj||!DB[subj]){ box.innerHTML='<div class="mlist-empty">과목을 선택하세요.</div>'; return; }
+  var rows=[];
+  for(var st=1;st<=6;st++){
+    if(stF!=='all'&&+stF!==st) continue;
+    (DB[subj][st]||[]).forEach(function(item,idx){ rows.push({stage:st,idx:idx,item:item}); });
+  }
+  if(!rows.length){ box.innerHTML='<div class="mlist-empty">해당 조건에 등록된 문제가 없습니다.</div>'; return; }
+  box.innerHTML=rows.map(function(r,i){
+    var typeTag=r.item.type==='mc'?'객관식':'주관식';
+    return '<div class="mitem"><div class="mnum">'+(i+1)+'</div>'
+      +'<div class="mbody"><div class="mq">'+escHtml(r.item.q)+'</div>'
+      +'<div class="mmeta"><span class="mtag">'+r.stage+'단계</span>'+(roundOf(r.item)?'<span class="mtag" style="background:rgba(212,175,55,0.18);color:var(--gold-primary)">'+escHtml(roundOf(r.item))+'</span>':'')+((r.item.wrongCount||0)?'<span class="mtag" style="background:rgba(255,8,68,0.18);color:#ff6b8a">✕'+r.item.wrongCount+'</span>':'')+'<span class="mtag">'+typeTag+'</span>정답: '+escHtml(r.item.a||'')+'</div></div>'
+      +'<div class="mactions">'
+      +'<button class="mbtn-edit" onclick="openEditModal(\''+escAttr(subj)+'\','+r.stage+','+r.idx+')">수정</button>'
+      +'<button class="mbtn-del" onclick="deleteQ(\''+escAttr(subj)+'\','+r.stage+','+r.idx+')">삭제</button>'
+      +'</div></div>';
+  }).join('');
+}
+function deleteQ(subj,stage,idx){
+  if(!DB[subj]||!DB[subj][stage]) return;
+  var item=DB[subj][stage][idx]; if(!item) return;
+  if(!confirm('이 문제를 삭제할까요?\n\n'+item.q.slice(0,60))) return;
+  DB[subj][stage].splice(idx,1);
+  saveAll(); renderSubjectBar(); buildStageTabs(); refreshDashboard(); renderActiveQuestion(); refreshAdminUI();
+}
+
+// ── 수정 모달
+var editMcCnt=0;
+function openEditModal(subj,stage,idx){
+  var item=DB[subj][stage][idx]; if(!item) return;
+  document.getElementById('edit-subj').value=subj;
+  document.getElementById('edit-stage').value=stage;
+  document.getElementById('edit-idx').value=idx;
+  document.getElementById('edit-passage').value=item.passage||'';
+  document.getElementById('edit-q').value=item.q||'';
+  document.getElementById('edit-a').value=item.a||'';
+  document.getElementById('edit-exp').value=item.exp||'';
+  document.getElementById('edit-mc-choices').innerHTML=''; editMcCnt=0;
+  (item.choices||[]).forEach(function(ch){ addEditChoice(ch.t, ch.correct); });
+  if(editMcCnt===0) addEditChoice();
+  document.getElementById('edit-modal').classList.add('on');
+}
+function addEditChoice(txt, isCorrect){
+  if(editMcCnt>=8){ alert('선지는 최대 8개입니다.'); return; }
+  editMcCnt++;
+  var n=editMcCnt;
+  var row=document.createElement('div'); row.className='mc-row';
+  row.innerHTML='<div class="cn">'+n+'</div>'
+    +'<input type="text" class="mc-text" placeholder="선지 '+n+'" value="'+escAttr(txt||'')+'">'
+    +'<label class="radio-wrap"><input type="radio" name="ec-correct" '+(isCorrect?'checked':'')+'>정답</label>';
+  document.getElementById('edit-mc-choices').appendChild(row);
+}
+function saveEdit(){
+  var subj=document.getElementById('edit-subj').value;
+  var stage=+document.getElementById('edit-stage').value;
+  var idx=+document.getElementById('edit-idx').value;
+  var passage=document.getElementById('edit-passage').value.trim();
+  var q=document.getElementById('edit-q').value.trim();
+  var a=document.getElementById('edit-a').value.trim();
+  var exp=document.getElementById('edit-exp').value.trim();
+  if(!q) return alert('문제를 입력하세요.');
+  if(!DB[subj]||!DB[subj][stage]) return;
+  var rows=document.querySelectorAll('#edit-mc-choices .mc-row');
+  var choices=[]; var hasC=false; var ansNum=0;
+  rows.forEach(function(r,i){
+    var t=r.querySelector('.mc-text').value.trim();
+    var c=r.querySelector('input[type=radio]').checked;
+    if(t){ choices.push({t:t,correct:c}); if(c){hasC=true;ansNum=choices.length;} }
+  });
+  if(choices.length<2) return alert('선지를 2개 이상 입력하세요.');
+  if(!hasC&&!a) return alert('정답 선지를 선택하거나 정답을 입력하세요.');
+  var finalA=hasC?(ansNum+'번'):a;
+  DB[subj][stage][idx]={passage:passage,q:q,type:'mc',choices:choices,a:finalA,exp:exp||''};
+  saveAll(); renderSubjectBar(); buildStageTabs(); refreshDashboard(); renderActiveQuestion(); refreshAdminUI();
+  document.getElementById('edit-modal').classList.remove('on');
+  alert('수정되었습니다.');
+}
+function showProgress(){
+  var lines=[];
+  var grandTotal=0, grandMastered=0;
+  SUBJECTS.forEach(function(s){
+    var db=DB[s]; if(!db) return;
+    var subTotal=0; for(var i=1;i<=6;i++){ subTotal+=db[i].length; }
+    grandTotal+=subTotal;
+    grandMastered+=db[6].length;
+    lines.push('━━━ '+s+' (총 '+subTotal+'문항) ━━━');
+    var capArr={1:'∞',2:20,3:30,4:40,5:60,6:80};
+    var stageName={1:'1단계 (약점·회전)',2:'2단계',3:'3단계',4:'4단계',5:'5단계',6:'6단계 (마스터)'};
+    for(var i=1;i<=6;i++){
+      var cnt=db[i].length;
+      var bar='';
+      if(i===1){ bar=cnt>0?'■■■■■':'░░░░░'; }
+      else{ var pct=Math.min(1,cnt/capArr[i]); var fill=Math.round(pct*10); bar=''; for(var k=0;k<10;k++){bar+=(k<fill?'■':'░');} }
+      var capTxt=(i===1)?cnt+'개':cnt+'/'+capArr[i];
+      lines.push(stageName[i]+'  '+bar+'  '+capTxt);
+    }
+    // 진행률 (6단계 도달 비율)
+    var prog = subTotal>0 ? Math.round(db[6].length/subTotal*100) : 0;
+    lines.push('▶ 마스터 진행률: '+prog+'% ('+db[6].length+'/'+subTotal+' 졸업)');
+    lines.push('');
+  });
+  var text=lines.join('\n');
+  document.getElementById('progress-text').textContent=text;
+  document.getElementById('progress-modal').classList.add('on');
+}
+function closeProgress(){ document.getElementById('progress-modal').classList.remove('on'); }
+function copyProgress(){
+  var t=document.getElementById('progress-text').textContent;
+  if(navigator.clipboard){ navigator.clipboard.writeText(t).then(function(){ alert('진도 현황이 복사되었습니다.'); }); }
+}
+
+
+function getReportStage(){ var el=document.getElementById('report-stage'); return el?el.value:'1'; }
+function stageLabel(s){ return s==='1'?'1단계(약점)':s+'단계'; }
+function collectItems(sel){
+  var db=curDB(); var arr=[];
+  if(sel==='all'){ for(var i=1;i<=6;i++){ db[i].forEach(function(it){ arr.push({stage:i,item:it}); }); } }
+  else{ var n=parseInt(sel); db[n].forEach(function(it){ arr.push({stage:n,item:it}); }); }
+  return arr;
+}
+function getReportText(){
+  var sel=getReportStage(); var list=collectItems(sel); if(list.length===0) return null;
+  var title=sel==='all'?'전체 단계':stageLabel(sel);
+  var text="[영어 퍼펙트스코어 리포트 — "+activeSubject+" · "+title+"]\n\n";
+  list.forEach(function(o,i){ var it=o.item; text+="Q"+(i+1)+(sel==='all'?" ["+o.stage+"단계]":"")+". "+it.q+"\n정답: "+(it.a||'')+"\n💡 "+(it.exp||'')+"\n\n"; });
+  return text;
+}
+function downloadStageText(){ var t=getReportText(); if(!t) return alert("선택한 단계에 문항이 없습니다."); var sel=getReportStage(); downloadBlob(REPORT_FILE_PREFIX+stageLabel(sel)+".txt", t, "text/plain"); }
+function shareViaEmail(){
+  var t=getReportText(); if(!t) return alert('선택한 단계에 문항이 없습니다.');
+  navigator.clipboard.writeText(t).then(function(){alert('클립보드에 복사되었습니다! 카카오톡·메모장 등에 붙여넣기 하세요.');}).catch(function(){alert('복사 실패 — 다운로드를 이용해 주세요.');});
+}
+function shareViaMobile(){
+  var t=getReportText(); if(!t) return alert('선택한 단계에 문항이 없습니다.');
+  var w=window.open('','_blank','width=700,height=500');
+  if(!w) return alert('팝업이 차단되었습니다. 팝업 허용 후 다시 시도하세요.');
+  w.document.write('<html><head><title>리포트</title><style>body{font-family:monospace;padding:20px;white-space:pre-wrap;font-size:13px;line-height:1.6}</style></head><body>');
+  w.document.write(t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
+  w.document.write('</body></html>'); w.document.close();
+}
+function fallbackCopy(t){
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(function(){ alert("리포트가 클립보드에 복사되었습니다. 카톡·메모 등에 붙여넣기 하세요."); }).catch(function(){ legacyCopy(t); }); }
+  else { legacyCopy(t); }
+}
+function legacyCopy(t){
+  var ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.focus(); ta.select();
+  try{ document.execCommand('copy'); alert("리포트가 클립보드에 복사되었습니다. 붙여넣기 하세요."); }catch(e){ alert("복사에 실패했습니다. 텍스트 다운로드를 이용하세요."); }
+  ta.remove();
+}
+function printStageData(){
+  var sel=getReportStage(); var list=collectItems(sel); if(list.length===0) return alert('선택한 단계에 문항이 없습니다.');
+  if(list.length>50){ if(!confirm(list.length+'개 문항을 인쇄합니다. 문항 수가 많아 시간이 걸릴 수 있습니다. 계속하시겠습니까?')) return; }
+  var title=sel==='all'?'전체 단계':stageLabel(sel);
+  var inner='<h2 style="border-bottom:2px solid #000;padding-bottom:10px">🎯 영어 퍼펙트스코어 리포트 · '+title+'</h2><p>총 '+list.length+'문항</p>';
+  list.forEach(function(o,idx){ var it=o.item; inner+='<div style="border:1px solid #ccc;padding:15px;margin-bottom:15px;border-radius:8px;page-break-inside:avoid">'+(sel==='all'?'<div style="font-size:0.8rem;color:#888;font-weight:bold">['+o.stage+'단계]</div>':'')+'<div style="font-weight:bold;color:#c23616">Q'+(idx+1)+'. '+escHtml(it.q)+'</div><div style="margin-top:8px;background:#f1f2f6;padding:10px;font-weight:bold">정답: '+escHtml(it.a||'')+'</div><div style="margin-top:5px;background:#fffacd;padding:10px;color:#555">'+escHtml(it.exp||'')+'</div></div>'; });
+  var w=null; try{ w=window.open('','_blank'); }catch(e){ w=null; }
+  if(w && w.document){
+    w.document.write('<html><head><title>영어 리포트</title></head><body style="font-family:sans-serif;padding:30px">'+inner+'</body></html>');
+    w.document.close(); w.focus(); setTimeout(function(){ try{w.print();}catch(e){} },500);
+  }else{
+    var ov=document.getElementById('print-overlay'); if(ov) ov.remove();
+    ov=document.createElement('div'); ov.id='print-overlay';
+    ov.innerHTML='<div class="no-print" style="position:sticky;top:0;background:#fff;padding:12px;border-bottom:1px solid #ddd;text-align:right"><button onclick="window.print()" style="padding:8px 16px;margin-right:8px;background:#fa8231;color:#fff;border:none;border-radius:6px;font-weight:700;cursor:pointer">🖨 인쇄</button><button onclick="document.getElementById(\'print-overlay\').remove()" style="padding:8px 16px;background:#a5b1c2;border:none;border-radius:6px;font-weight:700;cursor:pointer">닫기</button></div><div style="padding:30px;color:#000">'+inner+'</div>';
+    ov.style.cssText='position:fixed;inset:0;background:#fff;color:#000;z-index:99999;overflow-y:auto;font-family:sans-serif';
+    document.body.appendChild(ov);
+  }
+}
+function exportBackupFile(){ downloadBlob("영어_진도백업.json", JSON.stringify({subjects:SUBJECTS,db:DB},null,2), "application/json"); }
+function importBackupFile(){
+  document.getElementById('backup-file-input').value='';
+  document.getElementById('backup-file-input').click();
+}
+function handleBackupFile(e){
+  var file=e.target.files[0]; if(!file) return;
+  var reader=new FileReader();
+  reader.onload=function(ev){
+    try{
+      var obj=JSON.parse(ev.target.result);
+      if(!obj||!obj.db||!obj.subjects) throw new Error('형식 오류');
+      if(!confirm('백업 파일로 진도를 복원합니다.\n현재 진도는 덮어쓰기 됩니다. 계속할까요?')) return;
+      DB=obj.db; SUBJECTS=obj.subjects;
+      if(SUBJECTS.indexOf(activeSubject)<0) activeSubject=SUBJECTS[0]||null;
+      activeStage=1;
+      SUBJECTS.forEach(function(s){ if(DB[s]&&!DB[s].ever) DB[s].ever={2:false,3:false,4:false,5:false,6:false}; });
+      saveAll(); renderSubjectBar(); buildStageTabs(); refreshDashboard(); renderActiveQuestion();
+      closeAdminConsole(); triggerGiantFeedback('✅ 진도 복원 완료','#20bf6b');
+    }catch(err){ alert('복원 실패: 올바른 백업 파일이 아닙니다.\n('+err.message+')'); }
+  };
+  reader.readAsText(file);
+}
+
+function resetProgress(){
+  if(!confirm("🚨 주의: 모든 과목·문제·진도가 삭제됩니다. 계속하시겠습니까?")) return;
+  DB={}; SUBJECTS=[]; activeSubject=null; activeStage=1;
+  saveAll(); renderSubjectBar(); buildStageTabs(); refreshDashboard(); renderActiveQuestion();
+  closeAdminConsole(); triggerGiantFeedback("🔄 전체 초기화 완료","#4facfe");
+}
+
+function downloadBlob(filename, content, mime){
+  try{
+    var blob=new Blob([content], {type:(mime||'text/plain')+';charset=utf-8'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url; a.download=filename;
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+  }catch(e){ alert('다운로드 실패: '+e.message); }
+}
+function escHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function escAttr(s){return (s||'').replace(/'/g,"\'").replace(/"/g,'&quot;');}
+
+
+function exportResult(){
+  var name=(document.getElementById('learner-name')||{value:''}).value.trim()||'미입력';
+  var lines=['[1행2필 영어 학습결과]'];
+  lines.push('학습자: '+name);
+  lines.push('과목: '+(activeSubject||'-'));
+  lines.push('일시: '+new Date().toLocaleString('ko-KR'));
+  lines.push('');
+  var db=curDB(); var total=0;
+  for(var i=1;i<=6;i++){
+    lines.push(i+'단계: '+db[i].length+'문항');
+    total+=db[i].length;
+  }
+  lines.push('CLEAR STACK: '+(db.clear?db.clear.length:0)+'문항');
+  lines.push('');
+  lines.push('총 학습 중인 문항: '+total+'개');
+  downloadBlob('영어_학습결과_'+name+'.txt', lines.join('\n'), 'text/plain;charset=utf-8');
+}
+
+window.onload=bootSystem;
+</script>
+</body>
+</html>
