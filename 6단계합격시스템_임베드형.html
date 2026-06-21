@@ -267,7 +267,7 @@
       <h2>오늘의 학습 동선 <span class="tag">매일 학습 순서</span></h2>
       <p class="hint">6단계는 매일의 학습 순서입니다 — ① 신규 30문 + 어제 틀린 문제 풀이 → ②③④ 1·2·3단계 통과 문제를 2·4·8일 후 재풀이 → ⑤ 오늘 각 단계에서 틀린 문제 재풀이(아침 0 → 진행하며 증가) → ⑥ 클리어 문제 순삭독서. 맞으면 승급, 틀리면 5단계(오늘 재학습)로 모였다가 1단계로 정착합니다.</p>
       <div class="todo">
-        <h3><span class="pill" style="background:var(--accent)">1→5단계</span> 오늘 풀 문제 (신규·재풀이)</h3>
+        <h3 style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="pill" style="background:var(--accent)">1→5단계</span> <span>오늘 풀 문제 (신규·재풀이)</span> <button id="sndBtn" class="btn sm" style="margin-left:auto" onclick="toggleSound(!(data.settings&&data.settings.sound))">🔇 소리 꺼짐</button></h3>
         <div id="dueList"></div>
         <div class="hint" style="margin-top:12px">⑥ <b>6단계 클리어 순삭독서</b>는 양이 많아 여기 대신 <b>주간계획표 › 누적적 읽기</b>에서 요일별로 (문제–단답형 지문) 형식으로 진행합니다.</div>
       </div>
@@ -775,7 +775,8 @@ function _blip(freq,start,dur,type,gain){
 function sndPromote(){ _blip(523.25,0,0.18,"triangle",0.15);_blip(659.25,0.10,0.18,"triangle",0.15);_blip(783.99,0.20,0.22,"triangle",0.15); }
 function sndClear(){ [523.25,659.25,783.99,1046.5].forEach((f,i)=>_blip(f,i*0.10,0.24,"triangle",0.16)); _blip(1318.5,0.42,0.30,"triangle",0.13); }
 function sndSoft(){ _blip(300,0,0.16,"sine",0.11);_blip(220,0.10,0.20,"sine",0.11); }
-function toggleSound(on){ data.settings.sound=!!on; save(); if(on){ ensureAudio(); sndPromote(); toast("효과음 켜짐 🔊"); } else { toast("효과음 꺼짐 🔇"); } }
+function toggleSound(on){ data.settings.sound=!!on; save(); if(on){ ensureAudio(); sndPromote(); toast("효과음 켜짐 🔊"); } else { toast("효과음 꺼짐 🔇"); } syncSoundUI(); }
+function syncSoundUI(){ var on=!!(data.settings&&data.settings.sound); var b=document.getElementById("sndBtn"); if(b)b.textContent=on?"🔊 소리 켜짐":"🔇 소리 꺼짐"; var c=document.getElementById("sndToggle"); if(c)c.checked=on; }
 /* 모바일 자동재생 정책: 첫 사용자 입력에서 오디오 컨텍스트 깨우기 */
 document.addEventListener("pointerdown",function _once(){ if(data.settings&&data.settings.sound) ensureAudio(); document.removeEventListener("pointerdown",_once); });
 
@@ -1202,7 +1203,7 @@ function loadSettings(){
   document.getElementById("dailyNew").value=data.settings.dailyNew||30;
   document.getElementById("trackSel").value=data.settings.track||"변시";
   document.getElementById("subjEdit").value=(data.settings.subjects||[]).join(", ");
-  var _snd=document.getElementById("sndToggle"); if(_snd)_snd.checked=!!data.settings.sound;
+  syncSoundUI();
 }
 document.getElementById("trackSel").addEventListener("change",e=>{data.settings.track=e.target.value;save();renderDash();});
 document.getElementById("saveSubj").onclick=()=>{
