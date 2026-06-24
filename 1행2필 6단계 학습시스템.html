@@ -64,6 +64,8 @@
   .sstat .todaytag{font-size:10.5px;font-weight:800;color:var(--muted);margin-top:4px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:1px 7px;display:inline-block}
   .sstat .todaytag.hot{color:#fff;background:var(--accent);border-color:var(--accent)}
   .pg{font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:1px 6px;vertical-align:middle}
+  .star{font:inherit;font-size:15px;line-height:1;border:none;background:none;cursor:pointer;color:#cbd2e0;padding:0 2px;vertical-align:middle}
+  .star.on{color:#F59E0B}
 
   /* ===== 6단계 자율 보드 ===== */
   .board{display:flex;flex-direction:column;gap:10px}
@@ -277,6 +279,7 @@
       <h2>등록 문제 관리 <span class="tag" id="srsCount">0문항</span></h2>
       <p class="hint" style="margin-top:-2px;margin-bottom:8px">단계 이동은 <b>[6단계 보드]</b>에서 합니다. 여기서는 등록한 문제를 <b>확인·선택·삭제</b>하고 오답 많은 문제를 추려 인쇄합니다.</p>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px">
+        <button class="btn sm" id="selStar">★ 중요</button>
         <button class="btn sm" id="selW3">✗3 이상</button>
         <button class="btn sm" id="selW5">✗5 이상</button>
         <button class="btn sm" id="selW7">✗7 이상</button>
@@ -491,6 +494,7 @@ let showClear=false;   // 6단계 클리어 목록 펼침 여부
   if(p.part===undefined)p.part="";
   if(p.chap===undefined)p.chap="";
   if(p.page===undefined)p.page="";
+  if(p.star===undefined)p.star=false;
   if(p.due===undefined)p.due=(p.stage>=1&&p.stage<6)?todayStr():"";  // 기존 문제는 오늘 점검 대상으로
 });
 
@@ -582,6 +586,8 @@ function grade(id,ok){
 }
 function sokakBtnHTML(p){return `<button class="btn sm" data-sokak="${p.id}">순삭 ${p.sokak||0}</button>`;}
 function bumpSokak(id){const p=data.problems.find(x=>x.id===id);if(!p)return;p.sokak=(p.sokak||0)+1;save();renderSRS();renderDash();toast("순삭 "+p.sokak+"회");}
+function starBtn(p){return `<button class="star${p.star?" on":""}" data-star="${p.id}" title="중요표시">${p.star?"★":"☆"}</button>`;}
+function toggleStar(id){const p=data.problems.find(x=>x.id===id);if(!p)return;p.star=!p.star;save();renderDash();renderSRS();}
 function delProblem(id){
   if(!confirm("이 문제를 삭제할까요?"))return;
   data.problems=data.problems.filter(x=>x.id!==id);save();renderSRS();renderDash();
@@ -631,14 +637,14 @@ function renderDash(){
   document.getElementById("todayCount").textContent=due.length?due.length+"문":"";
   document.getElementById("todayBody").innerHTML=due.length?due.map(p=>{
     const d=dispStage(p);
-    return `<tr><td>${stageBadge(p)}</td><td>${esc(p.subj)}</td><td>${esc(p.toc||"")}</td><td><b>${esc(p.title)}</b>${p.page?' <span class="pg">p.'+esc(p.page)+'</span>':''}${isNew(p)?' <span class="nw">신규</span>':''}${(p.wrong||0)>0?' <span class="wc">✗'+p.wrong+'</span>':''}</td><td><button class="btn ok sm" data-ok="${p.id}">맞음 → ${NEXT_OK[d]}</button></td><td><button class="btn no sm" data-no="${p.id}">틀림 → ${NEXT_NO[d]}</button></td></tr>`;
+    return `<tr><td>${stageBadge(p)}</td><td>${esc(p.subj)}</td><td>${esc(p.toc||"")}</td><td>${starBtn(p)} <b>${esc(p.title)}</b>${p.page?' <span class="pg">p.'+esc(p.page)+'</span>':''}${isNew(p)?' <span class="nw">신규</span>':''}${(p.wrong||0)>0?' <span class="wc">✗'+p.wrong+'</span>':''}</td><td><button class="btn ok sm" data-ok="${p.id}">맞음 → ${NEXT_OK[d]}</button></td><td><button class="btn no sm" data-no="${p.id}">틀림 → ${NEXT_NO[d]}</button></td></tr>`;
   }).join(""):`<tr><td colspan="6"><div class="empty">오늘 풀 문제가 없습니다. 새 문제를 등록하거나 진도를 나가세요.</div></td></tr>`;
 
   // 6단계 클리어
   const clears=data.problems.filter(p=>p.stage===6).sort((a,b)=>(a.seq||0)-(b.seq||0));
   document.getElementById("clearCount").textContent=clears.length?clears.length+"문":"";
   document.getElementById("clearBody").innerHTML=clears.length?clears.map(p=>
-    `<tr><td>${stageBadge(p)}</td><td>${esc(p.subj)}</td><td>${esc(p.toc||"")}</td><td><b>${esc(p.title)}</b>${p.page?' <span class="pg">p.'+esc(p.page)+'</span>':''}${(p.wrong||0)>0?' <span class="wc">✗'+p.wrong+'</span>':''}</td><td colspan="2">${sokakBtnHTML(p)}</td></tr>`
+    `<tr><td>${stageBadge(p)}</td><td>${esc(p.subj)}</td><td>${esc(p.toc||"")}</td><td>${starBtn(p)} <b>${esc(p.title)}</b>${p.page?' <span class="pg">p.'+esc(p.page)+'</span>':''}${(p.wrong||0)>0?' <span class="wc">✗'+p.wrong+'</span>':''}</td><td colspan="2">${sokakBtnHTML(p)}</td></tr>`
   ).join(""):`<tr><td colspan="6"><div class="empty">아직 클리어한 문제가 없습니다.</div></td></tr>`;
   const clearCard=document.getElementById("clearCard");
   if(clearCard)clearCard.style.display=showClear?"block":"none";
@@ -650,6 +656,7 @@ function bindToday(){
   document.querySelectorAll('[data-ok]').forEach(b=>b.onclick=()=>grade(b.dataset.ok,true));
   document.querySelectorAll('[data-no]').forEach(b=>b.onclick=()=>grade(b.dataset.no,false));
   document.querySelectorAll('[data-sokak]').forEach(b=>b.onclick=()=>bumpSokak(b.dataset.sokak));
+  document.querySelectorAll('[data-star]').forEach(b=>b.onclick=()=>toggleStar(b.dataset.star));
 }
 
 /* ============ 등록·관리 table render ============ */
@@ -669,11 +676,12 @@ function renderSRS(){
     return `<tr>
       <td><input type="checkbox" class="rowsel" data-id="${p.id}" ${selIds.has(p.id)?'checked':''}></td>
       <td>${stageBadge(p)}</td>
-      <td>${esc(p.subj)}</td><td>${esc(p.toc||"")}</td><td>${esc(p.title)}${p.page?' <span class="pg">p.'+esc(p.page)+'</span>':''}</td>
+      <td>${esc(p.subj)}</td><td>${esc(p.toc||"")}</td><td>${starBtn(p)} ${esc(p.title)}${p.page?' <span class="pg">p.'+esc(p.page)+'</span>':''}</td>
       <td>${(p.wrong||0)>0?'<span class="wc">✗'+p.wrong+'</span>':'-'}</td>
       <td class="small-acts"><button class="btn sm" data-del="${p.id}">삭제</button></td></tr>`;
   }).join("")||`<tr><td colspan="7"><div class="empty">등록된 문제가 없습니다.</div></td></tr>`;
   document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>delProblem(b.dataset.del));
+  document.querySelectorAll('[data-star]').forEach(b=>b.onclick=()=>toggleStar(b.dataset.star));
   document.querySelectorAll('.rowsel').forEach(b=>b.onclick=()=>{b.checked?selIds.add(b.dataset.id):selIds.delete(b.dataset.id);updateSelCount();});
   updateSelCount();
 }
@@ -698,6 +706,7 @@ function printSelected(){
 }
 document.getElementById("selAll").onclick=function(){const on=this.checked;document.querySelectorAll(".rowsel").forEach(b=>{b.checked=on;on?selIds.add(b.dataset.id):selIds.delete(b.dataset.id);});updateSelCount();};
 function selectByWrong(min){let n=0;data.problems.forEach(p=>{if((p.wrong||0)>=min){selIds.add(p.id);n++;}});renderSRS();toast(n?`✗${min}회 이상 ${n}개 선택됨`:`✗${min}회 이상인 문제가 없습니다`);}
+document.getElementById("selStar").onclick=()=>{let n=0;data.problems.forEach(p=>{if(p.star){selIds.add(p.id);n++;}});renderSRS();toast(n?("중요 "+n+"개 선택됨"):"중요표시된 문제가 없습니다");};
 document.getElementById("selW3").onclick=()=>selectByWrong(3);
 document.getElementById("selW5").onclick=()=>selectByWrong(5);
 document.getElementById("selW7").onclick=()=>selectByWrong(7);
