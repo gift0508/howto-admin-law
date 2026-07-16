@@ -928,6 +928,40 @@ function checkMiddleVersion(){
 // 사례별 목차 키 — 사례번호별로 독립 저장
 function getProblemMiddleKey(number){ return '1h2p_bs_middle_'+number; }
 
+// 답안(정답)에서 쟁점 목차를 자동 도출 — 로마숫자=쟁점, 1.학설/2.판례/3.검토/4.사안의 경우=탭
+function deriveMiddleFromAnswer(answer){
+  if(!answer) return null;
+  var ROM='ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ';
+  var secs=[], cur=null;
+  answer.split('\n').forEach(function(raw){
+    var ln=raw.trim();
+    var mR=ln.match(new RegExp('^(['+ROM+'])\\.\\s*(.+)$'));
+    var mS=ln.match(/^\d+\.\s*(학설|판례|검토|사안의 경우)(?=\s|$)/);
+    if(mR){
+      var title=mR[2];
+      var mm=title.match(/^(.*?(?:여부|인지|되는지|가능한지|해당하는지))/);
+      title=(mm?mm[1]:title.split(/[.。]/)[0]).trim();
+      cur={r:mR[1],t:title,subs:[]}; secs.push(cur);
+    } else if(mS && cur){
+      if(cur.subs.indexOf(mS[1])<0) cur.subs.push(mS[1]);
+    }
+  });
+  var jaeng=secs.filter(function(s){ return s.r!=='Ⅰ' && s.t.indexOf('설문의 해결')<0; });
+  if(!jaeng.length) return null;
+  function tabsFor(subs){
+    var k=subs.join('|');
+    if(k==='판례|사안의 경우') return ['(1) 판례','(2) 사안의 경우'];
+    if(k==='학설|판례|검토|사안의 경우') return ['(1) 학설','(2) 판례','(3) 검토','(4) 사안의 경우'];
+    if(k==='학설|판례|검토') return ['(1) 학설','(2) 판례','(3) 검토'];
+    if(subs.length) return subs.map(function(x,j){ return '('+(j+1)+') '+x; });
+    return ['(1) 판례','(2) 사안의 경우'];
+  }
+  var tabs=[];
+  jaeng.forEach(function(s,i){ tabs.push('#'+(i+1)+'. '+s.t); tabsFor(s.subs).forEach(function(x){tabs.push(x);}); });
+  var card={label:'쟁점 검토', prompt:DEFAULT_MIDDLE.beginner[0].prompt, maxLen:1500, targetLen:0};
+  return {beginner:[Object.assign({},card,{tabs:tabs.slice()})], advanced:[Object.assign({},card,{tabs:tabs.slice()})]};
+}
+
 function getMiddleConfig(number){
   // 저장값을 불러온 뒤 prompt는 항상 DEFAULT_MIDDLE 값으로 덮어씀
   // (label, maxLen, targetLen, tabs는 저장값 유지 — 관리자 수정 보존)
@@ -942,7 +976,13 @@ function getMiddleConfig(number){
     return cfg;
   }
 
-  // 1순위: 사례별 저장값
+  const _num = number || currentProblemNumber;
+  const _prob = (typeof getProblems==='function') ? getProblems().find(function(p){return String(p.number)===String(_num);}) : null;
+  // 1순위: 문제에 저장된(관리자 수정) 목차 — problems_bs.json으로 함께 배포됨
+  if(_prob && _prob.middle && _prob.middle.beginner && _prob.middle.advanced) return applyDefaultPrompts(JSON.parse(JSON.stringify(_prob.middle)));
+  // 2순위: 답안에서 자동 도출 (수정 없으면 이것)
+  if(_prob && _prob.answer){ var _d=deriveMiddleFromAnswer(_prob.answer); if(_d) return applyDefaultPrompts(_d); }
+  // 3순위: 사례별 저장값(레거시)
   const probKey = getProblemMiddleKey(number || currentProblemNumber);
   try{
     const saved = JSON.parse(localStorage.getItem(probKey));
@@ -957,9 +997,14 @@ function getMiddleConfig(number){
   return JSON.parse(JSON.stringify(DEFAULT_MIDDLE));
 }
 function saveMiddleConfig(cfg, number){
-  // 사례별로 저장 (전역 기본값은 건드리지 않음)
-  const probKey = getProblemMiddleKey(number || currentProblemNumber);
-  localStorage.setItem(probKey, JSON.stringify(cfg));
+  // 수정본은 문제 객체에 저장 → problems_bs.json 내보낼 때 함께 배포됨
+  const num = number || currentProblemNumber;
+  if(typeof getProblems==='function'){
+    const list=getProblems();
+    const prob=list.find(function(p){return String(p.number)===String(num);});
+    if(prob){ prob.middle=cfg; saveProblems(list); return; }
+  }
+  localStorage.setItem(getProblemMiddleKey(num), JSON.stringify(cfg));
 }
 
 // Roman numerals: I is fixed for first step, last roman depends on middle count + 1
@@ -1657,7 +1702,8 @@ async function loadRemoteProblems(){
         advice:rp.advice||'',
         title:rp.title||(case_.slice(0,30)+(case_.length>30?'...':'')),
         status:rp.status||'초안',
-        stage:stageByNum[num]||'POOL'   // 학습자 진도 보존, 신규는 POOL
+        stage:stageByNum[num]||'POOL',   // 학습자 진도 보존, 신규는 POOL
+        middle:rp.middle||null           // 관리자가 수정한 목차(있으면) 반영
       };
     });
     saveProblems(merged);
@@ -2221,7 +2267,8 @@ function exportRemoteJSON(){
     logic:p.logic||'',
     advice:p.advice||'',
     title:p.title||((p.case||'').slice(0,30)),
-    status:p.status||'초안'
+    status:p.status||'초안',
+    middle:p.middle||null
   }));
   const payload={ version:Date.now(), exportedAt:new Date().toLocaleString('ko-KR'), count:problems.length, problems };
   const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
