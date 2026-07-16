@@ -936,7 +936,7 @@ function deriveMiddleFromAnswer(answer){
   answer.split('\n').forEach(function(raw){
     var ln=raw.trim();
     var mR=ln.match(new RegExp('^(['+ROM+'])\\.\\s*(.+)$'));
-    var mS=ln.match(/^\d+\.\s*(학설|판례|검토|사안의 경우)(?=\s|$)/);
+    var mS=ln.match(/^\d+\.\s*(문제의 소재|학설|판례|검토|사안의 경우)(?=\s|$)/);
     if(mR){
       var title=mR[2];
       var mm=title.match(/^(.*?(?:여부|인지|되는지|가능한지|해당하는지))/);
@@ -946,7 +946,7 @@ function deriveMiddleFromAnswer(answer){
       if(cur.subs.indexOf(mS[1])<0) cur.subs.push(mS[1]);
     }
   });
-  var jaeng=secs.filter(function(s){ return s.r!=='Ⅰ' && s.t.indexOf('설문의 해결')<0; });
+  var jaeng=secs.filter(function(s){ return s.r!=='Ⅰ' && s.t.indexOf('설문의 해결')<0 && s.t.indexOf('결론')<0; });
   if(!jaeng.length) return null;
   function tabsFor(subs){
     var k=subs.join('|');
@@ -1170,6 +1170,8 @@ const TAB_PRESETS = {
   arabic2: {label:'1. 판례 / 2. 사안의 경우', tabs:['1. 판례','2. 사안의 경우']},
   paren4:  {label:'(1) 학설 / (2) 판례 / (3) 검토 / (4) 사안의 경우', tabs:['(1) 학설','(2) 판례','(3) 검토','(4) 사안의 경우']},
   paren2:  {label:'(1) 판례 / (2) 사안의 경우', tabs:['(1) 판례','(2) 사안의 경우']},
+  sojae3:  {label:'(1) 문제의 소재 / (2) 판례 / (3) 사안의 경우', tabs:['(1) 문제의 소재','(2) 판례','(3) 사안의 경우']},
+  sojae5:  {label:'(1) 문제의 소재 / (2) 학설 / (3) 판례 / (4) 검토 / (5) 사안의 경우', tabs:['(1) 문제의 소재','(2) 학설','(3) 판례','(4) 검토','(5) 사안의 경우']},
   custom:  {label:'직접 입력', tabs:null}
 };
 function matchPreset(tabs){
