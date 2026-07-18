@@ -617,7 +617,7 @@ function initMap(){
   ]};
   var src=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#f7f5f0;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100vh;}.wrap{display:flex;height:100vh;}#area{flex:0 0 65%;overflow:hidden;border-right:2px solid #e0dcd4;}#detail{flex:0 0 35%;padding:16px 14px;overflow-y:auto;background:#fff;}#detail h3{font-size:12px;font-weight:700;color:#1a4b8c;margin-bottom:8px;border-bottom:2px solid #1a4b8c;padding-bottom:5px;}#detail ul{list-style:none;}#detail ul li{font-size:11px;line-height:1.7;padding:3px 0;border-bottom:1px dashed #e0dcd4;}#detail ul li::before{content:"▸";color:#1a4b8c;margin-right:5px;}#hint{font-size:10px;color:#aaa;margin-top:6px;}svg{width:100%;height:100%;}</style></head><body>
 <div class="wrap"><div id="area"><svg id="svg"></svg></div><div id="detail"><h3 id="dp-t">노드를 클릭하세요</h3><ul id="dp-l"></ul><div id="hint">끝 노드를 클릭하면 상세 설명이 표시됩니다.</div></div></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\\/script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"><\/script>
 <script>
 var info=${JSON.stringify(info)};var tree=${JSON.stringify(tree)};
 var w=document.getElementById('area').clientWidth||480,h=580;
@@ -631,7 +631,7 @@ node.filter(d=>d.depth===0).each(function(d){mkNode(d3.select(this),d.data.name,
 node.filter(d=>d.depth===1).each(function(d,i){var cs=['#1a4b8c','#1a6644','#a02020'];var c=cs[i%cs.length];mkNode(d3.select(this),d.data.name,{fs:'11px',fw:'700',fill:'#fff',color:c,stroke:c,sw:'2',ph:10,pv:6,rx:16});});
 node.filter(d=>!d.children).each(function(d){var el=d3.select(this);mkNode(el,d.data.name,{fs:'9.5px',fw:'400',fill:'#f0f4fb',color:'#1a4b8c',stroke:'#c0d0e8',sw:'1',ph:6,pv:4,rx:4});el.style('cursor','pointer').on('mouseover',function(){d3.select(this).select('rect').style('fill','#dde8f8');}).on('mouseout',function(){d3.select(this).select('rect').style('fill','#f0f4fb');}).on('click',function(){var i=info[d.data.name];if(!i)return;document.getElementById('dp-t').textContent=d.data.name;var ul=document.getElementById('dp-l');ul.innerHTML='';i.forEach(function(item){var li=document.createElement('li');li.textContent=item;ul.appendChild(li);});document.getElementById('hint').style.display='none';});});
 var bds=g.node().getBBox();g.attr('transform','translate('+(w/2-bds.x-bds.width/2)+','+(h/2-bds.y-bds.height/2)+')');
-<\\/script></body></html>`;
+<\/script></body></html>`;
   document.getElementById('mm-frame').srcdoc=src;
 }
 </script>
