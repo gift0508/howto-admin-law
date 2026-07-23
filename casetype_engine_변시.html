@@ -614,7 +614,7 @@ table.admin-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.0
       </div>
       <div class="accum-count">누적 사례 개수 <b id="accumCount">0</b></div>
       <span class="step-admin-gear" id="structureEditBtn" title="목차(가운데 카드) 구조 설정" style="font-size:16px;margin-left:auto;">⚙ 목차 설정</span>
-      <div class="mode-hint" id="modeHint">※ 상급자 모드에서는 보다 심화된 논리 구성과 완성도 높은 답안을 작성합니다.</div>
+      <div class="mode-hint" id="modeHint">※ 상급자 모드에서는 목차가 제시되지 않습니다. 로마숫자 목차의 제목과 하위 목차(1·2·3)까지 직접 세워 작성하세요.</div>
     </div>
 
     <div class="panel">
@@ -1030,13 +1030,34 @@ function charCountText(cur, tgt, max){
   return '✍ '+cur+'자(공백포함) (최대 '+max+'자)';
 }
 function buildStepsConfig(mode, number){
-  const middle = getMiddleConfig(number || currentProblemNumber)[mode] || [];
+  /* 목차는 '초보자 모드' 설정 하나로 통일 관리한다.
+     상급자 모드는 같은 카드 구성(개수·순서)을 따르되 목차를 제시하지 않아,
+     학습자가 로마숫자 목차의 제목과 하위 목차(1·2·3)까지 직접 세워 쓴다. */
+  const _conf = getMiddleConfig(number || currentProblemNumber);
+  let middle = _conf['beginner'] || [];
+  if(mode === 'advanced'){
+    middle = middle.map(function(card){
+      const tabCount = (card.tabs || []).filter(function(t){
+        return !String(t).trim().startsWith('#');
+      }).length || 1;
+      return Object.assign({}, card, {
+        tabs: [],
+        maxLen: (card.maxLen || 1000) * tabCount,
+        targetLen: (card.targetLen || 0) * tabCount
+      });
+    });
+  }
   const steps = [];
   steps.push(Object.assign({}, FIXED_FIRST[mode], {roman: ROMANS[0]}));
   middle.forEach((m,i)=>{
     steps.push(Object.assign({}, m, {roman: ROMANS[i+1]}));
   });
   steps.push(Object.assign({}, FIXED_LAST[mode], {roman: ROMANS[middle.length+1]}));
+  if(mode === 'advanced'){
+    return steps.map(function(s){
+      return Object.assign({}, s, {label: '', tabs: [], _blank: true});
+    });
+  }
   return steps;
 }
 
@@ -1109,7 +1130,7 @@ function renderSteps(){
       </div>
       <div class="step-prompt" data-prompt="${i}">${getPrompt(i,step.prompt)}</div>
       ${tabsHtml}
-      <textarea class="step-textarea" data-step="${i}" maxlength="${maxLen}" placeholder="이 부분에 내용을 입력하세요...">${val}</textarea>
+      <textarea class="step-textarea" data-step="${i}" maxlength="${maxLen}" placeholder="${step._blank?'목차 제목부터 직접 작성하세요...':'이 부분에 내용을 입력하세요...'}">${val}</textarea>
       <div class="char-count" data-step="${i}">${charCountText(val.length, step.targetLen||0, maxLen)}</div>
     `;
     grid.appendChild(card);
@@ -1237,7 +1258,7 @@ function openStructureEditor(){
     <div class="prompt-editor-box" style="max-width:640px;max-height:85vh;overflow-y:auto;">
       <h4>목차(가운데 카드) 구조 설정</h4>
       <div class="api-key-note" style="margin-bottom:12px;">
-        "문제의 소재"(Ⅰ)와 "설문의 해결"(마지막)은 항상 고정되며, 그 사이에 들어갈 카드를 모드별로 1~5개까지 자유롭게 설정할 수 있습니다. 각 카드의 제목, 안내문구, <b>목표 글자수</b>(✍ 카운터 가이드 · 0=미설정), <b>최대 글자수</b>(하드 제한), 하위탭 이름을 자유롭게 수정할 수 있습니다. 로마숫자는 순서에 따라 자동 부여됩니다.
+        "문제의 소재"(Ⅰ)와 "설문의 해결"(마지막)은 항상 고정되며, 그 사이에 들어갈 카드를 1~5개까지 자유롭게 설정할 수 있습니다. 각 카드의 제목, 안내문구, <b>목표 글자수</b>(✍ 카운터 가이드 · 0=미설정), <b>최대 글자수</b>(하드 제한), 하위탭 이름을 자유롭게 수정할 수 있습니다. 로마숫자는 순서에 따라 자동 부여됩니다.
       </div>
 
       <div style="background:#f0f4ff;border:1px solid #c5d0f0;border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:12px;line-height:1.9;color:#2a3a6e;">
@@ -1254,8 +1275,11 @@ function openStructureEditor(){
         <b>유형 C</b> — 3쟁점 구조:<br>
         <span style="color:#555;">#1. 처분성 여부, (1) 판례, (2) 사안의 경우, #2. 원고적격 여부, (1) 판례, (2) 사안의 경우, #3. 협의의 소익 여부, (1) 판례, (2) 사안의 경우</span>
       </div>
+      <div class="api-key-note" style="margin-bottom:10px;background:#FFF8E6;border:1px solid #F0DFA8;">
+        📌 <b>목차는 아래 한 곳에서만 설정합니다.</b> 상급자 모드는 같은 구성(칸 개수·순서)을 그대로 따르되,
+        <b>목차를 화면에 제시하지 않아</b> 학습자가 제목과 하위 목차까지 직접 세워 작성합니다.
+      </div>
       ${modeBlock('beginner')}
-      ${modeBlock('advanced')}
       <div class="prompt-editor-actions">
         <button class="admin-btn secondary" id="midDefault" style="width:auto;">기본값으로 복원</button>
         <div style="flex:1;"></div>
@@ -1507,7 +1531,7 @@ function fullReset(){
   currentMode='beginner';
   document.querySelectorAll('.mode-switch button').forEach(b=>b.classList.remove('active'));
   document.querySelector('.mode-switch button[data-mode="beginner"]').classList.add('active');
-  document.getElementById('modeHint').textContent='※ 초보자 모드에서는 4단계 구조로 차근차근 답안을 작성합니다.';
+  document.getElementById('modeHint').textContent='※ 초보자 모드에서는 제시된 목차를 따라 차근차근 답안을 작성합니다.';
   renderSteps();
 
   // reset left panel fields (blur again, lock icons, score) - keep case prompt open
@@ -2303,8 +2327,8 @@ document.querySelectorAll('.mode-switch button').forEach(btn=>{
     currentMode = btn.dataset.mode;
     activeTabs = {};
     document.getElementById('modeHint').textContent = currentMode==='advanced'
-      ? '※ 상급자 모드에서는 보다 심화된 논리 구성과 완성도 높은 답안을 작성합니다.'
-      : '※ 초보자 모드에서는 4단계 구조로 차근차근 답안을 작성합니다.';
+      ? '※ 상급자 모드에서는 목차가 제시되지 않습니다. 로마숫자 목차의 제목과 하위 목차(1·2·3)까지 직접 세워 작성하세요.'
+      : '※ 초보자 모드에서는 제시된 목차를 따라 차근차근 답안을 작성합니다.';
     renderSteps();
   });
 });
