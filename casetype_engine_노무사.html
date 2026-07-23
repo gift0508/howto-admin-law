@@ -207,6 +207,12 @@ header{
   display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;
 }
 .step-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;}
+.step-title-input{
+  flex:1;min-width:0;font:inherit;font-weight:700;font-size:13.5px;color:var(--ink);
+  border:1px dashed #c3cbe4;border-radius:6px;padding:5px 9px;background:#fbfcff;
+}
+.step-title-input:focus{outline:none;border-color:var(--navy);border-style:solid;background:#fff;}
+.step-title-input::placeholder{color:#a9b2cd;font-weight:600;}
 .step-badge{
   width:22px;height:22px;border-radius:6px;background:var(--navy);color:#fff;
   display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;
@@ -1026,10 +1032,15 @@ function getAnswerStore(){
   return answers[currentProblemNumber][currentMode];
 }
 function getStepText(i){
-  const val = getAnswerStore()[i];
-  if(!val) return '';
-  if(typeof val === 'string') return val;
-  return Object.values(val).filter(Boolean).join('\n');
+  const s = getAnswerStore();
+  const title = String(s['t'+i]||'').trim();   // 상급자 모드에서 학습자가 쓴 목차 제목
+  const val = s[i];
+  let body = '';
+  if(val){
+    body = (typeof val === 'string') ? val : Object.values(val).filter(Boolean).join('\n');
+  }
+  if(!title) return body;
+  return body ? (title + '\n' + body) : title;
 }
 
 /* ================= RENDER STEPS ================= */
@@ -1080,12 +1091,14 @@ function renderSteps(){
 
     card.innerHTML = `
       <div class="step-head">
-        <div class="step-title"><span class="step-badge">${step.roman}</span>${step.label}</div>
-        <span class="step-admin-gear" data-step="${i}" title="이 항목 안내문구 설정">⚙</span>
+        <div class="step-title"><span class="step-badge">${step.roman}</span>${step._blank
+          ? `<input class="step-title-input" data-step="${i}" placeholder="목차 제목을 입력하세요" value="${String(getAnswerStore()['t'+i]||'').replace(/"/g,'&quot;')}">`
+          : step.label}</div>
+        ${step._blank ? '' : `<span class="step-admin-gear" data-step="${i}" title="이 항목 안내문구 설정">⚙</span>`}
       </div>
       <div class="step-prompt" data-prompt="${i}">${getPrompt(i,step.prompt)}</div>
       ${tabsHtml}
-      <textarea class="step-textarea" data-step="${i}" maxlength="${maxLen}" placeholder="${step._blank?'목차 제목부터 직접 작성하세요...':'이 부분에 내용을 입력하세요...'}">${val}</textarea>
+      <textarea class="step-textarea" data-step="${i}" maxlength="${maxLen}" placeholder="${step._blank?'하위 목차(1·2·3)와 내용을 직접 작성하세요...':'이 부분에 내용을 입력하세요...'}">${val}</textarea>
       <div class="char-count" data-step="${i}">${charCountText(val.length, step.targetLen||0, maxLen)}</div>
     `;
     grid.appendChild(card);
@@ -1093,6 +1106,12 @@ function renderSteps(){
 
   grid.querySelectorAll('.step-admin-gear').forEach(g=>{
     g.addEventListener('click',()=> openPromptEditor(parseInt(g.dataset.step)));
+  });
+  /* 상급자 모드 — 학습자가 직접 쓰는 목차 제목 저장 */
+  grid.querySelectorAll('.step-title-input').forEach(inp=>{
+    inp.addEventListener('input',()=>{
+      getAnswerStore()['t'+parseInt(inp.dataset.step)] = inp.value;
+    });
   });
   grid.querySelectorAll('.step-textarea').forEach(ta=>{
     ta.addEventListener('input',()=>{
