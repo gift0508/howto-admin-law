@@ -2932,5 +2932,104 @@ renderSteps();
   }
 })();
 </script>
+<!-- ============================================================
+     1행2필 · 첨삭문의 배지 (공통 스니펫)
+     사용법: 각 엔진 HTML의 닫는 body 태그 바로 앞에 이 블록 전체를 붙여넣으면 끝.
+     - header .sub → header .brand → header → body 순으로 자동 마운트
+     - 클릭하면 이메일 주소가 클립보드로 복사됨 (https/file:// 모두 지원)
+     - 중복 삽입 방지, 기존 스크립트와 변수 충돌 없음(IIFE)
+     ============================================================ -->
+<style>
+#h2pContactTag{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(201,161,74,.16);border:1px solid rgba(201,161,74,.45);
+  color:#c9a14a;font-size:11px;font-weight:700;letter-spacing:.2px;
+  font-family:inherit;line-height:1.5;
+  padding:2px 9px;border-radius:20px;text-decoration:none;
+  margin-left:8px;vertical-align:middle;white-space:nowrap;
+  cursor:pointer;user-select:none;transition:background .15s,color .15s;
+}
+#h2pContactTag:hover{background:#c9a14a;color:#12203f;border-color:#c9a14a;}
+#h2pContactTag.copied{background:#4fc97e;color:#0d1f3c;border-color:#4fc97e;}
+@media(max-width:720px){
+  #h2pContactTag{margin-left:0;margin-top:5px;}
+}
+</style>
+<script>
+(function(){
+  var EMAIL = 'gift0508@naver.com';
+  var LABEL = '\u2709 ' + EMAIL + ' \u00b7 \uccA8\uC0AD\uBB38\uC758 \uD658\uC601'; // ✉ ... · 첨삭문의 환영
+  var DONE  = '\u2713 \uBCF5\uC0AC\uB428';                                        // ✓ 복사됨
+
+  function copyText(text){
+    if(navigator.clipboard && window.isSecureContext){
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function(resolve, reject){
+      try{
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly','');
+        ta.style.position = 'fixed';
+        ta.style.top = '-1000px';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, ta.value.length);
+        var ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        ok ? resolve() : reject(new Error('execCommand failed'));
+      }catch(e){ reject(e); }
+    });
+  }
+
+  function flash(el){
+    el.classList.add('copied');
+    el.textContent = DONE;
+    setTimeout(function(){
+      el.classList.remove('copied');
+      el.textContent = LABEL;
+    }, 1400);
+    if(typeof window.toast === 'function'){
+      try{ window.toast(EMAIL + ' \uBCF5\uC0AC\uB428'); }catch(e){}
+    }
+  }
+
+  function build(){
+    var el = document.createElement('span');
+    el.id = 'h2pContactTag';
+    el.textContent = LABEL;
+    el.setAttribute('role','button');
+    el.setAttribute('tabindex','0');
+    el.setAttribute('title','\uD074\uB9AD\uD558\uBA74 \uC774\uBA54\uC77C \uC8FC\uC18C\uAC00 \uBCF5\uC0AC\uB429\uB2C8\uB2E4');
+    function act(){
+      copyText(EMAIL).then(function(){ flash(el); }).catch(function(){
+        window.prompt('\uC544\uB798 \uC8FC\uC18C\uB97C \uBCF5\uC0AC\uD558\uC138\uC694', EMAIL);
+      });
+    }
+    el.addEventListener('click', act);
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); act(); }
+    });
+    return el;
+  }
+
+  function mount(){
+    if(document.getElementById('h2pContactTag')) return;
+    var host = document.querySelector('header .sub')
+            || document.querySelector('header .brand')
+            || document.querySelector('header')
+            || document.body;
+    host.appendChild(build());
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', mount);
+  }else{
+    mount();
+  }
+})();
+</script>
+<!-- ===== 1행2필 · 첨삭문의 배지 끝 ===== -->
 </body>
 </html>
