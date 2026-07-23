@@ -207,6 +207,12 @@ header{
   display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;
 }
 .step-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;}
+.step-title-input{
+  flex:1;min-width:0;font:inherit;font-weight:700;font-size:13.5px;color:var(--ink);
+  border:1px dashed #c3cbe4;border-radius:6px;padding:5px 9px;background:#fbfcff;
+}
+.step-title-input:focus{outline:none;border-color:var(--navy);border-style:solid;background:#fff;}
+.step-title-input::placeholder{color:#a9b2cd;font-weight:600;}
 .step-badge{
   width:22px;height:22px;border-radius:6px;background:var(--navy);color:#fff;
   display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;
@@ -614,7 +620,7 @@ table.admin-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.0
       </div>
       <div class="accum-count">누적 사례 개수 <b id="accumCount">0</b></div>
       <span class="step-admin-gear" id="structureEditBtn" title="목차(가운데 카드) 구조 설정" style="font-size:16px;margin-left:auto;">⚙ 목차 설정</span>
-      <div class="mode-hint" id="modeHint">※ 상급자 모드에서는 보다 심화된 논리 구성과 완성도 높은 답안을 작성합니다.</div>
+      <div class="mode-hint" id="modeHint">※ 상급자 모드에서는 목차가 제시되지 않습니다. 로마숫자 목차의 제목과 하위 목차(1·2·3)까지 직접 세워 작성하세요.</div>
     </div>
 
     <div class="panel">
@@ -985,13 +991,34 @@ function charCountText(cur, tgt, max){
   return '✍ '+cur+'자(공백포함) (최대 '+max+'자)';
 }
 function buildStepsConfig(mode, number){
-  const middle = getMiddleConfig(number || currentProblemNumber)[mode] || [];
+  /* 목차는 '초보자 모드' 설정 하나로 통일 관리한다.
+     상급자 모드는 같은 카드 구성(개수·순서)을 따르되 목차를 제시하지 않아,
+     학습자가 로마숫자 목차의 제목과 하위 목차(1·2·3)까지 직접 세워 쓴다. */
+  const _conf = getMiddleConfig(number || currentProblemNumber);
+  let middle = _conf['beginner'] || [];
+  if(mode === 'advanced'){
+    middle = middle.map(function(card){
+      const tabCount = (card.tabs || []).filter(function(t){
+        return !String(t).trim().startsWith('#');
+      }).length || 1;
+      return Object.assign({}, card, {
+        tabs: [],
+        maxLen: (card.maxLen || 1000) * tabCount,
+        targetLen: (card.targetLen || 0) * tabCount
+      });
+    });
+  }
   const steps = [];
   steps.push(Object.assign({}, FIXED_FIRST[mode], {roman: ROMANS[0]}));
   middle.forEach((m,i)=>{
     steps.push(Object.assign({}, m, {roman: ROMANS[i+1]}));
   });
   steps.push(Object.assign({}, FIXED_LAST[mode], {roman: ROMANS[middle.length+1]}));
+  if(mode === 'advanced'){
+    return steps.map(function(s){
+      return Object.assign({}, s, {label: '', tabs: [], _blank: true});
+    });
+  }
   return steps;
 }
 
@@ -1005,10 +1032,15 @@ function getAnswerStore(){
   return answers[currentProblemNumber][currentMode];
 }
 function getStepText(i){
-  const val = getAnswerStore()[i];
-  if(!val) return '';
-  if(typeof val === 'string') return val;
-  return Object.values(val).filter(Boolean).join('\n');
+  const s = getAnswerStore();
+  const title = String(s['t'+i]||'').trim();   // 상급자 모드에서 학습자가 쓴 목차 제목
+  const val = s[i];
+  let body = '';
+  if(val){
+    body = (typeof val === 'string') ? val : Object.values(val).filter(Boolean).join('\n');
+  }
+  if(!title) return body;
+  return body ? (title + '\n' + body) : title;
 }
 
 /* ================= RENDER STEPS ================= */
@@ -1059,12 +1091,14 @@ function renderSteps(){
 
     card.innerHTML = `
       <div class="step-head">
-        <div class="step-title"><span class="step-badge">${step.roman}</span>${step.label}</div>
-        <span class="step-admin-gear" data-step="${i}" title="이 항목 안내문구 설정">⚙</span>
+        <div class="step-title"><span class="step-badge">${step.roman}</span>${step._blank
+          ? `<input class="step-title-input" data-step="${i}" placeholder="목차 제목을 입력하세요" value="${String(getAnswerStore()['t'+i]||'').replace(/"/g,'&quot;')}">`
+          : step.label}</div>
+        ${step._blank ? '' : `<span class="step-admin-gear" data-step="${i}" title="이 항목 안내문구 설정">⚙</span>`}
       </div>
       <div class="step-prompt" data-prompt="${i}">${getPrompt(i,step.prompt)}</div>
       ${tabsHtml}
-      <textarea class="step-textarea" data-step="${i}" maxlength="${maxLen}" placeholder="이 부분에 내용을 입력하세요...">${val}</textarea>
+      <textarea class="step-textarea" data-step="${i}" maxlength="${maxLen}" placeholder="${step._blank?'하위 목차(1·2·3)와 내용을 직접 작성하세요...':'이 부분에 내용을 입력하세요...'}">${val}</textarea>
       <div class="char-count" data-step="${i}">${charCountText(val.length, step.targetLen||0, maxLen)}</div>
     `;
     grid.appendChild(card);
@@ -1072,6 +1106,12 @@ function renderSteps(){
 
   grid.querySelectorAll('.step-admin-gear').forEach(g=>{
     g.addEventListener('click',()=> openPromptEditor(parseInt(g.dataset.step)));
+  });
+  /* 상급자 모드 — 학습자가 직접 쓰는 목차 제목 저장 */
+  grid.querySelectorAll('.step-title-input').forEach(inp=>{
+    inp.addEventListener('input',()=>{
+      getAnswerStore()['t'+parseInt(inp.dataset.step)] = inp.value;
+    });
   });
   grid.querySelectorAll('.step-textarea').forEach(ta=>{
     ta.addEventListener('input',()=>{
@@ -1190,7 +1230,7 @@ function openStructureEditor(){
     <div class="prompt-editor-box" style="max-width:640px;max-height:85vh;overflow-y:auto;">
       <h4>목차(가운데 카드) 구조 설정</h4>
       <div class="api-key-note" style="margin-bottom:12px;">
-        "문제의 소재"(Ⅰ)와 "설문의 해결"(마지막)은 항상 고정되며, 그 사이에 들어갈 카드를 모드별로 1~5개까지 자유롭게 설정할 수 있습니다. 각 카드의 제목, 안내문구, <b>목표 글자수</b>(✍ 카운터 가이드 · 0=미설정), <b>최대 글자수</b>(하드 제한), 하위탭 이름을 자유롭게 수정할 수 있습니다. 로마숫자는 순서에 따라 자동 부여됩니다.
+        "문제의 소재"(Ⅰ)와 "설문의 해결"(마지막)은 항상 고정되며, 그 사이에 들어갈 카드를 1~5개까지 자유롭게 설정할 수 있습니다. 각 카드의 제목, 안내문구, <b>목표 글자수</b>(✍ 카운터 가이드 · 0=미설정), <b>최대 글자수</b>(하드 제한), 하위탭 이름을 자유롭게 수정할 수 있습니다. 로마숫자는 순서에 따라 자동 부여됩니다.
       </div>
 
       <div style="background:#f0f4ff;border:1px solid #c5d0f0;border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:12px;line-height:1.9;color:#2a3a6e;">
@@ -1207,8 +1247,11 @@ function openStructureEditor(){
         <b>유형 C</b> — 3쟁점 구조:<br>
         <span style="color:#555;">#1. 처분성 여부, (1) 판례, (2) 사안의 경우, #2. 원고적격 여부, (1) 판례, (2) 사안의 경우, #3. 협의의 소익 여부, (1) 판례, (2) 사안의 경우</span>
       </div>
+      <div class="api-key-note" style="margin-bottom:10px;background:#FFF8E6;border:1px solid #F0DFA8;">
+        📌 <b>목차는 아래 한 곳에서만 설정합니다.</b> 상급자 모드는 같은 구성(칸 개수·순서)을 그대로 따르되,
+        <b>목차를 화면에 제시하지 않아</b> 학습자가 제목과 하위 목차까지 직접 세워 작성합니다.
+      </div>
       ${modeBlock('beginner')}
-      ${modeBlock('advanced')}
       <div class="prompt-editor-actions">
         <button class="admin-btn secondary" id="midDefault" style="width:auto;">기본값으로 복원</button>
         <div style="flex:1;"></div>
@@ -1460,7 +1503,7 @@ function fullReset(){
   currentMode='beginner';
   document.querySelectorAll('.mode-switch button').forEach(b=>b.classList.remove('active'));
   document.querySelector('.mode-switch button[data-mode="beginner"]').classList.add('active');
-  document.getElementById('modeHint').textContent='※ 초보자 모드에서는 4단계 구조로 차근차근 답안을 작성합니다.';
+  document.getElementById('modeHint').textContent='※ 초보자 모드에서는 제시된 목차를 따라 차근차근 답안을 작성합니다.';
   renderSteps();
 
   // reset left panel fields (blur again, lock icons, score) - keep case prompt open
@@ -1626,12 +1669,64 @@ function getProblems(){
 }
 function saveProblems(list){ localStorage.setItem(PROBLEMS_KEY, JSON.stringify(list)); }
 
-/* ================= REMOTE problems_5g.json (자가 배포용) =================
-   같은 폴더에 올려둔 problems_5g.json을 로드 시 읽어와 문제 내용을 채운다.
-   - {version, problems:[...]} 형식이면 version이 바뀔 때만 반영(불필요한 덮어쓰기 방지)
-   - 순수 배열이면 매 로드마다 반영
-   - 학습자 진도(각 문제의 stage)는 번호 기준으로 보존, 신규 문제는 POOL
-   - 오프라인/파일없음이면 조용히 로컬 데이터 유지 (오프라인 안전) */
+/* ================= EMBEDDED PROBLEMS (내장 문제 DB) =================
+   5급공채·자격증 엔진은 problems_5g.json으로 문제를 공급한다.
+   내장 데이터가 필요하면 아래 problems 배열을 채우고 version을 바꾸면 된다.
+   - version이 바뀔 때만 반영(불필요한 덮어쓰기 방지)
+   - 학습자 진도(stage)는 문제번호 기준으로 보존, 신규 문제는 POOL */
+const EMBEDDED_PROBLEMS = {"version":"5g-empty","count":0,"problems":[]};
+
+/* 문제목록 반영 공통 루틴 (내장 / 원격 공용) */
+function applyProblemList(list, ver, verKey, label){
+  if(!Array.isArray(list) || !list.length) return false;
+  if(ver!==null && localStorage.getItem(verKey)===ver) return false;
+
+  const stageByNum={};
+  getProblems().forEach(p=>{ if(p.number) stageByNum[p.number]=p.stage||'POOL'; });
+
+  const merged=list.map((rp,i)=>{
+    const num=(rp.number && /^\d{4}$/.test(String(rp.number)))?String(rp.number):String(i+1).padStart(4,'0');
+    const case_=rp.case||'';
+    return {
+      number:num,
+      chapter:rp.chapter||'',
+      topic:rp.topic||'',
+      case:case_,
+      answer:rp.answer||'',
+      keyword:rp.keyword||'',
+      logic:rp.logic||'',
+      advice:rp.advice||'',
+      title:rp.title||(case_.slice(0,30)+(case_.length>30?'...':'')),
+      status:rp.status||'초안',
+      stage:stageByNum[num]||'POOL'
+    };
+  });
+  saveProblems(merged);
+  if(ver!==null) localStorage.setItem(verKey, ver);
+
+  if(typeof renderProblemTable==='function') renderProblemTable();
+  if(typeof renderStagePanel==='function') renderStagePanel();
+  const lsi=document.getElementById('learnerSearchInput');
+  if(typeof renderLearnerSearch==='function') renderLearnerSearch(lsi?lsi.value:'');
+  if(typeof applyLeftContent==='function') applyLeftContent();
+  if(typeof toast==='function') toast(label+' '+merged.length+'\uac1c\ub97c \ubd88\ub7ec\uc654\uc2b5\ub2c8\ub2e4');
+  return true;
+}
+
+const EMBED_VER_KEY='1h2p_5g_embed_ver';
+function loadEmbeddedProblems(){
+  try{
+    const d=EMBEDDED_PROBLEMS;
+    const list=Array.isArray(d)?d:(d.problems||[]);
+    const ver=Array.isArray(d)?null:(d.version!==undefined?String(d.version):null);
+    applyProblemList(list, ver, EMBED_VER_KEY, '\ub0b4\uc7a5 \ubb38\uc81c');
+  }catch(e){ /* 내장 데이터 이상: 로컬 유지 */ }
+}
+window.addEventListener('DOMContentLoaded', loadEmbeddedProblems);
+
+/* ================= REMOTE problems_5g.json (선택 · 갱신용) =================
+   같은 폴더에 problems_5g.json을 올려두면 내장본을 덮어쓴다.
+   파일이 없으면 조용히 무시되고 내장본으로 동작한다. */
 const REMOTE_URL='problems_5g.json';
 const REMOTE_VER_KEY='1h2p_5g_remote_ver';
 
@@ -1642,42 +1737,8 @@ async function loadRemoteProblems(){
     const data=await res.json();
     const remoteList=Array.isArray(data)?data:(data.problems||[]);
     const remoteVer=Array.isArray(data)?null:(data.version!==undefined?String(data.version):null);
-    if(!remoteList.length) return;
-
-    // 버전 게이트: version이 있으면 직전 반영분과 다를 때만 적용
-    if(remoteVer!==null && localStorage.getItem(REMOTE_VER_KEY)===remoteVer) return;
-
-    // 학습자 진도(stage) 스냅샷 — 번호 기준 보존
-    const stageByNum={};
-    getProblems().forEach(p=>{ if(p.number) stageByNum[p.number]=p.stage||'POOL'; });
-
-    const merged=remoteList.map((rp,i)=>{
-      const num=(rp.number && /^\d{4}$/.test(String(rp.number)))?String(rp.number):String(i+1).padStart(4,'0');
-      const case_=rp.case||'';
-      return {
-        number:num,
-        chapter:rp.chapter||'',
-        topic:rp.topic||'',
-        case:case_,
-        answer:rp.answer||'',
-        keyword:rp.keyword||'',
-        logic:rp.logic||'',
-        advice:rp.advice||'',
-        title:rp.title||(case_.slice(0,30)+(case_.length>30?'...':'')),
-        status:rp.status||'초안',
-        stage:stageByNum[num]||'POOL'   // 학습자 진도 보존, 신규는 POOL
-      };
-    });
-    saveProblems(merged);
-    if(remoteVer!==null) localStorage.setItem(REMOTE_VER_KEY, remoteVer);
-
-    if(typeof renderProblemTable==='function') renderProblemTable();
-    if(typeof renderStagePanel==='function') renderStagePanel();
-    const lsi=document.getElementById('learnerSearchInput');
-    if(typeof renderLearnerSearch==='function') renderLearnerSearch(lsi?lsi.value:'');
-    if(typeof applyLeftContent==='function') applyLeftContent();
-    toast('최신 문제 '+merged.length+'개를 불러왔습니다');
-  }catch(e){ /* 오프라인/파일없음: 로컬 유지 */ }
+    applyProblemList(remoteList, remoteVer, REMOTE_VER_KEY, '\ucd5c\uc2e0 \ubb38\uc81c');
+  }catch(e){ /* 오프라인/파일없음: 내장본 유지 */ }
 }
 window.addEventListener('DOMContentLoaded', loadRemoteProblems);
 
@@ -2254,8 +2315,8 @@ document.querySelectorAll('.mode-switch button').forEach(btn=>{
     currentMode = btn.dataset.mode;
     activeTabs = {};
     document.getElementById('modeHint').textContent = currentMode==='advanced'
-      ? '※ 상급자 모드에서는 보다 심화된 논리 구성과 완성도 높은 답안을 작성합니다.'
-      : '※ 초보자 모드에서는 4단계 구조로 차근차근 답안을 작성합니다.';
+      ? '※ 상급자 모드에서는 목차가 제시되지 않습니다. 로마숫자 목차의 제목과 하위 목차(1·2·3)까지 직접 세워 작성하세요.'
+      : '※ 초보자 모드에서는 제시된 목차를 따라 차근차근 답안을 작성합니다.';
     renderSteps();
   });
 });
@@ -2871,5 +2932,104 @@ renderSteps();
   }
 })();
 </script>
+<!-- ============================================================
+     1행2필 · 첨삭문의 배지 (공통 스니펫)
+     사용법: 각 엔진 HTML의 닫는 body 태그 바로 앞에 이 블록 전체를 붙여넣으면 끝.
+     - header .sub → header .brand → header → body 순으로 자동 마운트
+     - 클릭하면 이메일 주소가 클립보드로 복사됨 (https/file:// 모두 지원)
+     - 중복 삽입 방지, 기존 스크립트와 변수 충돌 없음(IIFE)
+     ============================================================ -->
+<style>
+#h2pContactTag{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(201,161,74,.16);border:1px solid rgba(201,161,74,.45);
+  color:#c9a14a;font-size:11px;font-weight:700;letter-spacing:.2px;
+  font-family:inherit;line-height:1.5;
+  padding:2px 9px;border-radius:20px;text-decoration:none;
+  margin-left:8px;vertical-align:middle;white-space:nowrap;
+  cursor:pointer;user-select:none;transition:background .15s,color .15s;
+}
+#h2pContactTag:hover{background:#c9a14a;color:#12203f;border-color:#c9a14a;}
+#h2pContactTag.copied{background:#4fc97e;color:#0d1f3c;border-color:#4fc97e;}
+@media(max-width:720px){
+  #h2pContactTag{margin-left:0;margin-top:5px;}
+}
+</style>
+<script>
+(function(){
+  var EMAIL = 'gift0508@naver.com';
+  var LABEL = '\u2709 ' + EMAIL + ' \u00b7 \uccA8\uC0AD\uBB38\uC758 \uD658\uC601'; // ✉ ... · 첨삭문의 환영
+  var DONE  = '\u2713 \uBCF5\uC0AC\uB428';                                        // ✓ 복사됨
+
+  function copyText(text){
+    if(navigator.clipboard && window.isSecureContext){
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function(resolve, reject){
+      try{
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly','');
+        ta.style.position = 'fixed';
+        ta.style.top = '-1000px';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, ta.value.length);
+        var ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        ok ? resolve() : reject(new Error('execCommand failed'));
+      }catch(e){ reject(e); }
+    });
+  }
+
+  function flash(el){
+    el.classList.add('copied');
+    el.textContent = DONE;
+    setTimeout(function(){
+      el.classList.remove('copied');
+      el.textContent = LABEL;
+    }, 1400);
+    if(typeof window.toast === 'function'){
+      try{ window.toast(EMAIL + ' \uBCF5\uC0AC\uB428'); }catch(e){}
+    }
+  }
+
+  function build(){
+    var el = document.createElement('span');
+    el.id = 'h2pContactTag';
+    el.textContent = LABEL;
+    el.setAttribute('role','button');
+    el.setAttribute('tabindex','0');
+    el.setAttribute('title','\uD074\uB9AD\uD558\uBA74 \uC774\uBA54\uC77C \uC8FC\uC18C\uAC00 \uBCF5\uC0AC\uB429\uB2C8\uB2E4');
+    function act(){
+      copyText(EMAIL).then(function(){ flash(el); }).catch(function(){
+        window.prompt('\uC544\uB798 \uC8FC\uC18C\uB97C \uBCF5\uC0AC\uD558\uC138\uC694', EMAIL);
+      });
+    }
+    el.addEventListener('click', act);
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); act(); }
+    });
+    return el;
+  }
+
+  function mount(){
+    if(document.getElementById('h2pContactTag')) return;
+    var host = document.querySelector('header .sub')
+            || document.querySelector('header .brand')
+            || document.querySelector('header')
+            || document.body;
+    host.appendChild(build());
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', mount);
+  }else{
+    mount();
+  }
+})();
+</script>
+<!-- ===== 1행2필 · 첨삭문의 배지 끝 ===== -->
 </body>
 </html>
