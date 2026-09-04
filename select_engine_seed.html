@@ -157,6 +157,21 @@ button{-webkit-appearance:none;-webkit-user-select:none;user-select:none;font-fa
 .share-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:7px;margin-top:11px}
 .share-btn{padding:9px 7px;font-weight:800;border-radius:6px;border:none;cursor:pointer;transition:0.18s;color:#fff;font-size:0.83rem;font-family:inherit}
 .share-btn:hover{opacity:0.8;transform:translateY(-1px)}
+/* ── X표 모으기 ── */
+.xmark-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
+.xcard{background:rgba(0,0,0,0.28);border:1px solid rgba(255,8,68,0.3);border-radius:10px;padding:10px 8px;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+.xcard .xlbl{font-size:0.8rem;font-weight:800;color:#ffb199;white-space:nowrap}
+.xcard .xcnt{font-size:1.45rem;font-weight:900;color:#fff;line-height:1}
+.xcard .xcnt small{font-size:0.7rem;color:var(--text-sub);font-weight:700}
+.xcard .xbtn{width:100%;padding:7px 4px;border:none;border-radius:6px;font-weight:800;font-size:0.78rem;cursor:pointer;color:#fff;background:var(--wrong-grad);font-family:inherit;transition:0.18s}
+.xcard .xbtn.rpt{background:#34495e;font-size:0.72rem;padding:5px 4px}
+.xcard .xbtn:hover{opacity:0.85;transform:translateY(-1px)}
+.xcard .xbtn:disabled{opacity:0.3;cursor:not-allowed;transform:none}
+.review-banner{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:rgba(255,8,68,0.12);border:1px solid rgba(255,8,68,0.4);border-radius:12px;padding:10px 14px;margin-bottom:12px}
+.review-banner .rv-title{font-weight:900;color:#ffb199;font-size:0.95rem}
+.review-banner .rv-prog{font-size:0.82rem;color:var(--text-sub);font-weight:700}
+.review-banner .rv-exit{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 12px;border-radius:16px;font-size:0.8rem;font-weight:700;cursor:pointer}
+.x-badge{display:inline-block;margin-bottom:8px;padding:3px 10px;border-radius:12px;background:rgba(255,8,68,0.15);border:1px solid rgba(255,8,68,0.4);color:#ffb199;font-size:0.76rem;font-weight:800}
 
 /* 푸터 액션 */
 .modal-footer{display:flex;gap:10px;justify-content:flex-end;border-top:1px solid #34495e;padding-top:18px;margin-top:14px;flex-wrap:wrap}
@@ -171,6 +186,8 @@ button{-webkit-appearance:none;-webkit-user-select:none;user-select:none;font-fa
   .content-area,.sidebar{flex:none;width:100%}
   .admin-grid{grid-template-columns:1fr}
   .share-grid{grid-template-columns:1fr 1fr}
+  .xmark-grid{grid-template-columns:repeat(2,1fr)}
+  .xmark-grid .xcard:last-child{grid-column:1/-1}
   .card{padding:14px;font-size:1.08rem}
   .container{padding:14px 14px}
   .system-title{font-size:1.35rem}
@@ -250,6 +267,7 @@ button{-webkit-appearance:none;-webkit-user-select:none;user-select:none;font-fa
           <div class="case-label">📋 사례 지문</div>
           <div class="case-box" id="case-content"></div>
         </div>
+        <div id="x-badge" class="x-badge" style="display:none"></div>
         <div class="card-label label-q">Q. 문제</div>
         <div id="q-content">⬆ 과목을 선택하거나, 교수자 관리에서 과목과 문제를 등록하세요.</div>
         <div class="choices-wrap" id="choices-wrap" style="display:none"></div>
@@ -394,12 +412,24 @@ button{-webkit-appearance:none;-webkit-user-select:none;user-select:none;font-fa
         <option value="4">4단계</option><option value="5">5단계</option>
         <option value="6">6단계 (마스터 직전)</option>
         <option value="all">전체 단계</option>
+        <option value="x1">❌ X표 1개 문항</option>
+        <option value="x2">❌ X표 2개 문항</option>
+        <option value="x3">❌ X표 3개 문항</option>
+        <option value="x4">❌ X표 4개 문항</option>
+        <option value="x5">❌ X표 5개 이상 문항</option>
       </select></div>
       <div class="share-grid">
         <button class="share-btn" style="background:#fa8231" id="rpt-print-btn">🖨 인쇄</button>
         <button class="share-btn" style="background:#34495e" id="rpt-dl-btn">💾 다운로드</button>
         <button class="share-btn" style="background:#6c5ce7" id="rpt-mail-btn">📋 클립보드 복사</button>
         <button class="share-btn" style="background:#00b894" id="rpt-share-btn">📝 txt 미리보기</button>
+      </div>
+
+      <!-- X표 모으기 · 다시 풀기 -->
+      <div style="margin-top:16px;padding-top:12px;border-top:1px dashed rgba(255,8,68,0.35)">
+        <h4 style="color:#ffb199;margin-bottom:4px">❌ X표 모으기 · 다시 풀기</h4>
+        <p style="font-size:0.79rem;color:var(--text-sub);margin:0">오답(포승줄)을 받은 횟수(X표)별로 문항을 모읍니다. <b>다시 풀기</b>를 누르면 해당 문항만 연속 출제되는 복습 세션이 시작됩니다. 복습 중 오답이면 X표가 1개 추가되며, 단계 위치는 바뀌지 않습니다.</p>
+        <div class="xmark-grid" id="xmark-grid"></div>
       </div>
     </div>
 
@@ -499,6 +529,8 @@ var activeStage = 1;
 var curItem     = null;
 var editMcCount = 0;
 var singleMcCnt = 0;
+var REVIEW      = null; // {label, queue:[items], idx, ok, ng}
+var X_LABELS    = {1:'X표 1개',2:'X표 2개',3:'X표 3개',4:'X표 4개',5:'X표 5개 이상'};
 
 // ════════════════════════════════════════════
 // 저장 / 불러오기
@@ -636,7 +668,7 @@ function renderSubjectBar(){
   });
 }
 function totalInSubj(s){ var db=DB[s]||{}; var n=0; for(var i=1;i<=6;i++) if(db[i]) n+=db[i].length; return n; }
-function switchSubj(s){ activeSubj=s; activeStage=1; saveAll(); render(); }
+function switchSubj(s){ if(REVIEW) REVIEW=null; activeSubj=s; activeStage=1; saveAll(); render(); }
 
 function refreshTotal(){
   var t=0; SUBJECTS.forEach(function(s){ t+=totalInSubj(s); });
@@ -679,6 +711,7 @@ function updateEver(){
 function buildStageTabs(){
   updateEver();
   var ct=document.getElementById('stage-tabs');
+  if(REVIEW){ renderReviewBanner(); return; }
   if(!activeSubj||SUBJECTS.length===0){ ct.innerHTML=''; return; }
   var db=cDB(); var html='';
   for(var i=1;i<=6;i++){
@@ -740,6 +773,8 @@ function renderClearStack(){
 // 문제 렌더
 // ════════════════════════════════════════════
 function renderQuestion(){
+  if(REVIEW){ renderReviewQuestion(); return; }
+  document.getElementById('x-badge').style.display='none';
   var qc=document.getElementById('q-content');
   var cw=document.getElementById('choices-wrap');
   var ac=document.getElementById('a-card'), al=document.getElementById('a-label'), av=document.getElementById('a-content');
@@ -769,6 +804,7 @@ function renderQuestion(){
       caseWrap.style.display='none';
     }
     qc.textContent=curItem.q;
+    if(curItem.wrong>0){ var xb=document.getElementById('x-badge'); xb.textContent='❌ X표 '+curItem.wrong+'개'; xb.style.display='inline-block'; }
 
     if(curItem.type==='mc' && curItem.choices){
       // 객관식
@@ -838,9 +874,9 @@ function pickChoice(btn, isOk){
   var lbl=isOk?'✅ 정답!  다음 문제 →':'💀 오답 — 다음 문제 →';
   var col=isOk?'var(--correct-grad)':'var(--wrong-grad)';
   ctrl.innerHTML='<button class="btn-action" style="background:'+col+';flex:1">'+lbl+'</button>';
-  ctrl.querySelector('button').addEventListener('click',function(){ engine(!!isOk); });
-  // 로그
-  SCORE_LOG.push({q:(curItem.q||'').slice(0,40), correct:!!isOk, stage:activeStage, ts:Date.now()});
+  ctrl.querySelector('button').addEventListener('click',function(){ if(REVIEW) reviewAnswer(!!isOk); else engine(!!isOk); });
+  // 로그 (복습 세션은 reviewAnswer에서 기록)
+  if(!REVIEW) SCORE_LOG.push({q:(curItem.q||'').slice(0,40), correct:!!isOk, stage:activeStage, ts:Date.now()});
 }
 
 // ════════════════════════════════════════════
@@ -853,7 +889,9 @@ function engine(isOk){
   SCORE_LOG.push({q:(popped.q||'').slice(0,40), correct:isOk, stage:activeStage, ts:Date.now()});
   if(isOk){
     if(activeStage===6){
-      db.clear.push({q:popped.q, a:popped.a, ts:Date.now()});
+      var cl={}; for(var k in popped) if(popped.hasOwnProperty(k)) cl[k]=popped[k];
+      cl.ts=Date.now();
+      db.clear.push(cl);
       anim('🎉 마스터!','#00f2fe');
     }
     else if(!canPromote(activeStage)){
@@ -863,6 +901,7 @@ function engine(isOk){
     }
     else{ db[activeStage+1].push(popped); anim('✨ Level Up!','#00f2fe'); }
   }else{
+    popped.wrong=(popped.wrong||0)+1;
     db[1].push(popped); anim('💀 포승줄!','var(--red)');
   }
   updateEver(); saveAll(); renderSubjectBar(); buildStageTabs(); renderGauges(); renderClearStack(); refreshTotal();
@@ -896,7 +935,7 @@ function exportResult(){
   txt+='정답: '+ok+'문항 / 오답: '+ng+'문항 / 정답률: '+pct+'%\n\n';
   txt+='── 상세 기록 ──\n';
   SCORE_LOG.forEach(function(r,i){
-    txt+=(i+1)+'. ['+(r.correct?'O':'X')+'] '+r.q+' ('+r.stage+'단계)\n';
+    txt+=(i+1)+'. ['+(r.correct?'O':'X')+'] '+r.q+' ('+(r.stage==='복습'?'복습':r.stage+'단계')+')\n';
   });
   var fname='학습결과_'+name+'_'+(activeSubj||'전체')+'.txt';
   dlBlob(fname, txt, 'text/plain;charset=utf-8');
@@ -931,6 +970,7 @@ function refreshAdminUI(){
   renderSubjPills();
   renderMngList();
   renderCapInputs();
+  renderXCenter();
 }
 
 // ── 단계별 정원 설정
@@ -1235,7 +1275,8 @@ function saveEdit(){
   if(!hasC && !a) return alert('정답 선지를 선택하거나 정답을 입력하세요.');
   var finalA=hasC?(ansNum+'번'):a;
   if(hasC) choices.forEach(function(c,i){ if(c.correct) finalA=(i+1)+'번'; });
-  DB[subj][stage][idx]={q:q, case:editCase||'', unit:editUnit||'', topic:editTopic||'', type:'mc', choices:choices, a:finalA, exp:exp||'해설 없음'};
+  var _old=DB[subj][stage][idx]||{};
+  DB[subj][stage][idx]={q:q, case:editCase||'', unit:editUnit||'', topic:editTopic||'', type:'mc', choices:choices, a:finalA, exp:exp||'해설 없음', id:_old.id, wrong:_old.wrong||0};
   // 현재 출제중이던 문제면 갱신
   if(subj===activeSubj && stage===activeStage && idx===0) curItem=null;
   saveAll(); render(); refreshAdminUI();
@@ -1244,9 +1285,20 @@ function saveEdit(){
 }
 
 // ── 리포트
+function xGroupOf(it){ var w=it.wrong||0; if(w<=0) return 0; return w>=5?5:w; }
+function getXItems(group, subj){
+  var s=subj||activeSubj; if(!s||!DB[s]) return [];
+  var db=DB[s]; var arr=[];
+  for(var i=1;i<=6;i++) (db[i]||[]).forEach(function(it){ if(xGroupOf(it)===group) arr.push({stage:i,item:it}); });
+  (db.clear||[]).forEach(function(it){ if(it.choices && xGroupOf(it)===group) arr.push({stage:'CLEAR',item:it}); });
+  arr.sort(function(a,b){ return (b.item.wrong||0)-(a.item.wrong||0); });
+  return arr;
+}
+function rptTitle(sel){ if(sel==='all') return '전체 단계'; if(/^x\d$/.test(sel)) return X_LABELS[+sel.slice(1)]; return sel+'단계'; }
 function getReportItems(){
   if(!activeSubj) return [];
   var sel=document.getElementById('rpt-stage').value;
+  if(/^x\d$/.test(sel)) return getXItems(+sel.slice(1));
   var db=cDB(); var arr=[];
   if(sel==='all'){ for(var i=1;i<=6;i++) (db[i]||[]).forEach(function(it){arr.push({stage:i,item:it});}); }
   else{ var n=+sel; (db[n]||[]).forEach(function(it){arr.push({stage:n,item:it});}); }
@@ -1255,14 +1307,15 @@ function getReportItems(){
 function getReportText(){
   var sel=document.getElementById('rpt-stage').value;
   var list=getReportItems(); if(!list.length) return null;
-  var title=sel==='all'?'전체 단계':sel+'단계';
+  var title=rptTitle(sel); var showSt=(sel==='all'||sel.charAt(0)==='x');
   var txt='[1행2필 선택형 학습엔진 리포트 — '+activeSubj+' · '+title+']\n\n';
   list.forEach(function(o,i){
-    txt+='Q'+(i+1)+(sel==='all'?' ['+o.stage+'단계]':'')+'. '+o.item.q+'\n정답: '+(o.item.a||'')+'\n💡 '+( o.item.exp||'')+'\n\n';
+    var xm=(o.item.wrong>0)?' ❌×'+o.item.wrong:'';
+    txt+='Q'+(i+1)+(showSt?' ['+(o.stage==='CLEAR'?'마스터':o.stage+'단계')+xm+']':'')+'. '+o.item.q+'\n정답: '+(o.item.a||'')+'\n💡 '+( o.item.exp||'')+'\n\n';
   });
   return txt;
 }
-function rptDownload(){ var t=getReportText(); if(!t) return alert('해당 단계에 문항이 없습니다.'); var sel=document.getElementById('rpt-stage').value; dlBlob('1행2필_리포트_'+activeSubj+'_'+sel+'단계.txt',t,'text/plain;charset=utf-8'); }
+function rptDownload(){ var t=getReportText(); if(!t) return alert('해당 단계에 문항이 없습니다.'); var sel=document.getElementById('rpt-stage').value; dlBlob('1행2필_리포트_'+activeSubj+'_'+rptTitle(sel)+'.txt',t,'text/plain;charset=utf-8'); }
 function rptEmail(){ var t=getReportText(); if(!t) return alert('해당 단계에 문항이 없습니다.'); navigator.clipboard.writeText(t).then(function(){alert('클립보드에 복사되었습니다! 카카오톡·메모장 등에 붙여넣기 하세요.');}).catch(function(){alert('복사 실패 — 다운로드를 이용해 주세요.');}); }
 function rptShare(){
   var t=getReportText(); if(!t) return alert('해당 단계에 문항이 없습니다.');
@@ -1278,13 +1331,122 @@ function rptPrint(){
   if(list.length > 50){
     if(!confirm(list.length+'개 문항을 인쇄합니다. 문항 수가 많아 시간이 걸릴 수 있습니다. 계속하시겠습니까?')) return;
   }
-  var title=sel==='all'?'전체':sel+'단계';
+  var title=rptTitle(sel); var showSt=(sel==='all'||sel.charAt(0)==='x');
   var w=window.open('','_blank','width=800,height=600');
   var html='<html><head><title>1행2필 리포트</title><style>body{font-family:sans-serif;padding:28px}.box{border:1px solid #ccc;padding:14px;margin-bottom:14px;border-radius:8px}.stg{font-size:0.78rem;color:#888;font-weight:700}.q{font-weight:800;color:#c23616;margin-bottom:6px}.a{background:#f1f2f6;padding:9px;font-weight:700}.e{background:#fffacd;padding:9px;margin-top:5px;color:#555}h2{border-bottom:2px solid #000;padding-bottom:8px}</style></head><body>';
   html+='<h2>🎯 1행2필 리포트: '+escHtml(activeSubj)+' · '+title+'</h2><p>총 '+list.length+'문항</p>';
-  list.forEach(function(o,i){ html+='<div class="box">'+(sel==='all'?'<div class="stg">['+o.stage+'단계]</div>':'')+'<div class="q">Q'+(i+1)+'. '+escHtml(o.item.q)+'</div><div class="a">정답: '+escHtml(o.item.a||'')+'</div><div class="e">💡 '+escHtml(o.item.exp||'')+'</div></div>'; });
+  list.forEach(function(o,i){ html+='<div class="box">'+(showSt?'<div class="stg">['+(o.stage==='CLEAR'?'마스터':o.stage+'단계')+(o.item.wrong>0?' · ❌×'+o.item.wrong:'')+']</div>':'')+'<div class="q">Q'+(i+1)+'. '+escHtml(o.item.q)+'</div><div class="a">정답: '+escHtml(o.item.a||'')+'</div><div class="e">💡 '+escHtml(o.item.exp||'')+'</div></div>'; });
   html+='</body></html>';
   w.document.write(html); w.document.close(); w.focus(); setTimeout(function(){w.print();},400);
+}
+
+// ── X표 모으기 센터
+function renderXCenter(){
+  var box=document.getElementById('xmark-grid'); if(!box) return;
+  var html='';
+  for(var g=1;g<=5;g++){
+    var n=getXItems(g).length;
+    html+='<div class="xcard"><div class="xlbl">❌ '+X_LABELS[g]+'</div>'
+      +'<div class="xcnt">'+n+' <small>문항</small></div>'
+      +'<button class="xbtn" data-g="'+g+'" '+(n?'':'disabled')+'>🔁 다시 풀기</button>'
+      +'<button class="xbtn rpt" data-g="'+g+'" '+(n?'':'disabled')+'>🖨 리포트</button></div>';
+  }
+  box.innerHTML=html;
+  box.querySelectorAll('.xbtn:not(.rpt)').forEach(function(b){ b.addEventListener('click',function(){ startReview(+this.dataset.g); }); });
+  box.querySelectorAll('.xbtn.rpt').forEach(function(b){ b.addEventListener('click',function(){
+    document.getElementById('rpt-stage').value='x'+this.dataset.g; rptPrint();
+  }); });
+}
+
+// ── 다시 풀기 (복습 세션)
+function startReview(group){
+  if(!activeSubj) return;
+  var list=getXItems(group);
+  if(!list.length){ alert('해당 X표 문항이 없습니다.'); return; }
+  REVIEW={label:X_LABELS[group], group:group, queue:list.map(function(o){return o.item;}), idx:0, ok:0, ng:0};
+  closeAdmin();
+  buildStageTabs(); renderQuestion();
+  anim('🔁 '+X_LABELS[group]+' 다시 풀기','#ffb199');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function endReview(){
+  if(!REVIEW) return;
+  REVIEW=null; curItem=null;
+  saveAll(); render();
+}
+function renderReviewBanner(){
+  var ct=document.getElementById('stage-tabs');
+  var total=REVIEW.queue.length, done=Math.min(REVIEW.idx,total);
+  ct.innerHTML='<div class="review-banner" style="width:100%">'
+    +'<span class="rv-title">🔁 '+escHtml(REVIEW.label)+' 다시 풀기</span>'
+    +'<span class="rv-prog">'+done+' / '+total+' &nbsp;·&nbsp; ✅ '+REVIEW.ok+' &nbsp;❌ '+REVIEW.ng+'</span>'
+    +'<button class="rv-exit" id="rv-exit-btn">✕ 복습 종료</button></div>';
+  document.getElementById('rv-exit-btn').addEventListener('click',function(){
+    if(REVIEW.idx<REVIEW.queue.length && !confirm('복습을 중단하고 단계 학습으로 돌아갈까요?')) return;
+    endReview();
+  });
+}
+function renderReviewQuestion(){
+  var qc=document.getElementById('q-content');
+  var cw=document.getElementById('choices-wrap');
+  var ac=document.getElementById('a-card'), al=document.getElementById('a-label'), av=document.getElementById('a-content');
+  var ec=document.getElementById('e-card'), el=document.getElementById('e-label'), ev=document.getElementById('e-content');
+  var ctrl=document.getElementById('ctrl-panel');
+  var xb=document.getElementById('x-badge');
+  var caseWrap=document.getElementById('case-box-wrap'), caseContent=document.getElementById('case-content');
+  al.style.display='none'; el.style.display='none';
+  cw.style.display='none'; cw.innerHTML='';
+  ec.className='card explanation-card blind';
+  renderReviewBanner();
+
+  if(REVIEW.idx>=REVIEW.queue.length){
+    // 세션 완료
+    curItem=null; caseWrap.style.display='none'; xb.style.display='none';
+    var t=REVIEW.queue.length;
+    qc.innerHTML='🎯 <b>'+escHtml(REVIEW.label)+'</b> 복습 완료!<br><span style="font-size:0.9rem;color:var(--text-sub)">총 '+t+'문항 · 정답 '+REVIEW.ok+' · 오답 '+REVIEW.ng+' · 정답률 '+(t?Math.round(REVIEW.ok/t*100):0)+'%</span>';
+    ac.style.display='none';
+    ev.textContent='복습 중 오답 문항은 X표가 1개씩 추가되었습니다.';
+    ctrl.style.display='flex';
+    ctrl.innerHTML='<button class="btn-action" style="background:var(--wrong-grad);flex:1" id="rv-again">🔁 같은 그룹 다시</button>'
+      +'<button class="btn-action" style="background:var(--correct-grad);flex:1" id="rv-done">✅ 단계 학습으로</button>';
+    document.getElementById('rv-again').addEventListener('click',function(){ var g=REVIEW.group; REVIEW=null; startReview(g); });
+    document.getElementById('rv-done').addEventListener('click',endReview);
+    return;
+  }
+
+  curItem=REVIEW.queue[REVIEW.idx];
+  if(curItem.case&&curItem.case.trim()){ caseContent.textContent=curItem.case; caseWrap.style.display='block'; } else caseWrap.style.display='none';
+  qc.textContent=curItem.q;
+  xb.textContent='❌ X표 '+(curItem.wrong||0)+'개 · '+(REVIEW.idx+1)+'번째'; xb.style.display='inline-block';
+
+  if(curItem.type==='mc' && curItem.choices){
+    cw.style.display='flex';
+    cw.innerHTML=curItem.choices.map(function(ch,i){
+      return '<button class="choice-btn" data-i="'+i+'" data-ok="'+(ch.correct?1:0)+'">'
+        +'<span class="cnum">'+(i+1)+'</span><span>'+escHtml(ch.t)+'</span></button>';
+    }).join('');
+    cw.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ pickChoice(this, +this.dataset.ok); });
+    });
+    ac.style.display='none'; ctrl.style.display='none';
+    ev.textContent='💡 정답 선택 후 해설이 표시됩니다.';
+  }else{
+    ac.style.display='flex'; ac.className='card answer-card blind';
+    av.textContent='✨ 탭하여 정답 확인하기'; ev.textContent='💡 탭하여 해설/암기포인트 확인하기';
+    ctrl.style.display='flex';
+    ctrl.innerHTML='<button class="btn-action btn-correct" id="btn-ok">🔥 정답</button><button class="btn-action btn-wrong" id="btn-ng">💀 오답 (X표 +1)</button>';
+    document.getElementById('btn-ok').addEventListener('click',function(){reviewAnswer(true);});
+    document.getElementById('btn-ng').addEventListener('click',function(){reviewAnswer(false);});
+  }
+}
+function reviewAnswer(isOk){
+  if(!REVIEW||!curItem) return;
+  SCORE_LOG.push({q:(curItem.q||'').slice(0,40), correct:isOk, stage:'복습', ts:Date.now()});
+  if(isOk){ REVIEW.ok++; anim('✅ 정답!','#00f2fe'); }
+  else{ curItem.wrong=(curItem.wrong||0)+1; REVIEW.ng++; anim('💀 X표 +1','var(--red)'); }
+  REVIEW.idx++;
+  saveAll();
+  setTimeout(function(){ renderReviewQuestion(); }, 900);
 }
 
 // ── 백업
