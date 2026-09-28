@@ -370,6 +370,96 @@ header{
 .kw-item.checked .kw-cb{background:var(--gold);border-color:var(--gold);}
 .kw-result{margin-top:12px;font-size:12.5px;font-weight:700;color:var(--navy);}
 
+/* ── 왼쪽 패널: 매칭채점표 · 재작성처방 ── */
+.field-box.lf-rich{white-space:normal;}
+.field-box[data-field="answer"]{max-height:340px;overflow-y:auto;}
+.field-box[data-field="advice"]{max-height:460px;overflow-y:auto;}
+.field-box[data-field="grid"],.field-box[data-field="rewrite"]{max-height:520px;overflow-y:auto;}
+.lg-table{width:100%;border-collapse:collapse;font-size:11.5px;}
+.lg-table td{padding:4px 3px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45;}
+.lg-table tfoot td{font-weight:800;color:var(--navy);border-bottom:none;padding-top:6px;}
+.lg-mok{font-weight:800;color:var(--navy);white-space:nowrap;width:1%;}
+.lg-pts{text-align:right;white-space:nowrap;font-weight:700;width:1%;}
+.lg-tag{font-size:10px;color:#7a5a12;background:#faf4e6;border-radius:3px;padding:0 4px;white-space:nowrap;}
+.lg-must{margin-top:8px;font-size:11px;color:#5a5648;line-height:1.55;}
+.lg-must b{color:var(--navy);display:block;margin-bottom:2px;}
+.lg-empty{font-size:11.5px;color:var(--muted);line-height:1.6;}
+.lg-kws{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+.lg-kws span{font-size:11px;background:#fff;border:1px solid var(--line);border-radius:5px;padding:1px 6px;}
+.lg-b{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;font-size:9.5px;color:#fff;margin-right:3px;vertical-align:1px;}
+.lg-b.o{background:var(--green);} .lg-b.t{background:var(--orange);} .lg-b.x{background:var(--red);}
+.rx-prof{background:#faf4e6;border:1px solid #efe1bd;border-radius:6px;padding:7px 9px;font-size:12px;margin-bottom:8px;line-height:1.6;}
+.rx-h{font-weight:800;color:#7a5a12;font-size:11px;margin-bottom:2px;}
+.rx-list{list-style:none;margin:0;padding:0;font-size:11.5px;line-height:1.6;}
+.rx-list li{padding:5px 0;border-bottom:1px solid var(--line);}
+.rx-list li:last-child{border-bottom:none;}
+.rx-cat{font-weight:800;color:var(--red);font-size:11px;margin:4px 0 2px;}
+.rx-loss{font-size:10.5px;color:var(--red);font-weight:700;}
+.rx-ok{font-size:12px;color:var(--green);font-weight:700;}
+
+.lg-draft{font-size:10.5px;font-weight:700;color:var(--orange);background:#fdf3e6;border-radius:4px;padding:2px 6px;display:inline-block;margin-bottom:6px;}
+.ad-sum{font-size:12px;line-height:1.7;margin-bottom:6px;}
+.ad-h{font-size:11.5px;font-weight:800;color:var(--navy);margin:6px 0 3px;}
+.ad-list{margin:0;padding-left:18px;font-size:11.5px;line-height:1.6;}
+.ad-list li{padding:3px 0;}
+.ad-mok{font-size:10.5px;color:var(--muted);}
+.ad-note{font-size:11.5px;line-height:1.6;margin-top:6px;padding:5px 8px;border-radius:6px;background:#f3f5fb;color:var(--navy);}
+.ad-note.ok{background:#e5f3ea;color:#1f6a3f;}
+.ad-note.warn{background:#fbeceb;color:var(--red);}
+.rx-unit{margin-top:8px;padding-top:6px;border-top:1px dashed #d8d2c2;}
+.rx-unit:first-of-type{border-top:none;padding-top:0;}
+.rx-unit.rx-star .rx-cat{color:var(--red);}
+.rx-unit.rx-case .rx-cat{color:var(--blue);}
+.rx-unit.rx-fact .rx-cat{color:var(--green);}
+.rx-unit.rx-mok .rx-cat{color:var(--purple);}
+.rx-unit.rx-all .rx-cat{color:var(--navy);}
+.rx-all-lead{font-size:11.5px;line-height:1.6;}
+.rx-order{font-size:11px;line-height:1.6;margin:4px 0;color:#3a4050;}
+.rx-skel{list-style:none;margin:4px 0 0;padding:0;font-size:11px;line-height:1.5;}
+.rx-skel li{padding:2px 0;}
+.lg-pts-s{color:var(--muted);font-size:10.5px;}
+
+/* ── 매칭채점표 채점 ── */
+.grid-check-section{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-top:14px;}
+.grid-check-section .kw-title{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.grid-check-section .kw-hint{font-size:11.5px;color:var(--muted);margin:8px 0 12px;}
+.gc-sub{font-size:11px;font-weight:600;color:var(--muted);}
+.gc-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11px;color:#5a5648;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 10px;}
+.gc-legend i{font-style:normal;color:var(--muted);margin-left:2px;}
+.gc-b{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;font-size:11px;color:#fff;margin-right:3px;}
+.gc-b.o{background:var(--green);} .gc-b.t{background:var(--orange);} .gc-b.x{background:var(--red);}
+.gc-row{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:6px 12px;align-items:center;padding:10px 0;border-top:1px solid var(--line);}
+.gc-row:first-child{border-top:none;}
+.gc-mok{font-weight:800;color:var(--navy);font-size:12.5px;text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 2px;}
+.gc-name{font-size:12.5px;font-weight:700;color:var(--ink);}
+.gc-name .gc-tag{font-size:10.5px;font-weight:700;color:#7a5a12;background:#faf4e6;border:1px solid #efe1bd;border-radius:4px;padding:1px 5px;margin-left:5px;}
+.gc-name .gc-pts{font-size:11px;color:var(--muted);font-weight:600;margin-left:6px;}
+.gc-kw{font-size:11.5px;color:#5a5648;margin-top:3px;line-height:1.55;}
+.gc-kw .hit{background:#e5f3ea;color:#1f6a3f;border-radius:3px;padding:0 2px;}
+.gc-kw .miss{color:#a8a293;}
+.gc-ctrl{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.gc-bands{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;}
+.gc-bands button{border:none;background:#fff;font-family:inherit;font-size:13px;font-weight:800;width:32px;height:28px;cursor:pointer;color:#8a8578;}
+.gc-bands button+button{border-left:1px solid var(--line);}
+.gc-bands button.on.o{background:var(--green);color:#fff;} .gc-bands button.on.t{background:var(--orange);color:#fff;} .gc-bands button.on.x{background:var(--red);color:#fff;}
+.gc-coef{font-family:inherit;font-size:11.5px;border:1px solid var(--line);border-radius:6px;padding:2px 4px;background:#fff;}
+.gc-earn{font-size:12px;font-weight:800;color:var(--navy);min-width:64px;text-align:right;}
+.gc-auto{font-size:10px;color:var(--muted);}
+.gc-row.locked .gc-ctrl{pointer-events:none;opacity:.6;}
+#gridMust{margin-top:12px;padding-top:10px;border-top:1px dashed #d8d2c2;}
+#gridMust .gm-title{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+#gridMust .gm-list{display:flex;flex-wrap:wrap;gap:6px;}
+#gridMust .gm{font-size:11.5px;border-radius:6px;padding:3px 9px;border:1px solid var(--line);background:var(--paper);}
+#gridMust .gm.ok{background:#e5f3ea;border-color:#b9dcc6;color:#1f6a3f;}
+#gridMust .gm.no{background:#fbeceb;border-color:#efc4c1;color:var(--red);font-weight:700;}
+.gc-note{font-size:11px;color:var(--muted);margin-top:8px;}
+.gc-total{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;margin-top:12px;padding:10px 12px;background:#f3f5fb;border:1px solid #dde3f2;border-radius:8px;}
+.gc-total b{font-size:18px;color:var(--navy);}
+@media (max-width:640px){
+  .gc-row{grid-template-columns:48px minmax(0,1fr);}
+  .gc-ctrl{grid-column:1 / -1;flex-direction:row;align-items:center;justify-content:flex-end;}
+}
+
 /* AI chat */
 .chat-panel{display:flex;flex-direction:column;height:520px;}
 .chat-head{
@@ -575,12 +665,7 @@ table.admin-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.0
     </div>
 
     <div class="field">
-      <div class="field-label">문제영 <span class="step-admin-gear" data-leftfield="title" title="내용 수정">⚙</span></div>
-      <div class="field-box revealed" data-leftcontent="title"></div>
-    </div>
-
-    <div class="field">
-      <div class="field-label">사례문제 <span class="lock-icon" data-lock="case"></span><span class="step-admin-gear" data-leftfield="case" title="내용 수정">⚙</span></div>
+      <div class="field-label">문제 <span class="lock-icon" data-lock="case"></span><span class="step-admin-gear" data-leftfield="case" title="내용 수정">⚙</span></div>
       <div class="field-box revealed" data-field="case" data-leftcontent="case">A시 소속 공무원 甲은 자신의 직무권한을 행사함에 있어 고의로 乙에게 손해를 가하였다. 이 경우 乙이 A시를 상대로 국가배상을 청구할 수 있는지 그 요건을 중심으로 논하라.</div>
     </div>
     <div class="field">
@@ -588,11 +673,11 @@ table.admin-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.0
       <div class="field-box blurred" data-field="answer" data-leftcontent="answer">국가배상법 제2조의 요건(공무원, 직무집행관련성, 고의·과실, 위법성, 손해의 발생 및 인과관계)을 모두 충족하므로 A시는 乙에 대하여 국가배상책임을 진다.</div>
     </div>
     <div class="field">
-      <div class="field-label">핵심키워드 <span class="lock-icon" data-lock="keyword">🔒</span><span class="step-admin-gear" data-leftfield="keyword" title="내용 수정">⚙</span></div>
-      <div class="field-box blurred" data-field="keyword" data-leftcontent="keyword">국가배상법 제2조 / 직무관련성 / 고의·과실 / 위법성 / 인과관계 / 외형설</div>
+      <div class="field-label">매칭채점표 <span class="lock-icon" data-lock="grid">🔒</span><span class="step-admin-gear" data-leftfield="grid" title="내용 수정">⚙</span></div>
+      <div class="field-box blurred lf-rich" data-field="grid" id="leftGridBox"></div>
     </div>
     <div class="field">
-      <div class="field-label">키워드 일치율 <span class="lock-icon" data-lock="rate">🔒</span></div>
+      <div class="field-label">매칭율 <span class="lock-icon" data-lock="rate">🔒</span></div>
       <div class="field-box blurred" data-field="rate">—%</div>
     </div>
 
@@ -605,8 +690,12 @@ table.admin-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.0
       </div>
     </div>
     <div class="field">
-      <div class="field-label">답안 개선 방향 <span class="lock-icon" data-lock="advice">🔒</span><span class="step-admin-gear" data-leftfield="advice" title="내용 수정">⚙</span></div>
-      <div class="field-box blurred" data-field="advice" data-leftcontent="advice">사인의 적용 단계에서 "외형설"에 따른 직무관련성 판단 기준을 명시하면 배점이 상승합니다. 인과관계 서술을 더 구체화하세요.</div>
+      <div class="field-label">답안개선방안 <span class="lock-icon" data-lock="advice">🔒</span><span class="step-admin-gear" data-leftfield="advice" title="내용 수정">⚙</span></div>
+      <div class="field-box blurred lf-rich" data-field="advice" id="leftAdviceBox"></div>
+    </div>
+    <div class="field">
+      <div class="field-label">재작성처방 <span class="lock-icon" data-lock="rewrite">🔒</span><span class="step-admin-gear" data-leftfield="rewrite" title="교수자 처방 수정">⚙</span></div>
+      <div class="field-box blurred lf-rich" data-field="rewrite" id="leftRewriteBox"></div>
     </div>
 
     <button class="btn-primary" id="revealBtn">👁 완료 후 결과 확인</button>
@@ -645,6 +734,22 @@ table.admin-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.0
         <div class="kw-list" id="kwList"></div>
         <div class="kw-result" id="kwResult"></div>
         <button class="btn-submit" id="kwSubmitBtn" style="margin-top:14px;width:100%;">✓ 체크 완료 — 점수 반영하기</button>
+      </div>
+
+      <!-- 매칭채점표 채점 섹션 (매칭채점표가 등록된 문제에서 채점 후 활성화) -->
+      <div class="grid-check-section" id="gridCheckSection" style="display:none;">
+        <div class="kw-title">📐 매칭채점표 채점 <span class="gc-sub">예상득점 = 배점 × 매칭계수</span></div>
+        <div class="gc-legend">
+          <span><b class="gc-b o">○</b> 충족 — 개념어·문구 정확 + 배열 정합 <i>0.85–1.0</i></span>
+          <span><b class="gc-b t">△</b> 흔적·불완전 — 개념어 일부·배열 흐트러짐 <i>0.30–0.60</i></span>
+          <span><b class="gc-b x">✕</b> 누락·오배치·내용논리 갈음 <i>0.00–0.15</i></span>
+        </div>
+        <div class="kw-hint">답안에 쓴 논증키워드를 기준으로 밴드를 <b>자동 추천</b>해 두었습니다. 목차별로 확인하고, 배열·문구 정확성을 따져 밴드와 계수를 직접 고른 뒤 점수를 반영하세요.</div>
+        <div id="gridRows"></div>
+        <div id="gridMust"></div>
+        <div id="gridNote" class="gc-note"></div>
+        <div class="kw-result" id="gridResult"></div>
+        <button class="btn-submit" id="gridSubmitBtn" style="margin-top:14px;width:100%;">✓ 매칭 완료 — 점수 반영하기</button>
       </div>
     </div>
 
@@ -806,13 +911,31 @@ table.admin-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.0
           사례지문: ...<br>
           정답: ...<br>
           핵심키워드: ... (/ 또는 , 로 구분. 예: 처분성 / 재량행위 / 비례원칙)<br>
-          핵심논리: ...<br><br>
+          핵심논리: ...<br>
+          매칭채점표: (선택) 한 줄에 한 목차씩 <code>목차 | 목차명 | 구분 | 논증키워드 | 배점</code>, 마지막 줄에 <code>핵심필수현출문구: …</code><br>
+          ※ 답안개선방안·재작성처방은 「완료 및 채점하기」 때 매칭채점표로 <b>자동 생성</b>됩니다. 따로 덧붙일 말이 있을 때만 <code>답안개선방안:</code> <code>재작성처방:</code>을 적으면 「교수자 보충」으로 함께 표시됩니다.<br><br>
           <b>※ 단원·주제·사례지문·정답·핵심키워드·핵심논리 6개 항목이 모두 있어야 등록됩니다.</b> 누락 시 건너뛰고 사유를 안내합니다. 등록된 문제는 기본적으로 "초안" 상태로 표시됩니다.
         </div>
         <input type="file" id="bulkFileInput" accept=".txt" class="admin-input" style="padding:8px;">
         <button class="admin-btn" onclick="handleBulkUpload()">파일 업로드 및 일괄 등록</button>
         <button class="admin-btn secondary" style="margin-top:8px;" onclick="downloadTemplate()">양식 파일 다운로드</button>
         <div id="bulkUploadResult" style="margin-top:10px;font-size:11.5px;color:#c5cae5;"></div>
+      </div>
+      <div class="admin-card">
+        <h4>매칭채점표 · 처방 추가 업로드 (기존 문제에 붙이기)</h4>
+        <div class="api-key-note">
+          이미 등록된 문제에 매칭채점표·답안개선방안·재작성처방만 덧붙입니다. 학습자 진도(스테이지)는 그대로 유지됩니다.<br><br>
+          문제번호: 0001<br>
+          매칭채점표:<br>
+          Ⅰ | 문제의 소재 | 쟁점설정 | … | 1<br>
+          핵심필수현출문구: …<br>
+          답안개선방안: (선택)<br>
+          재작성처방: (선택)<br><br>
+          문제 사이는 <b>"==="</b>로 구분합니다. 적은 항목만 바뀌고, 적지 않은 항목은 그대로 둡니다.
+        </div>
+        <input type="file" id="attachFileInput" accept=".txt" class="admin-input" style="padding:8px;">
+        <button class="admin-btn" onclick="handleAttachUpload()">파일 업로드 및 덧붙이기</button>
+        <div id="attachUploadResult" style="margin-top:10px;font-size:11.5px;color:#c5cae5;"></div>
       </div>
       <div class="admin-card">
         <h4>단일 사례 직접 투입</h4>
@@ -823,6 +946,7 @@ table.admin-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.0
         <input class="admin-input" id="singleKeyword" placeholder="핵심키워드 *필수 (/ 구분)">
         <textarea class="admin-input" id="singleLogic" style="min-height:50px;" placeholder="핵심논리 *필수"></textarea>
         <input class="admin-input" id="singleAdvice" placeholder="답안 개선 방향 (선택)">
+        <textarea class="admin-input" id="singleGrid" style="min-height:60px;" placeholder="매칭채점표 (선택) — 한 줄에 한 목차: 목차 | 목차명 | 구분 | 논증키워드 | 배점"></textarea>
         <button class="admin-btn" onclick="submitSingleProblem()">단일 사례 등록</button>
       </div>
       <div class="admin-card">
@@ -1588,10 +1712,12 @@ const leftFieldLabels={
   chapter:'단원',
   topic:'주제',
   title:'문제영',
-  case:'사례문제',
+  case:'문제',
   answer:'정답',
   keyword:'핵심키워드',
-  advice:'답안 개선 방향'
+  grid:'매칭채점표',
+  advice:'답안개선방안(교수자 보충)',
+  rewrite:'재작성처방(교수자 처방)'
 };
 const DEFAULT_0001={
   number:'0001',
@@ -1659,6 +1785,9 @@ function applyLeftContent(){
     el.textContent = (el.dataset.lock==='case') ? '' : '🔒';
   });
   document.getElementById('scoreDisplay').innerHTML='--<span class="unit">점</span>';
+  const _rate=document.querySelector('[data-field="rate"]'); if(_rate) _rate.textContent='—%';
+  try{ kwRewrite=null; }catch(e){}
+  if(typeof resetGridCheck==='function') resetGridCheck();
 }
 
 function switchToProblem(number){
@@ -1683,7 +1812,8 @@ function openLeftFieldEditor(key){
   if(!adminAuthed){ askAdminPassword(()=>openLeftFieldEditor(key)); return; }
 
   const el = document.querySelector(`[data-leftcontent="${key}"]`);
-  const cur = el.textContent.trim();
+  const _rec = getCurrentProblem();
+  const cur = String(_rec[key]!==undefined ? _rec[key] : (el ? el.textContent : '')).trim().replace(/&/g,'&amp;').replace(/</g,'&lt;');
   const overlay = document.createElement('div');
   overlay.className='prompt-editor-overlay';
   overlay.innerHTML=`
@@ -1702,7 +1832,10 @@ function openLeftFieldEditor(key){
   document.getElementById('leftFieldSave').onclick=()=>{
     const val=document.getElementById('leftFieldTextarea').value;
     updateProblem0001(key,val);
-    el.textContent=val;
+    if(el) el.textContent=val;
+    if(typeof renderLeftGrid==='function') renderLeftGrid();
+    if(typeof renderRewrite==='function') renderRewrite();
+    if(typeof renderAdvice==='function') renderAdvice();
     overlay.remove();
     toast('내용이 저장되었습니다 (문제 목록에도 반영됨)');
   };
@@ -1759,6 +1892,8 @@ async function loadRemoteProblems(){
         keyword:rp.keyword||'',
         logic:rp.logic||'',
         advice:rp.advice||'',
+        grid:rp.grid||'',
+        rewrite:rp.rewrite||'',
         title:rp.title||(case_.slice(0,30)+(case_.length>30?'...':'')),
         status:rp.status||'초안',
         stage:stageByNum[num]||'POOL',   // 학습자 진도 보존, 신규는 POOL
@@ -1786,7 +1921,7 @@ function parseBulkText(text){
 
   blocks.forEach((block,idx)=>{
     const get=(label)=>{
-      const re=new RegExp(label+'\\s*[:：]\\s*([\\s\\S]*?)(?=\\n(?:단원|주제|사례지문|정답|핵심키워드|핵심논리)\\s*[:：]|$)');
+      const re=new RegExp(label+'\\s*[:：]\\s*([\\s\\S]*?)(?=\\n(?:단원|주제|사례지문|정답|핵심키워드|핵심논리|매칭채점표|답안개선방안|재작성처방)\\s*[:：]|$)');
       const m=block.match(re);
       return m ? m[1].trim() : '';
     };
@@ -1796,6 +1931,9 @@ function parseBulkText(text){
     const answer = get('정답');
     const keyword = get('핵심키워드');
     const logic = get('핵심논리');
+    const grid = get('매칭채점표');   // 선택 항목
+    const advice = get('답안개선방안');   // 선택 항목
+    const rewrite = get('재작성처방');   // 선택 항목 (교수자 처방)
 
     const missing=[];
     if(!chapter) missing.push('단원');
@@ -1816,6 +1954,9 @@ function parseBulkText(text){
       answer: answer,
       keyword: keyword,
       logic: logic,
+      grid: grid,
+      advice: advice,
+      rewrite: rewrite,
       stage: 'POOL',
       status: '초안',
       title: case_.slice(0,30)+(case_.length>30?'...':'')
@@ -1869,6 +2010,14 @@ function downloadTemplate(){
 정답: 국가배상법 제2조의 요건(공무원, 직무관련성, 고의·과실, 위법성, 손해 및 인과관계)을 모두 충족하므로 A시는 乙에 대하여 국가배상책임을 진다.
 핵심키워드: 국가배상법 제2조 / 직무관련성 / 고의·과실 / 위법성 / 인과관계 / 외형설
 핵심논리: 공무원의 행위가 직무관련성을 가지는지는 외형설에 따라 판단하며, 고의·과실로 위법하게 손해를 가한 경우 인과관계가 인정되면 국가배상책임이 성립한다.
+매칭채점표:
+Ⅰ | 문제의 소재 | 쟁점설정 | 국가배상책임 성립요건 쟁점 | 2
+Ⅱ | 국가배상책임의 요건 | 관련법령 | 국가배상법 제2조 / 공무원·직무관련성·고의과실·위법성·손해·인과관계 | 4
+Ⅲ | 사안의 경우 | 사안포섭 | 외형설→직무관련성 인정 / 고의·위법·인과관계 충족 | 3
+Ⅳ | 설문의 해결 | 소결 | A시 국가배상책임 인정 | 1
+핵심필수현출문구: 국가배상법 제2조 · 직무관련성 · 외형설 · 고의·과실 · 위법성 · 인과관계
+답안개선방안: 직무관련성 판단 기준(외형설)을 명시하면 배점이 상승합니다.
+재작성처방: Ⅲ 사안포섭에서 甲의 행위가 외형상 직무행위로 보이는 사정을 사실관계에서 찾아 대응시킬 것.
 
 ===
 
@@ -2000,7 +2149,11 @@ function openEditProblemModal(number){
       <textarea class="admin-input" id="epKeyword" style="min-height:50px;margin-bottom:8px;" placeholder="/ 또는 , 로 구분 입력. 예: 국가배상법 제2조 / 직무관련성 / 고의·과실 / 위법성 / 인과관계 / 외형설">${rec.keyword||''}</textarea>
       <div style="font-size:12px;color:#7a8aa0;margin-bottom:4px;">핵심논리</div>
       <textarea class="admin-input" id="epLogic" style="min-height:90px;margin-bottom:8px;">${rec.logic||''}</textarea>
-      <div style="font-size:12px;color:#7a8aa0;margin-bottom:4px;">📝 답안 개선 방향 <span style="color:#9aa3bd;">(채점 후 수험생에게 공개되는 교수자 피드백)</span></div>
+      <div style="font-size:12px;color:#7a8aa0;margin-bottom:4px;">📝 답안개선방안 <span style="color:#9aa3bd;">(채점 후 수험생에게 공개되는 교수자 피드백)</span></div>
+      <div style="font-size:12px;color:#7a8aa0;margin-bottom:4px;">📐 매칭채점표 <span style="color:#9aa3bd;">(선택 · 한 줄에 한 목차: 목차 | 목차명 | 구분 | 논증키워드 | 배점 — 입력하면 키워드 자가체크 대신 이 표로 채점)</span></div>
+      <textarea class="admin-input" id="epGrid" style="min-height:120px;margin-bottom:8px;font-size:12px;" placeholder="Ⅰ | 문제의 소재 | 쟁점설정 | 사업인정 법적효과·협의의 법적 성격·협의취득 취득형태 3쟁점 | 1&#10;Ⅱ | 사업인정의 법적 효과 | 정의정식 | 수용권 설정 형성행위… | 2&#10;핵심필수현출문구: 형성행위 · 공무수탁사인 · …">${(rec.grid||'').replace(/</g,'&lt;')}</textarea>
+      <div style="font-size:12px;color:#7a8aa0;margin-bottom:4px;">💊 재작성처방 <span style="color:#9aa3bd;">(선택 · 교수자 처방 — 채점 후 자동 진단 처방 위에 표시)</span></div>
+      <textarea class="admin-input" id="epRewrite" style="min-height:60px;margin-bottom:8px;" placeholder="예: Ⅲ-2(1) 판례 문구를 '공익 상호 간 및 사익 상호 간 비교·교량'까지 온전히 현출할 것.">${(rec.rewrite||'').replace(/</g,'&lt;')}</textarea>
       <textarea class="admin-input" id="epAdvice" style="min-height:70px;margin-bottom:8px;" placeholder="예: 판례 인용 시 정확한 법령 조문을 병기할 것. 비례원칙 3단계 구조(목적 정당성→수단 적합성→침해 최소성)를 명시할 것.">${rec.advice||''}</textarea>
       <div class="prompt-editor-actions">
         <div style="flex:1;"></div>
@@ -2019,6 +2172,8 @@ function openEditProblemModal(number){
     rec.keyword = document.getElementById('epKeyword').value;
     rec.logic = document.getElementById('epLogic').value;
     rec.advice = document.getElementById('epAdvice').value;
+    rec.grid = document.getElementById('epGrid').value.trim();
+    rec.rewrite = document.getElementById('epRewrite').value.trim();
     rec.title = rec.case.slice(0,30)+(rec.case.length>30?'...':'');
     saveProblems(list);
     if(currentProblemNumber===number) applyLeftContent();
@@ -2296,6 +2451,16 @@ function exportAllProblemsDocx(){
       lines.push('  <답안 개선 방향>');
       lines.push('  '+p.advice);
     }
+    if(p.rewrite){
+      lines.push('');
+      lines.push('  <재작성처방>');
+      lines.push('  '+p.rewrite);
+    }
+    if(p.grid){
+      lines.push('');
+      lines.push('  <매칭채점표>');
+      String(p.grid).split('\n').forEach(function(g){ lines.push('  '+g); });
+    }
   });
 
   const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});
@@ -2325,6 +2490,8 @@ function exportRemoteJSON(){
     keyword:p.keyword||'',
     logic:p.logic||'',
     advice:p.advice||'',
+    grid:p.grid||'',
+    rewrite:p.rewrite||'',
     title:p.title||((p.case||'').slice(0,30)),
     status:p.status||'초안',
     middle:p.middle||null
@@ -2418,6 +2585,7 @@ document.getElementById('resetBtn').addEventListener('click',()=>{
   const kwBtn=document.getElementById('kwSubmitBtn');
   kwBtn.disabled=false;
   kwBtn.textContent='✓ 체크 완료 — 점수 반영하기';
+  resetGridCheck();
   renderSteps();
   toast('초기화되었습니다');
 });
@@ -2435,6 +2603,12 @@ document.getElementById('submitBtn').addEventListener('click',()=>{
     el.classList.add('revealed');
   });
   document.querySelectorAll('.lock-icon').forEach(el=> el.textContent='✓');
+
+  // 매칭채점표가 등록된 문제는 매칭채점표로 채점
+  if(parseMatchGrid(getCurrentProblem().grid).rows.length){
+    openGridCheck();
+    return;
+  }
 
   // 키워드 자가체크 섹션 활성화
   const curProblem = getCurrentProblem();
@@ -2493,13 +2667,17 @@ document.getElementById('kwSubmitBtn').addEventListener('click',()=>{
 
   document.getElementById('scoreDisplay').innerHTML = score+'<span class="unit">점</span>';
   const rateEl = document.querySelector('[data-field="rate"]');
-  if(rateEl) rateEl.textContent = rateText;
+  if(rateEl) rateEl.textContent = rateText.replace('(', '(매칭율 ');
   document.getElementById('kwResult').textContent = `✅ ${checked}/${total}개 체크 → 예상점수 ${score}점`;
 
   // 체크박스 잠금 (재클릭 방지)
   document.querySelectorAll('.kw-item').forEach(el=>el.classList.add('locked'));
   document.getElementById('kwSubmitBtn').disabled = true;
   document.getElementById('kwSubmitBtn').textContent = '점수 반영 완료';
+
+  kwRewrite=[];
+  items.forEach(el=>{ if(!el.classList.contains('checked')) kwRewrite.push(el.querySelector('span:last-child').textContent); });
+  renderRewrite(); renderAdvice();
 
   applyStageLogic(score);
 });
@@ -2593,6 +2771,436 @@ document.getElementById('nextProblem').addEventListener('click',()=>{
   switchToProblem(nums[idx+1]);
 });
 
+
+/* ================= 매칭채점표 채점 =================
+   문제의 grid 텍스트(한 줄에 한 목차: 목차 | 목차명 | 구분 | 논증키워드 | 배점)를 읽어
+   목차별 매칭밴드(○ △ ✕)와 계수를 고르면 예상득점 = 배점 × 매칭계수의 합으로 채점한다.
+   달성률(예상득점 ÷ 배점 합 × 100)이 스테이지 이동 기준 점수(71점)로 쓰인다. */
+const BAND_INFO={
+  o:{mark:'○',label:'충족',coefs:[1,0.95,0.9,0.85],def:0.9},
+  t:{mark:'△',label:'흔적·불완전',coefs:[0.6,0.5,0.45,0.4,0.3],def:0.45},
+  x:{mark:'✕',label:'누락·오배치',coefs:[0.15,0.1,0.05,0],def:0.05}
+};
+let gridState=null;
+
+function parseMatchGrid(text){
+  const out={rows:[],must:'',notes:[]};
+  String(text||'').split('\n').forEach(function(line){
+    const l=line.trim(); if(!l) return;
+    const mm=l.match(/^핵심필수현출문구\s*[:：|]\s*(.+)$/);
+    if(mm){ out.must=mm[1].trim(); return; }
+    if(/^※/.test(l)){ out.notes.push(l); return; }
+    const p=l.split('|').map(function(x){return x.trim();});
+    if(p.length<3) return;
+    const pts=parseFloat(p[p.length-1]);
+    if(!(pts>=0)) return;
+    let mok='',name='',tag='',kw='';
+    if(p.length>=5){ mok=p[0]; name=p[1]; tag=p[2]; kw=p.slice(3,p.length-1).join(' | '); }
+    else if(p.length===4){ mok=p[0]; name=p[1]; kw=p[2]; }
+    else { mok=p[0]; name=p[1]; }
+    const t=name.match(/^(.*)〔(.*)〕$/); if(t && !tag){ name=t[1].trim(); tag=t[2].trim(); }
+    out.rows.push({mok:mok,name:name,tag:tag,kw:kw,pts:pts});
+  });
+  return out;
+}
+function fmtPts(n){ return (Math.round(n*100)/100).toString(); }
+function _norm(s){
+  return String(s||'')
+    .replace(/§\s*(\d+)/g,'제$1조')
+    .replace(/[①②③④⑤⑥⑦⑧⑨⑩]/g,function(c){return '제'+(c.charCodeAt(0)-0x2460+1)+'항';})
+    .replace(/항(\d+)호/g,'항제$1호')
+    .replace(/甲/g,'갑').replace(/乙/g,'을').replace(/丙/g,'병')
+    .replace(/[\s·ㆍ‘’“”'"「」｢｣]/g,'').toLowerCase();
+}
+const _STOP=new Set(['사안','판례','여부','없음','아님','검토','문제','해결','결론','가능','경우','모두','예외','원칙','사유','인정','부정']);
+function _tokens(kw){
+  return String(kw||'').replace(/§/g,' §').split(/[\/→=,+~<>()\[\]·ㆍ\s]+|및|또는/)
+    .map(function(t){return t.trim();})
+    .filter(function(t){return t.length>=2 && !_STOP.has(t) && !/^\d+(\.\d+)?$/.test(t);});
+}
+function _phrases(kw){
+  const seen={};
+  return String(kw||'').replace(/§/g,' §').split(/[\/→=,+~<>()\[\]·ㆍ]|\s및\s|\s또는\s/)
+    .map(function(t){return t.replace(/\s+/g,' ').trim();})
+    .filter(function(t){ const n=_norm(t); if(t.length<2 || _STOP.has(t) || /^[\d.]+$/.test(t) || seen[n]) return false; seen[n]=1; return true; });
+}
+function _answerParts(){
+  const cfg=buildStepsConfig(currentMode);
+  const parts={}; let all='';
+  cfg.forEach(function(step,i){ const t=getStepText(i)||''; parts[step.roman]=(parts[step.roman]||'')+'\n'+t; all+='\n'+t; });
+  return {parts:parts, all:all};
+}
+function _suggest(row, ans){
+  const toks=_tokens(row.kw||row.name);
+  if(!toks.length) return {band:'t',ratio:0,hits:[],elsewhere:[],missing:[]};
+  const roman=(String(row.mok).match(/^[ⅠⅡⅢⅣⅤⅥⅦ]/)||[''])[0];
+  const own=_norm(roman && ans.parts[roman]!==undefined ? ans.parts[roman] : ans.all);
+  const all=_norm(ans.all);
+  let score=0; const hits=[], elsewhere=[], missing=[];
+  toks.forEach(function(t){
+    const n=_norm(t);
+    if(own.indexOf(n)>=0){ score+=1; hits.push(t); }
+    else if(all.indexOf(n)>=0){ score+=0.5; hits.push(t); }   // 다른 목차에 쓴 경우(배치 흐트러짐)
+  });
+  const ratio=score/toks.length;
+  // 처방 표시용: 논증키워드를 구절 단위로 나눠 빠진 구절·다른 목차에 쓴 구절을 찾는다
+  _phrases(row.kw||row.name).forEach(function(ph){
+    const n=_norm(ph);
+    if(own.indexOf(n)>=0) return;
+    if(all.indexOf(n)>=0) elsewhere.push(ph); else missing.push(ph);
+  });
+  return {band: ratio>=0.6?'o':(ratio>=0.25?'t':'x'), ratio:ratio, hits:hits, elsewhere:elsewhere, missing:missing};
+}
+function _hlKw(kw,hits){
+  let h=String(kw||'').replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});
+  const uniq=[...new Set(hits)].sort(function(a,b){return b.length-a.length;});
+  uniq.forEach(function(t){
+    const e=t.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    h=h.replace(new RegExp('(?![^<]*>)'+e,'g'),'<span class="hit">'+e.replace(/\\/g,'')+'</span>');
+  });
+  return h;
+}
+function openGridCheck(){
+  const rec=getCurrentProblem();
+  const g=parseMatchGrid(rec.grid);
+  const ans=_answerParts();
+  gridState={rows:g.rows, sel:[], submitted:false, must:g.must};
+  g.rows.forEach(function(r){
+    const s=_suggest(r,ans);
+    gridState.sel.push({band:s.band, coef:BAND_INFO[s.band].def, auto:s.band, hits:s.hits, ratio:s.ratio, elsewhere:s.elsewhere, missing:s.missing});
+  });
+  document.getElementById('kwCheckSection').style.display='none';
+  const sec=document.getElementById('gridCheckSection');
+  const btn=document.getElementById('gridSubmitBtn');
+  btn.disabled=false; btn.textContent='✓ 매칭 완료 — 점수 반영하기';
+  renderGridRows();
+  // 핵심필수현출문구
+  const mustRaw=g.must || rec.keyword || '';
+  const must=mustRaw.split(/\s*[\/,，]\s*|\s+·\s+/).map(function(k){return k.trim();}).filter(Boolean);
+  const all=_norm(ans.all);
+  gridState.missing=[];
+  const chips=must.map(function(k){
+    const ok=all.indexOf(_norm(k))>=0;
+    if(!ok) gridState.missing.push(k);
+    return '<span class="gm '+(ok?'ok':'no')+'">'+(ok?'✓ ':'★ ')+k.replace(/</g,'&lt;')+'</span>';
+  }).join('');
+  document.getElementById('gridMust').innerHTML = must.length
+    ? '<div class="gm-title">핵심필수현출문구 현출 확인 <span class="gc-sub">(답안 문구 기준 자동 확인 · ★ 표시는 미현출 — 절대누락 여부를 먼저 점검하세요)</span></div><div class="gm-list">'+chips+'</div>'
+    : '';
+  document.getElementById('gridNote').textContent=g.notes.join(' ');
+  sec.style.display='';
+  updateGridTotal();
+  sec.scrollIntoView({behavior:'smooth',block:'start'});
+  toast('매칭채점표로 목차별 밴드를 확인한 뒤 점수를 반영해주세요');
+}
+function renderGridRows(){
+  const box=document.getElementById('gridRows');
+  box.innerHTML=gridState.rows.map(function(r,i){
+    const s=gridState.sel[i];
+    const opts=BAND_INFO[s.band].coefs.map(function(c){return '<option value="'+c+'"'+(Math.abs(c-s.coef)<1e-9?' selected':'')+'>×'+c.toFixed(2)+'</option>';}).join('');
+    return '<div class="gc-row'+(gridState.submitted?' locked':'')+'" data-i="'+i+'">'+
+      '<div class="gc-mok">'+r.mok+'</div>'+
+      '<div><div class="gc-name">'+r.name.replace(/</g,'&lt;')+(r.tag?'<span class="gc-tag">'+r.tag.replace(/</g,'&lt;')+'</span>':'')+'<span class="gc-pts">배점 '+fmtPts(r.pts)+'</span></div>'+
+        (r.kw?'<div class="gc-kw">'+_hlKw(r.kw,s.hits)+'</div>':'')+'</div>'+
+      '<div class="gc-ctrl">'+
+        '<div class="gc-bands">'+['o','t','x'].map(function(b){return '<button class="'+b+(s.band===b?' on':'')+'" data-b="'+b+'" title="'+BAND_INFO[b].label+'">'+BAND_INFO[b].mark+'</button>';}).join('')+'</div>'+
+        '<select class="gc-coef">'+opts+'</select>'+
+        '<div class="gc-earn">'+fmtPts(r.pts*s.coef)+' / '+fmtPts(r.pts)+'</div>'+
+        '<div class="gc-auto">자동 추천 '+BAND_INFO[s.auto].mark+'</div>'+
+      '</div></div>';
+  }).join('');
+}
+document.addEventListener('click',function(e){
+  const b=e.target.closest('#gridRows .gc-bands button'); if(!b || !gridState || gridState.submitted) return;
+  const i=+b.closest('.gc-row').dataset.i;
+  gridState.sel[i].band=b.dataset.b; gridState.sel[i].coef=BAND_INFO[b.dataset.b].def;
+  renderGridRows(); updateGridTotal();
+});
+document.addEventListener('change',function(e){
+  if(!e.target.matches('#gridRows .gc-coef') || !gridState || gridState.submitted) return;
+  const i=+e.target.closest('.gc-row').dataset.i;
+  gridState.sel[i].coef=parseFloat(e.target.value);
+  renderGridRows(); updateGridTotal();
+});
+function updateGridTotal(){
+  let earned=0,total=0;
+  gridState.rows.forEach(function(r,i){ earned+=r.pts*gridState.sel[i].coef; total+=r.pts; });
+  gridState.earned=earned; gridState.total=total;
+  gridState.pct = total>0 ? Math.round(earned/total*100) : 0;
+  document.getElementById('gridResult').innerHTML=
+    '<div class="gc-total"><span>예상득점 <b>'+fmtPts(earned)+'</b> / '+fmtPts(total)+'점</span>'+
+    '<span>매칭율 <b>'+gridState.pct+'%</b></span>'+
+    '<span class="gc-sub">매칭율이 예상점수(100점 환산)로 반영되어 71점 이상이면 다음 스테이지로 이동합니다.</span></div>';
+  refreshAutoFeedback();
+}
+document.getElementById('gridSubmitBtn').addEventListener('click',function(){
+  if(!gridState || gridState.submitted) return;
+  updateGridTotal();
+  gridState.submitted=true;
+  document.getElementById('scoreDisplay').innerHTML=gridState.pct+'<span class="unit">점</span>';
+  const rateEl=document.querySelector('[data-field="rate"]');
+  if(rateEl) rateEl.textContent=fmtPts(gridState.earned)+' / '+fmtPts(gridState.total)+'점 (매칭율 '+gridState.pct+'%)';
+  renderGridRows();
+  refreshAutoFeedback();
+  const btn=document.getElementById('gridSubmitBtn');
+  btn.disabled=true; btn.textContent='점수 반영 완료';
+  applyStageLogic(gridState.pct);
+});
+function resetGridCheck(){
+  gridState=null;
+  const sec=document.getElementById('gridCheckSection'); if(sec) sec.style.display='none';
+  ['gridRows','gridMust','gridResult','gridNote'].forEach(function(id){ const el=document.getElementById(id); if(el) el.innerHTML=''; });
+  updateRateLabel();
+  renderLeftGrid(); renderRewrite(); if(typeof renderAdvice==='function') renderAdvice();
+}
+function updateRateLabel(){
+  const lab=document.querySelector('[data-field="rate"]');
+  if(!lab) return;
+  const label=lab.parentElement.querySelector('.field-label');
+  if(!label || !label.firstChild) return;
+  let has=false; try{ has=parseMatchGrid(getCurrentProblem().grid).rows.length>0; }catch(e){}
+  label.firstChild.nodeValue = '매칭율 ';
+}
+window.addEventListener('DOMContentLoaded', function(){ setTimeout(updateRateLabel,0); });
+
+
+/* ================= 왼쪽 패널: 매칭채점표 · 재작성처방 ================= */
+let kwRewrite=null;   // 키워드 방식 채점 시 미체크 키워드
+function _esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function renderLeftGrid(){
+  const box=document.getElementById('leftGridBox'); if(!box) return;
+  let rec={}; try{ rec=getCurrentProblem(); }catch(e){}
+  const g=parseMatchGrid(rec.grid);
+  if(!g.rows.length){
+    const kws=String(rec.keyword||'').split(/[\/,，]/).map(function(k){return k.trim();}).filter(Boolean);
+    box.innerHTML = kws.length
+      ? '<div class="lg-empty">매칭채점표 미등록 — 핵심키워드로 채점합니다.</div><div class="lg-kws">'+kws.map(function(k){return '<span>'+_esc(k)+'</span>';}).join('')+'</div>'
+      : '<div class="lg-empty">매칭채점표가 등록되지 않았습니다.</div>';
+    return;
+  }
+  const done = !!gridState;
+  const draft = gridState && !gridState.submitted;
+  let total=0, earned=0;
+  const rows=g.rows.map(function(r,i){
+    total+=r.pts;
+    let mark='', got='';
+    if(done){ const s=gridState.sel[i]; earned+=r.pts*s.coef; mark='<span class="lg-b '+s.band+'">'+BAND_INFO[s.band].mark+'</span>'; got=fmtPts(r.pts*s.coef)+'/'; }
+    return '<tr><td class="lg-mok">'+_esc(r.mok)+'</td><td>'+_esc(r.name)+(r.tag?' <span class="lg-tag">'+_esc(r.tag)+'</span>':'')+'</td><td class="lg-pts">'+mark+got+fmtPts(r.pts)+'</td></tr>';
+  }).join('');
+  box.innerHTML=(draft?'<div class="lg-draft">자동 추천 밴드 기준 · 점수 반영 전</div>':'')+'<table class="lg-table"><tbody>'+rows+'</tbody><tfoot><tr><td colspan="2">계</td><td class="lg-pts">'+(done?fmtPts(earned)+'/':'')+fmtPts(total)+'</td></tr></tfoot></table>'+
+    (g.must?'<div class="lg-must"><b>핵심필수현출문구</b> '+_esc(g.must)+'</div>':'');
+}
+/* ================= 재작성처방 (매칭채점표 기반 자동 생성) =================
+   ★ 절대누락 → 판례문구 단위 → 사안포섭문구 단위 → 목차 단위 → 문제 전체 단위 순으로
+   실제로 다시 써야 할 문구와 목차를 짚는다. */
+function _rxUnit(tag){
+  if(tag==='판례') return 'case';
+  if(tag==='사안포섭') return 'fact';
+  return 'mok';
+}
+const _RX_UNIT_ORDER=['star','case','fact','mok','all'];
+const _RX_UNIT_HEAD={star:'★ 절대누락',case:'판례문구 단위',fact:'사안포섭문구 단위',mok:'목차 단위',all:'문제 전체 단위'};
+function buildRewriteItems(){
+  const out=[];
+  if(gridState){
+    const rows=gridState.rows, sel=gridState.sel;
+    if(gridState.missing && gridState.missing.length){
+      out.push({unit:'star', head:_RX_UNIT_HEAD.star, text:'다음 핵심필수현출문구를 답안에 그대로 현출하세요: '+gridState.missing.join(' · '), loss:0});
+    }
+    const items=[];
+    rows.forEach(function(r,i){
+      const s=sel[i];
+      if(s.band==='o') return;
+      const u=_rxUnit(r.tag);
+      let text;
+      if(u==='case'){
+        text='판례 문구를 원문대로 다시 쓰기 — '+(r.kw||r.name);
+        if(s.missing && s.missing.length) text+='\n· 빠진 판례 문구: '+s.missing.join(', ');
+      } else if(u==='fact'){
+        text='사안의 사실을 대전제 문구에 하나씩 대응시켜 다시 쓰기 — '+(r.kw||r.name);
+        if(s.missing && s.missing.length) text+='\n· 빠진 포섭 문구: '+s.missing.join(', ');
+      } else {
+        text=(s.band==='x' ? '목차 신설 — 이 목차를 세우고 다음 내용으로 채우기: ' : '목차 보강 — 문구와 배열을 다음에 맞추기: ')+(r.kw||r.name);
+        if(s.missing && s.missing.length) text+='\n· 빠진 문구: '+s.missing.join(', ');
+      }
+      if(s.elsewhere && s.elsewhere.length) text+='\n· 다른 목차에 쓴 문구(이 목차로 옮길 것): '+s.elsewhere.join(', ');
+      items.push({unit:u, head:_RX_UNIT_HEAD[u], mok:r.mok, name:r.name, tag:r.tag, band:s.band, text:text, loss:r.pts*(1-s.coef)});
+    });
+    items.sort(function(a,b){ return _RX_UNIT_ORDER.indexOf(a.unit)-_RX_UNIT_ORDER.indexOf(b.unit) || b.loss-a.loss; });
+    out.push.apply(out, items);
+    // 문제 전체 단위: 목차 골격과 재작성 순서
+    const skeleton=rows.map(function(r,i){ return {mok:r.mok,name:r.name,tag:r.tag,pts:r.pts,band:sel[i].band}; });
+    const order=rows.map(function(r,i){return {mok:r.mok,loss:r.pts*(1-sel[i].coef)};})
+      .filter(function(x){return x.loss>0.001 && sel[rows.findIndex(function(r){return r.mok===x.mok;})].band!=='o';})
+      .sort(function(a,b){return b.loss-a.loss;});
+    const allBandO = rows.every(function(r,i){return sel[i].band==='o';});
+    let text = allBandO
+      ? '현재 목차 순서와 문구를 유지한 채, 문구의 정확성만 다듬어 다시 한 번 전체를 써 보세요.'
+      : '아래 목차 순서대로 답안 전체를 처음부터 다시 쓰세요. ✕ 목차는 새로 세우고, △ 목차는 문구를 맞추세요.';
+    if(order.length) text+='\n· 고칠 순서(잃은 점수 큰 목차부터): '+order.map(function(x){return x.mok+'(−'+fmtPts(x.loss)+')';}).join(' → ');
+    text+='\n· 목차 골격: '+skeleton.map(function(k){return k.mok+' '+k.name+' '+BAND_INFO[k.band].mark;}).join(' / ');
+    out.push({unit:'all', head:_RX_UNIT_HEAD.all, text:text, skeleton:skeleton, order:order, allO:allBandO, loss:0});
+    return out;
+  }
+  if(kwRewrite){
+    if(kwRewrite.length) out.push({unit:'star', head:_RX_UNIT_HEAD.star, text:'다음 핵심키워드를 답안에 현출하세요: '+kwRewrite.join(' · '), loss:0});
+    return out;
+  }
+  return null;
+}
+function renderRewrite(){
+  const box=document.getElementById('leftRewriteBox'); if(!box) return;
+  let rec={}; try{ rec=getCurrentProblem(); }catch(e){}
+  const items=buildRewriteItems();
+  let html='';
+  if(gridState && !gridState.submitted) html+='<div class="lg-draft">자동 추천 밴드 기준 · 밴드를 바꾸면 처방도 바로 바뀝니다</div>';
+  if(items===null){
+    html+='<div class="lg-empty">「완료 및 채점하기」를 누르면 매칭채점표에 따라 판례문구 단위 → 사안포섭문구 단위 → 목차 단위 → 문제 전체 단위로 재작성 처방이 표시됩니다.</div>';
+  } else if(!items.length){
+    html+='<div class="rx-ok">모든 항목을 충족했습니다.</div>';
+  } else {
+    _RX_UNIT_ORDER.forEach(function(u){
+      const its=items.filter(function(it){return it.unit===u;});
+      if(!its.length) return;
+      html+='<div class="rx-unit rx-'+u+'"><div class="rx-cat">'+_RX_UNIT_HEAD[u]+'</div>';
+      if(u==='all'){
+        const it=its[0];
+        html+='<div class="rx-all-lead">'+_esc(it.text.split('\n')[0])+'</div>';
+        if(it.order.length) html+='<div class="rx-order"><b>고칠 순서</b> '+it.order.map(function(x){return _esc(x.mok)+'<span class="rx-loss">(−'+fmtPts(x.loss)+')</span>';}).join(' → ')+'</div>';
+        html+='<ol class="rx-skel">'+it.skeleton.map(function(k){
+          return '<li><span class="lg-b '+k.band+'">'+BAND_INFO[k.band].mark+'</span><b>'+_esc(k.mok)+'</b> '+_esc(k.name)+(k.tag?' <span class="lg-tag">'+_esc(k.tag)+'</span>':'')+' <span class="lg-pts-s">'+fmtPts(k.pts)+'점</span></li>';
+        }).join('')+'</ol>';
+      } else {
+        html+='<ol class="rx-list">'+its.map(function(it){
+          return '<li>'+(it.mok?'<b>'+_esc(it.mok)+' '+_esc(it.name)+'</b> <span class="lg-b '+it.band+'">'+BAND_INFO[it.band].mark+'</span>'+(it.loss?' <span class="rx-loss">−'+fmtPts(it.loss)+'점</span>':'')+'<br>':'')+_esc(it.text).replace(/\n/g,'<br>')+'</li>';
+        }).join('')+'</ol>';
+      }
+      html+='</div>';
+    });
+  }
+  if(rec.rewrite) html+='<div class="rx-prof" style="margin-top:8px;"><div class="rx-h">교수자 보충</div>'+_esc(rec.rewrite).replace(/\n/g,'<br>')+'</div>';
+  box.innerHTML=html;
+}
+
+window.addEventListener('DOMContentLoaded', function(){ setTimeout(function(){ renderLeftGrid(); renderRewrite(); },0); });
+
+
+/* ================= 답안개선방안 (매칭채점표 기반 자동 생성 · 총평) =================
+   구분별(대전제·판례·사안포섭·검토·소결) 충족도를 보고 답안 전체의 방향을 짚는 추상적 총평.
+   구체적인 고칠 문구는 재작성처방이 맡는다. */
+const _ADV_GROUP={'쟁점설정':'대전제','정의정식':'대전제','학설':'대전제','관련법령':'대전제','판례':'판례','사안포섭':'사안포섭','검토':'검토','소결':'소결'};
+const _ADV_LABEL={'대전제':'대전제(법리) 세우기','판례':'판례 문구','사안포섭':'사안포섭','검토':'검토','소결':'결론(소결)'};
+const _ADV_WEAK={
+  '대전제':'쟁점마다 대전제(법리)를 먼저 세운 뒤 사안으로 넘어가는 순서를 몸에 익히세요.',
+  '판례':'판례는 요지만 옮기지 말고, 판례 문구 그대로 현출하는 연습이 필요합니다.',
+  '사안포섭':'사안의 사실관계를 대전제의 요건에 하나씩 대응시키는 포섭이 엷습니다. 사실을 옮겨 적는 데서 그치지 말고 요건과 짝지어 쓰세요.',
+  '검토':'학설·판례를 나열한 뒤 어느 쪽이 타당한지, 그 이유를 분명히 밝히는 검토가 필요합니다.',
+  '소결':'각 물음의 결론을 설문이 묻는 형태 그대로 맺으세요.'
+};
+function buildAdvice(){
+  if(!gridState) return null;
+  const rows=gridState.rows, sel=gridState.sel;
+  const cnt={o:0,t:0,x:0};
+  const grp={};
+  rows.forEach(function(r,i){
+    const s=sel[i]; cnt[s.band]++;
+    const g=_ADV_GROUP[r.tag]||'사안포섭';
+    if(!grp[g]) grp[g]={g:g,e:0,t:0,loss:0};
+    grp[g].e+=r.pts*s.coef; grp[g].t+=r.pts; grp[g].loss+=r.pts*(1-s.coef);
+  });
+  const list=Object.values(grp).map(function(x){ x.r=x.t>0?x.e/x.t:1; return x; });
+  const pct=gridState.pct;
+  const sentences=[];
+  if(pct>=85) sentences.push('전체 논증 구조가 매칭채점표와 잘 맞습니다. 이제는 문구의 정확성을 다듬는 단계입니다.');
+  else if(pct>=71) sentences.push('답안의 골격은 갖추었지만, 일부 목차에서 문구의 정확성과 배열이 흔들립니다.');
+  else if(pct>=40) sentences.push('쟁점은 잡았으나 여러 목차에서 법리와 포섭이 불완전합니다. 목차별로 대전제 → 사안포섭 → 결론의 흐름을 다시 점검하세요.');
+  else sentences.push('매칭채점표의 목차 구조와 거리가 큽니다. 답안의 목차부터 다시 세우는 것이 먼저입니다.');
+  const strong=list.filter(function(x){return x.r>=0.85;}).map(function(x){return _ADV_LABEL[x.g];});
+  const weak=list.filter(function(x){return x.r<0.6;}).sort(function(a,b){return b.loss-a.loss;});
+  if(strong.length && weak.length) sentences.push('강점은 '+strong.join('·')+'입니다.');
+  weak.slice(0,2).forEach(function(x){ sentences.push(_ADV_WEAK[x.g]); });
+  if(!weak.length && pct<85){
+    const mid=list.filter(function(x){return x.r<0.85;}).sort(function(a,b){return b.loss-a.loss;})[0];
+    if(mid) sentences.push(_ADV_LABEL[mid.g]+'의 문구를 조금 더 정확하게 맞추면 점수가 오릅니다.');
+  }
+  if(rows.some(function(r,i){return sel[i].elsewhere && sel[i].elsewhere.length;}))
+    sentences.push('논증키워드가 제자리가 아닌 목차에 쓰인 곳이 있습니다. 목차 배열을 매칭채점표 순서에 맞추세요.');
+  if(gridState.missing && gridState.missing.length)
+    sentences.push('핵심필수현출문구 가운데 답안에 나오지 않은 것이 있습니다. 절대누락부터 채우세요.');
+  if(pct<71) sentences.push('재작성처방의 위쪽 항목부터 고치면 다음 스테이지 기준(71점)에 가까워집니다.');
+  return {pct:pct, cnt:cnt, earned:gridState.earned, total:gridState.total, sentences:sentences,
+          summary:'매칭율 '+pct+'% ('+fmtPts(gridState.earned)+'/'+fmtPts(gridState.total)+'점) · ○'+cnt.o+' △'+cnt.t+' ✕'+cnt.x};
+}
+function renderAdvice(){
+  const box=document.getElementById('leftAdviceBox'); if(!box) return;
+  let rec={}; try{ rec=getCurrentProblem(); }catch(e){}
+  let html='';
+  const a=buildAdvice();
+  if(a){
+    if(!gridState.submitted) html+='<div class="lg-draft">자동 추천 밴드 기준 · 점수 반영 전</div>';
+    html+='<div class="ad-sum"><b>매칭율 '+a.pct+'%</b> ('+fmtPts(a.earned)+'/'+fmtPts(a.total)+'점) · '+
+      '<span class="lg-b o">○</span>'+a.cnt.o+' <span class="lg-b t">△</span>'+a.cnt.t+' <span class="lg-b x">✕</span>'+a.cnt.x+'</div>';
+    html+='<ul class="ad-list">'+a.sentences.map(function(t){return '<li>'+_esc(t)+'</li>';}).join('')+'</ul>';
+  } else if(kwRewrite){
+    html+= kwRewrite.length
+      ? '<div class="ad-note warn">핵심키워드 '+kwRewrite.length+'개를 답안에 현출하지 못했습니다. 재작성처방의 누락 문구부터 채우세요.</div>'
+      : '<div class="rx-ok">핵심키워드를 모두 현출했습니다.</div>';
+  } else {
+    html+='<div class="lg-empty">「완료 및 채점하기」를 누르면 매칭채점표에 따라 답안 전체의 개선 방향이 자동으로 표시됩니다.</div>';
+  }
+  if(rec.advice) html+='<div class="rx-prof" style="margin-top:8px;"><div class="rx-h">교수자 보충</div>'+_esc(rec.advice).replace(/\n/g,'<br>')+'</div>';
+  box.innerHTML=html;
+}
+function refreshAutoFeedback(){
+  if(typeof renderLeftGrid==='function') renderLeftGrid();
+  renderAdvice();
+  if(typeof renderRewrite==='function') renderRewrite();
+}
+window.addEventListener('DOMContentLoaded', function(){ setTimeout(renderAdvice,0); });
+
+/* ================= 매칭채점표 · 처방 추가 업로드 ================= */
+function parseAttachText(text){
+  const blocks=String(text).replace(/\r/g,'').split(/\n\s*={3,}\s*\n|\n{3,}/).map(function(b){return b.trim();}).filter(Boolean);
+  const labels='문제번호|매칭채점표|답안개선방안|재작성처방';
+  return blocks.map(function(block){
+    const get=function(label){
+      const m=block.match(new RegExp(label+'\\s*[:：]\\s*([\\s\\S]*?)(?=\\n(?:'+labels+')\\s*[:：]|$)'));
+      return m ? m[1].trim() : null;
+    };
+    const num=(get('문제번호')||'').replace(/\D/g,'');
+    return {number: num ? num.padStart(4,'0') : '', grid:get('매칭채점표'), advice:get('답안개선방안'), rewrite:get('재작성처방')};
+  });
+}
+function handleAttachUpload(){
+  const input=document.getElementById('attachFileInput');
+  const out=document.getElementById('attachUploadResult');
+  if(!input.files.length){ out.textContent='먼저 txt 파일을 선택하세요.'; return; }
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const items=parseAttachText(e.target.result);
+    const list=getProblems();
+    let ok=0; const errs=[];
+    items.forEach(function(it,idx){
+      if(!it.number){ errs.push('#'+(idx+1)+'번째 블록: 문제번호가 없어 건너뜁니다.'); return; }
+      const rec=list.find(function(p){return p.number===it.number;});
+      if(!rec){ errs.push('#'+(idx+1)+'번째 블록: '+it.number+'번 문제가 없어 건너뜁니다.'); return; }
+      if(it.grid!==null){
+        if(it.grid && !parseMatchGrid(it.grid).rows.length){ errs.push('#'+(idx+1)+'번째 블록('+it.number+'): 매칭채점표 형식을 읽지 못했습니다.'); return; }
+        rec.grid=it.grid;
+      }
+      if(it.advice!==null) rec.advice=it.advice;
+      if(it.rewrite!==null) rec.rewrite=it.rewrite;
+      ok++;
+    });
+    saveProblems(list);
+    renderProblemTable();
+    if(typeof applyLeftContent==='function') applyLeftContent();
+    out.innerHTML='✅ '+ok+'개 문제에 덧붙였습니다.'+(errs.length?'<br>⚠ '+errs.join('<br>'):'');
+    toast(ok+'개 문제에 매칭채점표·처방을 덧붙였습니다');
+  };
+  reader.readAsText(input.files[0]);
+}
+
 /* ================= EXPORT RESULT ================= */
 const NAME_KEY='1h2p_gp_learner_name';
 window.addEventListener('DOMContentLoaded',()=>{
@@ -2642,11 +3250,12 @@ document.getElementById('exportBtn').addEventListener('click',()=>{
   lines.push('===== 1행2필 행정법 사례답안 학습 결과 =====');
   lines.push('학습자: '+name);
   lines.push('문제번호: '+currentProblemNumber);
-  lines.push('문제영: '+(getCurrentProblem().title||'(미입력)'));
+  lines.push('단원: '+(getCurrentProblem().chapter||'(미입력)'));
+  lines.push('주제: '+(getCurrentProblem().topic||'(미입력)'));
   lines.push('학습모드: '+(currentMode==='advanced'?'상급자 모드':'초보자 모드'));
   lines.push('현재 스테이지: '+stageLabel);
   lines.push('예상점수: '+(scoreText||'(미채점)')+'점');
-  lines.push('키워드 일치율: '+rateText);
+  lines.push('매칭율: '+rateText);
   lines.push('제출일시: '+dateStr);
 
   if(kwCheckLines.length>0){
@@ -2655,6 +3264,32 @@ document.getElementById('exportBtn').addEventListener('click',()=>{
     kwCheckLines.forEach(l=>lines.push(l));
     if(kwResultText) lines.push(kwResultText);
   }
+
+  if(gridState && gridState.submitted){
+    lines.push('');
+    lines.push('----- 매칭채점표 채점 결과 -----');
+    gridState.rows.forEach(function(r,i){
+      const s=gridState.sel[i];
+      lines.push(r.mok+' '+r.name+(r.tag?'〔'+r.tag+'〕':'')+' — '+BAND_INFO[s.band].mark+' 계수 '+s.coef.toFixed(2)+' × 배점 '+fmtPts(r.pts)+' = '+fmtPts(r.pts*s.coef)+'점');
+    });
+    lines.push('예상득점: '+fmtPts(gridState.earned)+' / '+fmtPts(gridState.total)+'점 (매칭율 '+gridState.pct+'%)');
+    if(gridState.missing && gridState.missing.length) lines.push('핵심필수현출문구 미현출: '+gridState.missing.join(' · '));
+  }
+
+  const _ad=buildAdvice();
+  if(_ad && gridState.submitted){
+    lines.push('');
+    lines.push('----- 답안개선방안 -----');
+    lines.push(_ad.summary);
+    _ad.sentences.forEach(function(t){ lines.push('· '+t); });
+  }
+  const _rx=buildRewriteItems();
+  if(_rx && _rx.length){
+    lines.push('');
+    lines.push('----- 재작성처방 -----');
+    _rx.forEach(function(it){ lines.push('['+it.head+'] '+(it.mok?it.mok+' '+it.name+' — ':'')+String(it.text).replace(/\n/g,' / ')); });
+  }
+  if(getCurrentProblem().rewrite){ lines.push('교수자 처방: '+getCurrentProblem().rewrite); }
 
   lines.push('');
   lines.push('----- 작성 답안 -----');
@@ -2898,19 +3533,20 @@ function submitSingleProblem(){
   const keyword=(document.getElementById('singleKeyword')||{value:''}).value.trim();
   const logic=(document.getElementById('singleLogic')||{value:''}).value.trim();
   const advice=(document.getElementById('singleAdvice')||{value:''}).value.trim();
+  const grid=(document.getElementById('singleGrid')||{value:''}).value.trim();
   if(!case_||!answer||!keyword||!logic){ toast('사례지문/정답/키워드/핵심논리는 필수입니다'); return; }
   const existing=getProblems();
   const num=String(existing.length+1).padStart(4,'0');
   const newP={
     number:num,chapter:chapter,topic:topic,
-    case:case_,answer:answer,keyword:keyword,logic:logic,advice:advice,
+    case:case_,answer:answer,keyword:keyword,logic:logic,advice:advice,grid:grid,
     stage:'POOL',status:'초안',
     title:case_.slice(0,30)+(case_.length>30?'...':'')
   };
   saveProblems(existing.concat([newP]));
   renderProblemTable();
   renderStagePanel();
-  ['singleChapter','singleTopic','singleCase','singleAnswer','singleKeyword','singleLogic','singleAdvice'].forEach(function(id){
+  ['singleChapter','singleTopic','singleCase','singleAnswer','singleKeyword','singleLogic','singleAdvice','singleGrid'].forEach(function(id){
     var el=document.getElementById(id); if(el) el.value='';
   });
   toast(num+'번 사례가 POOL에 등록되었습니다');
