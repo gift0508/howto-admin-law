@@ -3070,5 +3070,296 @@ renderSteps();
 })();
 </script>
 <!-- ===== 1행2필 · 첨삭문의 배지 끝 ===== -->
+<!-- ===== 1행2필 · 사례문제 가독성 도구 (폭 조절 · 글자 크기 · 크게 보기 · 옆에 띄우기) ===== -->
+<style>
+/* 좌측 패널 폭: 좁게/보통/넓게 (CSS 변수로 제어) */
+.layout{grid-template-columns:var(--lw,280px) minmax(0,1fr) 320px;}
+@media (max-width:1200px) and (min-width:768px){
+  .layout{grid-template-columns:var(--lw-tab,260px) minmax(0,1fr);}
+}
+@media (max-width:767px){
+  .layout{grid-template-columns:1fr;}
+}
+body.lw-mid  {--lw:420px;--lw-tab:360px;}
+body.lw-wide {--lw:580px;--lw-tab:460px;}
+
+/* 사례문제 박스 */
+.field-box[data-field="case"]{
+  font-size:var(--case-fs,12.5px);
+  line-height:1.75;
+  max-height:var(--case-mh,none);
+  overflow-y:auto;
+}
+body.case-fold .field-box[data-field="case"]{--case-mh:260px;}
+
+/* 도구 막대 */
+.case-tools{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 6px;align-items:center;}
+.case-tools .ct-group{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:#fff;}
+.case-tools button{
+  border:none;background:#fff;color:#5a5648;font-family:inherit;
+  font-size:11px;font-weight:700;padding:4px 8px;cursor:pointer;line-height:1.3;
+}
+.case-tools .ct-group button+button{border-left:1px solid var(--line);}
+.case-tools button:hover{background:var(--paper);color:var(--navy);}
+.case-tools button.on{background:var(--navy);color:#fff;}
+.case-tools .ct-open{
+  border:1px solid var(--navy);border-radius:7px;background:var(--navy);color:#fff;margin-left:auto;
+}
+.case-tools .ct-open:hover{background:#1d2c5c;color:#fff;}
+
+/* ===== 크게 보기 / 옆에 띄우기 창 ===== */
+#caseReaderBackdrop{
+  position:fixed;inset:0;background:rgba(15,27,61,.45);z-index:900;display:none;
+}
+#caseReader{
+  position:fixed;z-index:901;display:none;flex-direction:column;
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 18px 50px rgba(15,27,61,.28);overflow:hidden;
+}
+#caseReader.modal{
+  left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(var(--rd-w,900px),calc(100vw - 32px));height:min(88vh,1000px);
+}
+#caseReader.float{
+  transform:none;width:460px;height:70vh;min-width:300px;min-height:220px;
+  max-width:calc(100vw - 16px);max-height:calc(100vh - 16px);
+  resize:both;
+}
+.cr-head{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:10px 14px;background:var(--navy);color:#fff;
+}
+#caseReader.float .cr-head{cursor:move;user-select:none;}
+.cr-title{font-weight:800;font-size:13.5px;flex:1;min-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cr-title small{font-weight:500;color:#aab3cf;margin-left:6px;}
+.cr-head .ct-group{display:inline-flex;border:1px solid rgba(255,255,255,.22);border-radius:7px;overflow:hidden;}
+.cr-head button{
+  border:none;background:transparent;color:#fff;font-family:inherit;
+  font-size:11.5px;font-weight:700;padding:5px 9px;cursor:pointer;line-height:1.2;
+}
+.cr-head .ct-group button+button{border-left:1px solid rgba(255,255,255,.22);}
+.cr-head button:hover{background:rgba(255,255,255,.12);}
+.cr-head button.on{background:var(--gold);color:var(--navy);}
+.cr-close{font-size:15px !important;padding:3px 9px !important;}
+#caseReader.float .cr-wonly{display:none;}
+.cr-body{
+  flex:1;overflow-y:auto;padding:22px 28px 30px;background:#fdfcf9;
+  font-size:var(--rd-fs,16px);line-height:1.9;color:var(--ink);
+  word-break:keep-all;overflow-wrap:anywhere;
+}
+#caseReader.float .cr-body{padding:14px 18px 20px;}
+.cr-body p{margin:0 0 .35em;}
+.cr-body .cr-q{
+  margin:.9em 0 .4em;padding:.45em .75em;border-left:4px solid var(--gold);
+  background:#faf4e6;font-weight:700;color:var(--navy);border-radius:0 6px 6px 0;
+}
+.cr-body .cr-prob{font-weight:800;color:var(--navy);}
+.cr-body .cr-ref{
+  margin:1.2em 0 .5em;padding-top:.8em;border-top:1px dashed #d8d2c2;
+  font-weight:800;color:#7a5a12;font-size:.92em;letter-spacing:.3px;
+}
+.cr-body .cr-law{margin:.8em 0 .2em;font-weight:800;color:var(--blue);font-size:.94em;}
+.cr-body .cr-art{font-size:.94em;color:#3a4050;}
+.cr-body .cr-art b{color:var(--ink);}
+.cr-body .cr-item{padding-left:1.1em;text-indent:-1.1em;font-size:.94em;color:#3a4050;}
+.cr-body .cr-sub{padding-left:1.1em;}
+.cr-empty{color:var(--muted);text-align:center;padding:40px 0;}
+@media(max-width:767px){
+  #caseReader.modal{width:calc(100vw - 16px);height:calc(100vh - 16px);}
+  .cr-body{padding:16px 16px 24px;}
+}
+</style>
+<script>
+(function(){
+  var KEY='h2pCaseReaderPrefs';
+  var P={lw:'narrow',cfs:12.5,fold:false,rfs:16,rw:'mid',fx:null,fy:null,fw:null,fh:null};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s) for(var k in s) P[k]=s[k]; }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(P)); }catch(e){} }
+
+  var RW={narrow:680,mid:900,wide:1180};
+  var readerMode=null; // null | 'modal' | 'float'
+
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+  /* 한 줄로 이어 붙은 사례지문도 읽기 좋게 줄을 나눈다(표시용, 원문 데이터는 바꾸지 않음) */
+  function splitLines(t){
+    t=String(t||'').replace(/\r/g,'');
+    t=t.replace(/[ \t]*(【문제\s*\d+】)/g,'\n$1')
+       .replace(/[ \t]*(다음 물음에 답하시오)/g,'\n$1')
+       .replace(/[ \t]*(물음\s*\d+\))/g,'\n$1')
+       .replace(/[ \t]*(\[?참조\s*조문\]?)/g,'\n$1\n')
+       .replace(/[ \t]*(<[^<>\n]{2,60}>)/g,'\n$1\n')
+       .replace(/(다\.)[ \t]*(제\d+조(?:의\d+)?\([^)]{1,40}\))/g,'$1\n$2')
+       .replace(/[ \t]+([①②③④⑤⑥⑦⑧⑨⑩])/g,'\n$1')
+       .replace(/[ \t]+(\(\d{1,2}\)\s)/g,'\n$1')
+       .replace(/(다\.|이다\.|없다\.|아니다\.)[ \t]+(\d{1,2}\.\s)/g,'$1\n$2');
+    return t.split('\n').map(function(l){return l.trim();}).filter(function(l){return l.length;});
+  }
+  function format(text){
+    var lines=splitLines(text);
+    if(!lines.length) return '<div class="cr-empty">사례문제가 비어 있습니다.</div>';
+    var out=[], inRef=false;
+    lines.forEach(function(l){
+      var h=esc(l);
+      if(/^\[?참조\s*조문\]?$/.test(l)){ inRef=true; out.push('<div class="cr-ref">참조 조문</div>'); return; }
+      if(/^물음\s*\d+\)/.test(l)){ out.push('<div class="cr-q">'+h+'</div>'); return; }
+      if(/^다음 물음에 답하시오/.test(l)){ out.push('<p class="cr-sub"><b>'+h+'</b></p>'); return; }
+      if(/^<[^<>]{2,60}>$/.test(l)){ inRef=true; out.push('<div class="cr-law">'+h+'</div>'); return; }
+      if(/^제\d+조/.test(l)){ out.push('<p class="cr-art">'+h.replace(/^(제\d+조(?:의\d+)?\([^)]*\))/,'<b>$1</b>')+'</p>'); return; }
+      if(/^([①-⑩]|\(\d+\)|\d{1,2}\.\s)/.test(l)){ out.push('<p class="cr-item'+(inRef?'':' cr-main')+'"'+(inRef?'':' style="font-size:1em;color:var(--ink)"')+'>'+h+'</p>'); return; }
+      h=h.replace(/^(【문제\s*\d+】)/,'<span class="cr-prob">$1</span>');
+      out.push('<p'+(inRef?' class="cr-art"':'')+'>'+h+'</p>');
+    });
+    return out.join('');
+  }
+
+  function caseBox(){ return document.querySelector('.field-box[data-field="case"]'); }
+  function caseText(){
+    try{ var r=getCurrentProblem(); if(r && r.case!==undefined) return r.case; }catch(e){}
+    var b=caseBox(); return b?b.textContent:'';
+  }
+  function probInfo(){
+    var no='', ch='', tp='';
+    try{ no=currentProblemNumber; var r=getCurrentProblem(); ch=r.chapter||''; tp=r.topic||''; }catch(e){}
+    return {no:no,sub:[ch,tp].filter(Boolean).join(' · ')};
+  }
+
+  /* ---------- 좌측 패널 도구 ---------- */
+  function applyLeft(){
+    document.body.classList.remove('lw-mid','lw-wide');
+    if(P.lw==='mid') document.body.classList.add('lw-mid');
+    if(P.lw==='wide') document.body.classList.add('lw-wide');
+    document.body.classList.toggle('case-fold',!!P.fold);
+    document.documentElement.style.setProperty('--case-fs',P.cfs+'px');
+    document.querySelectorAll('.case-tools [data-lw]').forEach(function(b){b.classList.toggle('on',b.dataset.lw===P.lw);});
+    var fb=document.querySelector('.case-tools [data-act="fold"]');
+    if(fb){ fb.classList.toggle('on',!!P.fold); fb.textContent=P.fold?'펼치기':'접기'; }
+  }
+  function buildTools(){
+    var box=caseBox(); if(!box || document.querySelector('.case-tools')) return;
+    var bar=document.createElement('div');
+    bar.className='case-tools';
+    bar.innerHTML=
+      '<span class="ct-group" title="왼쪽 문제 영역의 폭">'+
+        '<button data-lw="narrow">좁게</button><button data-lw="mid">보통</button><button data-lw="wide">넓게</button></span>'+
+      '<span class="ct-group" title="글자 크기">'+
+        '<button data-act="fs-">가−</button><button data-act="fs+">가+</button></span>'+
+      '<span class="ct-group"><button data-act="fold" title="긴 사례를 일정 높이로 접어 스크롤로 보기">접기</button></span>'+
+      '<button class="ct-open" data-act="open" title="사례문제를 크게 보기">⛶ 크게 보기</button>';
+    box.parentNode.insertBefore(bar,box);
+    bar.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      if(b.dataset.lw){ P.lw=b.dataset.lw; }
+      else if(b.dataset.act==='fs-'){ P.cfs=Math.max(11,+(P.cfs-1).toFixed(1)); }
+      else if(b.dataset.act==='fs+'){ P.cfs=Math.min(20,+(P.cfs+1).toFixed(1)); }
+      else if(b.dataset.act==='fold'){ P.fold=!P.fold; }
+      else if(b.dataset.act==='open'){ openReader('modal'); return; }
+      save(); applyLeft();
+    });
+    box.addEventListener('dblclick',function(){ openReader('modal'); });
+    box.title='더블클릭하면 크게 보기';
+  }
+
+  /* ---------- 크게 보기 / 옆에 띄우기 ---------- */
+  var rd, bd;
+  function buildReader(){
+    bd=document.createElement('div'); bd.id='caseReaderBackdrop';
+    rd=document.createElement('div'); rd.id='caseReader';
+    rd.innerHTML=
+      '<div class="cr-head">'+
+        '<div class="cr-title"></div>'+
+        '<span class="ct-group cr-wonly" title="본문 폭">'+
+          '<button data-rw="narrow">좁게</button><button data-rw="mid">보통</button><button data-rw="wide">넓게</button></span>'+
+        '<span class="ct-group" title="글자 크기"><button data-act="rfs-">가−</button><button data-act="rfs+">가+</button></span>'+
+        '<span class="ct-group"><button data-act="toggle" class="cr-toggle"></button></span>'+
+        '<button class="cr-close" data-act="close" title="닫기 (Esc)">✕</button>'+
+      '</div>'+
+      '<div class="cr-body"></div>';
+    document.body.appendChild(bd); document.body.appendChild(rd);
+    bd.addEventListener('click',closeReader);
+    rd.querySelector('.cr-head').addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      if(b.dataset.rw){ P.rw=b.dataset.rw; }
+      else if(b.dataset.act==='rfs-'){ P.rfs=Math.max(13,P.rfs-1); }
+      else if(b.dataset.act==='rfs+'){ P.rfs=Math.min(26,P.rfs+1); }
+      else if(b.dataset.act==='toggle'){ openReader(readerMode==='float'?'modal':'float'); return; }
+      else if(b.dataset.act==='close'){ closeReader(); return; }
+      save(); styleReader();
+    });
+    enableDrag();
+    if(window.ResizeObserver){
+      new ResizeObserver(function(){
+        if(readerMode!=='float') return;
+        P.fw=rd.offsetWidth; P.fh=rd.offsetHeight; save();
+      }).observe(rd);
+    }
+  }
+  function styleReader(){
+    rd.style.setProperty('--rd-fs',P.rfs+'px');
+    rd.style.setProperty('--rd-w',(RW[P.rw]||900)+'px');
+    rd.querySelectorAll('[data-rw]').forEach(function(b){b.classList.toggle('on',b.dataset.rw===P.rw);});
+    var t=rd.querySelector('.cr-toggle');
+    t.textContent = readerMode==='float' ? '⛶ 크게 보기' : '📌 옆에 띄우기';
+    t.title = readerMode==='float' ? '가운데 큰 창으로 보기' : '답안을 쓰면서 볼 수 있게 작은 창으로 띄우기 (끌어서 이동 · 모서리로 크기 조절)';
+  }
+  function fillReader(){
+    if(!rd || !readerMode) return;
+    var i=probInfo();
+    rd.querySelector('.cr-title').innerHTML='사례문제 '+esc(i.no)+(i.sub?'<small>'+esc(i.sub)+'</small>':'');
+    rd.querySelector('.cr-body').innerHTML=format(caseText());
+  }
+  function placeFloat(){
+    var w=Math.min(P.fw||460,window.innerWidth-16), h=Math.min(P.fh||Math.round(window.innerHeight*.7),window.innerHeight-16);
+    var x=(P.fx!=null)?P.fx:window.innerWidth-w-20, y=(P.fy!=null)?P.fy:90;
+    x=Math.max(8,Math.min(x,window.innerWidth-w-8)); y=Math.max(8,Math.min(y,window.innerHeight-60));
+    rd.style.width=w+'px'; rd.style.height=h+'px'; rd.style.left=x+'px'; rd.style.top=y+'px';
+  }
+  function openReader(mode){
+    if(!rd) buildReader();
+    readerMode=mode;
+    rd.className=mode; rd.style.display='flex';
+    if(mode==='float'){ bd.style.display='none'; placeFloat(); }
+    else { bd.style.display='block'; rd.style.left=rd.style.top=rd.style.width=rd.style.height=''; }
+    styleReader(); fillReader();
+    rd.querySelector('.cr-body').scrollTop=0;
+  }
+  function closeReader(){
+    if(!rd) return;
+    readerMode=null; rd.style.display='none'; bd.style.display='none';
+  }
+  function enableDrag(){
+    var head=rd.querySelector('.cr-head'), sx,sy,ox,oy,drag=false;
+    function down(e){
+      if(readerMode!=='float' || e.target.closest('button')) return;
+      var pt=e.touches?e.touches[0]:e; drag=true;
+      sx=pt.clientX; sy=pt.clientY; ox=rd.offsetLeft; oy=rd.offsetTop;
+      e.preventDefault();
+    }
+    function move(e){
+      if(!drag) return;
+      var pt=e.touches?e.touches[0]:e;
+      var x=Math.max(0,Math.min(ox+pt.clientX-sx,window.innerWidth-80));
+      var y=Math.max(0,Math.min(oy+pt.clientY-sy,window.innerHeight-40));
+      rd.style.left=x+'px'; rd.style.top=y+'px';
+    }
+    function up(){ if(!drag) return; drag=false; P.fx=rd.offsetLeft; P.fy=rd.offsetTop; save(); }
+    head.addEventListener('mousedown',down); head.addEventListener('touchstart',down,{passive:false});
+    window.addEventListener('mousemove',move); window.addEventListener('touchmove',move,{passive:false});
+    window.addEventListener('mouseup',up); window.addEventListener('touchend',up);
+  }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && readerMode) closeReader(); });
+
+  function init(){
+    buildTools(); applyLeft();
+    var box=caseBox();
+    if(box && window.MutationObserver){
+      new MutationObserver(function(){ fillReader(); }).observe(box,{childList:true,characterData:true,subtree:true});
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+<!-- ===== 사례문제 가독성 도구 끝 ===== -->
+
 </body>
 </html>
