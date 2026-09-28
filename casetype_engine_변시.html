@@ -11,7 +11,7 @@
   gtag('config', 'G-S2B3ZWCHXN');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>1행2필 | 변시 사례형 답안 학습엔진</title>
+<title>1행2필 | 감평사 보상법규 사례형 답안 학습엔진</title>
 <style>
 :root{
   --navy:#0f1b3d;
@@ -526,7 +526,7 @@ table.admin-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.0
   <div class="brand">
     <div class="brand-line">
       <span class="brand-name" title="1행2필 사례형 답안 학습엔진 · build r4">1행2필</span>
-      <span class="domain-badge" id="domainBadge">변시</span>
+      <span class="domain-badge" id="domainBadge">감평사 보상법규</span>
       <span class="brand-desc">사례형 답안 학습엔진</span>
       <span class="step-admin-gear" id="domainEditBtn" title="학습영역 설정">⚙</span>
     </div>
@@ -832,13 +832,13 @@ table.admin-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.0
         <button class="admin-btn secondary" style="margin-top:8px;" onclick="exportAllProblemsDocx()">원고용 텍스트(docx 초안)로 내보내기</button>
       </div>
       <div class="admin-card" style="border:1px solid var(--gold);background:rgba(201,161,74,.08);">
-        <h4>🌐 학습자 배포용 내보내기 (problems_bs.json)</h4>
+        <h4>🌐 학습자 배포용 내보내기 (problems_gp.json)</h4>
         <div class="api-key-note">
-          현재 등록된 문제 전체를 <b>problems_bs.json</b> 파일로 내보냅니다. 이 파일을 학습엔진 HTML과 <b>같은 GitHub Pages 폴더</b>에 업로드하면, 모든 학습자가 다음 접속 때 자동으로 최신 문제를 받습니다.<br>
+          현재 등록된 문제 전체를 <b>problems_gp.json</b> 파일로 내보냅니다. 이 파일을 학습엔진 HTML과 <b>같은 GitHub Pages 폴더</b>에 업로드하면, 모든 학습자가 다음 접속 때 자동으로 최신 문제를 받습니다.<br>
           <b>※ 학습자 진도(스테이지)는 보존</b>되며, 새 문제만 POOL로 추가됩니다.<br>
-          순서: ① 문제 등록·수정 → ② 이 버튼 클릭 → ③ problems_bs.json을 GitHub에 업로드.
+          순서: ① 문제 등록·수정 → ② 이 버튼 클릭 → ③ problems_gp.json을 GitHub에 업로드.
         </div>
-        <button class="admin-btn" onclick="exportRemoteJSON()">problems_bs.json 생성 (배포용)</button>
+        <button class="admin-btn" onclick="exportRemoteJSON()">problems_gp.json 생성 (배포용)</button>
       </div>
       <div class="admin-card" style="max-width:none;">
         <h4>등록된 문제 목록</h4>
@@ -931,8 +931,8 @@ const DEFAULT_MIDDLE = {
   ]
 };
 
-const MIDDLE_KEY = '1h2p_bs_middle_config'; // 전역 기본값 키 (사례별 오버라이드가 없을 때 폴백)
-const MIDDLE_VER_KEY = '1h2p_bs_middle_ver';
+const MIDDLE_KEY = '1h2p_gp_middle_config'; // 전역 기본값 키 (사례별 오버라이드가 없을 때 폴백)
+const MIDDLE_VER_KEY = '1h2p_gp_middle_ver';
 const MIDDLE_VER = 'v20250617'; // 기본 목차 구조가 바뀔 때마다 이 값을 변경
 
 function checkMiddleVersion(){
@@ -940,13 +940,13 @@ function checkMiddleVersion(){
   if(saved !== MIDDLE_VER){
     // 전역 기본값 + 사례별 저장값 모두 폐기
     localStorage.removeItem(MIDDLE_KEY);
-    Object.keys(localStorage).filter(k=>k.startsWith('1h2p_bs_middle_')).forEach(k=>localStorage.removeItem(k));
+    Object.keys(localStorage).filter(k=>k.startsWith('1h2p_gp_middle_')).forEach(k=>localStorage.removeItem(k));
     localStorage.setItem(MIDDLE_VER_KEY, MIDDLE_VER);
   }
 }
 
 // 사례별 목차 키 — 사례번호별로 독립 저장
-function getProblemMiddleKey(number){ return '1h2p_bs_middle_'+number; }
+function getProblemMiddleKey(number){ return '1h2p_gp_middle_'+number; }
 
 // 답안(정답)에서 쟁점 목차를 자동 도출 — 로마숫자=쟁점, 1.학설/2.판례/3.검토/4.사안의 경우=탭
 function deriveMiddleFromAnswer(answer){
@@ -998,7 +998,7 @@ function getMiddleConfig(number){
 
   const _num = number || currentProblemNumber;
   const _prob = (typeof getProblems==='function') ? getProblems().find(function(p){return String(p.number)===String(_num);}) : null;
-  // 1순위: 문제에 저장된(관리자 수정) 목차 — problems_bs.json으로 함께 배포됨
+  // 1순위: 문제에 저장된(관리자 수정) 목차 — problems_gp.json으로 함께 배포됨
   if(_prob && _prob.middle && _prob.middle.beginner && _prob.middle.advanced) return applyDefaultPrompts(JSON.parse(JSON.stringify(_prob.middle)));
   // 2순위: 답안에서 자동 도출 (수정 없으면 이것)
   if(_prob && _prob.answer){ var _d=deriveMiddleFromAnswer(_prob.answer); if(_d) return applyDefaultPrompts(_d); }
@@ -1017,7 +1017,7 @@ function getMiddleConfig(number){
   return JSON.parse(JSON.stringify(DEFAULT_MIDDLE));
 }
 function saveMiddleConfig(cfg, number){
-  // 수정본은 문제 객체에 저장 → problems_bs.json 내보낼 때 함께 배포됨
+  // 수정본은 문제 객체에 저장 → problems_gp.json 내보낼 때 함께 배포됨
   const num = number || currentProblemNumber;
   if(typeof getProblems==='function'){
     const list=getProblems();
@@ -1391,8 +1391,8 @@ function openStructureEditor(){
 }
 
 /* ================= CUSTOM STEP PROMPTS (admin-editable) ================= */
-const PROMPT_KEY='1h2p_bs_step_prompts'; // {beginner:{0:'...'}, advanced:{...}}
-const PROMPT_VER_KEY='1h2p_bs_prompt_ver';
+const PROMPT_KEY='1h2p_gp_step_prompts'; // {beginner:{0:'...'}, advanced:{...}}
+const PROMPT_VER_KEY='1h2p_gp_prompt_ver';
 const PROMPT_VER='v20250617'; // 기본 안내문구가 바뀔 때마다 이 값을 변경
 
 // 버전이 달라지면 저장된 prompt를 폐기 (새 기본값 적용)
@@ -1540,13 +1540,13 @@ function fullReset(){
   localStorage.removeItem(PROMPT_KEY);
   localStorage.removeItem(MIDDLE_KEY);
   // 사례별 목차 키도 모두 삭제
-  Object.keys(localStorage).filter(k=>k.startsWith('1h2p_bs_middle_')).forEach(k=>localStorage.removeItem(k));
+  Object.keys(localStorage).filter(k=>k.startsWith('1h2p_gp_middle_')).forEach(k=>localStorage.removeItem(k));
   localStorage.removeItem(PROBLEMS_KEY);
-  localStorage.removeItem(REMOTE_VER_KEY);   // 원격 버전 마커 제거 → 재접속 시 problems_bs.json 재반영
-  localStorage.removeItem('1h2p_bs_learner_progress');
-  localStorage.removeItem('1h2p_bs_0001_attempted');
+  localStorage.removeItem(REMOTE_VER_KEY);   // 원격 버전 마커 제거 → 재접속 시 problems_gp.json 재반영
+  localStorage.removeItem('1h2p_gp_learner_progress');
+  localStorage.removeItem('1h2p_gp_0001_attempted');
   // 문제별 시도 키 모두 삭제
-  Object.keys(localStorage).filter(k=>k.startsWith('1h2p_bs_attempted_')||k.startsWith('1h2p_bs_attempts_')).forEach(k=>localStorage.removeItem(k));
+  Object.keys(localStorage).filter(k=>k.startsWith('1h2p_gp_attempted_')||k.startsWith('1h2p_gp_attempts_')).forEach(k=>localStorage.removeItem(k));
   renderProblemTable();
   renderStagePanel();
   answers = {};
@@ -1715,21 +1715,21 @@ document.querySelectorAll('.step-admin-gear[data-leftfield]').forEach(g=>{
 window.addEventListener('DOMContentLoaded', applyLeftContent);
 
 /* ================= BULK PROBLEM UPLOAD ================= */
-const PROBLEMS_KEY='1h2p_bs_problems';
+const PROBLEMS_KEY='1h2p_gp_problems';
 
 function getProblems(){
   try{ return JSON.parse(localStorage.getItem(PROBLEMS_KEY))||[]; }catch(e){ return []; }
 }
 function saveProblems(list){ localStorage.setItem(PROBLEMS_KEY, JSON.stringify(list)); }
 
-/* ================= REMOTE problems_bs.json (자가 배포용) =================
-   같은 폴더에 올려둔 problems_bs.json을 로드 시 읽어와 문제 내용을 채운다.
+/* ================= REMOTE problems_gp.json (자가 배포용) =================
+   같은 폴더에 올려둔 problems_gp.json을 로드 시 읽어와 문제 내용을 채운다.
    - {version, problems:[...]} 형식이면 version이 바뀔 때만 반영(불필요한 덮어쓰기 방지)
    - 순수 배열이면 매 로드마다 반영
    - 학습자 진도(각 문제의 stage)는 번호 기준으로 보존, 신규 문제는 POOL
    - 오프라인/파일없음이면 조용히 로컬 데이터 유지 (오프라인 안전) */
-const REMOTE_URL='problems_bs.json';
-const REMOTE_VER_KEY='1h2p_bs_remote_ver';
+const REMOTE_URL='problems_gp.json';
+const REMOTE_VER_KEY='1h2p_gp_remote_ver';
 
 async function loadRemoteProblems(){
   try{
@@ -2040,7 +2040,7 @@ function toggleProblemStatus(number){
 }
 
 /* ================= PER-LEARNER PROGRESS (starts at 0, grows as learner solves) ================= */
-const LEARNER_PROGRESS_KEY='1h2p_bs_learner_progress';
+const LEARNER_PROGRESS_KEY='1h2p_gp_learner_progress';
 const STAGE_CAPS={ STAGE2:3, STAGE3:5 };
 
 function getLearnerProgress(){
@@ -2109,7 +2109,7 @@ function toggleClearStackList(){
 
 /* ── 풀이 횟수 조회 ── */
 function getAttemptCount(number){
-  return parseInt(localStorage.getItem('1h2p_bs_attempts_' + number) || '0');
+  return parseInt(localStorage.getItem('1h2p_gp_attempts_' + number) || '0');
 }
 
 /* ── 좌측 패널 스테이지 배지에 풀이 횟수 표시 ── */
@@ -2310,7 +2310,7 @@ function exportAllProblemsDocx(){
   toast('원고용 텍스트를 내보냈습니다 (Word에 붙여넣어 편집하세요)');
 }
 
-/* ── 원격 배포용 problems_bs.json 내보내기 ──
+/* ── 원격 배포용 problems_gp.json 내보내기 ──
    이 파일을 GitHub Pages의 HTML과 같은 폴더에 올리면 학습자에게 자동 반영된다.
    version은 내보낼 때마다 자동으로 새로 부여(Date.now())되어, 업로드 시 전 학습자가 갱신본을 받는다. */
 function exportRemoteJSON(){
@@ -2334,12 +2334,12 @@ function exportRemoteJSON(){
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
   a.href=url;
-  a.download='problems_bs.json';
+  a.download='problems_gp.json';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  toast('problems_bs.json 생성 완료 — GitHub Pages에 업로드하세요');
+  toast('problems_gp.json 생성 완료 — GitHub Pages에 업로드하세요');
 }
 
 
@@ -2361,11 +2361,11 @@ document.querySelectorAll('.mode-switch button').forEach(btn=>{
 document.getElementById('structureEditBtn').addEventListener('click', openStructureEditor);
 
 /* ================= LEARNING DOMAIN BADGE (admin-editable) ================= */
-const DOMAIN_KEY='1h2p_bs_domain_label';
+const DOMAIN_KEY='1h2p_gp_domain_label';
 function renderDomainBadge(){
   const val = localStorage.getItem(DOMAIN_KEY) || '';
   const badge = document.getElementById('domainBadge');
-  badge.textContent = val ? val : '변시';
+  badge.textContent = val ? val : '감평사 보상법규';
 }
 function openDomainEditor(){
   if(!adminAuthed){ askAdminPassword(()=>openDomainEditor()); return; }
@@ -2543,7 +2543,7 @@ function applyStageLogic(total){
   }
 
   // 시도 기록 및 스테이지 갱신 (풀이 횟수 카운터)
-  const attemptedKey = '1h2p_bs_attempts_' + currentProblemNumber;
+  const attemptedKey = '1h2p_gp_attempts_' + currentProblemNumber;
   const prevCount = parseInt(localStorage.getItem(attemptedKey) || '0');
   localStorage.setItem(attemptedKey, String(prevCount + 1));
   if(prevCount === 0){
@@ -2594,7 +2594,7 @@ document.getElementById('nextProblem').addEventListener('click',()=>{
 });
 
 /* ================= EXPORT RESULT ================= */
-const NAME_KEY='1h2p_bs_learner_name';
+const NAME_KEY='1h2p_gp_learner_name';
 window.addEventListener('DOMContentLoaded',()=>{
   const nameInput=document.getElementById('learnerName');
   const headerName=document.getElementById('userNameInput');
@@ -2753,7 +2753,7 @@ document.querySelectorAll('.admin-tab').forEach(tab=>{
 });
 
 /* ================= API KEY ================= */
-const LS_KEY='1h2p_bs_claude_api_key';
+const LS_KEY='1h2p_gp_claude_api_key';
 function getApiKey(){ return localStorage.getItem(LS_KEY)||''; }
 function saveApiKey(){
   const v = document.getElementById('adminApiKeyInput').value.trim();
@@ -2779,8 +2779,8 @@ const chatInput = document.getElementById('chatInput');
 var PROXY_URL = 'https://YOUR-WORKER.workers.dev';  // Cloudflare Worker URL 입력
 
 /* ── 채팅 히스토리 24시간 자동소멸 ── */
-var CHAT_LS_KEY = "1h2p_bs_chat_history";
-var CHAT_TS_KEY = "1h2p_bs_chat_ts";
+var CHAT_LS_KEY = "1h2p_gp_chat_history";
+var CHAT_TS_KEY = "1h2p_gp_chat_ts";
 
 function saveChatHistory(){
   try{
@@ -2845,7 +2845,7 @@ async function sendChat(text){
 
   const sys=[]
   sys.push('당신은 1행2필 사례형 답안 학습 AI 튜터입니다.');
-  sys.push('행정법 수험(변시/5급/7.9급/노무사) 사례형 답안 작성을 돕습니다.');
+  sys.push('감정평가사 2차 보상법규(행정법) 사례형 답안 작성을 돕습니다.');
   sys.push('실로기스무스(대전제->소전제->결론) 서술 방식을 권장하세요.');
   sys.push('판례 인용시 판례번호와 조문을 명시하세요.');
   sys.push('답변은 핵심 중심으로 간결하게 한국어로 작성하세요.');
@@ -3070,5 +3070,296 @@ renderSteps();
 })();
 </script>
 <!-- ===== 1행2필 · 첨삭문의 배지 끝 ===== -->
+<!-- ===== 1행2필 · 사례문제 가독성 도구 (폭 조절 · 글자 크기 · 크게 보기 · 옆에 띄우기) ===== -->
+<style>
+/* 좌측 패널 폭: 좁게/보통/넓게 (CSS 변수로 제어) */
+.layout{grid-template-columns:var(--lw,280px) minmax(0,1fr) 320px;}
+@media (max-width:1200px) and (min-width:768px){
+  .layout{grid-template-columns:var(--lw-tab,260px) minmax(0,1fr);}
+}
+@media (max-width:767px){
+  .layout{grid-template-columns:1fr;}
+}
+body.lw-mid  {--lw:420px;--lw-tab:360px;}
+body.lw-wide {--lw:580px;--lw-tab:460px;}
+
+/* 사례문제 박스 */
+.field-box[data-field="case"]{
+  font-size:var(--case-fs,12.5px);
+  line-height:1.75;
+  max-height:var(--case-mh,none);
+  overflow-y:auto;
+}
+body.case-fold .field-box[data-field="case"]{--case-mh:260px;}
+
+/* 도구 막대 */
+.case-tools{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 6px;align-items:center;}
+.case-tools .ct-group{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:#fff;}
+.case-tools button{
+  border:none;background:#fff;color:#5a5648;font-family:inherit;
+  font-size:11px;font-weight:700;padding:4px 8px;cursor:pointer;line-height:1.3;
+}
+.case-tools .ct-group button+button{border-left:1px solid var(--line);}
+.case-tools button:hover{background:var(--paper);color:var(--navy);}
+.case-tools button.on{background:var(--navy);color:#fff;}
+.case-tools .ct-open{
+  border:1px solid var(--navy);border-radius:7px;background:var(--navy);color:#fff;margin-left:auto;
+}
+.case-tools .ct-open:hover{background:#1d2c5c;color:#fff;}
+
+/* ===== 크게 보기 / 옆에 띄우기 창 ===== */
+#caseReaderBackdrop{
+  position:fixed;inset:0;background:rgba(15,27,61,.45);z-index:900;display:none;
+}
+#caseReader{
+  position:fixed;z-index:901;display:none;flex-direction:column;
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 18px 50px rgba(15,27,61,.28);overflow:hidden;
+}
+#caseReader.modal{
+  left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(var(--rd-w,900px),calc(100vw - 32px));height:min(88vh,1000px);
+}
+#caseReader.float{
+  transform:none;width:460px;height:70vh;min-width:300px;min-height:220px;
+  max-width:calc(100vw - 16px);max-height:calc(100vh - 16px);
+  resize:both;
+}
+.cr-head{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:10px 14px;background:var(--navy);color:#fff;
+}
+#caseReader.float .cr-head{cursor:move;user-select:none;}
+.cr-title{font-weight:800;font-size:13.5px;flex:1;min-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cr-title small{font-weight:500;color:#aab3cf;margin-left:6px;}
+.cr-head .ct-group{display:inline-flex;border:1px solid rgba(255,255,255,.22);border-radius:7px;overflow:hidden;}
+.cr-head button{
+  border:none;background:transparent;color:#fff;font-family:inherit;
+  font-size:11.5px;font-weight:700;padding:5px 9px;cursor:pointer;line-height:1.2;
+}
+.cr-head .ct-group button+button{border-left:1px solid rgba(255,255,255,.22);}
+.cr-head button:hover{background:rgba(255,255,255,.12);}
+.cr-head button.on{background:var(--gold);color:var(--navy);}
+.cr-close{font-size:15px !important;padding:3px 9px !important;}
+#caseReader.float .cr-wonly{display:none;}
+.cr-body{
+  flex:1;overflow-y:auto;padding:22px 28px 30px;background:#fdfcf9;
+  font-size:var(--rd-fs,16px);line-height:1.9;color:var(--ink);
+  word-break:keep-all;overflow-wrap:anywhere;
+}
+#caseReader.float .cr-body{padding:14px 18px 20px;}
+.cr-body p{margin:0 0 .35em;}
+.cr-body .cr-q{
+  margin:.9em 0 .4em;padding:.45em .75em;border-left:4px solid var(--gold);
+  background:#faf4e6;font-weight:700;color:var(--navy);border-radius:0 6px 6px 0;
+}
+.cr-body .cr-prob{font-weight:800;color:var(--navy);}
+.cr-body .cr-ref{
+  margin:1.2em 0 .5em;padding-top:.8em;border-top:1px dashed #d8d2c2;
+  font-weight:800;color:#7a5a12;font-size:.92em;letter-spacing:.3px;
+}
+.cr-body .cr-law{margin:.8em 0 .2em;font-weight:800;color:var(--blue);font-size:.94em;}
+.cr-body .cr-art{font-size:.94em;color:#3a4050;}
+.cr-body .cr-art b{color:var(--ink);}
+.cr-body .cr-item{padding-left:1.1em;text-indent:-1.1em;font-size:.94em;color:#3a4050;}
+.cr-body .cr-sub{padding-left:1.1em;}
+.cr-empty{color:var(--muted);text-align:center;padding:40px 0;}
+@media(max-width:767px){
+  #caseReader.modal{width:calc(100vw - 16px);height:calc(100vh - 16px);}
+  .cr-body{padding:16px 16px 24px;}
+}
+</style>
+<script>
+(function(){
+  var KEY='h2pCaseReaderPrefs';
+  var P={lw:'narrow',cfs:12.5,fold:false,rfs:16,rw:'mid',fx:null,fy:null,fw:null,fh:null};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s) for(var k in s) P[k]=s[k]; }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(P)); }catch(e){} }
+
+  var RW={narrow:680,mid:900,wide:1180};
+  var readerMode=null; // null | 'modal' | 'float'
+
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+  /* 한 줄로 이어 붙은 사례지문도 읽기 좋게 줄을 나눈다(표시용, 원문 데이터는 바꾸지 않음) */
+  function splitLines(t){
+    t=String(t||'').replace(/\r/g,'');
+    t=t.replace(/[ \t]*(【문제\s*\d+】)/g,'\n$1')
+       .replace(/[ \t]*(다음 물음에 답하시오)/g,'\n$1')
+       .replace(/[ \t]*(물음\s*\d+\))/g,'\n$1')
+       .replace(/[ \t]*(\[?참조\s*조문\]?)/g,'\n$1\n')
+       .replace(/[ \t]*(<[^<>\n]{2,60}>)/g,'\n$1\n')
+       .replace(/(다\.)[ \t]*(제\d+조(?:의\d+)?\([^)]{1,40}\))/g,'$1\n$2')
+       .replace(/[ \t]+([①②③④⑤⑥⑦⑧⑨⑩])/g,'\n$1')
+       .replace(/[ \t]+(\(\d{1,2}\)\s)/g,'\n$1')
+       .replace(/(다\.|이다\.|없다\.|아니다\.)[ \t]+(\d{1,2}\.\s)/g,'$1\n$2');
+    return t.split('\n').map(function(l){return l.trim();}).filter(function(l){return l.length;});
+  }
+  function format(text){
+    var lines=splitLines(text);
+    if(!lines.length) return '<div class="cr-empty">사례문제가 비어 있습니다.</div>';
+    var out=[], inRef=false;
+    lines.forEach(function(l){
+      var h=esc(l);
+      if(/^\[?참조\s*조문\]?$/.test(l)){ inRef=true; out.push('<div class="cr-ref">참조 조문</div>'); return; }
+      if(/^물음\s*\d+\)/.test(l)){ out.push('<div class="cr-q">'+h+'</div>'); return; }
+      if(/^다음 물음에 답하시오/.test(l)){ out.push('<p class="cr-sub"><b>'+h+'</b></p>'); return; }
+      if(/^<[^<>]{2,60}>$/.test(l)){ inRef=true; out.push('<div class="cr-law">'+h+'</div>'); return; }
+      if(/^제\d+조/.test(l)){ out.push('<p class="cr-art">'+h.replace(/^(제\d+조(?:의\d+)?\([^)]*\))/,'<b>$1</b>')+'</p>'); return; }
+      if(/^([①-⑩]|\(\d+\)|\d{1,2}\.\s)/.test(l)){ out.push('<p class="cr-item'+(inRef?'':' cr-main')+'"'+(inRef?'':' style="font-size:1em;color:var(--ink)"')+'>'+h+'</p>'); return; }
+      h=h.replace(/^(【문제\s*\d+】)/,'<span class="cr-prob">$1</span>');
+      out.push('<p'+(inRef?' class="cr-art"':'')+'>'+h+'</p>');
+    });
+    return out.join('');
+  }
+
+  function caseBox(){ return document.querySelector('.field-box[data-field="case"]'); }
+  function caseText(){
+    try{ var r=getCurrentProblem(); if(r && r.case!==undefined) return r.case; }catch(e){}
+    var b=caseBox(); return b?b.textContent:'';
+  }
+  function probInfo(){
+    var no='', ch='', tp='';
+    try{ no=currentProblemNumber; var r=getCurrentProblem(); ch=r.chapter||''; tp=r.topic||''; }catch(e){}
+    return {no:no,sub:[ch,tp].filter(Boolean).join(' · ')};
+  }
+
+  /* ---------- 좌측 패널 도구 ---------- */
+  function applyLeft(){
+    document.body.classList.remove('lw-mid','lw-wide');
+    if(P.lw==='mid') document.body.classList.add('lw-mid');
+    if(P.lw==='wide') document.body.classList.add('lw-wide');
+    document.body.classList.toggle('case-fold',!!P.fold);
+    document.documentElement.style.setProperty('--case-fs',P.cfs+'px');
+    document.querySelectorAll('.case-tools [data-lw]').forEach(function(b){b.classList.toggle('on',b.dataset.lw===P.lw);});
+    var fb=document.querySelector('.case-tools [data-act="fold"]');
+    if(fb){ fb.classList.toggle('on',!!P.fold); fb.textContent=P.fold?'펼치기':'접기'; }
+  }
+  function buildTools(){
+    var box=caseBox(); if(!box || document.querySelector('.case-tools')) return;
+    var bar=document.createElement('div');
+    bar.className='case-tools';
+    bar.innerHTML=
+      '<span class="ct-group" title="왼쪽 문제 영역의 폭">'+
+        '<button data-lw="narrow">좁게</button><button data-lw="mid">보통</button><button data-lw="wide">넓게</button></span>'+
+      '<span class="ct-group" title="글자 크기">'+
+        '<button data-act="fs-">가−</button><button data-act="fs+">가+</button></span>'+
+      '<span class="ct-group"><button data-act="fold" title="긴 사례를 일정 높이로 접어 스크롤로 보기">접기</button></span>'+
+      '<button class="ct-open" data-act="open" title="사례문제를 크게 보기">⛶ 크게 보기</button>';
+    box.parentNode.insertBefore(bar,box);
+    bar.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      if(b.dataset.lw){ P.lw=b.dataset.lw; }
+      else if(b.dataset.act==='fs-'){ P.cfs=Math.max(11,+(P.cfs-1).toFixed(1)); }
+      else if(b.dataset.act==='fs+'){ P.cfs=Math.min(20,+(P.cfs+1).toFixed(1)); }
+      else if(b.dataset.act==='fold'){ P.fold=!P.fold; }
+      else if(b.dataset.act==='open'){ openReader('modal'); return; }
+      save(); applyLeft();
+    });
+    box.addEventListener('dblclick',function(){ openReader('modal'); });
+    box.title='더블클릭하면 크게 보기';
+  }
+
+  /* ---------- 크게 보기 / 옆에 띄우기 ---------- */
+  var rd, bd;
+  function buildReader(){
+    bd=document.createElement('div'); bd.id='caseReaderBackdrop';
+    rd=document.createElement('div'); rd.id='caseReader';
+    rd.innerHTML=
+      '<div class="cr-head">'+
+        '<div class="cr-title"></div>'+
+        '<span class="ct-group cr-wonly" title="본문 폭">'+
+          '<button data-rw="narrow">좁게</button><button data-rw="mid">보통</button><button data-rw="wide">넓게</button></span>'+
+        '<span class="ct-group" title="글자 크기"><button data-act="rfs-">가−</button><button data-act="rfs+">가+</button></span>'+
+        '<span class="ct-group"><button data-act="toggle" class="cr-toggle"></button></span>'+
+        '<button class="cr-close" data-act="close" title="닫기 (Esc)">✕</button>'+
+      '</div>'+
+      '<div class="cr-body"></div>';
+    document.body.appendChild(bd); document.body.appendChild(rd);
+    bd.addEventListener('click',closeReader);
+    rd.querySelector('.cr-head').addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      if(b.dataset.rw){ P.rw=b.dataset.rw; }
+      else if(b.dataset.act==='rfs-'){ P.rfs=Math.max(13,P.rfs-1); }
+      else if(b.dataset.act==='rfs+'){ P.rfs=Math.min(26,P.rfs+1); }
+      else if(b.dataset.act==='toggle'){ openReader(readerMode==='float'?'modal':'float'); return; }
+      else if(b.dataset.act==='close'){ closeReader(); return; }
+      save(); styleReader();
+    });
+    enableDrag();
+    if(window.ResizeObserver){
+      new ResizeObserver(function(){
+        if(readerMode!=='float') return;
+        P.fw=rd.offsetWidth; P.fh=rd.offsetHeight; save();
+      }).observe(rd);
+    }
+  }
+  function styleReader(){
+    rd.style.setProperty('--rd-fs',P.rfs+'px');
+    rd.style.setProperty('--rd-w',(RW[P.rw]||900)+'px');
+    rd.querySelectorAll('[data-rw]').forEach(function(b){b.classList.toggle('on',b.dataset.rw===P.rw);});
+    var t=rd.querySelector('.cr-toggle');
+    t.textContent = readerMode==='float' ? '⛶ 크게 보기' : '📌 옆에 띄우기';
+    t.title = readerMode==='float' ? '가운데 큰 창으로 보기' : '답안을 쓰면서 볼 수 있게 작은 창으로 띄우기 (끌어서 이동 · 모서리로 크기 조절)';
+  }
+  function fillReader(){
+    if(!rd || !readerMode) return;
+    var i=probInfo();
+    rd.querySelector('.cr-title').innerHTML='사례문제 '+esc(i.no)+(i.sub?'<small>'+esc(i.sub)+'</small>':'');
+    rd.querySelector('.cr-body').innerHTML=format(caseText());
+  }
+  function placeFloat(){
+    var w=Math.min(P.fw||460,window.innerWidth-16), h=Math.min(P.fh||Math.round(window.innerHeight*.7),window.innerHeight-16);
+    var x=(P.fx!=null)?P.fx:window.innerWidth-w-20, y=(P.fy!=null)?P.fy:90;
+    x=Math.max(8,Math.min(x,window.innerWidth-w-8)); y=Math.max(8,Math.min(y,window.innerHeight-60));
+    rd.style.width=w+'px'; rd.style.height=h+'px'; rd.style.left=x+'px'; rd.style.top=y+'px';
+  }
+  function openReader(mode){
+    if(!rd) buildReader();
+    readerMode=mode;
+    rd.className=mode; rd.style.display='flex';
+    if(mode==='float'){ bd.style.display='none'; placeFloat(); }
+    else { bd.style.display='block'; rd.style.left=rd.style.top=rd.style.width=rd.style.height=''; }
+    styleReader(); fillReader();
+    rd.querySelector('.cr-body').scrollTop=0;
+  }
+  function closeReader(){
+    if(!rd) return;
+    readerMode=null; rd.style.display='none'; bd.style.display='none';
+  }
+  function enableDrag(){
+    var head=rd.querySelector('.cr-head'), sx,sy,ox,oy,drag=false;
+    function down(e){
+      if(readerMode!=='float' || e.target.closest('button')) return;
+      var pt=e.touches?e.touches[0]:e; drag=true;
+      sx=pt.clientX; sy=pt.clientY; ox=rd.offsetLeft; oy=rd.offsetTop;
+      e.preventDefault();
+    }
+    function move(e){
+      if(!drag) return;
+      var pt=e.touches?e.touches[0]:e;
+      var x=Math.max(0,Math.min(ox+pt.clientX-sx,window.innerWidth-80));
+      var y=Math.max(0,Math.min(oy+pt.clientY-sy,window.innerHeight-40));
+      rd.style.left=x+'px'; rd.style.top=y+'px';
+    }
+    function up(){ if(!drag) return; drag=false; P.fx=rd.offsetLeft; P.fy=rd.offsetTop; save(); }
+    head.addEventListener('mousedown',down); head.addEventListener('touchstart',down,{passive:false});
+    window.addEventListener('mousemove',move); window.addEventListener('touchmove',move,{passive:false});
+    window.addEventListener('mouseup',up); window.addEventListener('touchend',up);
+  }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && readerMode) closeReader(); });
+
+  function init(){
+    buildTools(); applyLeft();
+    var box=caseBox();
+    if(box && window.MutationObserver){
+      new MutationObserver(function(){ fillReader(); }).observe(box,{childList:true,characterData:true,subtree:true});
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+<!-- ===== 사례문제 가독성 도구 끝 ===== -->
+
 </body>
 </html>
